@@ -101,6 +101,66 @@ extern "C" void func_0046AEB6(void)
     func_0046E9BA(13);
 }
 
+extern "C" void *func_0046AEEB(unsigned int size, int nhFlag)
+{
+    void *pvReturn;
+
+    if (size > 0xffffffe0)
+        return NULL;
+
+    for (;;) {
+        pvReturn = func_0046AF17(size);
+        if (pvReturn || nhFlag == 0)
+            return pvReturn;
+        if (!func_0046F0AD(size))
+            return NULL;
+    }
+}
+
+extern "C" int D_006D59C8;
+extern "C" unsigned int D_006D59C0;
+extern "C" unsigned int D_0047FA7C;
+extern "C" void *D_006D59C4;
+extern "C" void *func_0046F464(unsigned int);
+extern "C" void *func_0046FF07(unsigned int);
+extern "C" __declspec(dllimport) void *__stdcall HeapAlloc(void *, unsigned long, unsigned long);
+extern "C" void *func_0046AF17(unsigned int size)
+{
+    void *pvReturn;
+
+    if (D_006D59C8 == 3) {
+        if (size <= D_006D59C0) {
+            func_0046E959(9);
+            __try {
+                pvReturn = func_0046F464(size);
+            }
+            __finally {
+                func_0046E9BA(9);
+            }
+            if (pvReturn)
+                return pvReturn;
+        }
+    } else if (D_006D59C8 == 2) {
+        size = size ? (size + 15) & ~15 : 16;
+        if (size <= D_0047FA7C) {
+            func_0046E959(9);
+            __try {
+                pvReturn = func_0046FF07(size >> 4);
+            }
+            __finally {
+                func_0046E9BA(9);
+            }
+            if (pvReturn)
+                return pvReturn;
+        }
+        return HeapAlloc(D_006D59C4, 0, size);
+    }
+    if (size == 0)
+        size = 1;
+    size = (size + 15) & ~15;
+    return HeapAlloc(D_006D59C4, 0, size);
+}
+
 extern "C" void *func_0046AEEB(unsigned int, int);
 extern "C" int D_0049D9E8;
 extern "C" void func_0046AF7E(void)
@@ -111,6 +171,11 @@ extern "C" void func_0046AF7E(void)
 extern "C" void *func_0046AF17(unsigned int);
 extern "C" int func_0046F0AD(unsigned int);
 extern "C" void func_0046AFDD(void)
+{
+    func_0046E9BA(9);
+}
+
+extern "C" void func_0046B07D(void)
 {
     func_0046E9BA(9);
 }

@@ -63,6 +63,11 @@ void func_00401120(void)
     memset(D_004806E0, 0, sizeof(D_004806E0));
 }
 
+void func_00401FA0(int a, int b)
+{
+    func_0043EA50(a, b);
+}
+
 void func_00401FC0(void)
 {
     func_00402290();

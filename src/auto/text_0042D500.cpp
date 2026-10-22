@@ -109,18 +109,17 @@ void func_0042D680(Node_0042D500 *node)
     D_00645074 = node;
 }
 #pragma optimize("", on)
+
 void func_0042D6C0(Region_0042D500 *r)
 {
-    Node_0042D500 *node = r->nodes;
+    Node_0042D500 *node;
     Node_0042D500 *link;
 
-    while (node != NULL) {
+    for (node = r->nodes; node != NULL; node = link) {
         link = node->link;
         func_0042D680(node);
-        node = link;
     }
 }
-
 void func_0042D6E0(Region_0042D500 *r, int from, int to)
 {
     unsigned int minA;

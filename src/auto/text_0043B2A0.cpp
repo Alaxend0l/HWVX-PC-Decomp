@@ -143,10 +143,6 @@ extern "C" int func_0043B7B0(void *a, Elem_0043B460 *e, float *best, unsigned ch
     return result;
 }
 
-extern "C" void func_00454C50(void *p);
-extern "C" float func_004535B0(void *a, Elem_0043B460 *e);
-extern "C" Elem_0043B460 *func_0043BD20(int id);
-extern "C" int func_0043B7B0(void *a, Elem_0043B460 *e, float *best, unsigned char depth);
 extern "C" unsigned func_0043BD40(void)
 {
     return D_0048D768->unk_0x08;

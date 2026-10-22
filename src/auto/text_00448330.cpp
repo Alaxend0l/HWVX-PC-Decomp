@@ -83,6 +83,21 @@ extern "C" void func_004484A0(float *a, float *b, float *c)
         c[3] = b[3];
 }
 
+extern "C" void func_00448430(float *a, float *b, float t)
+{
+    float d[4];
+    float v[4];
+
+    d[0] = a[0] - b[0];
+    d[1] = a[1] - b[1];
+    d[2] = a[2] - b[2];
+    v[0] = d[0] * t + a[0x10];
+    v[1] = d[1] * t + a[0x11];
+    v[2] = d[2] * t + a[0x12];
+    t = a[0x1c] + b[0x1c];
+    func_004543B0(b + 0x10, t, a + 0x10, v);
+}
+
 float func_00448B60(void)
 {
     return D_0047700C;
@@ -97,17 +112,14 @@ extern "C" int func_00448B70(char *p)
     return 0;
 }
 
-extern "C" void func_004543B0(float *a, float b, float *c, float *d);
 extern "C" bool func_004490C0(int *p)
 {
+    unsigned int i;
     int mode = p[0];
     unsigned int n = p[1];
-    int **it;
-    unsigned int i;
 
-    it = (int **)(p + 2);
     for (i = 0; i < n; i++) {
-        int *e = *it;
+        int *e = (int *)p[i + 2];
         switch (mode) {
         case 0:
             e[1] = 0;
@@ -119,7 +131,6 @@ extern "C" bool func_004490C0(int *p)
             e[1] = 1;
             break;
         }
-        it++;
     }
     return true;
 }

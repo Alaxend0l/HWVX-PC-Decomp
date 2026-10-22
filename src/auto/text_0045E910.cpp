@@ -46,6 +46,12 @@ struct Rec20_0045E910 {
     char pad_0x10[0x10];
 };
 
+struct Node_0045E910 {
+    void (*unk_0x0)(unsigned short);
+    unsigned short unk_0x4;
+    unsigned short unk_0x6;
+};
+
 struct State_0045E910 {
     char pad_0x0[0x8];
     int unk_0x8;

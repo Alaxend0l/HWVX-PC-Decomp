@@ -90,6 +90,28 @@ extern "C" void func_0046BE03(char *buf)
         hold = next;
     } while (*buf++);
 }
+
+extern "C" void func_004716DA(int *dbl, char *str);
+extern "C" void func_00471707(int *flt, char *str);
+extern "C" char *func_004718C0(char *dst, const char *src);
+extern "C" void func_0046C204(char *s, int dist);
+extern char D_004789B0[];
+extern double D_004789A8;
+extern "C" void func_0046BEC3(int flag, char *arg, char *number)
+{
+    int dbl[2];
+    int flt;
+
+    if (flag) {
+        func_004716DA(dbl, number);
+        ((int *)arg)[0] = dbl[0];
+        ((int *)arg)[1] = dbl[1];
+    } else {
+        func_00471707(&flt, number);
+        *(int *)arg = flt;
+    }
+}
+
 extern "C" void func_0046C204(char *s, int dist)
 {
     if (dist)

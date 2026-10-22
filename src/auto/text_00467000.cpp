@@ -70,3 +70,8 @@ void func_004671C0(GLboolean flag)
     glDepthMask(flag);
 }
 
+void func_00467E10(GLuint tex)
+{
+    glDeleteTextures(1, &tex);
+}
+

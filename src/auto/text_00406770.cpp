@@ -102,7 +102,9 @@ void func_0044A7C0(char **list, char *o);
 void func_0044A790(char *list, char *o);
 void func_00406FA0(Driver_00406770 *d)
 {
-    if (func_004535B0(d->car + 0x40, *(void **)(d->car + 0x90)) > 25.0f) {
+    char *car = d->car;
+
+    if (func_004535B0(car + 0x40, *(void **)(car + 0x90)) > 25.0f) {
         func_00406950(d, *(int *)(d->car + 0x90));
         d->unk_0x14 = -1;
         d->unk_0xc8 = 100;
@@ -165,12 +167,13 @@ float func_00406EE0(char *a, char *b)
 {
     float r;
 
-    if (func_00406AB0(b, (int)(a + 0x40)) < D_00477000)
-        r = func_004532D0(*(float *)(a + 0x38), *(float *)(a + 0x30)) -
-            func_004532D0(-*(float *)(b + 0x18), -*(float *)(b + 0x10));
-    else
-        r = func_004532D0(*(float *)(a + 0x38), *(float *)(a + 0x30)) -
-            func_004532D0(*(float *)(b + 0x18), *(float *)(b + 0x10));
+    if (func_00406AB0(b, (int)(a + 0x40)) < D_00477000) {
+        float h = func_004532D0(*(float *)(a + 0x38), *(float *)(a + 0x30));
+        r = h - func_004532D0(-*(float *)(b + 0x18), -*(float *)(b + 0x10));
+    } else {
+        float h = func_004532D0(*(float *)(a + 0x38), *(float *)(a + 0x30));
+        r = h - func_004532D0(*(float *)(b + 0x18), *(float *)(b + 0x10));
+    }
     while (r > 3.1415927f)
         r -= 6.2831855f;
     while (r < -3.1415927f)
@@ -198,8 +201,46 @@ void func_00407160(State_00407160 *s)
     }
 }
 
+void func_00407280(char *p, unsigned char id)
+{
+    char **list = (char **)(p + 0x14);
+    char *o = *list;
+
+    while (o != 0) {
+        char *next = *(char **)(o + 0xa4);
+        if (*(unsigned char *)(o + 0x83) == id) {
+            (*(void (**)(char *))(*(char **)(o + 0x8c) + 4))(o);
+            func_0044A7C0(list, o);
+            *(int *)(o + 0x74) = *(int *)(o + 0x74) & ~0x200000 | 0x1000;
+            func_0044A790((char *)&D_0053A9D4[*(int *)(o + 0xa8)], o);
+        }
+        o = next;
+    }
+}
+
 void func_004072F0(char *p)
 {
     func_0044A990(p + 0x14);
     func_0044A910(p + 0x14);
 }
+
+void func_0044A9C0(int a, char *b);
+void func_0043AE90(int buf);
+void func_00454CF0(void *, void *, int);
+void func_0045E120(int, int, void *, int);
+void func_0045E160(int, int, int, int);
+void func_0045E670(int, char *);
+void func_00407EF0(char *p, int);
+void func_0044AD00(void *, void *, void *, void *, void *, int);
+extern float D_00692350[4];
+void func_00407310(char *p)
+{
+    if (*(int *)(p + 0x10) != 0) {
+        func_0044A9C0(*(int *)(p + 0x10), p + 0x14);
+        func_0043AE90(*(int *)(p + 0x10));
+        *(int *)(p + 0x10) = 0;
+        p[7] = 0;
+    }
+    func_004072F0(p);
+}
+

@@ -34,6 +34,11 @@ void func_00466590(void)
     memset(D_0049D7C4, 0, 0x18);
 }
 
+void func_004668B0(int x, int y, int w, int h)
+{
+    glViewport(x, y, w, h);
+}
+
 void func_00466FD0(int mode)
 {
     switch (mode) {
@@ -45,3 +50,21 @@ void func_00466FD0(int mode)
         break;
     }
 }
+
+void func_004667F0(int id, int w, int h)
+{
+    func_00466410(id);
+    if (!D_006C9AC0) {
+        D_006C9A0C[D_006C9A78].unk_0x00 = w;
+        D_006C9A0C[D_006C9A78].unk_0x02 = h;
+        D_006C9A0C[D_006C9A78].unk_0x04 = (short)w / 2;
+        D_006C9A0C[D_006C9A78].unk_0x06 = (short)h / 2;
+        func_004668B0(0, 0, w, h);
+        func_00460B30(*(int *)(func_00461D50() + 0x270));
+        *(int *)(func_00461D50() + 0x2b0) = 0;
+        *(int *)(func_00461D50() + 0x2b8) = 0;
+        *(int *)(func_00461D50() + 0x280) = w;
+        *(int *)(func_00461D50() + 0x284) = h;
+    }
+}
+

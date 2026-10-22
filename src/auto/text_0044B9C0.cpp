@@ -32,3 +32,15 @@ extern "C" void func_0044B9E0(int a, int b)
     func_00452F70(D_0047B7A0);
 }
 
+extern "C" int func_0044BA20(int a, int b)
+{
+    Entry_004B6300 *e;
+    for (e = D_004B6300; e < D_004B6300 + 8; e++) {
+        if (e->a == a && e->b == b)
+            return 1;
+        if (e->b == a && e->a == b)
+            return 1;
+    }
+    return 0;
+}
+

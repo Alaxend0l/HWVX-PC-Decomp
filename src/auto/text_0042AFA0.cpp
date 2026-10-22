@@ -10,6 +10,22 @@ extern char D_0065E350[];
 struct D_0064D148_t { char data[32]; };
 extern D_0064D148_t D_0064D148[];
 extern char D_0064D164;
+extern unsigned char D_0064D165;
+extern unsigned char D_0064D166;
+extern char D_0048D4A4[];
+extern char D_0048D4AE;
+extern int D_0064DDAC;
+extern int D_0064DDB0;
+extern int D_0064FA14;
+extern char D_0064DDB4;
+struct D_0064DDB8_t { int data[14]; };
+extern D_0064DDB8_t D_0064DDB8;
+void func_004449B0(void);
+void func_00459D70(int);
+void func_004596C0(int);
+void func_00459590(int);
+void func_00429FA0(int, int, int);
+char *func_004401B0(int);
 
 static inline int func_0042AFB0_check(char *p, int idx)
 {
@@ -62,9 +78,9 @@ unsigned char func_0042AFB0(int idx)
     return 0;
 }
 
-D_0064D148_t *func_0042B040(int i)
+char *func_0042B040(int i)
 {
-    return &D_0064D148[i];
+    return D_0064D148[i].data;
 }
 
 char *func_0042B140(void)

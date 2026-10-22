@@ -184,6 +184,40 @@ extern "C" void func_0046C204(char *s, int dist)
         func_004719B0(s + dist, s, func_00471CF0(s) + 1);
 }
 
+extern "C" char *func_0046C079(char *buf, int ndec, StrFlt_0046BA52 *flt, int g_fmt)
+{
+    int decpt = flt->decpt - 1;
+    char *p;
+
+    if ((char)g_fmt && decpt == ndec) {
+        p = buf + (flt->sign == '-') + decpt;
+        *p++ = '0';
+        *p = '\0';
+    }
+    p = buf;
+    if (flt->sign == '-')
+        *p++ = '-';
+    if (flt->decpt <= 0) {
+        func_0046C204(p, 1);
+        *p++ = '0';
+    } else {
+        p += flt->decpt;
+    }
+    if (ndec > 0) {
+        func_0046C204(p, 1);
+        *p++ = *D_0047FC90;
+        if (flt->decpt < 0) {
+            if ((char)g_fmt)
+                ndec = -flt->decpt;
+            else if (ndec >= -flt->decpt)
+                ndec = -flt->decpt;
+            func_0046C204(p, ndec);
+            func_00471050(p, '0', ndec);
+        }
+    }
+    return buf;
+}
+
 extern "C" char *func_0046C024(double *value, char *buf, int ndec)
 {
     StrFlt_0046BA52 flt;

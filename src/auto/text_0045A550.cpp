@@ -191,3 +191,18 @@ char func_0045B400(void)
     return 1;
 }
 
+extern int D_0049A884;
+void func_0045B610(void);
+char func_0045B440(void)
+{
+    int i;
+    if (D_0049A898 != 0)
+        func_0045B610();
+    D_0049A884 = 0x10000;
+    for (i = 0; i < 32; i++) {
+        D_00499A68->unk_0x00 = 0;
+        D_00499A68->unk_0x04 = 0;
+    }
+    return 1;
+}
+

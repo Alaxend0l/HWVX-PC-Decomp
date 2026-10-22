@@ -55,6 +55,10 @@ extern u32 D_00692370;
 void func_00402290(void);
 void func_00405CC0(void);
 
+void _func_00401090()
+{
+}
+
 void func_004010A0(void)
 {
     memset(D_004806E0, 0, sizeof(D_004806E0));

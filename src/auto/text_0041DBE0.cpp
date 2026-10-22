@@ -29,10 +29,55 @@ struct RecD_00661128 {
     char unk_0x04[0x2c];
 };
 
-struct Obj_0041E7B0 {
-    char unk_0x00[0x1b4];
-    float unk_0x1b4;
+struct Entry_0041E7C0 {
+    int unk_0x00;
+    char unk_0x04[0x5c];
 };
+
+struct Model_0041E7C0 {
+    char unk_0x00[0x18];
+    Entry_0041E7C0 *unk_0x18;
+    char unk_0x1c[0x10];
+    unsigned unk_0x2c;
+    Entry_0041E7C0 *unk_0x30;
+};
+
+struct Sub90_0041E7C0 {
+    char unk_0x00[0x1c];
+    int unk_0x1c;
+};
+
+struct Sub94_0041E9E0 {
+    char unk_0x00[0x32];
+    unsigned char unk_0x32;
+};
+
+struct Obj_0041E7B0 {
+    char unk_0x00[0x74];
+    unsigned unk_0x74;
+    char unk_0x78[0x90 - 0x78];
+    Sub90_0041E7C0 *unk_0x90;
+    Sub94_0041E9E0 *unk_0x94;
+    char unk_0x98[0xb8 - 0x98];
+    Model_0041E7C0 *unk_0xb8;
+    char unk_0xbc[0xc8 - 0xbc];
+    int unk_0xc8;
+    char unk_0xcc[0x4];
+    int unk_0xd0;
+    char unk_0xd4[0x118 - 0xd4];
+    unsigned unk_0x118;
+    Entry_0041E7C0 *unk_0x11c;
+    char unk_0x120[0x1ac - 0x120];
+    int unk_0x1ac;
+    char unk_0x1b0[0x4];
+    float unk_0x1b4;
+    char unk_0x1b8[0x1cc - 0x1b8];
+    unsigned unk_0x1cc;
+};
+
+void func_004071A0(int *, int);
+extern "C" void func_0041E850(Obj_0041E7B0 *, int, int, int);
+extern "C" void func_0041EC90(Obj_0041E7B0 *, int, int);
 
 extern RecA_00661100 D_00661100[];
 extern RecB_00661110 D_00661110[];

@@ -3,26 +3,6 @@
 #include <windows.h>
 #include <GL/gl.h>
 
-/* opengl32 import slots are named without @N (__imp__glEnable): call them through the slots */
-extern "C" void (__stdcall *_imp__glBlendFunc)(GLenum, GLenum);
-extern "C" void (__stdcall *_imp__glTexEnvf)(GLenum, GLenum, GLfloat);
-extern "C" void (__stdcall *_imp__glEnable)(GLenum);
-extern "C" void (__stdcall *_imp__glDisable)(GLenum);
-extern "C" void (__stdcall *_imp__glDepthMask)(GLboolean);
-extern "C" void (__stdcall *_imp__glCullFace)(GLenum);
-extern "C" void (__stdcall *_imp__glFogi)(GLenum, GLint);
-extern "C" void (__stdcall *_imp__glDeleteTextures)(GLsizei, const GLuint *);
-extern "C" void (__stdcall *_imp__glBindTexture)(GLenum, GLuint);
-#define glBindTexture (*_imp__glBindTexture)
-#define glBlendFunc (*_imp__glBlendFunc)
-#define glTexEnvf (*_imp__glTexEnvf)
-#define glEnable (*_imp__glEnable)
-#define glDisable (*_imp__glDisable)
-#define glDepthMask (*_imp__glDepthMask)
-#define glCullFace (*_imp__glCullFace)
-#define glFogi (*_imp__glFogi)
-#define glDeleteTextures (*_imp__glDeleteTextures)
-
 extern int D_006C9A68;
 extern int D_006C99F8;
 extern int D_006C9A70;

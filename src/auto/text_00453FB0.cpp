@@ -22,9 +22,7 @@ struct Vec4_00453FB0 {
 
 static inline void CopyVec3_00453FB0(float *dst, const float *src)
 {
-    dst[0] = src[0];
-    dst[1] = src[1];
-    dst[2] = src[2];
+    *(Vec3_00453FB0 *)dst = *(const Vec3_00453FB0 *)src;
 }
 
 static inline float Length3_00453FB0(float x, float y, float z)
@@ -58,21 +56,9 @@ extern unsigned int D_006912C0;
 void func_004549A0(float *out)
 {
     int i = D_006912C0 * 3;
-    float *p;
-    p = D_0068E2C0[i];
-    out[0] = p[0];
-    out[1] = p[1];
-    out[2] = p[2];
-    i++;
-    p = D_0068E2C0[i];
-    out[4] = p[0];
-    out[5] = p[1];
-    out[6] = p[2];
-    i++;
-    p = D_0068E2C0[i];
-    out[8] = p[0];
-    out[9] = p[1];
-    out[10] = p[2];
+    CopyVec3_00453FB0(&out[0], D_0068E2C0[i]);
+    CopyVec3_00453FB0(&out[4], D_0068E2C0[i + 1]);
+    CopyVec3_00453FB0(&out[8], D_0068E2C0[i + 2]);
     if (++D_006912C0 >= 0x100)
         D_006912C0 = 0;
 }

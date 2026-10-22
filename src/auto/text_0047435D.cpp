@@ -49,40 +49,38 @@ extern "C" void func_004745CD(unsigned int *x, unsigned int *y)
 }
 
 extern "C" void func_0047462B(unsigned int *p);
-extern "C" void func_00474686(char *manptr, unsigned int manlen, unsigned int *ld)
+extern "C" void func_00474686(char *manptr, unsigned int manlen, LDBL12_0047435D *ld)
 {
-    unsigned int tmp[3];
+    LDBL12_0047435D tmp;
     unsigned short expn = 0x404e;
 
-    ld[0] = 0;
-    ld[1] = 0;
-    ld[2] = 0;
+    *UL_LO_12(ld) = 0;
+    *UL_MED_12(ld) = 0;
+    *UL_HI_12(ld) = 0;
 
     for (; manlen > 0; manlen--, manptr++) {
-        tmp[0] = ld[0];
-        tmp[1] = ld[1];
-        tmp[2] = ld[2];
-        func_0047462B(ld);
-        func_0047462B(ld);
-        func_004745CD(ld, tmp);
-        func_0047462B(ld);
-        tmp[0] = (unsigned int)*manptr;
-        tmp[1] = 0;
-        tmp[2] = 0;
-        func_004745CD(ld, tmp);
+        tmp = *ld;
+        func_0047462B((unsigned int *)ld);
+        func_0047462B((unsigned int *)ld);
+        func_004745CD((unsigned int *)ld, (unsigned int *)&tmp);
+        func_0047462B((unsigned int *)ld);
+        *UL_LO_12(&tmp) = (unsigned int)*manptr;
+        *UL_MED_12(&tmp) = 0;
+        *UL_HI_12(&tmp) = 0;
+        func_004745CD((unsigned int *)ld, (unsigned int *)&tmp);
     }
 
-    while (ld[2] == 0) {
-        ld[2] = ld[1] >> 16;
-        ld[1] = (ld[1] << 16) | (ld[0] >> 16);
-        ld[0] <<= 16;
+    while (*UL_HI_12(ld) == 0) {
+        *UL_HI_12(ld) = *UL_MED_12(ld) >> 16;
+        *UL_MED_12(ld) = *UL_MED_12(ld) << 16 | *UL_LO_12(ld) >> 16;
+        *UL_LO_12(ld) <<= 16;
         expn -= 16;
     }
-    while ((ld[2] & 0x8000) == 0) {
-        func_0047462B(ld);
+    while ((*UL_HI_12(ld) & 0x8000) == 0) {
+        func_0047462B((unsigned int *)ld);
         expn--;
     }
-    *(unsigned short *)((char *)ld + 10) = expn;
+    *U_EXP_12(ld) = expn;
 }
 
 extern "C" void func_0047462B(unsigned int *p)

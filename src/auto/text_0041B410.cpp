@@ -33,3 +33,8 @@ extern char D_0047A59C[];
 extern "C" void func_004535E0(Mtx_0041B410 *m, int b, Vec4_0041B410 *out);
 extern "C" void func_0041B1B0(int a, Mtx_0041B410 *m, Obj_0041B410 *obj);
 extern "C" void func_00452F70(const char *msg);
+
+extern "C" float func_0041BC60(int a, int b, int c, float d)
+{
+    return d;
+}

@@ -59,6 +59,35 @@ struct Out_0045EC70 {
 
 extern int D_0069236C;
 
+struct Vec4i_00408690 {
+    int x, y, z, w;
+};
+
+struct Spawn_00408D10 {
+    char *unk_0x00;
+    Vec4i_00408690 unk_0x04;
+};
+
+extern char D_0047A2CC[];
+extern char D_0047A2A4[];
+extern char D_0047A28C[];
+extern char D_0047A26C[];
+extern char D_00489554;
+extern void *D_0048955C;
+extern void *D_00489564;
+
+void func_004594B0(void);
+void func_00454C50(void *);
+void func_00452F70(char *);
+char func_00459410(void);
+void func_0046A822(char *);
+void *func_00454B80(int, int, char *);
+void func_004482C0(Obj_00408690 *, int);
+void func_00461D10(int);
+void func_00461BA0(int);
+void func_00461BC0(int);
+void func_0045E730(int, void *, void *, void *);
+
 void func_004268B0(void *, void *, int);
 void func_00426BE0(void *, void *, int);
 void func_00460820(int);

@@ -66,6 +66,30 @@ char func_0043AC70(void)
     return D_0048D634();
 }
 
+char func_0043ACA0(void)
+{
+    func_00401090();
+    func_0044B8C0();
+    func_00401090();
+    func_004420C0();
+    func_004507D0();
+    func_0043ADC0();
+    func_00452020();
+    func_0042CFF0();
+    func_00447FA0();
+    func_0040A4A0();
+    func_0044EFC0();
+    func_00401090();
+    func_00401090();
+    func_00459210();
+    func_00461A80();
+    func_00443D20();
+    func_00427730();
+    func_004093C0();
+    func_00454D30();
+    return 1;
+}
+
 void func_0043B020(Obj_0043A3C0 *obj)
 {
     if (obj->unk_0xc0 != 0)

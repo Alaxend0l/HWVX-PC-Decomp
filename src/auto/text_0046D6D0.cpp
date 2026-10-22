@@ -14,6 +14,21 @@ extern int D_006D6B08;
 extern unsigned char *D_006D6B14;
 extern "C" void func_00472B36(void);
 extern "C" int func_0047271C(unsigned int c);
+extern "C" unsigned long (__stdcall *_imp__GetModuleFileNameA)(void *module, char *name, unsigned long size);
+#define GetModuleFileNameA (*_imp__GetModuleFileNameA)
+extern char *D_0049D808;
+extern char **D_0049D834;
+extern int D_006D6B04;
+extern char D_0049D87C[];
+extern char *D_0049D844;
+extern char **D_0049D82C;
+extern int D_0049D828;
+extern "C" unsigned int func_00471CF0(const char *s);
+extern "C" void *func_0046AED9(unsigned int size);
+extern "C" void func_0046AD1F(int code);
+extern "C" char *func_004718C0(char *dst, const char *src);
+extern "C" void func_0046B013(void *p);
+extern "C" void func_0046DF5F(char *cmdstart, char **argv, char *args, int *numargs, int *numchars);
 
 #pragma optimize("s", on)
 

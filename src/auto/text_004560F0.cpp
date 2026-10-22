@@ -17,6 +17,27 @@ void func_004564B0(void)
     D_00692370 = 1;
 }
 
+void func_004565D0(float rate)
+{
+    unsigned int ms = (unsigned int)(rate * 1000.0f);
+    float frames = (float)ms * 0.06f;
+
+    D_00692370 = ms;
+    D_00692378 = rate;
+    D_00692360 = frames;
+    D_0069237C = (int)frames;
+    D_00692368 = 1.0f / rate;
+}
+
+void func_00456630(unsigned int *out)
+{
+    LARGE_INTEGER now;
+
+    QueryPerformanceCounter(&now);
+    now.QuadPart = now.QuadPart * 1000000 / D_0068DDB8.QuadPart;
+    *out = now.LowPart;
+}
+
 int func_00456C80(void)
 {
     return 3;

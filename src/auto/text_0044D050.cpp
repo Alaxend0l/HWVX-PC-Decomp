@@ -83,6 +83,26 @@ struct Racer_0044DF30 {
     Car_0044DF30 *unk_0x28;
 };
 
+struct Player_0044DFC0 {
+    char unk_0x00[0x434];
+    int unk_0x434;
+    char unk_0x438[0x4b4 - 0x438];
+    unsigned char unk_0x4b4;
+};
+
+struct Game_0044DFC0 {
+    char unk_0x00[0x2c];
+    Player_0044DFC0 *unk_0x2c;
+};
+
+struct Cond_0044DFC0 {
+    int unk_0x0;
+    int unk_0x4;
+    int unk_0x8;
+};
+
+extern Game_0044DFC0 *D_00681500;
+
 extern Ent560_0044D050 D_0051F720[8];
 extern Ent560_0044D050 D_00522220[];
 extern EntF0_0044D050 D_004F3C20[96];
@@ -260,21 +280,15 @@ void func_0044D940(void **out)
 
 char func_0044DF30(unsigned int *a)
 {
-    unsigned int n;
+    unsigned int n = a[0];
+    int mode = a[n + 1];
+    Racer_0044DF30 **racers = (Racer_0044DF30 **)(a + 1);
+    int *vals = (int *)(a + n + 3);
+    int d = a[n + 2];
+    int r = 0;
     unsigned int i;
-    int mode;
-    int d;
-    int *vals;
-    Racer_0044DF30 **racers;
     Car_0044DF30 *car;
-    char r;
 
-    n = a[0];
-    racers = (Racer_0044DF30 **)&a[1];
-    mode = a[n + 1];
-    vals = (int *)&a[n + 3];
-    d = a[n + 2];
-    r = 0;
     for (i = 0; i < n; i++) {
         car = racers[i]->unk_0x28;
         if (mode == 0x2a) {

@@ -74,6 +74,12 @@ void func_0043A760(Obj_0043A3C0 *obj)
     obj->unk_0x94->unk_0x32 = 0;
 }
 
+void func_0043ADC0(void)
+{
+    func_00454C50(D_0048D638);
+    D_0048D638 = NULL;
+}
+
 char func_0043AC70(void)
 {
     int id = func_004480C0();

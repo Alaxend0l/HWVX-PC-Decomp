@@ -228,8 +228,10 @@ void func_0043AFC0(Ent_0043A3C0 *ent)
 char func_0043AFE0(Ent_0043A3C0 *ent)
 {
     Anim_0043A3C0 *anim = &ent->unk_0xb0;
+    Vec4_0043A3C0 *pos = &ent->unk_0x40;
+    Vec4_0043A3C0 *rot = &ent->unk_0x50;
 
-    func_00408200(&ent->unk_0x50, &ent->unk_0x40, anim, 1.0f);
+    func_00408200(rot, pos, anim, 1.0f);
     func_004082C0(anim, ent->unk_0x10, ent);
     return 1;
 }

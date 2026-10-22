@@ -16,6 +16,13 @@ extern int D_00681460[8];
 extern int D_006814E0;
 extern int D_006814E4;
 
+static inline void ClearLists_0040A4B0(int *a, int *b, int *count)
+{
+    memset(a, 0, 8 * sizeof(int));
+    memset(b, 0, 8 * sizeof(int));
+    *count = 0;
+}
+
 void func_00409DA0(int);
 void func_0040A4F0(void);
 
@@ -27,11 +34,11 @@ int func_0040A4B0(void)
 void func_0040A4F0(void)
 {
     memset(D_00681380, 0, sizeof(D_00681380));
-    memset(D_00681360, 0, sizeof(D_00681360));
     D_006814E0 = 0;
+    memset(D_00681360, 0, sizeof(D_00681360));
     memset(D_00681460, 0, sizeof(D_00681460));
-    memset(D_006813E0, 0, sizeof(D_006813E0));
     D_006814E4 = 0;
+    memset(D_006813E0, 0, sizeof(D_006813E0));
 }
 
 void func_0040A540(void)

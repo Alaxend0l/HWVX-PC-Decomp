@@ -46,6 +46,19 @@ extern char D_0068121D[];
 extern char D_0047A5B8[];
 extern char D_0047A5C8[];
 
+struct Timer_006630E0 {
+    int unk_0x00;
+    int unk_0x04;
+    unsigned unk_0x08;
+    char unk_0x0c[0x24];
+};
+
+extern Timer_006630E0 D_006630E0[];
+extern Timer_006630E0 D_006631A0[];
+extern unsigned D_006630E8[];
+extern unsigned D_006631A8[];
+extern int D_00692370;
+
 extern "C" void func_0041B410(int a, Mtx_0041B410 *m, int b, Obj_0041B410 *obj)
 {
     Mtx_0041B410 tmp;

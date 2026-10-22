@@ -90,6 +90,12 @@ void func_00408260(Obj_004076D0 *obj, int b, Vec4_004076D0 *color)
     func_00407BE0((int *)obj, b, color);
 }
 
+void func_004082C0(Obj_004076D0 *obj, int b, Vec4_004076D0 *color)
+{
+    func_004081C0(obj, b, color);
+    func_00408260(obj, b, color);
+}
+
 extern float D_00692378;
 extern float D_0047700C;
 void func_004077E0(int **, int, int);

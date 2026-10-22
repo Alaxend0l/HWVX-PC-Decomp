@@ -57,6 +57,16 @@ void func_00453240(float angle, float *s, float *c)
     *c = (float)cos(angle);
 }
 
+void func_004532A0(float angle, float *s, float *c)
+{
+    func_00453240(angle * D_00477040, s, c);
+}
+
+float func_004532D0(float y, float x)
+{
+    return (float)atan2(y, x);
+}
+
 float func_004532F0(float x)
 {
     return (float)fabs(x);

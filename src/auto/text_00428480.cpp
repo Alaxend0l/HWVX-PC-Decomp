@@ -33,13 +33,6 @@ extern void (*D_006929A0)(void);
 extern Unk_0065EC5C D_0065EC5C[];
 extern Unk_0065EC5C D_0065F3DC[];
 
-struct Unk_0065E360 {
-    int unk0;
-    char unk_0x4[0x5c - 0x4];
-};
-
-extern Unk_0065E360 D_0065E360[24];
-
 struct Vec4_00428480 {
     int x, y, z, w;
 };
@@ -57,8 +50,11 @@ struct Src_00428480 {
 };
 
 struct Slot_0065E360 {
-    Src_00428480 *owner;
-    char unk_0x04[0x1c];
+    union {
+        Src_00428480 *owner;
+        int unk0;
+    };
+    char unk_0x04[0x1c - 0x04];
     char unk_0x1c;
     char unk_0x1d[0x30 - 0x1d];
     char unk_0x30;
@@ -68,6 +64,8 @@ struct Slot_0065E360 {
     int unk_0x54;
     int unk_0x58;
 };
+
+extern Slot_0065E360 D_0065E360[24];
 
 struct Slot_0065EC00 {
     Vec4_00428480 unk_0x00;

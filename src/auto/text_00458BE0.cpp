@@ -13,6 +13,16 @@ extern "C" char D_006924C1[];
 extern "C" char D_006924C2[];
 extern "C" Unk006924C8 D_006924C8[];
 extern "C" Unk006924C8 D_006924F8[];
+extern "C" Unk006924C8 D_006924C4[];
+extern "C" Unk006924C8 D_006924F4[];
+extern "C" char D_006924A0[];
+extern "C" char D_006924C3[];
+extern "C" char D_006924D0[];
+extern "C" char D_00692518[];
+extern "C" char D_00692380[];
+extern "C" char D_006923C0[];
+extern "C" char D_00692440[];
+extern "C" char D_00692480[];
 extern "C" void func_00458910(char *);
 extern "C" int func_00458EB0(void);
 
@@ -22,13 +32,11 @@ static inline void ActivateSlot(int slot)
     D_006924C2[slot * 0x30] = 1;
 }
 
-extern "C" void func_00458BE0(char *name)
+extern "C" void func_00458BE0(const char *name)
 {
     char path[256];
 
-    strcpy(path, D_00692400);
-    strcat(path, D_0047C468);
-    strcat(path, name);
+    strcat(strcat(strcpy(path, D_00692400), D_0047C468), name);
     func_00458910(path);
 }
 
@@ -37,7 +45,7 @@ extern "C" int func_00458EB0(void)
     short i;
 
     for (i = 0; i < 1; i++) {
-        if (!D_006924C1[i * 0x30]) {
+        if (D_006924C1[i * 0x30] == 0) {
             D_006924C1[i * 0x30] = 1;
             D_006924C2[i * 0x30] = 1;
             return i;
@@ -48,12 +56,13 @@ extern "C" int func_00458EB0(void)
 
 extern "C" void func_00458EF0(int id)
 {
-    if ((unsigned int)(id - 1) > 1) {
+    unsigned int slot = id - 1;
+
+    if (slot > 1) {
         func_00458EB0();
         return;
     }
-    D_006924C1[(id - 1) * 0x30] = 1;
-    D_006924C2[(id - 1) * 0x30] = 1;
+    ActivateSlot(slot);
 }
 
 extern "C" unsigned char func_004590E0(int index, unsigned char bit)

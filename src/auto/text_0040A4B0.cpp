@@ -3,7 +3,13 @@
 #include <string.h>
 
 struct Slot_0040A4B0 {
-    char unk_0x000[0x16c];
+    char unk_0x000[0x54];
+    float unk_0x054[3];
+    char unk_0x060[0x74 - 0x60];
+    float unk_0x074[4];
+    float unk_0x084[4];
+    float unk_0x094[4];
+    char unk_0x0a4[0x16c - 0xa4];
 };
 
 extern u8 D_00681AB0;

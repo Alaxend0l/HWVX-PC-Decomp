@@ -4,7 +4,12 @@ struct Player_0043FDB0 {
     char unk_0x00[0x60];
     int unk_0x60;
     char unk_0x64[0x6c - 0x64];
-    int unk_0x6c;
+    union {
+        int unk_0x6c;
+        struct {
+            unsigned flag_0x6c : 1;
+        };
+    };
     char unk_0x70[0xb0 - 0x70];
     Player_0043FDB0 *next;
     Player_0043FDB0 *prev;
@@ -59,21 +64,25 @@ extern "C" char func_0043FDB0(Msg_0043FDB0 *m)
 extern "C" void func_0043FE90(Player_0043FDB0 **head)
 {
     Player_0043FDB0 *p = *head;
+    Player_0043FDB0 *n;
 
     if (!p)
         return;
-    *head = p->next;
-    if (p->next)
-        p->next->prev = 0;
+    n = p->next;
+    *head = n;
+    if (n)
+        n->prev = 0;
     p->next = 0;
 }
 
 extern "C" void func_0043FE60(Player_0043FDB0 **head, Player_0043FDB0 *p)
 {
-    p->next = *head;
+    Player_0043FDB0 *old = *head;
+
+    p->next = old;
     p->prev = 0;
-    if (*head)
-        (*head)->prev = p;
+    if (old)
+        old->prev = p;
     *head = p;
 }
 

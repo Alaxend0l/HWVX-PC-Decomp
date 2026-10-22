@@ -1,5 +1,7 @@
 /* 8 functions from 0x0045B480 to 0x0045BB10, found by Ghidra. */
 #include "common.h"
+#include <string.h>
+#include <crtdbg.h>
 struct Node_0045B {
     char unk_0x0[0x4];
     Node_0045B *next;
@@ -67,14 +69,13 @@ void func_0045B940(int arg)
 
     D_0049A884 = arg;
     v = D_00692A00;
-    i = 64;
-    do {
+    for (i = 64; i != 0; i--) {
         if (v->unk_0x15 != 0 && v->unk_0x3 == 0) {
             v->unk_0x34 = arg;
             func_0045DD10(v);
         }
         v++;
-    } while (--i);
+    }
 }
 
 void func_0045BA60(int mask, char global)

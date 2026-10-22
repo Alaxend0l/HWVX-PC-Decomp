@@ -100,5 +100,20 @@ extern "C" long func_0046B69C(FILE *stream)
     return retval;
 }
 
+extern "C" int func_0046B81F(const char *path)
+{
+    unsigned long dosretval;
+
+    if (!DeleteFileA(path))
+        dosretval = GetLastError();
+    else
+        dosretval = 0;
+    if (dosretval) {
+        func_00470413(dosretval);
+        return -1;
+    }
+    return 0;
+}
+
 #pragma optimize("y", on)
 

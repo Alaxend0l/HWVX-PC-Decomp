@@ -70,6 +70,16 @@ extern "C" void func_004592A0(const char *a, const char *b, const char *c, const
     strcpy(&D_00692440[0], d);
     strcpy(&D_00692480[0], e);
 }
+
+extern "C" int func_00459360(unsigned int n, const unsigned char *p)
+{
+    int sum = 0;
+    unsigned int i;
+    for (i = 0; i < n; i++)
+        sum += p[i] + 1;
+    return sum;
+}
+
 #pragma optimize("", on)
 extern "C" void func_00459590(char v)
 {

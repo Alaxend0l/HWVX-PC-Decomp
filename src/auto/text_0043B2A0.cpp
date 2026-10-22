@@ -124,6 +124,13 @@ extern "C" void func_0043B460(List_0043B460 *list)
     }
 }
 
+extern "C" void func_0043B4E0(void)
+{
+    func_00454C50(D_0048D76C);
+    D_0048D768 = 0;
+    D_0048D76C = 0;
+}
+
 extern "C" void func_0043B8F0(void)
 {
     D_0048D760 = 1;

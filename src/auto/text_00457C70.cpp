@@ -100,3 +100,8 @@ extern "C" void func_00458280(void)
     func_00458000(1, 0, 9, 0);
 }
 
+extern "C" void func_004582A0(void)
+{
+    func_00458000(0, 0, 9, 0);
+}
+

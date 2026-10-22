@@ -138,6 +138,7 @@ extern Entry_0053B0E0 D_0053B0E8[];
 char func_00445180(int id, char *name)
 {
     int p;
+    unsigned int n;
 
     p = func_004289E0(name, 1, id);
     p = func_00428C10(p, 1, 1);
@@ -146,10 +147,11 @@ char func_00445180(int id, char *name)
     p = func_004216C0(p, id);
     if (p == 0)
         return 0;
-    D_0053B0E0[D_0048D7FC].name = name;
-    D_0053B0E0[D_0048D7FC].id = id;
+    n = D_0048D7FC;
+    D_0053B0E0[n].name = name;
+    D_0053B0E0[n].id = id;
     D_0053B0E0[D_0048D7FC].unk_0x08 = func_0042E250(p, 0, func_00445340);
-    D_0048D7FC = D_0048D7FC + 1;
+    D_0048D7FC++;
     return 1;
 }
 

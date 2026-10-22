@@ -36,3 +36,46 @@ struct Obj_004076D0 {
 };
 
 void func_0044AD00(void *, void *, void *, void *, void *, int);
+
+void func_004076D0(Obj_004076D0 *obj, List_004076D0 *list, Vec4_004076D0 *color)
+{
+    Vec4_004076D0 q;
+    Vec4_004076D0 c;
+    float hi;
+    float lo;
+    unsigned int i;
+    int off;
+
+    off = 0;
+    c.x = 0.0f;
+    c.y = 0.0f;
+    c.z = 0.0f;
+    c.w = 0.0f;
+    if (color != 0)
+        c = *color;
+    lo = obj->unk_0x28;
+    hi = obj->unk_0x2c;
+    for (i = 0; i < obj->unk_0x18->unk_0x2c; i++, off += sizeof(Item_004076D0)) {
+        Item_004076D0 *item = (Item_004076D0 *)((char *)list->items + off);
+        float f = item->unk_0x14;
+        if (obj->unk_0x1e ? (lo > f && hi <= f) : (lo <= f && hi > f)) {
+            q.x = 0.0f;
+            q.y = 0.0f;
+            q.z = 0.0f;
+            q.w = 1.0f;
+            func_0044AD00(obj->unk_0x14, item, item, &q, &c, 0xff);
+        }
+    }
+}
+
+extern float D_00692378;
+extern float D_0047700C;
+void func_004077E0(int **, int, int);
+void func_00407350(int *, char *);
+void func_00408440(int, int, char *, int, int, int);
+void func_00407BE0(int *, int, Vec4_004076D0 *);
+void func_00407BC0(int **obj, int arg)
+{
+    func_004077E0(obj, arg, (*obj)[6]);
+}
+

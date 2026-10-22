@@ -103,6 +103,111 @@ extern "C" char *func_00475D8B(const char *str)
     return NULL;
 }
 
+extern "C" int func_00475831(LCID Locale, DWORD dwCmpFlags, LPCSTR lpString1, int cchCount1,
+                             LPCSTR lpString2, int cchCount2, int code_page)
+{
+    if (D_0049DB84 == 0) {
+        if (CompareStringW(0, 0, L"\0", 1, L"\0", 1) != 0)
+            D_0049DB84 = 1;
+        else if (CompareStringA(0, 0, "\0", 1, "\0", 1) != 0)
+            D_0049DB84 = 2;
+        else
+            return 0;
+    }
+
+    if (cchCount1 > 0)
+        cchCount1 = func_00474581(lpString1, cchCount1);
+    if (cchCount2 > 0)
+        cchCount2 = func_00474581(lpString2, cchCount2);
+
+    if (D_0049DB84 == 2)
+        return CompareStringA(Locale, dwCmpFlags, lpString1, cchCount1, lpString2, cchCount2);
+
+    if (D_0049DB84 == 1) {
+        int buff_size1;
+        int buff_size2;
+        wchar_t *wbuffer1;
+        wchar_t *wbuffer2;
+
+        if (code_page == 0)
+            code_page = D_0049DB00;
+
+        if (!cchCount1 || !cchCount2) {
+            CPINFO cpInfo;
+
+            if (cchCount1 == cchCount2)
+                return 2;
+            if (cchCount2 > 1)
+                return 1;
+            if (cchCount1 > 1)
+                return 3;
+
+            if (GetCPInfo(code_page, &cpInfo) == FALSE)
+                return 0;
+
+            {
+                unsigned char *cp;
+
+                if (cchCount1 > 0) {
+                    if (cpInfo.MaxCharSize < 2)
+                        return 3;
+                    for (cp = (unsigned char *)cpInfo.LeadByte; cp[0] && cp[1]; cp += 2)
+                        if (*(unsigned char *)lpString1 >= cp[0] && *(unsigned char *)lpString1 <= cp[1])
+                            return 2;
+                    return 3;
+                }
+
+                if (cchCount2 > 0) {
+                    if (cpInfo.MaxCharSize < 2)
+                        return 1;
+                    for (cp = (unsigned char *)cpInfo.LeadByte; cp[0] && cp[1]; cp += 2)
+                        if (*(unsigned char *)lpString2 >= cp[0] && *(unsigned char *)lpString2 <= cp[1])
+                            return 2;
+                    return 1;
+                }
+            }
+        }
+
+        if ((buff_size1 = MultiByteToWideChar(code_page, MB_PRECOMPOSED | MB_ERR_INVALID_CHARS,
+                                              lpString1, cchCount1, NULL, 0)) == 0)
+            return 0;
+
+        __try {
+            wbuffer1 = (wchar_t *)_alloca(buff_size1 * sizeof(wchar_t));
+        }
+        __except (EXCEPTION_EXECUTE_HANDLER) {
+            wbuffer1 = NULL;
+        }
+
+        if (wbuffer1 == NULL)
+            return 0;
+
+        if (MultiByteToWideChar(code_page, MB_PRECOMPOSED, lpString1, cchCount1, wbuffer1, buff_size1) == 0)
+            return 0;
+
+        if ((buff_size2 = MultiByteToWideChar(code_page, MB_PRECOMPOSED | MB_ERR_INVALID_CHARS,
+                                              lpString2, cchCount2, NULL, 0)) == 0)
+            return 0;
+
+        __try {
+            wbuffer2 = (wchar_t *)_alloca(buff_size2 * sizeof(wchar_t));
+        }
+        __except (EXCEPTION_EXECUTE_HANDLER) {
+            wbuffer2 = NULL;
+        }
+
+        if (wbuffer2 == NULL)
+            return 0;
+
+        if (MultiByteToWideChar(code_page, MB_PRECOMPOSED, lpString2, cchCount2, wbuffer2, buff_size2) == 0)
+            return 0;
+
+        return CompareStringW(Locale, dwCmpFlags, wbuffer1, buff_size1, wbuffer2, buff_size2);
+    }
+    else
+        return 0;
+}
+
 #pragma optimize("y", off)
 extern "C" int func_00475AAE(const char *option, const int primary)
 {

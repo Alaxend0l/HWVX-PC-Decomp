@@ -7,6 +7,8 @@ extern char D_0047B088[];
 extern char D_0047B040[];
 extern char D_0047AED8[];
 extern char D_0047A3B0[];
+extern char D_0047A5E0[];
+extern "C" bool func_0044A870(char *a, int b);
 extern "C" void func_0042D770(int a);
 extern "C" void func_0044A9C0(char *a, char *b);
 extern "C" void func_0044A990(char *a);
@@ -89,16 +91,16 @@ extern "C" int func_00448400(char *p)
 
 extern "C" void func_004484A0(float *a, float *b, float *c)
 {
-    if (*c < *a)
-        *c = *a;
+    if (c[0] < a[0])
+        c[0] = a[0];
     if (c[1] < a[1])
         c[1] = a[1];
     if (c[2] < a[2])
         c[2] = a[2];
     if (c[3] < a[3])
         c[3] = a[3];
-    if (*c > *b)
-        *c = *b;
+    if (c[0] > b[0])
+        c[0] = b[0];
     if (c[1] > b[1])
         c[1] = b[1];
     if (c[2] > b[2])
@@ -140,8 +142,8 @@ extern "C" int func_00448B70(char *p)
 extern "C" bool func_004490C0(int *p)
 {
     unsigned int i;
-    unsigned int n = p[1];
     int mode = p[0];
+    unsigned int n = p[1];
 
     for (i = 0; i < n; i++) {
         int *e = (int *)p[i + 2];

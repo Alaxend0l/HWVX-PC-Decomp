@@ -39,9 +39,9 @@ void func_00415360(char *p)
     *(float *)(p + 0x128) = D_0047700C / ((xx + yy) * b->unk_0x20 * b->unk_0x08);
 }
 
-void func_004152C0(char *p, int unused, char *q)
+void func_004152C0(int p, int unused, char *q)
 {
-    *(char **)(q + 0x7c) = p + 0x154;
+    *(int *)(q + 0x7c) = p + 0x154;
     *(int *)(q + 0x80) = 1;
     *(float *)(q + 0x84) = 1.0f;
     *(float *)(q + 0x28) = 0.0f;

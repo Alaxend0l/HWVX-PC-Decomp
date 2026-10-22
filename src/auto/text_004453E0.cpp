@@ -22,6 +22,18 @@ void func_00445C60(void)
     func_004403D0(D_0047B3D0, 0, func_00445D80, 0, 1);
 }
 
+void func_00445CC0(int which, float value)
+{
+    switch (which) {
+    case 0:
+        D_0053B158 = value;
+        break;
+    case 1:
+        D_0053B1E0 = value;
+        break;
+    }
+}
+
 float func_00445D30(void)
 {
     return D_0053B158;

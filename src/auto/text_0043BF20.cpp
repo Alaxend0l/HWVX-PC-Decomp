@@ -50,7 +50,10 @@ struct Elem_0043C520 {
 
 struct Body_0043C6C0 {
     Vec4_0043BF20 pos;
-    char unk_0x10[0x30 - 0x10];
+    char unk_0x10[0x14 - 0x10];
+    int f14;
+    int f18;
+    char unk_0x1c[0x30 - 0x1c];
     Vec4_0043BF20 rot;
     Vec4_0043BF20 spin;
     char unk_0x50[0xb8 - 0x50];

@@ -96,6 +96,9 @@ extern "C" void func_00427780(void);
 extern "C" void func_00428A70(int, int);
 extern "C" void func_00450C10(void);
 extern "C" void func_004525C0(void);
+extern "C" void func_004540C0(Obj_00452040 *, void *);
+extern "C" int func_0044D0B0(int, Desc_00452660 *);
+extern int D_0047BDEC;
 
 extern "C" void func_00452040(void)
 {

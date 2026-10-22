@@ -89,6 +89,11 @@ void func_0042B210(void)
     }
 }
 
+void func_0042BCA0(void)
+{
+    D_0065E347 = D_0048D4CF[D_0065E340] != 0;
+}
+
 unsigned char func_0042AFB0(int idx)
 {
     char *p;

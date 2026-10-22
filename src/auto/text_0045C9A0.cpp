@@ -36,3 +36,8 @@ extern void (*D_006929F4)(Voice_0045D *);
 
 void func_0045D1C0(Voice_0045D *, int);
 void func_0045D630(void *, int);
+
+int func_0045D610(int x)
+{
+    return x / 4;
+}

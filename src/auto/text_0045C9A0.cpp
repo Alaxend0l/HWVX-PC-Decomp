@@ -4,6 +4,29 @@ struct Iface_0045D {
     void **vtbl;
 };
 
+/* IDirectSoundBuffer-like COM interface */
+struct Snd_0045D {
+    virtual long __stdcall QueryInterface(void *, void **) = 0;
+    virtual unsigned long __stdcall AddRef() = 0;
+    virtual unsigned long __stdcall Release() = 0;
+    virtual long __stdcall GetCaps(void *) = 0;
+    virtual long __stdcall GetCurrentPosition(unsigned long *, unsigned long *) = 0;
+    virtual long __stdcall GetFormat(void *, unsigned long, unsigned long *) = 0;
+    virtual long __stdcall GetVolume(long *) = 0;
+    virtual long __stdcall GetPan(long *) = 0;
+    virtual long __stdcall GetFrequency(unsigned long *) = 0;
+    virtual long __stdcall GetStatus(unsigned long *) = 0;
+    virtual long __stdcall Initialize(void *, void *) = 0;
+    virtual long __stdcall Lock(unsigned long, unsigned long, void **, unsigned long *, void **, unsigned long *, unsigned long) = 0;
+    virtual long __stdcall Play(unsigned long, unsigned long, unsigned long) = 0;
+    virtual long __stdcall SetCurrentPosition(unsigned long) = 0;
+    virtual long __stdcall SetFormat(void *) = 0;
+    virtual long __stdcall SetVolume(long) = 0;
+    virtual long __stdcall SetPan(long) = 0;
+    virtual long __stdcall SetFrequency(unsigned long) = 0;
+    virtual long __stdcall Stop() = 0;
+};
+
 struct Entry18_0045D {
     Iface_0045D *unk_0x0;
     int unk_0x4;

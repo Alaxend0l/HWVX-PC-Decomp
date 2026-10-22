@@ -37,7 +37,53 @@ extern void (*D_006929F4)(Voice_0045D *);
 void func_0045D1C0(Voice_0045D *, int);
 void func_0045D630(void *, int);
 
+void func_0045D110(int id)
+{
+    Entry18_0045D *b;
+    Voice_0045D *v;
+    int i;
+
+    for (i = 0; i < 254; i++) {
+        if (D_0049BBE8[i].unk_0x4 == id)
+            break;
+    }
+    if (i == 254)
+        return;
+    b = &D_0049BBE8[i];
+    if (b != NULL && (b->unk_0x8 & 1)) {
+        if (b->unk_0x0 != NULL) {
+            for (i = 0; i < 64; i++) {
+                if (D_0049AEFC[i].unk_0xc == b) {
+                    v = &D_00692A00[i];
+                    if (i >= 32 && v->unk_0x15 && v->unk_0x2 != 0xff)
+                        D_006929F4(v);
+                    func_0045D1C0(v, 1);
+                }
+            }
+            ((int (__stdcall *)(Iface_0045D *))b->unk_0x0->vtbl[0x48 / 4])(b->unk_0x0);
+            ((int (__stdcall *)(Iface_0045D *))b->unk_0x0->vtbl[0x8 / 4])(b->unk_0x0);
+            b->unk_0x0 = NULL;
+        }
+        b->unk_0x8 = 0;
+    }
+}
+
+int func_0045D5D0(int x)
+{
+    float a = 9000.0f;
+    float b = 600.0f;
+    if (x == 0)
+        return -10000;
+    return (int)(b * (double)x - a);
+}
+
 int func_0045D610(int x)
 {
     return x / 4;
 }
+
+void func_0045D620(void *n)
+{
+    func_0045D630(n, 1);
+}
+

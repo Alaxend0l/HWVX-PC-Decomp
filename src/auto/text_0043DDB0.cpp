@@ -16,6 +16,16 @@ void func_0043EA50(char *, int);
 void func_0043F4B0(char *, int);
 extern char D_0043F9E0;
 
+struct Obj_0043EA10 {
+    char unk_0x0[0x6c];
+    int unk_0x6c;
+    char unk_0x70[0xc8 - 0x70];
+    int unk_0xc8;
+    char unk_0xcc[0x114 - 0xcc];
+    char *unk_0x114;
+    char unk_0x118[1];
+};
+
 struct Obj_0043ECA0;
 void func_0043E8F0(void)
 {
@@ -29,6 +39,15 @@ int func_0043E9F0(char *p)
     if (p != NULL && *(char **)(p + 0x20) == &D_0043F9E0)
         return 1;
     return 0;
+}
+
+void func_0043EA10(char *p)
+{
+    func_0043EA50(p, 0);
+    *(int *)(p + 0xc8) = 0;
+    func_0043F4B0(p, 0);
+    *(int *)(p + 0x6c) = 0;
+    *(char **)(p + 0x114) = p + 0x118;
 }
 
 int func_0043E920(void)

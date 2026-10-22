@@ -19,12 +19,23 @@ struct BinkBuf_0048D650 {
 };
 
 struct Elem_0043B460 {
-    char unk_0x00[0x60];
+    char unk_0x00[0x10];
+    unsigned unk_0x10;
+    char unk_0x14[0x4];
+    int *unk_0x18;
+    unsigned unk_0x1c;
+    int *unk_0x20;
+    char unk_0x24[0x4];
+    int unk_0x28;
+    char unk_0x2c[0x50 - 0x2c];
+    char unk_0x50;
+    char unk_0x51[0x60 - 0x51];
 };
 
 struct List_0043B460 {
     Elem_0043B460 *items;
     unsigned count;
+    unsigned unk_0x08;
 };
 
 extern Bink_0048D64C *D_0048D64C;

@@ -38,8 +38,9 @@ struct Elem_0043C520 {
     unsigned char b5c;
     char unk_0x5d[0x60 - 0x5d];
     float f60;
-    char unk_0x64[0x84 - 0x64];
-    unsigned char b84;
+    char unk_0x64[0x80 - 0x64];
+    float f80;
+    float f84;
     int f88;
     float f8c;
     int f90;

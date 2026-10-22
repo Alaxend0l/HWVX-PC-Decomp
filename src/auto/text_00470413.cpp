@@ -61,6 +61,12 @@ extern "C" void func_00470771(void)
     func_0046E9BA(9);
 }
 
+extern "C" long func_0047091A(int, long, int);
+extern "C" void func_00470831(void)
+{
+    func_0046E9BA(9);
+}
+
 extern "C" int D_006D59C8;
 extern "C" void *D_006D59C4;
 extern "C" void func_0046E959(int);

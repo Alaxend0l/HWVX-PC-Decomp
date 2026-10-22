@@ -31,7 +31,9 @@ extern Light_006D4CA0 D_006D4CA0[3];
 
 struct LightSet_006D4CA0 {
     Light_006D4CA0 l[3];
-    char unk_0x48[0x30];
+    char unk_0x48[0x2e];
+    unsigned char unk_0x76;
+    unsigned char unk_0x77;
     unsigned char count;
 };
 extern Vec4_004617F0 D_006D4CE8;
@@ -183,13 +185,14 @@ extern "C" void func_00461C10(void)
     }
 }
 
+extern LightSet_006D4CA0 D_006D4CA0_set;
 extern "C" void func_00461C30(int a, Vec4_004617F0 *v, float f)
 {
-    if (D_006D4D18 < 3) {
-        D_006D4CA0[*(volatile unsigned char *)&D_006D4D18].unk_0x14 = a;
-        D_006D4CA0[*(volatile unsigned char *)&D_006D4D18].unk_0x0 = *v;
-        D_006D4CA0[*(volatile unsigned char *)&D_006D4D18].unk_0x10 = f;
-        D_006D4D18++;
+    if (D_006D4CA0_set.count < 3) {
+        D_006D4CA0_set.l[D_006D4CA0_set.count].unk_0x14 = a;
+        D_006D4CA0_set.l[D_006D4CA0_set.count].unk_0x0 = *v;
+        D_006D4CA0_set.l[D_006D4CA0_set.count].unk_0x10 = f;
+        D_006D4CA0_set.count++;
         D_006D4D16 = 1;
     }
 }

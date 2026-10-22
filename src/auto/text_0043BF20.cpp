@@ -16,13 +16,36 @@ struct Group_0043C4F0 {
     char unk_0x28000[0x10];
 };
 
+struct Src20_0043BF20 {
+    unsigned char b00;
+    unsigned char b01;
+    char unk_0x02[0x4 - 0x2];
+    int f04;
+    int f08;
+    int f0c;
+    int f10;
+    int f14;
+    int f18;
+    int f1c;
+    int f20;
+};
+
 struct Elem_0043C520 {
     Vec4_0043BF20 unk_0x00;
     Vec4_0043BF20 unk_0x10;
     Vec4_0043BF20 unk_0x20;
-    char unk_0x30[0x94 - 0x30];
+    char unk_0x30[0x88 - 0x30];
+    int f88;
+    float f8c;
+    int f90;
     unsigned char flags;
-    char unk_0x95[0xb0 - 0x95];
+    unsigned char b95;
+    unsigned char b96;
+    unsigned char b97;
+    int f98;
+    float f9c;
+    float fa0;
+    char unk_0xa4[0xb0 - 0xa4];
 };
 
 struct Body_0043C6C0 {

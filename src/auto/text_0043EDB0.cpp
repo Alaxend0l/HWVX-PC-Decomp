@@ -5,8 +5,29 @@
 extern int D_0048D780;
 extern u8 D_0047B0D0[][16];
 
+struct Map_0047B0D0 {
+    u8 unk_0x0;
+    u8 unk_0x1;
+    u8 map[14];
+};
+
 char func_0043E920(void);
 void func_0043E9A0(int);
+
+void func_0043F4B0(char *p, int n)
+{
+    u8 *src;
+    u8 *idx;
+    int i;
+    memset(p + 0xb8, 0, 16);
+    memset(p + 0xb8, 0xff, 14);
+    src = &D_0047B0D0[n + 1][2];
+    idx = &D_0047B0D0[0][2];
+    for (i = 14; i != 0; i--)
+        p[0xb8 + *idx++] = *src++;
+    p[0xc6] = D_0047B0D0[n + 1][0];
+    p[0xc7] = D_0047B0D0[n + 1][1];
+}
 
 char func_0043FD40(char *p)
 {

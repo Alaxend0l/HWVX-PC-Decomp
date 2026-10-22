@@ -68,6 +68,7 @@ extern "C" int func_0046BDDA(void)
     return func_0046BD9C();
 }
 
+#pragma optimize("s", on)
 extern "C" void func_0046BE03(char *buf)
 {
     char hold, next;
@@ -85,7 +86,6 @@ extern "C" void func_0046BE03(char *buf)
         hold = next;
     } while (*buf++);
 }
-
 extern "C" void func_0046C204(char *s, int dist)
 {
     if (dist)

@@ -30,7 +30,8 @@ struct Slot_0042C540 {
 
 struct PoolEntry_0042C540 {
     int unk_0x0;
-    char unk_0x4[0x40];
+    char unk_0x4;
+    char unk_0x5[0x3f];
     short unk_0x44;
     char unk_0x46[2];
 };
@@ -79,17 +80,16 @@ void func_0042C580(Car_0042C540 *car)
 
     i = 0;
     do {
-        if (D_0064D080[i].id == car->id && D_0064D080[i].unk_0x24 != NULL)
-            goto found;
+        if (D_0064D080[i].id == car->id && D_0064D080[i].unk_0x24 != NULL) {
+            p = *(char **)(D_0064D080[i].unk_0x24 + 0x398);
+            car->color[0] = (*(char **)(p + 0x84))[0x34];
+            car->color[1] = (*(char **)(p + 0x84))[0x35];
+            car->color[2] = (*(char **)(p + 0x84))[0x36];
+            car->color[3] = (*(char **)(p + 0x84))[0x37];
+            return;
+        }
         i++;
-    } while (i < 4);
-    return;
-found:
-    p = *(char **)(D_0064D080[i].unk_0x24 + 0x398);
-    car->color[0] = (*(char **)(p + 0x84))[0x34];
-    car->color[1] = (*(char **)(p + 0x84))[0x35];
-    car->color[2] = (*(char **)(p + 0x84))[0x36];
-    car->color[3] = (*(char **)(p + 0x84))[0x37];
+    } while ((unsigned)i < 4);
 }
 
 char func_0042CF70(void)

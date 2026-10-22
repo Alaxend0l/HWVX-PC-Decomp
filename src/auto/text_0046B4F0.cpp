@@ -69,5 +69,16 @@ extern "C" int func_0046B5E3(FILE *stream, long offset, int whence)
     func_0046C868(stream);
     return retval;
 }
+
+extern "C" long func_0046B69C(FILE *stream)
+{
+    long retval;
+
+    func_0046C816(stream);
+    retval = func_0046B6BE(stream);
+    func_0046C868(stream);
+    return retval;
+}
+
 #pragma optimize("y", on)
 

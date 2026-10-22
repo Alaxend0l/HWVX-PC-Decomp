@@ -16,3 +16,8 @@ struct Obj_0044A0D0 {
 
 extern "C" void func_00449E20(Obj_0044A0D0 *obj, Vec4_0044A0D0 *a, Vec4_0044A0D0 *b, int arg);
 extern "C" void func_0042D6E0(void *p, Vec4_0044A0D0 *a, Vec4_0044A0D0 *b);
+
+extern "C" int func_0044A5A0(void)
+{
+    return 0;
+}

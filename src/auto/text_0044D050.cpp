@@ -201,6 +201,17 @@ int func_0044D8F0(void **out)
     return count;
 }
 
+int func_0044D920(char **out)
+{
+    int r = 0;
+
+    if (!(D_0052E664 & 0x201000)) {
+        *out = D_0052E5F0;
+        r = 1;
+    }
+    return r;
+}
+
 Obj_0044D050 *func_0044D0B0(int id, int arg)
 {
     Obj_0044D050 *p;

@@ -53,7 +53,7 @@ extern char D_0065E339;
 extern "C" int func_004287E0(void *name, int a, int b, int c);
 extern "C" int func_00428C10(int a, int b, int c);
 extern "C" int func_004216C0(int a, int b);
-extern "C" unsigned char func_00440160(void);
+extern "C" int func_00440160(void);
 extern "C" char *func_00440180(unsigned int i);
 extern "C" int func_00429EC0(void)
 {
@@ -158,18 +158,19 @@ extern "C" int func_00429EA0(void)
 
 extern "C" void func_00429830(unsigned int mode)
 {
+    unsigned int m = mode;
     D_0048D1C5 = 1;
-    D_0048D358 = mode;
-    if (mode < 1 && mode > 4)
+    D_0048D358 = m;
+    if (m < 1 && m > 4)
         D_0048D358 = -1;
 }
 
 extern "C" void func_00429860(int *ids, unsigned int count)
 {
-    unsigned int i = 0;
-    unsigned int n = func_00440160();
+    unsigned int i;
+    unsigned int n;
 
-    for (; i < n; i++) {
+    for (i = 0, n = func_00440160(); i < n; i++) {
         char *p = func_00440180(i);
         unsigned int j;
         for (j = 0; j < count; j++) {

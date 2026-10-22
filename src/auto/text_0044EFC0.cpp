@@ -34,3 +34,8 @@ extern PoolSlot D_00496D00[10];
 extern PoolObj **D_00496D54[28];
 extern void *D_00496DC4;
 extern char D_00496DC8;
+
+char func_0044F210(void)
+{
+    return D_00496DC8;
+}

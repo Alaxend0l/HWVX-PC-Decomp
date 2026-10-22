@@ -43,6 +43,19 @@ int func_0042B980(int *, int);
 void func_0042B050(int *);
 char func_0042B800(int, int *, int *);
 void func_0042B150(void);
+struct SaveHdr_0042B800 {
+    int type;
+    int id;
+    int sum;
+    int data[4];
+};
+struct SaveInfo_0042B800 {
+    char pad[0xc];
+    int unk_0x0c;
+    int unk_0x10;
+    int unk_0x14;
+    int unk_0x18;
+};
 
 static inline int func_0042AFB0_check(char *p, int idx)
 {
@@ -62,12 +75,16 @@ char func_0042B800(int a, int *o, int *buf)
     char ok = 0;
     int h = func_004584F0(a, o[3], 0, 0);
 
-    if (h == -1)
-        return 0;
-    func_004585D0(h, o[6] * 8 + 0x194, buf);
-    if (buf[0] == 4 && buf[1] == o[5] && buf[2] == func_00459360(o[5], buf + 3))
-        ok = 1;
-    func_004585A0(h);
+    if (h != -1) {
+        func_004585D0(h, o[6] * 8 + 0x194, buf);
+        if (buf[0] == 4) {
+            int id = o[5];
+            if (buf[1] == id && buf[2] == func_00459360(id, buf + 3))
+                ok = 1;
+        }
+        func_004585A0(h);
+        return ok;
+    }
     return ok;
 }
 
@@ -85,6 +102,24 @@ char func_0042B880(int a, int *o, int *buf)
         func_004585A0(h);
     }
     return ok;
+}
+
+char func_0042B900(void)
+{
+    int n;
+    int buf[7];
+    int r;
+
+    r = func_0042B980(&n, 1);
+    if (r != 1 && r != 0)
+        return 0;
+    n = n - 1;
+    func_0042B050(buf);
+    if (func_0042B800(n + 0xb, buf, D_0064DD38) == 0)
+        return 0;
+    memcpy(&D_0064D160, D_0064DD38 + 3, sizeof(D_0064D160));
+    func_0042B150();
+    return 1;
 }
 
 void func_0042B150(void)

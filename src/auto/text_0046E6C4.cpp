@@ -42,6 +42,27 @@ extern "C" void func_0046E930(void)
     InitializeCriticalSection(D_0047D884);
 }
 
+#pragma optimize("y", off)
+extern "C" void func_0046E959(int n)
+{
+    LPCRITICAL_SECTION *pcs = &D_0047D880[n];
+    LPCRITICAL_SECTION cs;
+
+    if (*pcs == NULL) {
+        if ((cs = (LPCRITICAL_SECTION)func_0046AED9(sizeof(CRITICAL_SECTION))) == NULL)
+            func_0046AD1F(0x11);
+        func_0046E959(0x11);
+        if (*pcs == NULL) {
+            InitializeCriticalSection(cs);
+            *pcs = cs;
+        } else {
+            func_0046B013(cs);
+        }
+        func_0046E9BA(0x11);
+    }
+    EnterCriticalSection(*pcs);
+}
+
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 extern "C" int func_0046EEFC(double x)

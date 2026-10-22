@@ -1,5 +1,6 @@
 /* 6 functions from 0x00475270 to 0x00475654, found by Ghidra. */
 #include "common.h"
+#include <windows.h>
 
 extern "C" int D_006D578C;
 extern "C" int D_006D59A4;

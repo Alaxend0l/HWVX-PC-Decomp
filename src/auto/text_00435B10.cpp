@@ -182,8 +182,8 @@ struct Emit2_00435B10 {
     Vec4_00435B10 b;
     Vec4_00435B10 c;
     Font_00435B10 *src;
-    int owner;
-    int unk_0x38;
+    float owner;
+    float unk_0x38;
 };
 
 extern char D_0048D5FC;

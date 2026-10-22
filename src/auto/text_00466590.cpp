@@ -33,6 +33,10 @@ void func_004669A0(char *name, void *pixels, int w, int h);
 extern "C" void *func_0046AED9(unsigned int size);
 extern "C" void func_0046B013(void *p);
 extern "C" int func_0046A89F(char *string, const char *format, ...);
+extern "C" FILE *func_0046AAD8(const char *filename, const char *mode);
+extern "C" size_t func_0046A96E(void *buffer, size_t size, size_t count, FILE *stream);
+extern "C" int func_0046A8F1(FILE *stream);
+void func_00466960(unsigned char *p, int n);
 
 void func_00466590(void)
 {

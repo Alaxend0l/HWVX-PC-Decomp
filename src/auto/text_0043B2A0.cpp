@@ -38,7 +38,14 @@ struct List_0043B460 {
     unsigned unk_0x08;
 };
 
+struct Node_0043B8B0 {
+    char unk_0x00[0x38];
+    Node_0043B8B0 *next;
+    Node_0043B8B0 *unk_0x3c;
+};
+
 extern Bink_0048D64C *D_0048D64C;
+extern Node_0043B8B0 *D_0048D65C;
 extern BinkBuf_0048D650 *D_0048D650;
 extern int D_0048D660[];
 extern int D_0048D664[];
@@ -83,9 +90,55 @@ extern "C" char func_0043B2A0(void)
     return 0;
 }
 
+extern "C" int func_0043B700(void *a, Elem_0043B460 *e, float *best, unsigned char depth)
+{
+    int r;
+    unsigned i;
+    int result = -1;
+
+    for (i = 0; i < e->unk_0x10; i++) {
+        if (e->unk_0x18[i] != -0x8000 && (r = func_0043B7B0(a, func_0043BD20(e->unk_0x18[i]), best, depth)) != -1)
+            result = r;
+    }
+    for (i = 0; i < e->unk_0x1c; i++) {
+        if (e->unk_0x20[i] != -0x8000 && (r = func_0043B7B0(a, func_0043BD20(e->unk_0x20[i]), best, depth)) != -1)
+            result = r;
+    }
+    return result;
+}
+
 extern "C" unsigned func_0043BD10(void)
 {
     return D_0048D768->count;
+}
+
+extern "C" int func_0043B7B0(void *a, Elem_0043B460 *e, float *best, unsigned char depth)
+{
+    int result = -1;
+    int i;
+    int *p;
+    int r;
+    float d;
+
+    if (e->unk_0x50 == 0)
+        return -1;
+    i = 0;
+    for (p = D_0048D660; p < (int *)&D_0048D760; p++, i++) {
+        if (*p == e->unk_0x28)
+            return -1;
+        if (*p == -0x8000)
+            break;
+    }
+    D_0048D660[i] = e->unk_0x28;
+    D_0048D664[i] = -0x8000;
+    d = func_004535B0(a, e);
+    if (d < *best) {
+        *best = d;
+        result = e->unk_0x28;
+    }
+    if (depth < 3 && (r = func_0043B700(a, e, best, depth + 1)) != -1)
+        result = r;
+    return result;
 }
 
 extern "C" void func_00454C50(void *p);

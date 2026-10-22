@@ -36,3 +36,9 @@ Ent_00443 *func_0044D0B0(int, Spawn_00443 *);
 unsigned int func_0044D8F0(Ent_00443 **, int);
 void func_00443560(Ent_00443 *);
 Ent_00443 *func_00443740(Ent_00443 *, Rect_00443 *);
+
+void func_00443940(Ent_00443 *e)
+{
+    if (e != (Ent_00443 *)-1 && e != NULL)
+        func_00443560(e);
+}

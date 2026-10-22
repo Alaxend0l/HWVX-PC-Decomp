@@ -141,6 +141,7 @@ extern "C" size_t func_0046A99D(void *buffer, size_t size, size_t num, FILE *str
 }
 #pragma optimize("y", on)
 
+#pragma optimize("y", on)
 extern "C" FILE *func_0046AAA7(const char *filename, const char *mode, int shflag)
 {
     FILE *stream;
@@ -152,7 +153,6 @@ extern "C" FILE *func_0046AAA7(const char *filename, const char *mode, int shfla
     func_0046C868(stream);
     return retval;
 }
-
 extern "C" FILE *func_0046AAD8(const char *filename, const char *mode)
 {
     return func_0046AAA7(filename, mode, 0x40);

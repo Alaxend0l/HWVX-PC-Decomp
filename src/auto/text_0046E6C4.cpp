@@ -20,6 +20,26 @@ extern "C" void func_0046E9BA(int n);
 
 #pragma optimize("s", on)
 extern "C" void func_0046E616(int a, int b);
+extern "C" void func_0046E9BA(int n)
+{
+    LeaveCriticalSection(D_0047D880[n]);
+}
+
+extern "C" void func_0046EE99(int code)
+{
+    switch (code) {
+    case 1:
+        *func_00470486() = 0x21;
+        break;
+    case 2:
+    case 3:
+        *func_00470486() = 0x22;
+        break;
+    }
+}
+
+#pragma optimize("y", on)
+
 extern "C" void __stdcall func_0046E789(int *p)
 {
     func_0046E616(p[6], p[7]);

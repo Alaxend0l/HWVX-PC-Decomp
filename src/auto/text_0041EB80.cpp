@@ -56,9 +56,9 @@ struct Spawn2_0041EB80 {
 
 extern char *D_0049DBA0;
 extern Vec4_0041EB80 D_00692350;
-extern float D_00692354;
-extern float D_00692358;
-extern float D_0069235C;
+extern int D_00692354;
+extern int D_00692358;
+extern int D_0069235C;
 extern float D_0047702C;
 
 extern "C" float func_0041E7B0(char *p);
@@ -171,8 +171,10 @@ extern "C" void func_0041F620(char *p, char *v, float t, int dmg)
             u32 n = -(*(int *)(p + 0x78) / 8);
 
             ((float *)p)[0] -= D_0047702C * (k * *(float *)(v + 0x10));
-            s.d = D_00692350;
-            s.b = D_00692350;
+            s.d.x = s.b.x = D_00692350.x;
+            s.d.y = s.b.y = D_00692354;
+            s.d.z = s.b.z = D_00692358;
+            s.d.w = s.b.w = D_0069235C;
             s.a = *(Vec4_0041EB80 *)(p + 0x40);
             s.src = **(int **)(q + 0x40);
             s.owner = *(int *)(p + 0x94);

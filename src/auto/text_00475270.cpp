@@ -11,6 +11,47 @@ extern "C" int *func_00470486(void);
 /* C runtime code: built for size */
 #pragma optimize("s", on)
 
+struct LDBL12_00475270 {
+    unsigned char ld12[12];
+};
+
+extern "C" LDBL12_00475270 D_00480420[];
+extern "C" LDBL12_00475270 D_00480580[];
+
+extern "C" void func_004752AA(LDBL12_00475270 *, LDBL12_00475270 *);
+
+#pragma optimize("y", off)
+extern "C" void func_004754CA(LDBL12_00475270 *pld12, int pow, int mult12)
+{
+    LDBL12_00475270 *pow_10p = D_00480420 - 8;
+    if (pow == 0)
+        return;
+    if (pow < 0) {
+        pow = -pow;
+        pow_10p = D_00480580 - 8;
+    }
+    if (!mult12)
+        *(unsigned short *)pld12 = 0;
+    while (pow) {
+        int last3;
+        LDBL12_00475270 unround;
+        LDBL12_00475270 *py;
+        pow_10p += 7;
+        last3 = pow & 7;
+        pow >>= 3;
+        if (last3 == 0)
+            continue;
+        py = &pow_10p[last3];
+        if (*(unsigned short *)py >= 0x8000) {
+            unround = *py;
+            (*(unsigned long *)&unround.ld12[2])--;
+            py = &unround;
+        }
+        func_004752AA(pld12, py);
+    }
+}
+#pragma optimize("y", on)
+
 extern "C" int func_00475546(int fh, int mode)
 {
     int oldmode = *(unsigned char *)(D_006D59E0[fh >> 5] + (fh & 0x1f) * 0x24 + 4) & 0x80;

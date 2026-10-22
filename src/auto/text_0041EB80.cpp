@@ -49,9 +49,9 @@ struct Spawn2_0041EB80 {
     Vec4_0041EB80 a;
     Vec4_0041EB80 b;
     Vec4_0041EB80 c;
-    int src;
+    float src;
     int owner;
-    int unk_0x38;
+    float unk_0x38;
 };
 
 extern char *D_0049DBA0;

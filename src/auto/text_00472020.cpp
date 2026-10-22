@@ -34,6 +34,13 @@ extern "C" unsigned long *func_0047048F(void);
 extern "C" int func_0047272D(int, int, int);
 extern "C" int (__stdcall *_imp__SetStdHandle)(unsigned long, void *);
 #define SetStdHandle (*_imp__SetStdHandle)
+extern "C" void (__stdcall *_imp__InitializeCriticalSection)(void *);
+extern "C" void (__stdcall *_imp__EnterCriticalSection)(void *);
+#define InitializeCriticalSection (*_imp__InitializeCriticalSection)
+#define EnterCriticalSection (*_imp__EnterCriticalSection)
+extern "C" void func_0046E959(int);
+extern "C" void func_0046E9BA(int);
+extern "C" int func_00472B69(int, int, int, int);
 
 extern "C" unsigned __int64 __stdcall func_00472020(unsigned __int64 a, unsigned __int64 b)
 {

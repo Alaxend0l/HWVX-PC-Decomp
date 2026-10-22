@@ -90,3 +90,9 @@ extern "C" int func_0047271C(int c)
 {
     return func_0047272D(c, 0, 4);
 }
+
+extern "C" int func_00472B52(int a, int b, int c)
+{
+    return func_00472B69(a, b, c, 0);
+}
+

@@ -127,3 +127,58 @@ void func_0040CA50(int *p, int v)
     func_0040CA20();
     func_0043EB20(v);
 }
+
+void func_0040CA70(void)
+{
+    unsigned int i = 0;
+    if (D_00681AB0 > 0) {
+        do {
+            D_00681500[i].unk_0x0a8 = D_0047A2E4;
+            i++;
+        } while (i < (*(u32 *)&D_00681AB0 & 0xff));
+    }
+}
+
+void func_0040CAA0(unsigned int *p)
+{
+    unsigned int i;
+    if (*p >= 1 && *p <= 4) {
+        D_00681500[*p - 1].unk_0x0a8 = p + 1;
+        D_00681500[*p - 1].unk_0x0ac = 0;
+        return;
+    }
+    i = 0;
+    if (D_00681AB0 > 0) {
+        do {
+            D_00681500[i].unk_0x0a8 = p + (*p == 0);
+            D_00681500[i].unk_0x0ac = 0;
+            i++;
+        } while (i < (*(u32 *)&D_00681AB0 & 0xff));
+    }
+}
+
+Slot_0040BEA0 *func_0040CB30(char *key)
+{
+    unsigned int i;
+    for (i = 0; i < (*(u32 *)&D_00681AB0 & 0xff); i++) {
+        if (D_00681500[i].unk_0x000 == key)
+            return &D_00681500[i];
+    }
+    return 0;
+}
+
+void func_0040CB70(void)
+{
+    unsigned int i = 0;
+    if (D_00681AB0 > 0) {
+        do {
+            if (D_00681500[i].unk_0x168 != 0) {
+                D_00681500[i].unk_0x168->unk_0x8c->unk_0x04(D_00681500[i].unk_0x168);
+                D_00681500[i].unk_0x168 = 0;
+            }
+            i++;
+        } while (i < (*(u32 *)&D_00681AB0 & 0xff));
+    }
+    func_0044A910(D_0053A9D0);
+}
+

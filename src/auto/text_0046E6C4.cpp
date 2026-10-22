@@ -41,6 +41,23 @@ extern "C" int func_0046F025(void)
     return sw;
 }
 
+extern "C" void func_0046F057(int flags)
+{
+}
+
+#pragma optimize("y", on)
+extern "C" int func_0046F0AD(unsigned int size)
+{
+    if (D_0049D9EC && (*D_0049D9EC)(size))
+        return 1;
+    return 0;
+}
+
+extern "C" int func_0046F034(int newctrl, int mask)
+{
+    return newctrl & mask;
+}
+
 extern double D_004789A8;
 #pragma optimize("y", off)
 #pragma optimize("p", on)

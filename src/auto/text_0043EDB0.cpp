@@ -4,6 +4,8 @@
 
 extern int D_0048D780;
 extern u8 D_0047B0D0[][16];
+extern u8 D_0047B0D1[];
+extern u8 D_0047B0D2[];
 
 struct Map_0047B0D0 {
     u8 unk_0x0;
@@ -16,17 +18,22 @@ void func_0043E9A0(int);
 
 void func_0043F4B0(char *p, int n)
 {
-    u8 *src;
-    u8 *idx;
+    int row;
     int i;
+    u8 *idx;
+    u8 *src;
     memset(p + 0xb8, 0, 16);
     memset(p + 0xb8, 0xff, 14);
-    src = &D_0047B0D0[n + 1][2];
+    row = n + 1;
     idx = &D_0047B0D0[0][2];
-    for (i = 14; i != 0; i--)
-        p[0xb8 + *idx++] = *src++;
-    p[0xc6] = D_0047B0D0[n + 1][0];
-    p[0xc7] = D_0047B0D0[n + 1][1];
+    src = &D_0047B0D0[row][2];
+    i = 14;
+    do {
+        u8 v = *src++;
+        p[0xb8 + *idx++] = v;
+    } while (--i);
+    p[0xc6] = D_0047B0D0[row][0];
+    p[0xc7] = D_0047B0D0[row][1];
 }
 
 char func_0043FD40(char *p)

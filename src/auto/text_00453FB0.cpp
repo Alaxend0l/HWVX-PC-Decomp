@@ -20,6 +20,17 @@ struct Vec4_00453FB0 {
     float x, y, z, w;
 };
 
+struct Vec3c_00453FB0 {
+    float x, y, z;
+    Vec3c_00453FB0 &operator=(const Vec3c_00453FB0 &o)
+    {
+        x = o.x;
+        y = o.y;
+        z = o.z;
+        return *this;
+    }
+};
+
 static inline void CopyVec3_00453FB0(float *dst, const float *src)
 {
     dst[0] = src[0];

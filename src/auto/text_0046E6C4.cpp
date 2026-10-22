@@ -11,3 +11,40 @@ extern LPCRITICAL_SECTION D_0047D8A4;
 extern LPCRITICAL_SECTION D_0047D884;
 
 extern "C" void func_0046E7DD(int code);
+
+#pragma optimize("y", off)
+extern "C" void func_0046E7A4(void)
+{
+    if (D_0049D810 == 1 || (D_0049D810 == 0 && D_0047D434 == 1)) {
+        func_0046E7DD(0xfc);
+        if (D_0049D984 != NULL)
+            (*D_0049D984)();
+        func_0046E7DD(0xff);
+    }
+}
+
+extern "C" void func_0046E930(void)
+{
+    InitializeCriticalSection(D_0047D8C4);
+    InitializeCriticalSection(D_0047D8B4);
+    InitializeCriticalSection(D_0047D8A4);
+    InitializeCriticalSection(D_0047D884);
+}
+
+#pragma optimize("s", on)
+#pragma optimize("y", off)
+extern "C" int func_0046EEFC(double x)
+{
+    if (*((unsigned int *)&x + 1) == 0x7ff00000) {
+        if (*(unsigned int *)&x == 0)
+            return 1;
+    } else if (*((unsigned int *)&x + 1) == 0xfff00000 && *(unsigned int *)&x == 0)
+        return 2;
+    if ((*((unsigned short *)&x + 3) & 0x7ff8) == 0x7ff8)
+        return 3;
+    if ((*((unsigned short *)&x + 3) & 0x7ff8) == 0x7ff0
+        && ((*((unsigned int *)&x + 1) & 0x7ffff) || *(unsigned int *)&x))
+        return 4;
+    return 0;
+}
+#pragma optimize("y", on)

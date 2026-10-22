@@ -2,6 +2,11 @@
 #include "common.h"
 #include <math.h>
 
+float func_004532F0(float x)
+{
+    return (float)fabs(x);
+}
+
 float func_004532E0(float x)
 {
     return (float)sqrt(x);

@@ -13,7 +13,7 @@ struct Voice_0045A550 {
     Sound_0045A550 *sound;
     char unk_0x14;
     char unk_0x15;
-    char unk_0x16;
+    unsigned char unk_0x16;
     char unk_0x17;
     int unk_0x18;
     int unk_0x1c;
@@ -36,28 +36,28 @@ extern int D_00692998;
 int __fastcall func_00459CB0(unsigned int, int);
 void func_00401090(Voice_0045A550 *);
 
-unsigned int func_0045AF20(unsigned short rate)
+unsigned int func_0045AF20(unsigned int rate)
 {
-    if (rate == 0)
-        return 0xffffffff;
-    return 0xffffffff / (rate * 1000U);
+    if ((unsigned short)rate != 0)
+        return 0xffffffff / ((unsigned short)rate * 1000U);
+    return 0xffffffff;
 }
 
 void func_0045AF90(Voice_0045A550 *v)
 {
     int step;
-    if (v->unk_0x16 == 4)
-        return;
-    v->unk_0x16 = 4;
-    v->unk_0x17 = 0;
-    step = func_0045AF20(v->sound->unk_0x1e);
-    if (step == -1) {
-        v->unk_0x1c = 0x10000;
-        step = 0;
+    if (v->unk_0x16 != 4) {
+        v->unk_0x16 = 4;
+        v->unk_0x17 = 0;
+        step = func_0045AF20(v->sound->unk_0x1e);
+        if (step == -1) {
+            v->unk_0x1c = 0x10000;
+            step = 0;
+        }
+        v->unk_0x18 = step;
+        v->unk_0x14 -= 15;
+        func_00401090(v);
     }
-    v->unk_0x18 = step;
-    v->unk_0x14 -= 15;
-    func_00401090(v);
 }
 
 void func_0045AF50(Format_0045A550 *fmt)

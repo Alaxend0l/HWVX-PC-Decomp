@@ -215,13 +215,13 @@ extern "C" int func_004755A7(const char *a, const char *b, int n)
 }
 #pragma optimize("y", on)
 
-extern "C" wchar_t **D_0049D83C_w;
+extern "C" wchar_t **D_0049D83C;
 extern "C" void *func_0046AED9(unsigned int);
 extern "C" int func_00475AAE(char *, int);
 
 extern "C" int func_004755E6(void)
 {
-    wchar_t **wenvp = D_0049D83C_w;
+    wchar_t **wenvp = D_0049D83C;
     char *envp;
     int size;
     while (*wenvp) {

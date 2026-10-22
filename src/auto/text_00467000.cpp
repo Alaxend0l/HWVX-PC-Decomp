@@ -190,8 +190,7 @@ void func_004671A0(int on)
 
 int func_00467880(int width, int height, int format)
 {
-    int h = (height + 3) & ~3;
-    int size = ((width + 3) & ~3) * h;
+    int size = ((width + 3) & ~3) * ((height + 3) & ~3);
 
     if (format == 0x83f0 || format == 0x83f1)
         size >>= 1;

@@ -10,7 +10,7 @@ extern char D_0065E350[];
 struct D_0064D148_t { char data[32]; };
 extern D_0064D148_t D_0064D148[];
 extern char D_0064D164;
-unsigned char func_0042AFA0(void)
+int func_0042AFA0(void)
 {
     return func_00440130();
 }

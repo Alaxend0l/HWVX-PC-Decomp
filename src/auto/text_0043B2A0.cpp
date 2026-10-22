@@ -34,14 +34,23 @@ extern List_0043B460 *D_0048D768;
 extern void **D_0048D76C;
 extern char D_0047B020[];
 
-extern "C" __declspec(dllimport) int __stdcall binkw32_0(Bink_0048D64C *);
-extern "C" __declspec(dllimport) int __stdcall binkw32_3(BinkBuf_0048D650 *);
-extern "C" __declspec(dllimport) int __stdcall binkw32_4(Bink_0048D64C *, int, int, int, int, int, int);
-extern "C" __declspec(dllimport) int __stdcall binkw32_5(BinkBuf_0048D650 *);
-extern "C" __declspec(dllimport) int __stdcall binkw32_6(Bink_0048D64C *, int);
-extern "C" __declspec(dllimport) int __stdcall binkw32_7(BinkBuf_0048D650 *, void *, int);
-extern "C" __declspec(dllimport) void __stdcall binkw32_8(Bink_0048D64C *);
-extern "C" __declspec(dllimport) void __stdcall binkw32_10(Bink_0048D64C *);
+/* binkw32.dll imports by ordinal: the import table slots are named __imp__binkw32_N */
+extern "C" int (__stdcall *_imp__binkw32_0)(Bink_0048D64C *);
+extern "C" int (__stdcall *_imp__binkw32_3)(BinkBuf_0048D650 *);
+extern "C" int (__stdcall *_imp__binkw32_4)(Bink_0048D64C *, int, int, int, int, int, int);
+extern "C" int (__stdcall *_imp__binkw32_5)(BinkBuf_0048D650 *);
+extern "C" int (__stdcall *_imp__binkw32_6)(Bink_0048D64C *, int);
+extern "C" int (__stdcall *_imp__binkw32_7)(BinkBuf_0048D650 *, void *, int);
+extern "C" void (__stdcall *_imp__binkw32_8)(Bink_0048D64C *);
+extern "C" void (__stdcall *_imp__binkw32_10)(Bink_0048D64C *);
+#define binkw32_0 (*_imp__binkw32_0)
+#define binkw32_3 (*_imp__binkw32_3)
+#define binkw32_4 (*_imp__binkw32_4)
+#define binkw32_5 (*_imp__binkw32_5)
+#define binkw32_6 (*_imp__binkw32_6)
+#define binkw32_7 (*_imp__binkw32_7)
+#define binkw32_8 (*_imp__binkw32_8)
+#define binkw32_10 (*_imp__binkw32_10)
 
 extern "C" void *func_00454B80(unsigned size, int tag, const char *file);
 extern "C" void *func_0042D620(int type, unsigned index, void *a, void *b);
@@ -55,6 +64,29 @@ extern "C" char func_0043B2A0(void)
         return 1;
     }
     return 0;
+}
+
+extern "C" void func_0043B2E0(void)
+{
+    if (D_0048D64C && D_0048D650) {
+        if (binkw32_3(D_0048D650)) {
+            binkw32_4(D_0048D64C, D_0048D650->unk_0x14, D_0048D650->unk_0x18, D_0048D650->unk_0x04, 0, 0, D_0048D650->unk_0x10);
+            binkw32_5(D_0048D650);
+        }
+        binkw32_7(D_0048D650, D_0048D64C->unk_0x34, binkw32_6(D_0048D64C, D_0048D650->unk_0x10));
+    }
+}
+
+extern "C" void func_0043B460(List_0043B460 *list)
+{
+    unsigned i;
+
+    D_0048D768 = list;
+    D_0048D76C = 0;
+    if (list->count)
+        D_0048D76C = (void **)func_00454B80(list->count * 4, 0x57, D_0047B020);
+    for (i = 0; i < D_0048D768->count; i++)
+        D_0048D76C[i] = func_0042D620(5, i, &D_0048D768->items[i], &D_0048D768->items[i]);
 }
 
 extern "C" void func_0043B8F0(void)

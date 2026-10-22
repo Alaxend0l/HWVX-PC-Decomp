@@ -15,6 +15,11 @@ extern float D_00477000;
 extern float D_0047700C;
 extern float D_004770BC;
 
+static inline u8 FloatToByte(float x)
+{
+    return (u8)(x * D_004770BC + D_004770BC);
+}
+
 extern "C" u32 func_004639D0(char *s, int a, float b, int c);
 extern "C" float func_004532E0(float x);
 
@@ -35,20 +40,29 @@ extern "C" void func_00464FC0(float *v)
     v[2] = inv * v[2];
 }
 
+extern "C" void func_00465030(float *v, u8 *out)
+{
+    float f;
+
+    f = D_004770BC * v[0];
+    *out++ = (u8)(f + D_004770BC);
+    f = D_004770BC * v[1];
+    *out = (u8)(f + D_004770BC);
+    f = D_004770BC * v[2];
+    out[1] = (u8)(f + D_004770BC);
+}
+
 extern "C" void func_00464F10(void)
 {
     float total = 0.0f;
-    Name_006D4D40 *p;
-    struct {
-        Name_006D4D40 n;
-        char end;
-    } buf;
+    int i;
+    char buf[0x51];
 
-    for (p = D_006D4D40; p < D_006D5740; p++) {
-        buf.n = *p;
-        buf.end = 0;
-        if (buf.n.name[0] != 0)
-            total += (float)func_004639D0(buf.n.name, 0, total, D_006D4D14 & 0xffff);
+    for (i = 0; i < 32; i++) {
+        *(Name_006D4D40 *)buf = D_006D4D40[i];
+        buf[0x50] = 0;
+        if (buf[0])
+            total += (float)func_004639D0(buf, 0, total, D_006D4D14 & 0xffff);
     }
 }
 

@@ -52,6 +52,37 @@ struct Ent1D0_0044D050 {
     char unk_0x78[0x1d0 - 0x78];
 };
 
+struct EntE0_0044D050 {
+    char unk_0x00[0x74];
+    unsigned int unk_0x74;
+    char unk_0x78[0xe0 - 0x78];
+};
+
+extern EntE0_0044D050 D_005305D0[128];
+extern EntE0_0044D050 D_005375D0[];
+
+struct Info_0044DF30 {
+    char unk_0x00[0x14];
+    int unk_0x14;
+};
+
+struct Sub_0044DF30 {
+    char unk_0x00[0xa0];
+    Info_0044DF30 *unk_0xa0;
+};
+
+struct Car_0044DF30 {
+    char unk_0x00[0x78];
+    int unk_0x78;
+    char unk_0x7c[0x398 - 0x7c];
+    Sub_0044DF30 *unk_0x398;
+};
+
+struct Racer_0044DF30 {
+    char unk_0x00[0x28];
+    Car_0044DF30 *unk_0x28;
+};
+
 extern Ent560_0044D050 D_0051F720[8];
 extern Ent560_0044D050 D_00522220[];
 extern EntF0_0044D050 D_004F3C20[96];

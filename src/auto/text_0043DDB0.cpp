@@ -11,3 +11,11 @@ extern int D_005463C4;
 void func_004585A0(int);
 int func_004585D0(int, int, int *);
 char func_00458610(int, int, int *);
+
+struct Obj_0043ECA0;
+void func_0043E8F0(void)
+{
+    func_004585A0(D_0047B0CC);
+    D_0047B0CC = -1;
+    D_0048D780 = 0;
+}

@@ -13,8 +13,8 @@ struct Funcs_0044D050 {
 
 struct Obj_0044D050 {
     char unk_0x00[0x40];
-    char unk_0x40[0x30];
-    int unk_0x70;
+    float unk_0x40[12];
+    float unk_0x70;
     unsigned int unk_0x74;
     char unk_0x78[0x82 - 0x78];
     char unk_0x82;
@@ -33,6 +33,48 @@ void func_0044A790(Obj_0044D050 **, Obj_0044D050 *);
 void func_00449AD0(Obj_0044D050 *);
 int func_0045E270(char *, int);
 void func_0044D860(int, int);
+
+void func_0044D050(void)
+{
+    Obj_0044D050 *p;
+
+    p = D_0053A9D0;
+    while (p != NULL) {
+        if ((p->unk_0x74 & 0x200200) == 0 && func_0045E270((char *)p + 0x40, p->unk_0x70) != 0) {
+            p->unk_0x8c->unk_0x10(p);
+            D_0048D97C = p;
+            func_00449AD0(p);
+        }
+        p = p->unk_0xa4;
+    }
+    D_0048D97C = NULL;
+}
+
+Obj_0044D050 *func_0044D0B0(int id, int arg)
+{
+    Obj_0044D050 *p;
+
+    p = func_0044A810(&D_0053A9D4[id]);
+    if (p != NULL) {
+        func_0044A790(&D_0053A9D0, p);
+        p->unk_0x8c->unk_0x00(p, arg);
+        return p;
+    }
+    return NULL;
+}
+
+Obj_0044D050 *func_0044D0F0(int id, int arg, char c)
+{
+    Obj_0044D050 *p = func_0044A810(&D_0053A9D4[id]);
+
+    if (p != NULL) {
+        p->unk_0x8c->unk_0x00(p, arg);
+        p->unk_0x74 |= 0x20000000;
+        p->unk_0x82 = c;
+        return p;
+    }
+    return NULL;
+}
 
 void func_0044D940(int a)
 {

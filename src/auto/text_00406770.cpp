@@ -9,7 +9,7 @@ struct List_00406770 {
 
 struct State_00407160 {
     char *p;
-    char state;
+    unsigned char state;
 };
 
 struct Driver_00406770 {
@@ -81,6 +81,22 @@ void func_00406880(Driver_00406770 *d)
     }
 }
 
+void func_00406B30(Driver_00406770 *d)
+{
+    if (d->unk_0xec == 0) {
+        d->unk_0xed = 0x7f;
+        d->unk_0xee = func_0046A800() % 256 + 0x80;
+        d->unk_0xef = 1;
+        d->unk_0xec = func_0046A800() % 64 + 0x40;
+    } else {
+        d->unk_0xec--;
+    }
+    d->unk_0x0 = d->unk_0xee;
+    d->unk_0x1 = d->unk_0xed;
+    if (d->unk_0xef)
+        d->unk_0x14 = -1;
+}
+
 void func_00406950(Driver_00406770 *d, int target)
 {
     float dist = func_004535B0(*(char **)((char *)d + 0x2c) + 0x40, (void *)target);
@@ -118,6 +134,57 @@ float func_00406A00(Driver_00406770 *d, int target)
             d->unk_0x0 = -0x30;
     }
     return v;
+}
+
+float func_00406AB0(char *car, int target)
+{
+    float *t = (float *)target;
+    float a = func_004532D0(t[2] - *(float *)(car + 0x48), t[0] - *(float *)(car + 0x40));
+    float r = -(a - func_004532D0(*(float *)(car + 0x38), *(float *)(car + 0x30)));
+
+    while (r > 3.1415927f)
+        r -= 6.2831855f;
+    while (r < -3.1415927f)
+        r += 6.2831855f;
+    return r;
+}
+
+float func_00406EE0(char *a, char *b)
+{
+    float r;
+
+    if (func_00406AB0(b, (int)(a + 0x40)) < D_00477000) {
+        float h = func_004532D0(*(float *)(a + 0x38), *(float *)(a + 0x30));
+        r = h - func_004532D0(-*(float *)(b + 0x18), -*(float *)(b + 0x10));
+    } else {
+        float h = func_004532D0(*(float *)(a + 0x38), *(float *)(a + 0x30));
+        r = h - func_004532D0(*(float *)(b + 0x18), *(float *)(b + 0x10));
+    }
+    while (r > 3.1415927f)
+        r -= 6.2831855f;
+    while (r < -3.1415927f)
+        r += 6.2831855f;
+    return r;
+}
+
+void func_00407160(State_00407160 *s)
+{
+    for (;;) {
+        switch (s->state) {
+        case 0:
+            if (s->p[0x1c] != 0)
+                return;
+            s->state = 1;
+        case 1:
+            if (s->p[0x1d] != 0)
+                return;
+            s->state = 2;
+        case 2:
+            if (s->p[0x1e] != 0)
+                return;
+            s->state = 0;
+        }
+    }
 }
 
 void func_004072F0(char *p)

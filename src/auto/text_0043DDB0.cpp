@@ -85,12 +85,14 @@ void func_0043EA50(char *p, int)
     *(short *)(p + 0xae) = -1;
 }
 
-void func_0043EAC0(char *p, int a, const char *s)
+void func_0041E450(Obj_0043EA50 *);
+void func_0043EAC0(Obj_0043EA50 *o, int a, const char *s)
 {
-    strcpy(p + 0x40, s);
-    *(int *)(p + 0x60) = a;
-    if (((char (*)(char *))func_0043E9F0)(p))
-        *(int *)(p + 0xc8) = func_00458EF0(*(int *)(p + 0x60));
+    Obj_0043EA50 *p = o;
+    strcpy(p->unk_0x40, s);
+    p->unk_0x60 = a;
+    if (((char (*)(Obj_0043EA50 *))func_0043E9F0)(p))
+        p->unk_0xc8 = func_00458EF0(p->unk_0x60);
 }
 
 int func_0043E9F0(char *p)

@@ -54,6 +54,56 @@ extern "C" unsigned int func_004710F3(unsigned short cw)
     return abstr;
 }
 
+extern "C" unsigned short func_00471185(unsigned int abstr)
+{
+    unsigned short cw = 0;
+
+    if (abstr & 0x10)
+        cw |= 0x1;
+    if (abstr & 0x8)
+        cw |= 0x4;
+    if (abstr & 0x4)
+        cw |= 0x8;
+    if (abstr & 0x2)
+        cw |= 0x10;
+    if (abstr & 0x1)
+        cw |= 0x20;
+    if (abstr & 0x80000)
+        cw |= 0x2;
+
+    switch (abstr & 0x300) {
+    case 0x000:
+        cw |= 0x000;
+        break;
+    case 0x100:
+        cw |= 0x400;
+        break;
+    case 0x200:
+        cw |= 0x800;
+        break;
+    case 0x300:
+        cw |= 0xc00;
+        break;
+    }
+
+    switch (abstr & 0x30000) {
+    case 0x00000:
+        cw |= 0x300;
+        break;
+    case 0x10000:
+        cw |= 0x200;
+        break;
+    case 0x20000:
+        cw |= 0x000;
+        break;
+    }
+
+    if (abstr & 0x40000)
+        cw |= 0x1000;
+
+    return cw;
+}
+
 extern "C" void func_0047148E(void *p)
 {
     memset(p, 0, 12);

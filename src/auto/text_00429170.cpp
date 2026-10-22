@@ -7,10 +7,10 @@ extern int D_0048D4C4;
 extern char D_0048D1C5;
 extern unsigned int D_0048D358;
 extern int D_0065E2D0;
-extern int D_0065E2D4[4];
-extern int D_0065E2E4[4];
-extern int D_0065E2F4[4];
-extern char D_0065E304[4];
+extern int D_0065E2D4[];
+extern int D_0065E2E4[];
+extern int D_0065E2F4[];
+extern char D_0065E304[];
 extern char D_0065E30C;
 extern int D_0065E310;
 extern int D_0065E314;
@@ -44,14 +44,18 @@ extern "C" int func_00429EC0(void)
 extern "C" void func_00429DD0(void)
 {
     int i;
+    int *p;
 
     D_0065E2D0 = 1;
-    for (i = 0; i < 4; i++) {
-        D_0065E2D4[i] = 0;
-        D_0065E2E4[i] = 0;
-        D_0065E2F4[i] = 0;
+    i = 0;
+    p = D_0065E2E4;
+    do {
+        p[-4] = 0;
+        *p = 0;
+        p[4] = 0;
         D_0065E304[i] = 0;
-    }
+        p++;
+    } while (++i, p < D_0065E2F4);
     D_0065E32C = 1;
     D_0065E330 = 1;
     D_0065E339 = 1;
@@ -69,16 +73,16 @@ extern "C" void func_00429830(unsigned int mode)
 {
     D_0048D1C5 = 1;
     D_0048D358 = mode;
-    if (mode < 1 && mode > 4)
+    if (D_0048D358 < 1 && D_0048D358 > 4)
         D_0048D358 = -1;
 }
 
 extern "C" void func_00429860(int *ids, unsigned int count)
 {
+    unsigned int i = 0;
     unsigned int n = func_00440160();
-    unsigned int i;
 
-    for (i = 0; i < n; i++) {
+    for (; i < n; i++) {
         char *p = func_00440180(i);
         unsigned int j;
         for (j = 0; j < count; j++) {

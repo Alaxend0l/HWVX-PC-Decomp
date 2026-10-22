@@ -132,6 +132,11 @@ extern "C" void func_0046E401(unsigned char *ver)
     }
 }
 
+extern "C" int func_0046D9B0(void)
+{
+    return 0;
+}
+
 extern "C" void *(__stdcall *_imp__HeapCreate)(unsigned long options, unsigned long initial, unsigned long maximum);
 extern "C" int (__stdcall *_imp__HeapDestroy)(void *heap);
 extern void *D_006D59C4;

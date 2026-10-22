@@ -19,6 +19,10 @@ extern int *D_0049D7C4;
 extern int D_0049D7EC;
 extern char D_0049D7F0;
 extern char D_0047D380[];
+extern char D_0047C198[];
+extern unsigned char D_0047D394[];
+extern int D_006C9A7C;
+extern int D_006C99E8;
 
 char *func_00461D50(void);
 void func_00460B30(int a);
@@ -51,14 +55,32 @@ void func_00466FD0(int mode)
     }
 }
 
+extern short D_006C9A0E[];
+void func_004668D0(void)
+{
+    char name[256];
+    int w = D_006C9A0C[D_006C9A78].unk_0x00;
+    int h = D_006C9A0C[D_006C9A78].unk_0x02;
+    void *pixels = func_0046AED9(w * h * 3);
+
+    glReadPixels(0, 0, w, h, GL_RGB, GL_UNSIGNED_BYTE, pixels);
+    func_0046A89F(name, D_0047D380, D_0049D7EC++);
+    func_004669A0(name, pixels, w, h);
+    func_0046B013(pixels);
+    D_0049D7F0 = 0;
+}
+
 void func_004667F0(int id, int w, int h)
 {
     func_00466410(id);
     if (!D_006C9AC0) {
-        D_006C9A0C[D_006C9A78].unk_0x00 = w;
-        D_006C9A0C[D_006C9A78].unk_0x02 = h;
-        D_006C9A0C[D_006C9A78].unk_0x04 = (short)w / 2;
-        D_006C9A0C[D_006C9A78].unk_0x06 = (short)h / 2;
+        Mode_006C9A0C *m = &D_006C9A0C[D_006C9A78];
+        short sw = w;
+        short sh = h;
+        D_006C9A0C[D_006C9A78].unk_0x00 = sw;
+        D_006C9A0C[D_006C9A78].unk_0x02 = sh;
+        D_006C9A0C[D_006C9A78].unk_0x04 = sw / 2;
+        D_006C9A0C[D_006C9A78].unk_0x06 = sh / 2;
         func_004668B0(0, 0, w, h);
         func_00460B30(*(int *)(func_00461D50() + 0x270));
         *(int *)(func_00461D50() + 0x2b0) = 0;

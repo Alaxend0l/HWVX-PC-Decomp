@@ -37,7 +37,32 @@ void func_00456680(void *);
 void func_00401090(void);
 void func_00461AD0(void);
 
+void func_00442480(void)
+{
+    Rec_00442480 *r;
+
+    if (func_004525A0() != 0) {
+        r = func_004525A0()->unk_0xc8;
+        memset(D_0053B220, 0, sizeof(D_0053B220));
+        D_0053B200 = 1;
+        D_0053B204 = 0;
+        if (r != 0) {
+            D_0053B208 = func_00462F60(r->unk_0x00, r->unk_0x09, r->unk_0x0a, r->unk_0x0b, r->unk_0x28);
+            func_00462F10(D_0053B208);
+        }
+    }
+}
+
 void func_00442500(void)
 {
     func_00462F20(D_0053B208);
 }
+
+void func_00442510(void)
+{
+    D_0053B204 = D_0053B204 == 0;
+    D_0053B240 = &D_0053B220[D_0053B204];
+    func_00401090();
+    func_00456630(D_0053B240);
+}
+

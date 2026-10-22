@@ -35,6 +35,7 @@ extern "C" int func_0046A800(void);
 extern "C" float func_004535B0(void *a, void *b);
 extern "C" void func_0041EC40(char *p);
 float func_004532F0(float);
+float func_004532D0(float y, float x);
 float func_00406AB0(char *car, int target);
 float func_00406A00(Driver_00406770 *d, int target);
 void func_00406950(Driver_00406770 *d, int target);

@@ -50,6 +50,15 @@ struct Elem_004675B0 {
 
 float func_00453360(void *, void *);
 
+struct Tex_00467E80 {
+    char unk_0x0[0x3e];
+    short unk_0x3e;
+};
+
+extern int D_006D4D0C;
+extern int D_006D3E30;
+extern Tex_00467E80 *D_006D3D44;
+
 void func_00467000(int mode)
 {
     switch (mode) {

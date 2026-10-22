@@ -253,7 +253,7 @@ extern "C" int func_0047039E(int c, int mask)
 
     if ((unsigned)(c + 1) <= 256)
         return D_0047FA80[c] & mask;
-    if (D_0047FA80[(c >> 8) & 0xff] & 0x8000) {
+    if (D_0047FA80[(unsigned char)(c >> 8)] & 0x8000) {
         buf[0] = (unsigned char)(c >> 8);
         buf[1] = (unsigned char)c;
         buf[2] = 0;

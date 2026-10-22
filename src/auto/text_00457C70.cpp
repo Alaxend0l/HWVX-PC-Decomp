@@ -104,13 +104,30 @@ extern "C" unsigned char func_004582E0(int index)
     return result;
 }
 
-extern "C" void func_00458280(void)
+extern "C" void func_00458280(int unused)
 {
     func_00458000(1, 0, 9, 0);
+}
+
+extern "C" void func_00458320(char **list, unsigned int n, int base)
+{
+    unsigned int i;
+
+    for (i = 0; i < n; i++) {
+        int *p = (int *)(list[i] + base);
+        *p += base;
+    }
 }
 
 extern "C" void func_004582A0(void)
 {
     func_00458000(0, 0, 9, 0);
+}
+
+extern "C" void func_004582C0(int unused, unsigned char a)
+{
+    unsigned short tmp = a;
+
+    func_00458000(1, 0, 4, &tmp);
 }
 

@@ -66,6 +66,15 @@ extern unsigned char D_0049D7D0;
 extern unsigned char D_0049D7D1;
 extern unsigned char D_006D3D4C;
 extern int D_006D4D40[0x280];
+extern "C" float func_004535B0(void *a, void *b);
+extern "C" void *func_00454B80(unsigned int size, int line, const char *file);
+extern char D_006D4000[];
+extern char D_006D4E10[];
+extern char D_006D42D0[];
+extern char D_006D45A0[];
+extern char D_0047CC70[];
+extern int D_006D3D48;
+extern void *D_006D3D44;
 void func_00461B50(void)
 {
     D_006D4D18 = 0;
@@ -92,6 +101,40 @@ extern void *D_006D3D44;
 char *func_00461D50(void)
 {
     return (char *)&D_006D3E80[D_0049D7D4];
+}
+
+int func_00461FE0(int *out)
+{
+    int n = 0;
+    int i = 0;
+    char *p = D_006D4000;
+    do {
+        if (D_006D3D4C & (unsigned char)(1 << i)) {
+            int *s = (int *)p;
+            out[0] = s[0];
+            out[1] = s[1];
+            out[2] = s[2];
+            out[3] = s[3];
+            n++;
+            out += 4;
+        }
+        p += 0x2d0;
+        i++;
+    } while (p < D_006D4E10);
+    return n;
+}
+
+float func_00462040(void *a)
+{
+    float f;
+    float g;
+    if (D_006D3D4C == 1)
+        return func_004535B0(a, D_006D4000);
+    f = func_004535B0(a, D_006D42D0);
+    g = func_004535B0(a, D_006D45A0);
+    if (f < g)
+        return f;
+    return g;
 }
 
 int func_00461A10(void)

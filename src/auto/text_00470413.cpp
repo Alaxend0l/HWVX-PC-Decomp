@@ -11,6 +11,15 @@ extern "C" unsigned int D_006D5AE0;
 extern "C" ioinfo *D_006D59E0[];
 extern "C" void func_00472339(int);
 extern "C" void func_00472398(int);
+extern "C" int D_006D59C8;
+extern "C" void *D_006D59C4;
+extern "C" void func_0046E959(int);
+extern "C" void *func_0046F110(void *);
+extern "C" unsigned char *func_0046FE6B(void *, void **, void **);
+extern "C" __declspec(dllimport) unsigned long __stdcall HeapSize(void *, unsigned long, const void *);
+extern "C" int func_004722F7(int);
+extern "C" long func_0047091A(int, long, int);
+extern "C" long func_00470ACE(int, int, int);
 
 extern "C" char *func_0046C653(void);
 extern "C" void func_0046E9BA(int);
@@ -67,9 +76,39 @@ extern "C" void func_00470831(void)
     func_0046E9BA(9);
 }
 
+extern "C" void func_0047083A(void)
+{
+}
+
 extern "C" void func_004708AC(void)
 {
     func_0046E9BA(9);
+}
+
+extern "C" int func_004722F7(int);
+extern "C" long func_00470ACE(int, int, int);
+extern "C" __declspec(dllimport) unsigned long __stdcall SetFilePointer(void *, long, long *, unsigned long);
+extern "C" __declspec(dllimport) unsigned long __stdcall GetLastError(void);
+extern "C" long func_0047091A(int fh, long pos, int mthd)
+{
+    int osHandle;
+    long newpos;
+    unsigned long dosretval;
+
+    if ((osHandle = func_004722F7(fh)) == -1) {
+        *func_00470486() = 9;
+        return -1;
+    }
+    if ((newpos = SetFilePointer((void *)osHandle, pos, NULL, mthd)) == -1)
+        dosretval = GetLastError();
+    else
+        dosretval = 0;
+    if (dosretval) {
+        func_00470413(dosretval);
+        return -1;
+    }
+    D_006D59E0[fh >> 5][fh & 0x1f].osfile &= ~2;
+    return newpos;
 }
 
 #pragma optimize("s", on)

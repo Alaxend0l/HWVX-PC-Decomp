@@ -1,5 +1,6 @@
 /* 20 functions from 0x00472020 to 0x00472D6E, found by Ghidra. */
 #include "common.h"
+#include <string.h>
 
 /* C runtime code, built size-optimized */
 #pragma optimize("s", on)

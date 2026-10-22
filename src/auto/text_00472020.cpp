@@ -108,6 +108,18 @@ extern "C" int func_004721FC(int fh, long value)
     return -1;
 }
 
+extern "C" void func_00472988(void)
+{
+    int i;
+
+    memset(D_006D58A0, 0, 257);
+    D_006D578C = 0;
+    D_006D579C = 0;
+    D_006D59A4 = 0;
+    for (i = 0; i < 3; i++)
+        D_006D5790[i] = 0;
+}
+
 extern "C" int func_00472278(int fh)
 {
     if ((unsigned)fh < D_006D5AE0 && (D_006D59E0[fh >> 5][fh & 0x1f].osfile & 1)

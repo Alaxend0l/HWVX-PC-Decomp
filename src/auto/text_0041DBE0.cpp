@@ -52,6 +52,22 @@ extern "C" void func_0041E120(void)
     } while (p < D_006611E0);
 }
 
+extern "C" void func_0041E140(void)
+{
+    int dt = D_00692370;
+    unsigned *p = (unsigned *)D_00661128;
+    do {
+        if (p[-1] != 0)
+            *p += dt;
+        if (*p > 1000) {
+            p[-1] = 0;
+            p[-2] = 0;
+            *p = 99999;
+        }
+        p += sizeof(Timer_00661120) / sizeof(unsigned);
+    } while (p < D_006611E8);
+}
+
 extern "C" float func_0041E7B0(Obj_0041E7B0 *o)
 {
     return o->unk_0x1b4;

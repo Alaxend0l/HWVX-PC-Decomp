@@ -9,6 +9,14 @@ extern "C" float D_00692378;
 extern "C" float D_00692360;
 extern "C" int D_0069237C;
 extern "C" float D_00692368;
+extern "C" DWORD D_00496E38;
+extern "C" HANDLE D_00496E3C;
+extern "C" char D_0047C244[];
+extern float D_004772D4;
+extern float D_00477388;
+extern float D_00477384;
+extern float D_0047700C;
+extern float D_00477060;
 
 void func_004564B0(void)
 {

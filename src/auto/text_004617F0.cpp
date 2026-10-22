@@ -92,7 +92,7 @@ void func_00461B50(void)
 int func_004620B0(void)
 {
     D_006D3D48 = 0x1ff;
-    D_006D3D44 = func_00454B80(0x7fc0, 0x5d, D_0047CC70);
+    *(void **)&D_006D3D44 = func_00454B80(0x7fc0, 0x5d, D_0047CC70);
     memset(D_006D3D44, 0, D_006D3D48 * 64);
     return 1;
 }

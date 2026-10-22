@@ -227,7 +227,8 @@ extern "C" void func_00429860(int *ids, unsigned int count)
 
 extern "C" void func_00429C30(void)
 {
-    unsigned int i;
+    int i;
+    char *p;
 
     memset(D_0065E2A0, 0, 0xbc);
     D_0048D4C0 = 1;
@@ -240,10 +241,14 @@ extern "C" void func_00429C30(void)
     D_0064D166 = 1;
     D_0064D165 = 100;
     D_0064D164 = 100;
-    for (i = 1; i <= 4; i++) {
+    i = 1;
+    p = D_0064D148[1].data;
+    do {
         func_00429F10(i);
-        D_0064D148[i].data[0] = 1;
-    }
+        *p = 1;
+        p += 0x20;
+        i++;
+    } while (p <= D_0064D148[4].data);
     switch (func_00429EA0()) {
     case 0:
         D_0064DD34 = D_0064D300;
@@ -280,7 +285,7 @@ extern "C" void func_00429C30(void)
         memset(D_0064DD40, 0, 0x1cdc);
         D_0047AB10 = 0xe868;
         D_0047AB14 = 0x1cdc;
-        D_0064DD38 = D_0064DD40 + 0x1cdc;
+        D_0064DD38 = D_0064FA20;
         D_0064DD40[0x0] = 1;
         D_0064DD40[0x14] = 1;
         func_00429FA0(0x6a, 10, 1);

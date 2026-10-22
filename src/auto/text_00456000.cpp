@@ -10,17 +10,12 @@ extern "C" BOOL CALLBACK func_00456090(HWND, UINT, WPARAM, LPARAM);
 
 extern "C" void func_00456000(HWND hwnd, int id)
 {
-    switch (id) {
-    case 1:
+    if (id == 1)
         EndDialog(hwnd, id);
-        break;
-    case 2:
+    else if (id == 2)
         EndDialog(hwnd, id);
-        break;
-    case 0x3f6:
+    else if (id == 0x3f6)
         EndDialog(hwnd, id);
-        break;
-    }
 }
 
 extern "C" BOOL func_00456040(HWND hwnd)
@@ -37,5 +32,17 @@ extern "C" int func_00456060(void)
         ret = 2;
     }
     return ret;
+}
+
+extern "C" BOOL CALLBACK func_00456090(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
+{
+    switch (msg) {
+    case WM_INITDIALOG:
+        return func_00456220(hwnd, (HWND)wParam, lParam);
+    case WM_COMMAND:
+        func_004560F0(hwnd, LOWORD(wParam), (HWND)lParam, HIWORD(wParam));
+        return FALSE;
+    }
+    return FALSE;
 }
 

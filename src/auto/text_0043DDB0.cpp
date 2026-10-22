@@ -24,6 +24,13 @@ void func_0043E8F0(void)
     D_0048D780 = 0;
 }
 
+int func_0043E9F0(char *p)
+{
+    if (p != NULL && *(char **)(p + 0x20) == &D_0043F9E0)
+        return 1;
+    return 0;
+}
+
 int func_0043E920(void)
 {
     int v;

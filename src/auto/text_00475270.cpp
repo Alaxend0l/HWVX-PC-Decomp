@@ -19,6 +19,19 @@ extern "C" LDBL12_00475270 D_00480420[];
 extern "C" LDBL12_00475270 D_00480580[];
 
 extern "C" void func_004752AA(LDBL12_00475270 *, LDBL12_00475270 *);
+extern "C" int func_004745AC(unsigned long, unsigned long, unsigned long *);
+extern "C" void func_0047462B(LDBL12_00475270 *);
+extern "C" void func_00474659(LDBL12_00475270 *);
+
+#define UL_LO_12(p) ((unsigned long *)&(p)->ld12[0])
+#define UL_MED_12(p) ((unsigned long *)&(p)->ld12[4])
+#define UL_HI_12(p) ((unsigned long *)&(p)->ld12[8])
+#define UL_MANLO_12(p) ((unsigned long *)&(p)->ld12[2])
+#define UL_MANHI_12(p) ((unsigned long *)&(p)->ld12[6])
+#define U_XT_12(p) ((unsigned short *)&(p)->ld12[0])
+#define U_EXP_12(p) ((unsigned short *)&(p)->ld12[10])
+#define USHORT_12(p, i) ((unsigned short *)((unsigned char *)(p) + (i)))
+#define ULONG_12(p, i) ((unsigned long *)((unsigned char *)(p) + (i)))
 
 #pragma optimize("y", off)
 extern "C" void func_004754CA(LDBL12_00475270 *pld12, int pow, int mult12)

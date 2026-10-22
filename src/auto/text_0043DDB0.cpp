@@ -16,6 +16,18 @@ void func_0042DE60(int);
 void func_0043EA50(char *, int);
 void func_0043F4B0(char *, int);
 extern char D_0043F9E0;
+extern char D_0047A2E8;
+extern char D_0047A5E0;
+extern char D_0047AD1C;
+void func_0040F670(char *);
+void func_00402EA0(char *);
+void func_00449AA0(char *);
+void func_0043EB20(char *);
+int func_0046A89F(char *, const char *, ...);
+void func_00429060(char *, int *, int *, int *);
+void func_00401090(int, int, int);
+void func_0043EDB0(char *);
+int func_0043E9F0(char *);
 
 struct Obj_0043EA10 {
     char unk_0x0[0x6c];
@@ -150,5 +162,39 @@ void func_0043EBF0(char *p)
 bool func_0043ECA0(Obj_0043ECA0 *o)
 {
     return ((char (*)(Obj_0043ECA0 *))((void **)o)[8])(o) != 0;
+}
+
+extern char D_0047A2E8;
+extern char D_0047A5E0;
+extern char D_0047AD1C;
+void func_0040F670(char *);
+void func_00402EA0(char *);
+void func_00449AA0(char *);
+void func_0043EB20(char *);
+int func_0046A89F(char *, const char *, ...);
+void func_00429060(char *, int *, int *, int *);
+void func_00401090(int, int, int);
+void func_0043EDB0(char *);
+void func_0043ED30(char *p)
+{
+    char *o = *(char **)(p + 0x2c);
+    *(char **)(p + 0x2c) = 0;
+    *(char *)(p + 0x30) = 1;
+    if (o != 0)
+        *(int *)(o + 0x94) = 0;
+}
+
+void func_0043ED50(char *p)
+{
+    int a;
+    int c;
+    int b;
+    char *o = *(char **)(p + 0x2c);
+
+    if (o != 0 && !(*(char *)(o + 0x74) & 2)) {
+        func_00429060(o + 0x40, &a, &b, &c);
+        func_00401090(*(int *)(p + 0xc8), a, b);
+    }
+    func_0043EDB0(p);
 }
 

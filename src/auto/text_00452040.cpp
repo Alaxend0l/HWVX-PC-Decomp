@@ -44,6 +44,7 @@ extern "C" void func_00461C00(int);
 extern "C" void func_00427780(void);
 extern "C" void func_00428A70(int, int);
 extern "C" void func_00450C10(void);
+extern "C" void func_004525C0(void);
 
 extern "C" void func_00452040(void)
 {

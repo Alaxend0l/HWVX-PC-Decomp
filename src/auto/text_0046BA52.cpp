@@ -13,6 +13,9 @@ extern "C" int func_00471734(char *buf, int digits, StrFlt_0046BA52 *flt);
 extern "C" void func_0046C079(char *buf, int ndec, StrFlt_0046BA52 *flt, int g_fmt);
 extern "C" char *func_0046BF62(char *buf, int ndec, int caps, StrFlt_0046BA52 *flt, int g_fmt);
 extern "C" void func_0046E9BA(int lock);
+extern "C" void func_0046C204(char *s, int dist);
+extern "C" char *func_004718C0(char *dst, const char *src);
+extern char D_004789B0[];
 
 extern "C" void func_0046BCE6(void)
 {

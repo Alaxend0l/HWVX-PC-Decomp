@@ -54,6 +54,16 @@ extern "C" Region_0046F464 *D_0047DA5C;
 extern "C" int D_0047DA68;
 extern "C" Region_0046F464 *D_0047FA78;
 
+extern "C" unsigned short *D_0047FA80;
+extern "C" int D_00480074[];
+extern "C" long D_0047FF94;
+extern "C" int D_0047FF98;
+extern "C" long D_0047FF9C;
+
+extern "C" int func_004733F6(DWORD, LPCSTR, int, LPWORD, int, int, BOOL);
+extern "C" void func_00472E34(void);
+extern "C" int func_004730E9(struct tm *);
+
 extern "C" void func_0046FD53(Region_0046F464 *);
 extern "C" void func_0046FDA9(int);
 
@@ -169,3 +179,46 @@ extern "C" void func_0046FEC2(Region_0046F464 *r, char *page, unsigned char *hdr
     if (e->unk_0x0 == 0xf0 && ++D_0049D9F0 == 0x20)
         func_0046FDA9(0x10);
 }
+
+extern "C" int func_00470233(Region_0046F464 *r, Page_0046F464 *pg, unsigned char *hdr, unsigned int n)
+{
+    int ok = 0;
+    Entry_0046F464 *e;
+    unsigned int old = *hdr;
+    unsigned char *end;
+    unsigned char *q;
+    int i;
+
+    e = &r->unk_0x18[((char *)pg - r->unk_0x10) >> 12];
+    if (old > n) {
+        *hdr = (unsigned char)n;
+        e->unk_0x0 += old - n;
+        e->unk_0x4 = 0xf1;
+        ok = 1;
+    } else if (old < n) {
+        end = hdr + n;
+        if (pg->unk_0xf8 >= end) {
+            for (q = hdr + old; q < end && *q == 0; q++)
+                ;
+            if (q == end) {
+                *hdr = (unsigned char)n;
+                if (hdr <= pg->unk_0x0 && end > pg->unk_0x0) {
+                    if (end < pg->unk_0xf8) {
+                        i = 0;
+                        pg->unk_0x0 = end;
+                        while (end[i] == 0)
+                            ++i;
+                        pg->unk_0x4 = i;
+                    } else {
+                        pg->unk_0x4 = 0;
+                        pg->unk_0x0 = pg->unk_0x8;
+                    }
+                }
+                e->unk_0x0 += old - n;
+                ok = 1;
+            }
+        }
+    }
+    return ok;
+}
+

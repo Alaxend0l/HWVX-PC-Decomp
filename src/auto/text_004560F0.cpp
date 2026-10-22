@@ -18,6 +18,14 @@ extern float D_00477384;
 extern float D_0047700C;
 extern float D_00477060;
 
+float func_00456750(int a, int b, float c, float d)
+{
+    float s = b * D_004772D4;
+    float t = (a - D_00477388) * D_00477384;
+    float t3 = t * t * t;
+    return (t3 * s + (D_0047700C - s) * t) * ((d - c) * D_00477060) + (c + d) * D_00477060;
+}
+
 void func_004564B0(void)
 {
     QueryPerformanceFrequency(&D_0068DDB8);

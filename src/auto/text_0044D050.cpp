@@ -60,6 +60,14 @@ void func_0044D050(void)
     D_0048D97C = NULL;
 }
 
+int func_0044D920(char **out)
+{
+    if (D_0052E664 & 0x201000)
+        return 0;
+    *out = D_0052E5F0;
+    return 1;
+}
+
 Obj_0044D050 *func_0044D0B0(int id, int arg)
 {
     Obj_0044D050 *p;
@@ -85,6 +93,19 @@ Obj_0044D050 *func_0044D0F0(unsigned int id, int arg, char c)
         return p;
     }
     return NULL;
+}
+
+char func_0044D550(int a, int b, int c, int d)
+{
+    char r;
+
+    if (D_0049DBA0 != NULL && *D_0049DBA0 != 0) {
+        r = func_0041ACE0(a, b, c, d);
+        if (func_0044D370(a, b, c, d))
+            return 1;
+        return r;
+    }
+    return 0;
 }
 
 void func_0044D940(int a)

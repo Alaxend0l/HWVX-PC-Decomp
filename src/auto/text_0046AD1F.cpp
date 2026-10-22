@@ -32,6 +32,35 @@ extern "C" void func_0046AD1F(int code)
     D_0047D430(255);
 }
 
+extern "C" void func_0046AE08(int code, int quick, int retcaller)
+{
+    func_0046AEAD();
+    if (D_0049D854 == 1)
+        TerminateProcess(GetCurrentProcess(), code);
+
+    D_0049D850 = 1;
+    D_0049D84C = (char)retcaller;
+
+    if (!quick) {
+        if (D_006D6B10) {
+            _PVFV *pfend = D_006D6B0C;
+            while (--pfend >= D_006D6B10) {
+                if (*pfend != NULL)
+                    (**pfend)();
+            }
+        }
+        func_0046AEBF(D_0047A020, D_0047A028);
+    }
+    func_0046AEBF(D_0047A02C, D_0047A030);
+
+    if (retcaller) {
+        func_0046AEB6();
+        return;
+    }
+    D_0049D854 = 1;
+    ExitProcess(code);
+}
+
 extern "C" void func_0046AD44(int code)
 {
     if (D_0049D810 == 1)

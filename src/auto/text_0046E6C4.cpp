@@ -17,6 +17,7 @@ extern "C" void func_0046AD1F(int code);
 extern "C" void func_0046B013(void *p);
 extern "C" int *func_00470486(void);
 extern "C" void func_0046E9BA(int n);
+extern "C" double func_0046EED3(double x, int exp);
 
 #pragma optimize("s", on)
 extern "C" void func_0046E616(int a, int b);
@@ -32,6 +33,14 @@ extern "C" int func_0046F017(void)
     sw = 0;
     return sw;
 }
+
+extern "C" int func_0046F025(void)
+{
+    short sw;
+    sw = 0;
+    return sw;
+}
+#pragma optimize("y", on)
 
 extern "C" double func_0046EED3(double x, int exp)
 {

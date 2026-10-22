@@ -39,3 +39,13 @@ extern "C" void func_0046FD53(Region_0046F464 *);
 extern "C" void func_0046FDA9(int);
 
 #pragma optimize("s", on)
+
+extern "C" void func_0046FEC2(Region_0046F464 *r, char *page, unsigned char *hdr)
+{
+    Entry_0046F464 *e = &r->unk_0x18[(page - r->unk_0x10) >> 12];
+    e->unk_0x0 += *hdr;
+    *hdr = 0;
+    e->unk_0x4 = 0xf1;
+    if (e->unk_0x0 == 0xf0 && ++D_0049D9F0 == 0x20)
+        func_0046FDA9(0x10);
+}

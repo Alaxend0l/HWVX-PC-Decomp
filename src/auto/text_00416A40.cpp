@@ -231,7 +231,7 @@ char func_0044D550(Vec4_00416A40 *, Vec4_00416A40 *, float *, Hit_00416A40 *);
 void func_0040E070(Car_00416A40 *, Vec4_00416A40 *, Vec4_00416A40 *, float);
 void func_00458220(int, int, int, int);
 void func_00401090(int, int, int);
-void func_00458250(int, int);
+void func_00458250(int, int, int = 0);
 void func_00458280(int);
 void func_004582A0(int);
 void func_0044D0B0(int, Particle_00416A40 *);

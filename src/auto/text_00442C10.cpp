@@ -143,13 +143,16 @@ void func_00443880(void)
 int func_004438E0(void)
 {
     Ent_00443 *list[128];
+    Ent_00443 *e;
     unsigned int n;
     int count = 0;
+    int flags;
 
     n = func_0044D8F0(list, 0x80);
     while (n > 0) {
-        n--;
-        if (list[n]->unk_0x74 & 0x40000000)
+        e = list[--n];
+        flags = e->unk_0x74;
+        if (flags & 0x40000000)
             count++;
     }
     return count;
@@ -163,10 +166,12 @@ void func_00443940(Ent_00443 *e)
 
 void func_00443960(void)
 {
+    void *h;
     Res_00443 *res;
     unsigned int i;
 
-    res = func_00428C10(func_004287E0(D_0047A778, 3, 0, 0), 3, 1);
+    h = func_004287E0(D_0047A778, 3, 0, 0);
+    res = func_00428C10(h, 3, 1);
     if (res != NULL) {
         for (i = 0; i < res->unk_0x2c; i++)
             func_00462E30(res->unk_0x30[i]);

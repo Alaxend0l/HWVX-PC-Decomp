@@ -19,3 +19,8 @@ extern "C" char D_00692440[];
 extern "C" char D_00692480[];
 
 extern "C" void func_004585A0(int);
+
+extern "C" void func_00459590(char v)
+{
+    D_00693E00 = v;
+}

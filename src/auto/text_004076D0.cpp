@@ -72,14 +72,14 @@ void func_004076D0(Obj_004076D0 *obj, List_004076D0 *list, Vec4_004076D0 *color)
     }
 }
 
-void func_004081C0(char *obj)
+void func_004081C0(Obj_004076D0 *obj, int b, Vec4_004076D0 *color)
 {
-    float *t = (float *)(obj + 0x24);
+    float *t = (float *)((char *)obj + 0x24);
 
     *t = D_00692378 + *t;
     if (*t > D_0047700C)
         *t = 1.0f;
-    func_00407BC0((int **)(obj + 0x18), 2);
+    func_00407BC0((int **)((char *)obj + 0x18), 2);
 }
 
 void func_00408260(Obj_004076D0 *obj, int b, Vec4_004076D0 *color)

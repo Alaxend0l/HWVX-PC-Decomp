@@ -134,13 +134,13 @@ extern "C" int func_004593C0(const char *name)
 
 extern "C" char func_00459410(void)
 {
-    if (D_00497140 == 0) {
-        D_00693E04 = 0;
-        D_00693E08 = 0;
-        if (func_00459CC0() && func_0045B400() && func_00459EC0() && func_00459500() && func_00459C00()) {
-            D_00497140 = 1;
-            return 1;
-        }
+    if (D_00497140)
+        return D_00497140;
+    D_00693E04 = 0;
+    D_00693E08 = 0;
+    if (func_00459CC0() && func_0045B400() && func_00459EC0() && func_00459500() && func_00459C00()) {
+        D_00497140 = 1;
+        return 1;
     }
     return D_00497140;
 }

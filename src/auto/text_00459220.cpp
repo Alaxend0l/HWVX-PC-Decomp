@@ -47,6 +47,12 @@ extern "C" void func_00459220(void)
     } while (--n);
 }
 
+extern "C" void func_00459580(void)
+{
+    D_00693E04 = 0;
+    func_0045CD20();
+}
+
 extern "C" void func_00459260(const char *s)
 {
     if (s != NULL)

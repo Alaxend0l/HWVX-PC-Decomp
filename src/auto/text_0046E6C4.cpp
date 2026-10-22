@@ -35,72 +35,109 @@ extern "C" int D_006D59B8;
 extern "C" int D_006D59A8;
 extern "C" unsigned int D_006D59C0;
 
-#pragma optimize("s", on)
 extern "C" void func_0046E616(int a, int b);
 extern int (*D_0049D9EC)(unsigned int);
+extern double D_004789A8;
+
+#pragma optimize("s", on)
+#pragma optimize("y", on)
+extern "C" void __stdcall func_0046E789(int *p)
+{
+    func_0046E616(p[6], p[7]);
+}
+
+extern "C" void func_0046E7A4(void)
+{
+    if (D_0049D810 == 1 || (D_0049D810 == 0 && D_0047D434 == 1)) {
+        func_0046E7DD(0xfc);
+        if (D_0049D984 != NULL)
+            (*D_0049D984)();
+        func_0046E7DD(0xff);
+    }
+}
+
+extern "C" void func_0046E930(void)
+{
+    InitializeCriticalSection(D_0047D8C4);
+    InitializeCriticalSection(D_0047D8B4);
+    InitializeCriticalSection(D_0047D8A4);
+    InitializeCriticalSection(D_0047D884);
+}
+
 #pragma optimize("y", off)
+extern "C" void func_0046E959(int n)
+{
+    LPCRITICAL_SECTION *pcs = &D_0047D880[n];
+    LPCRITICAL_SECTION cs;
+
+    if (*pcs == NULL) {
+        if ((cs = (LPCRITICAL_SECTION)func_0046AED9(sizeof(CRITICAL_SECTION))) == NULL)
+            func_0046AD1F(0x11);
+        func_0046E959(0x11);
+        if (*pcs == NULL) {
+            InitializeCriticalSection(cs);
+            *pcs = cs;
+        } else {
+            func_0046B013(cs);
+        }
+        func_0046E9BA(0x11);
+    }
+    EnterCriticalSection(*pcs);
+}
+
 extern "C" void func_0046E9BA(int n)
 {
     LeaveCriticalSection(D_0047D880[n]);
 }
-extern "C" int func_0046F017(void)
-{
-    short sw;
-    sw = 0;
-    return sw;
-}
-
-extern "C" int func_0046F025(void)
-{
-    short sw;
-    sw = 0;
-    return sw;
-}
-
-extern "C" void func_0046F057(int flags)
-{
-}
 
 #pragma optimize("y", on)
-extern "C" int func_0046F0AD(unsigned int size)
+extern "C" void func_0046EE99(int code)
 {
-    if (D_0049D9EC && (*D_0049D9EC)(size))
-        return 1;
+    switch (code) {
+    case 1:
+        *func_00470486() = 0x21;
+        break;
+    case 2:
+    case 3:
+        *func_00470486() = 0x22;
+        break;
+    }
+}
+
+#pragma optimize("y", off)
+extern "C" double func_0046EEC1(double x)
+{
+    double r;
+    r = x;
+    return r;
+}
+
+extern "C" double func_0046EED3(double x, int exp)
+{
+    double retval;
+    int biased_exp;
+
+    retval = x;
+    biased_exp = exp + 0x3fe;
+    *((unsigned short *)&retval + 3) = (unsigned short)(*((unsigned short *)&x + 3) & 0x800f | (biased_exp << 4));
+    return retval;
+}
+
+extern "C" int func_0046EEFC(double x)
+{
+    if (*((unsigned int *)&x + 1) == 0x7ff00000) {
+        if (*(unsigned int *)&x == 0)
+            return 1;
+    } else if (*((unsigned int *)&x + 1) == 0xfff00000 && *(unsigned int *)&x == 0)
+        return 2;
+    if ((*((unsigned short *)&x + 3) & 0x7ff8) == 0x7ff8)
+        return 3;
+    if ((*((unsigned short *)&x + 3) & 0x7ff8) == 0x7ff0
+        && ((*((unsigned int *)&x + 1) & 0x7ffff) || *(unsigned int *)&x))
+        return 4;
     return 0;
 }
 
-#pragma optimize("y", on)
-extern "C" int func_0046F0C8(int threshold)
-{
-    if ((D_006D59BC = (Header_0046F0C8 *)HeapAlloc(D_006D59C4, 0, 16 * sizeof(Header_0046F0C8))) == NULL)
-        return 0;
-    D_006D59C0 = threshold;
-    D_006D59B0 = D_006D59BC;
-    D_006D59B4 = NULL;
-    D_006D59B8 = 0;
-    D_006D59A8 = 16;
-    return 1;
-}
-extern "C" Header_0046F0C8 *func_0046F110(void *pv)
-{
-    Header_0046F0C8 *last = D_006D59BC + D_006D59B8;
-    Header_0046F0C8 *p = D_006D59BC;
-
-    while (p < last) {
-        if ((unsigned int)((char *)pv - p->unk_0xc) < 0x100000)
-            return p;
-        p++;
-    }
-    return NULL;
-}
-
-extern "C" int func_0046F034(int newctrl, int mask)
-{
-    return newctrl & mask;
-}
-
-extern double D_004789A8;
-#pragma optimize("y", off)
 #pragma optimize("p", on)
 extern "C" double func_0046EF56(double x, int *pexp)
 {
@@ -134,103 +171,59 @@ extern "C" double func_0046EF56(double x, int *pexp)
     return man;
 }
 #pragma optimize("p", off)
-#pragma optimize("y", on)
 
-#pragma optimize("y", on)
-
-extern "C" double func_0046EED3(double x, int exp)
+extern "C" int func_0046F017(void)
 {
-    double retval;
-    int biased_exp;
+    short sw;
+    sw = 0;
+    return sw;
+}
 
-    retval = x;
-    biased_exp = exp + 0x3fe;
-    *((unsigned short *)&retval + 3) = (unsigned short)(*((unsigned short *)&x + 3) & 0x800f | (biased_exp << 4));
-    return retval;
+extern "C" int func_0046F025(void)
+{
+    short sw;
+    sw = 0;
+    return sw;
+}
+
+extern "C" int func_0046F034(int newctrl, int mask)
+{
+    return newctrl & mask;
+}
+
+extern "C" void func_0046F057(int flags)
+{
 }
 
 #pragma optimize("y", on)
-
-extern "C" void func_0046EE99(int code)
+extern "C" int func_0046F0AD(unsigned int size)
 {
-    switch (code) {
-    case 1:
-        *func_00470486() = 0x21;
-        break;
-    case 2:
-    case 3:
-        *func_00470486() = 0x22;
-        break;
-    }
-}
-
-#pragma optimize("y", off)
-extern "C" double func_0046EEC1(double x)
-{
-    double r;
-    r = x;
-    return r;
-}
-
-#pragma optimize("y", on)
-
-extern "C" void __stdcall func_0046E789(int *p)
-{
-    func_0046E616(p[6], p[7]);
-}
-
-extern "C" void func_0046E7A4(void)
-{
-    if (D_0049D810 == 1 || (D_0049D810 == 0 && D_0047D434 == 1)) {
-        func_0046E7DD(0xfc);
-        if (D_0049D984 != NULL)
-            (*D_0049D984)();
-        func_0046E7DD(0xff);
-    }
-}
-extern "C" void func_0046E930(void)
-{
-    InitializeCriticalSection(D_0047D8C4);
-    InitializeCriticalSection(D_0047D8B4);
-    InitializeCriticalSection(D_0047D8A4);
-    InitializeCriticalSection(D_0047D884);
-}
-
-#pragma optimize("y", off)
-extern "C" void func_0046E959(int n)
-{
-    LPCRITICAL_SECTION *pcs = &D_0047D880[n];
-    LPCRITICAL_SECTION cs;
-
-    if (*pcs == NULL) {
-        if ((cs = (LPCRITICAL_SECTION)func_0046AED9(sizeof(CRITICAL_SECTION))) == NULL)
-            func_0046AD1F(0x11);
-        func_0046E959(0x11);
-        if (*pcs == NULL) {
-            InitializeCriticalSection(cs);
-            *pcs = cs;
-        } else {
-            func_0046B013(cs);
-        }
-        func_0046E9BA(0x11);
-    }
-    EnterCriticalSection(*pcs);
-}
-
-#pragma optimize("s", on)
-#pragma optimize("y", off)
-extern "C" int func_0046EEFC(double x)
-{
-    if (*((unsigned int *)&x + 1) == 0x7ff00000) {
-        if (*(unsigned int *)&x == 0)
-            return 1;
-    } else if (*((unsigned int *)&x + 1) == 0xfff00000 && *(unsigned int *)&x == 0)
-        return 2;
-    if ((*((unsigned short *)&x + 3) & 0x7ff8) == 0x7ff8)
-        return 3;
-    if ((*((unsigned short *)&x + 3) & 0x7ff8) == 0x7ff0
-        && ((*((unsigned int *)&x + 1) & 0x7ffff) || *(unsigned int *)&x))
-        return 4;
+    if (D_0049D9EC && (*D_0049D9EC)(size))
+        return 1;
     return 0;
 }
-#pragma optimize("y", on)
+
+extern "C" int func_0046F0C8(int threshold)
+{
+    if ((D_006D59BC = (Header_0046F0C8 *)HeapAlloc(D_006D59C4, 0, 16 * sizeof(Header_0046F0C8))) == NULL)
+        return 0;
+    D_006D59C0 = threshold;
+    D_006D59B0 = D_006D59BC;
+    D_006D59B4 = NULL;
+    D_006D59B8 = 0;
+    D_006D59A8 = 16;
+    return 1;
+}
+
+extern "C" Header_0046F0C8 *func_0046F110(void *pv)
+{
+    Header_0046F0C8 *last = D_006D59BC + D_006D59B8;
+    Header_0046F0C8 *p = D_006D59BC;
+
+    while (p < last) {
+        if ((unsigned int)((char *)pv - p->unk_0xc) < 0x100000)
+            return p;
+        p++;
+    }
+    return NULL;
+}

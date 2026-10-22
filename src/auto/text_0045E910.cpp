@@ -66,7 +66,9 @@ struct State_0045E910 {
     int unk_0x3c;
     int unk_0x40;
     int unk_0x44;
-    char pad_0x48[0x215c0 - 0x48];
+    char pad_0x48[0x80 - 0x48];
+    unsigned short unk_0x80[256];
+    Node_0045E910 unk_0x280[0x4268];
     Rec30_0045E910 unk_0x215c0[2000];
     char pad_0x38cc0[0xc];
     Elem_0045E910 unk_0x38ccc[12000];

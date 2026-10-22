@@ -110,6 +110,15 @@ void func_0043CEB0(Part_0043C4F0 *p)
     }
 }
 
+void func_0043CEE0(Elem_0043C520 *e)
+{
+    int i;
+    for (i = 0; i < 0x200; i++, e++) {
+        if (!(e->flags & 8))
+            func_0043D010(e);
+    }
+}
+
 void func_0043C5A0(void)
 {
     Group_0043C4F0 *g;

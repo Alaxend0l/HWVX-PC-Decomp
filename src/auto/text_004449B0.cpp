@@ -167,7 +167,8 @@ void func_004452E0(int h)
 
     for (i = 0; i < n; i++) {
         if (D_0053B0E0[i].unk_0x08 == h) {
-            for (--n; i < n; i++)
+            n--;
+            for (; i < n; i++)
                 D_0053B0E0[i] = D_0053B0E0[i + 1];
             D_0048D7FC = n;
         }

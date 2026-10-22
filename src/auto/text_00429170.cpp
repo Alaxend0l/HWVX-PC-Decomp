@@ -55,19 +55,7 @@ extern "C" int func_00428C10(int a, int b, int c);
 extern "C" int func_004216C0(int a, int b);
 extern "C" unsigned char func_00440160(void);
 extern "C" char *func_00440180(unsigned int i);
-extern "C" int func_00429EC0(void)
-{
-    if (D_0047AB18) {
-        int t, h;
-        D_0047AB18 = 0;
-        t = func_004287E0(D_0047A778, 3, 0, 0);
-        h = func_00428C10(t, 3, 1);
-        if (h == 0)
-            return 0;
-        D_0048D4C4 = func_004216C0(h, 0);
-    }
-    return D_0048D4C4;
-}
+extern "C" int func_00429EC0(void);
 
 extern "C" void func_00429E60(void)
 {

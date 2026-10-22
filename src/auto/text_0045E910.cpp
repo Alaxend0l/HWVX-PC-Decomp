@@ -7,6 +7,15 @@ extern "C" void func_00469C20(void);
 
 struct Vec4_0045E910 {
     float x, y, z, w;
+
+    Vec4_0045E910 &operator=(const Vec4_0045E910 &o)
+    {
+        x = o.x;
+        y = o.y;
+        z = o.z;
+        w = o.w;
+        return *this;
+    }
 };
 
 struct Elem_0045E910 {
@@ -45,8 +54,48 @@ extern State_0045E910 *D_0049D7C8;
 extern void *D_0049D7C4;
 extern char D_0047CC44[];
 
+int func_0045E910(void)
+{
+    unsigned int i;
+
+    D_0049D7C8 = (State_0045E910 *)func_00454B80(0x34f384, 0x37, D_0047CC44);
+    if (D_0049D7C8 == NULL)
+        return 0;
+    for (i = 0; i < sizeof(D_0049D7C8->unk_0x38ccc); i += sizeof(Elem_0045E910)) {
+        ((Elem_0045E910 *)((char *)D_0049D7C8->unk_0x38ccc + i))->unk_0x0 = 1.0f;
+        ((Elem_0045E910 *)((char *)D_0049D7C8->unk_0x38ccc + i))->unk_0x20 = 1.0f;
+        ((Elem_0045E910 *)((char *)D_0049D7C8->unk_0x38ccc + i))->unk_0x40 = 1.0f;
+    }
+    return 1;
+}
+
 void func_0045E970(void)
 {
     func_00454C50(D_0049D7C8);
     func_00454C50(D_0049D7C4);
 }
+
+void func_0045EAD0(Vec4_0045E910 *a, Vec4_0045E910 *b, int *c)
+{
+    Light_0045E910 *l;
+
+    l = &D_0049D7C8->unk_0x1abdc0[D_0049D7C8->unk_0x24];
+    l->unk_0x0 = *a;
+    l = &D_0049D7C8->unk_0x1abdc0[D_0049D7C8->unk_0x24];
+    l->unk_0x10 = *b;
+    D_0049D7C8->unk_0x1abdc0[D_0049D7C8->unk_0x24].unk_0x20 = *c;
+    D_0049D7C8->unk_0x24++;
+    func_00469C20();
+    D_0049D7C8->unk_0x24 = 0;
+}
+
+Item_0045E910 *func_0045EB60(void)
+{
+    State_0045E910 *s;
+
+    if (D_0049D7C8->unk_0x34 >= 0x100)
+        D_0049D7C8->unk_0x34 = 0;
+    s = D_0049D7C8;
+    return &s->unk_0x1c29d0[s->unk_0x34++];
+}
+

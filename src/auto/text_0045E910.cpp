@@ -7,15 +7,6 @@ extern "C" void func_00469C20(void);
 
 struct Vec4_0045E910 {
     float x, y, z, w;
-
-    Vec4_0045E910 &operator=(const Vec4_0045E910 &o)
-    {
-        x = o.x;
-        y = o.y;
-        z = o.z;
-        w = o.w;
-        return *this;
-    }
 };
 
 struct Elem_0045E910 {
@@ -62,9 +53,9 @@ int func_0045E910(void)
     if (D_0049D7C8 == NULL)
         return 0;
     for (i = 0; i < sizeof(D_0049D7C8->unk_0x38ccc); i += sizeof(Elem_0045E910)) {
-        ((Elem_0045E910 *)((char *)D_0049D7C8->unk_0x38ccc + i))->unk_0x0 = 1.0f;
-        ((Elem_0045E910 *)((char *)D_0049D7C8->unk_0x38ccc + i))->unk_0x20 = 1.0f;
-        ((Elem_0045E910 *)((char *)D_0049D7C8->unk_0x38ccc + i))->unk_0x40 = 1.0f;
+        *(float *)(i + (char *)&D_0049D7C8->unk_0x38ccc[0].unk_0x0) = 1.0f;
+        *(float *)(i + (char *)&D_0049D7C8->unk_0x38ccc[0].unk_0x20) = 1.0f;
+        *(float *)(i + (char *)&D_0049D7C8->unk_0x38ccc[0].unk_0x40) = 1.0f;
     }
     return 1;
 }

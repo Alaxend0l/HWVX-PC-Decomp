@@ -45,6 +45,24 @@ extern "C" int func_0046A8F1(FILE *stream)
     return result;
 }
 
+extern "C" int func_0046D3CC(FILE *stream);
+extern "C" void func_0046D373(FILE *stream);
+extern "C" int func_0046D293(int fh);
+extern "C" void func_0046B013(void *p);
+extern "C" size_t func_0046A99D(void *buffer, size_t size, size_t count, FILE *stream);
+extern "C" FILE *func_0046DB75(void);
+extern "C" FILE *func_0046DA05(const char *filename, const char *mode, int shflag, FILE *stream);
+extern "C" size_t func_0046A96E(void *buffer, size_t size, size_t count, FILE *stream)
+{
+    size_t retval;
+
+    func_0046C816(stream);
+    retval = func_0046A99D(buffer, size, count, stream);
+    func_0046C868(stream);
+    return retval;
+}
+#pragma optimize("y", on)
+
 extern "C" FILE *func_0046AAD8(const char *filename, const char *mode)
 {
     return func_0046AAA7(filename, mode, 0x40);

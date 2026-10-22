@@ -44,3 +44,10 @@ void func_0043FF50(void);
 void func_0042D010(int);
 void func_00454C50(void *);
 void *func_00454B80(int, int, const char *);
+
+void func_0042CFF0(void)
+{
+    func_0042D010(1);
+    func_00454C50(D_0048D5DC);
+    D_0048D5DC = NULL;
+}

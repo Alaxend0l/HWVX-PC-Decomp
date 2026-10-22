@@ -21,9 +21,14 @@ static inline float Length3_00453FB0(float x, float y, float z)
 extern float D_0047700C;
 extern float D_00477000;
 extern float D_00477008;
+float func_00454800(float *plane, float *v)
+{
+    return plane[2] * v[2] + plane[1] * v[1] + plane[0] * v[0] + plane[3];
+}
+
 void func_004546B0(float *p)
 {
-    float len = func_004532E0(p[0] * p[0] + p[1] * p[1] + p[2] * p[2]);
+    float len = Length3_00453FB0(p[0], p[1], p[2]);
 
     if (len != D_0047700C && len != D_00477000) {
         float inv = D_0047700C / len;
@@ -142,5 +147,16 @@ void func_00454780(float *out, const float *n, const float *pt)
     out[1] = n[1];
     out[2] = n[2];
     out[3] = (pt[1] * n[1] + pt[2] * n[2] + n[0] * pt[0]) * D_00477008;
+}
+
+float func_00454AC0(float, float);
+void func_00454A30(float *);
+void func_00453D20(float *, float, float *);
+void func_004547C0(float *p)
+{
+    p[0] = p[0] * D_00477008;
+    p[1] = p[1] * D_00477008;
+    p[2] = p[2] * D_00477008;
+    p[3] = p[3] * D_00477008;
 }
 

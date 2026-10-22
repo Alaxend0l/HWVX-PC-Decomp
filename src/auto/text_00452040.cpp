@@ -31,6 +31,7 @@ struct Track_00452040 {
 };
 
 extern Track_00452040 *D_0049DBA0;
+extern int D_0049DBA4;
 extern int D_0049DBA8;
 extern int D_0049DBAC;
 extern int D_0049DBB0;

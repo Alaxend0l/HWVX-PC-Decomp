@@ -9,3 +9,12 @@ void *func_00454B60(void)
 {
     return func_0046AED9(0x54);
 }
+
+void func_004542D0(float *a, float *b)
+{
+    float d = func_00453360(a, b);
+    b[0] = d * a[0];
+    b[1] = d * a[1];
+    b[2] = d * a[2];
+}
+

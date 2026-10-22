@@ -20,6 +20,11 @@ void func_00445C60(void)
     func_004403D0(D_0047B3D0, 0, func_00445D80, 0, 1);
 }
 
+float func_00445D30(void)
+{
+    return D_0053B158;
+}
+
 void func_00445CB0(void)
 {
     func_00440470(D_0047B3D0);

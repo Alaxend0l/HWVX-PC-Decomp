@@ -162,14 +162,14 @@ extern "C" void func_00429830(unsigned int mode)
 {
     D_0048D1C5 = 1;
     D_0048D358 = mode;
-    if (D_0048D358 < 1 && D_0048D358 > 4)
-        D_0048D358 = -1;
+    if (!(mode >= 1 || mode <= 4))
+        D_0048D358 = 0xffffffff;
 }
 
 extern "C" void func_00429860(int *ids, unsigned int count)
 {
     unsigned int i = 0;
-    unsigned int n = func_00440160();
+    unsigned int n = func_00440160() & 0xff;
 
     for (; i < n; i++) {
         char *p = func_00440180(i);

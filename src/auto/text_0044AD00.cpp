@@ -7,10 +7,14 @@ struct Obj_0053A9D0;
 struct Funcs_0053A9D0 {
     void (*unk_0x00)(Obj_0053A9D0 *);
     void (*unk_0x04)(Obj_0053A9D0 *);
+    void (*unk_0x08)(Obj_0053A9D0 *);
+    void (*unk_0x0c)(Obj_0053A9D0 *);
 };
 
 struct Obj_0053A9D0 {
-    char unk_0x00[0x8c];
+    char unk_0x00[0x74];
+    unsigned int unk_0x74;
+    char unk_0x78[0x8c - 0x78];
     Funcs_0053A9D0 *unk_0x8c;
     char unk_0x90[0xa4 - 0x90];
     Obj_0053A9D0 *unk_0xa4;
@@ -50,17 +54,16 @@ void func_0044AD00(int, void *, void *, void *, void *, int);
 void func_0044B310(int a, List_0044B310 *list, int c)
 {
     unsigned int i;
-    Item_0044B310 *item;
-    float q[4];
+    Vec4_0044B310 q;
 
     func_0044A8A0(a, c);
     for (i = 0; i < list->count; i++) {
-        q[0] = 0.0f;
-        q[1] = 0.0f;
-        q[2] = 0.0f;
-        q[3] = 1.0f;
-        item = &list->items[i];
-        func_0044AD00(a, item, item, q, D_00692350, c);
+        Item_0044B310 *item = &list->items[i];
+        q.x = 0.0f;
+        q.y = 0.0f;
+        q.z = 0.0f;
+        q.w = 1.0f;
+        func_0044AD00(a, item, item, &q, D_00692350, c);
     }
 }
 

@@ -13,3 +13,8 @@ extern "C" void *D_0065F460[11];
 extern "C" void *func_00454B80(unsigned int size, int line, const char *file);
 extern "C" void func_00454C50(void *p);
 extern "C" void func_00428A70(int, int);
+
+extern "C" bool func_00427760(void)
+{
+    return D_0048D1A0;
+}

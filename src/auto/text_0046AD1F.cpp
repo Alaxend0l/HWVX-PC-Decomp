@@ -86,3 +86,22 @@ extern "C" void func_0046AD67(void)
 {
 }
 
+#pragma optimize("y", off)
+extern "C" int func_0046AD68(char *string, const char *format, va_list ap)
+{
+    FILE str;
+    FILE *outfile = &str;
+    int retval;
+
+    outfile->_flag = _IOWRT | _IOSTRG;
+    outfile->_ptr = outfile->_base = string;
+    outfile->_cnt = 0x7fffffff;
+    retval = func_0046C971(outfile, format, ap);
+    if (--outfile->_cnt >= 0)
+        *outfile->_ptr = '\0';
+    else
+        func_0046D17B('\0', outfile);
+    return retval;
+}
+#pragma optimize("y", on)
+

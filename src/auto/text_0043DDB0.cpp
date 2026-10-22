@@ -59,6 +59,19 @@ struct Obj_0043EA50 {
     int unk_0xc8;
 };
 
+struct Obj_0043ED30_Sub {
+    char unk_0x0[0x8c];
+    char *unk_0x8c;
+    char unk_0x90[4];
+    struct Obj_0043ED30 *unk_0x94;
+};
+
+struct Obj_0043ED30 {
+    char unk_0x0[0x2c];
+    Obj_0043ED30_Sub *unk_0x2c;
+    bool unk_0x30;
+};
+
 struct Obj_0043ECA0;
 void func_0043E8F0(void)
 {
@@ -159,9 +172,47 @@ void func_0043EBF0(char *p)
         func_0042DE60(*(int *)(p + 0x68));
 }
 
+void func_0043EC10(char *p, char *o)
+{
+    *(char **)(p + 0x2c) = o;
+    if (o != 0) {
+        *(char **)(o + 0x94) = p;
+        *(int *)(p + 0x38) = *(int *)(o + 0xa8);
+        if (*(char **)(o + 0x8c) == &D_0047A2E8) {
+            *(int *)(p + 0x3c) = *(int *)(o + 0x398);
+            func_0040F670(o);
+            if (!((char (*)(char *))func_0043E9F0)(p)) {
+                func_00402EA0(p);
+            }
+        } else if (*(char **)(o + 0x8c) == &D_0047A5E0) {
+            *(int *)(p + 0x3c) = *(int *)(o + 0xb8);
+        }
+        func_00449AA0(o);
+        func_0043EB20(p);
+    }
+}
+
 bool func_0043ECA0(Obj_0043ECA0 *o)
 {
     return ((char (*)(Obj_0043ECA0 *))((void **)o)[8])(o) != 0;
+}
+
+void func_0043ECC0(char *p, char *q)
+{
+    if (*(char **)(p + 0x2c) != 0) {
+        *(char *)(q + 0x80) = 0;
+        (*(void (**)(char *, char *))(*(char **)(*(char **)(p + 0x2c) + 0x8c) + 0x20))(*(char **)(p + 0x2c), q);
+    } else {
+        *(char *)(q + 0x80) = 2;
+        if (*(char *)(p + 0x30) != 0) {
+            *(char *)(q + 0x80) = 1;
+            *(char *)(p + 0x30) = 0;
+        }
+    }
+    if (*(char *)(p + 0x71) != 0) {
+        func_0046A89F(q + 0x74, &D_0047AD1C, *(int *)(p + 0x7c));
+        *(char *)(p + 0x71) = 0;
+    }
 }
 
 extern char D_0047A2E8;
@@ -179,15 +230,15 @@ void func_0043ED30(char *p)
 {
     char *o = *(char **)(p + 0x2c);
     *(char **)(p + 0x2c) = 0;
-    *(char *)(p + 0x30) = 1;
-    if (o != 0)
-        *(int *)(o + 0x94) = 0;
+    *(bool *)(p + 0x30) = true;
+    if (o)
+        *(char **)(o + 0x94) = 0;
 }
 
 void func_0043ED50(char *p)
 {
-    int a;
     int c;
+    int a;
     int b;
     char *o = *(char **)(p + 0x2c);
 

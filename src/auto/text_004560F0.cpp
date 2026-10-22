@@ -38,6 +38,32 @@ void func_00456630(unsigned int *out)
     *out = now.LowPart;
 }
 
+extern "C" DWORD D_00496E38;
+extern "C" HANDLE D_00496E3C;
+extern "C" char D_0047C244[];
+extern float D_004772D4;
+extern float D_00477388;
+extern float D_00477384;
+extern float D_0047700C;
+extern float D_00477060;
+
+struct EngineMutex {
+    EngineMutex()
+    {
+        D_00496E3C = CreateMutexA(NULL, FALSE, D_0047C244);
+        D_00496E38 = GetLastError();
+    }
+    ~EngineMutex()
+    {
+        if (D_00496E3C != NULL) {
+            CloseHandle(D_00496E3C);
+            D_00496E3C = NULL;
+        }
+    }
+};
+
+static EngineMutex s_engineMutex;
+
 int func_00456C80(void)
 {
     return 3;

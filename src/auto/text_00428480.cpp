@@ -28,7 +28,7 @@ struct Unk_0065EC5C {
 extern unsigned int D_0047A908[11];
 extern Entry_0065F460 *D_0065F460[11];
 extern Entry_0065F460 *D_0065F3E0[];
-extern int D_0048D1B8;
+extern unsigned int D_0048D1B8;
 extern void (*D_006929A0)(void);
 extern Unk_0065EC5C D_0065EC5C[];
 extern Unk_0065EC5C D_0065F3DC[];

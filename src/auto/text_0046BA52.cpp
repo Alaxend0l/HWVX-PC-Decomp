@@ -19,13 +19,15 @@ extern "C" void func_0046BCE6(void)
     func_0046E9BA(9);
 }
 
+#pragma optimize("sy", off)
+#pragma optimize("s", on)
 extern "C" void func_0046C120(double *value, char *buf, int ndec, int caps)
 {
     StrFlt_0046BA52 flt;
     char digits[24];
     char *p;
     int exp;
-    int grew;
+    char grew;
 
     func_004717AB(*value, &flt, digits);
     exp = flt.decpt - 1;

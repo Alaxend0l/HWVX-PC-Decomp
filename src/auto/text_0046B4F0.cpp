@@ -20,21 +20,36 @@ extern "C" int func_0046B60F(FILE *stream, long offset, int whence);
 
 extern "C" _onexit_t func_0046B524(_onexit_t func)
 {
+    _onexit_t retval;
     _PVFV *p;
 
     func_0046AEAD();
     if (func_004707C7(D_006D6B10) < (unsigned)((char *)D_006D6B0C - (char *)D_006D6B10 + sizeof(_PVFV))) {
         if ((p = (_PVFV *)func_00470498(D_006D6B10, func_004707C7(D_006D6B10) + 4 * sizeof(_PVFV))) == NULL) {
-            func = NULL;
+            retval = NULL;
             goto done;
         }
         D_006D6B0C = p + (D_006D6B0C - D_006D6B10);
         D_006D6B10 = p;
     }
     *(D_006D6B0C++) = (_PVFV)func;
+    retval = func;
 done:
     func_0046AEB6();
-    return func;
+    return retval;
+}
+
+extern "C" int func_0046B5A2(_PVFV func)
+{
+    return (func_0046B524((_onexit_t)func) == NULL) ? -1 : 0;
+}
+
+extern "C" void func_0046B5B4(void)
+{
+    if ((D_006D6B10 = (_PVFV *)func_0046AED9(32 * sizeof(_PVFV))) == NULL)
+        func_0046AD1F(0x18);
+    *(D_006D6B10) = (_PVFV)NULL;
+    D_006D6B0C = D_006D6B10;
 }
 
 extern "C" int func_0046B5E3(FILE *stream, long offset, int whence)

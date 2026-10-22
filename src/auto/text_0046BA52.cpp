@@ -33,8 +33,10 @@ extern unsigned short *D_0047FA80;
 extern char D_0047FC90[];
 extern char D_0047899C[];
 extern char D_00478980[];
-extern "C" __declspec(dllimport) void *__stdcall GetModuleHandleA(const char *name);
-extern "C" __declspec(dllimport) void *__stdcall GetProcAddress(void *module, const char *name);
+extern "C" void *(__stdcall *_imp__GetModuleHandleA)(const char *name);
+extern "C" void *(__stdcall *_imp__GetProcAddress)(void *module, const char *name);
+#define GetModuleHandleA (*_imp__GetModuleHandleA)
+#define GetProcAddress (*_imp__GetProcAddress)
 extern "C" void func_0046BD6F(void)
 {
     func_0046E9BA(9);
@@ -64,6 +66,24 @@ extern "C" int func_0046BDDA(void)
             return present(0);
     }
     return func_0046BD9C();
+}
+
+extern "C" void func_0046BE03(char *buf)
+{
+    char hold, next;
+
+    if (func_0047120E(*buf) != 'e') {
+        do {
+            buf++;
+        } while (D_0047FC8C > 1 ? func_0047039E(*buf, 4) : D_0047FA80[*buf] & 4);
+    }
+    hold = *buf;
+    *buf++ = *D_0047FC90;
+    do {
+        next = *buf;
+        *buf = hold;
+        hold = next;
+    } while (*buf++);
 }
 
 extern "C" void func_0046C204(char *s, int dist)

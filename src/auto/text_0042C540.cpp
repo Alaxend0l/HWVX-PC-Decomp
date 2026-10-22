@@ -2,6 +2,17 @@
 #include "common.h"
 #include <string.h>
 
+struct Pair_0042C540 {
+    int a;
+    int b;
+};
+
+static inline void SetPair_0042C540(Pair_0042C540 *p, int v)
+{
+    p->a = v;
+    p->b = v;
+}
+
 struct Slot_0042C540 {
     int id;
     int unk_0x4;
@@ -44,6 +55,56 @@ void func_0043FF50(void);
 void func_0042D010(int);
 void func_00454C50(void *);
 void *func_00454B80(int, int, const char *);
+
+void func_0042C540(void)
+{
+    Slot_0042C540 *s;
+
+    for (s = D_0064D080; s < &D_0064D080[4]; s++) {
+        memset(s, 0, sizeof(*s));
+        s->id = -1;
+        s->unk_0xc = -1;
+        s->unk_0x4 = -1;
+        s->unk_0x8 = -1;
+        s->unk_0x14 = -1;
+        s->unk_0x2c = s->unk_0x30 = -1;
+    }
+    func_0043FF50();
+}
+
+void func_0042C580(Car_0042C540 *car)
+{
+    int i;
+    char *p;
+
+    for (i = 0; i < 4; i++) {
+        if (D_0064D080[i].id == car->id && D_0064D080[i].unk_0x24 != NULL)
+            break;
+    }
+    if (i == 4)
+        return;
+    p = *(char **)(D_0064D080[i].unk_0x24 + 0x398);
+    car->color[0] = (*(char **)(p + 0x84))[0x34];
+    car->color[1] = (*(char **)(p + 0x84))[0x35];
+    car->color[2] = (*(char **)(p + 0x84))[0x36];
+    car->color[3] = (*(char **)(p + 0x84))[0x37];
+}
+
+char func_0042CF70(void)
+{
+    unsigned int i;
+
+    D_0048D5DC = (Pool_0042C540 *)func_00454B80(sizeof(Pool_0042C540), 0x42, D_0047ACC0);
+    if (D_0048D5DC == NULL)
+        return 0;
+    D_0048D5DC->count = 0x800;
+    D_0048D5DC->used = 0;
+    for (i = 0; i < D_0048D5DC->count; i++) {
+        D_0048D5DC->entries[i].unk_0x0 = 0;
+        D_0048D5DC->entries[i].unk_0x44 = 0;
+    }
+    return 1;
+}
 
 void func_0042CFF0(void)
 {

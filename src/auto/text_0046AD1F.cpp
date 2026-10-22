@@ -108,6 +108,7 @@ extern "C" int func_0046AD68(char *string, const char *format, va_list ap)
         func_0046D17B('\0', outfile);
     return retval;
 }
+#pragma optimize("y", on)
 
 extern "C" void func_0046ADB9(void)
 {
@@ -115,6 +116,12 @@ extern "C" void func_0046ADB9(void)
         (*D_0047D408)();
     func_0046AEBF(D_0047A00C, D_0047A01C);
     func_0046AEBF(D_0047A000, D_0047A008);
+}
+
+extern "C" void func_0046AE08(int code, int quick, int retcaller);
+extern "C" void func_0046ADE6(int code)
+{
+    func_0046AE08(code, 0, 0);
 }
 
 #pragma optimize("y", on)

@@ -32,7 +32,19 @@ extern char D_0047A59C[];
 
 extern "C" void func_004535E0(Mtx_0041B410 *m, int b, Vec4_0041B410 *out);
 extern "C" void func_0041B1B0(int a, Mtx_0041B410 *m, Obj_0041B410 *obj);
-extern "C" void func_00452F70(const char *msg);
+extern "C" void func_00452F70(const char *fmt, ...);
+
+struct OBox_00663180 {
+    char unk_0x00[0x9d];
+    char unk_0x9d;
+    char unk_0x9e[0x52];
+};
+
+extern OBox_00663180 D_00663180[];
+extern char D_0066321D[];
+extern char D_0068121D[];
+extern char D_0047A5B8[];
+extern char D_0047A5C8[];
 
 extern "C" void func_0041B410(int a, Mtx_0041B410 *m, int b, Obj_0041B410 *obj)
 {
@@ -41,9 +53,9 @@ extern "C" void func_0041B410(int a, Mtx_0041B410 *m, int b, Obj_0041B410 *obj)
     tmp = *m;
     func_004535E0(m, b, &tmp.row[3]);
     func_0041B1B0(a, &tmp, obj);
+    obj->unk_0xa0 = &m->row[2];
     obj->unk_0xa4 = m;
     obj->unk_0xa8 = &m->row[1];
-    obj->unk_0xa0 = &m->row[2];
 }
 
 extern "C" float func_0041BC60(int a, int b, int c, float d)

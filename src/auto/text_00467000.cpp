@@ -87,6 +87,21 @@ void func_00467000(int mode)
     glBlendFunc(D_006C9A68, D_006C99F8);
 }
 
+void func_00467E20(unsigned short tex)
+{
+    if (tex == D_006D4D0C)
+        return;
+    D_006D3E30++;
+    if (tex >= 0xfffe) {
+        glDisable(GL_TEXTURE_2D);
+        D_006D4D0C = 0xffff;
+        return;
+    }
+    D_006D4D0C = tex;
+    glBindTexture(GL_TEXTURE_2D, tex);
+    glEnable(GL_TEXTURE_2D);
+}
+
 void func_004675B0(Elem_004675B0 *elems, unsigned int count, void *v)
 {
     unsigned int i;
@@ -158,6 +173,15 @@ void func_004671A0(int on)
         (*_imp__glEnable)(cap);
     else
         (*_imp__glDisable)(cap);
+}
+
+int func_00467880(int width, int height, int format)
+{
+    int size = ((width + 3) & ~3) * ((height + 3) & ~3);
+
+    if (format == 0x83f0 || format == 0x83f1)
+        size >>= 1;
+    return size;
 }
 
 void func_004670B0(int mode)

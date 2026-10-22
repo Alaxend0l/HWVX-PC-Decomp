@@ -64,6 +64,13 @@ float func_00445D30(void)
     return D_0053B158;
 }
 
+void func_00445D50(int on, Block_0053B180 *b)
+{
+    D_0053B1E4 = on;
+    if (on)
+        D_0053B180 = *b;
+}
+
 void func_00445CB0(void)
 {
     func_00440470(D_0047B3D0);

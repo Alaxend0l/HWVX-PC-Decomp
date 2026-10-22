@@ -6,6 +6,7 @@ extern "C" unsigned short* D_0047FA80;
 extern "C" int func_0047039E(int c, int mask);
 extern "C" long func_0046B260(const char* nptr);
 
+#pragma optimize("s", on)
 extern "C" long func_0046B260(const char* nptr)
 {
     int c;
@@ -32,8 +33,6 @@ extern "C" long func_0046B260(const char* nptr)
     else
         return total;
 }
-
-#pragma optimize("s", on)
 extern "C" int func_0046B2EB(const char* nptr)
 {
     return (int)func_0046B260(nptr);

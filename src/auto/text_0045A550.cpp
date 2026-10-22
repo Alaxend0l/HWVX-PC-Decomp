@@ -1,5 +1,7 @@
 /* 11 functions from 0x0045A550 to 0x0045B480, found by Ghidra. */
 #include "common.h"
+#include <string.h>
+#include <crtdbg.h>
 
 struct Sound_0045A550 {
     char unk_0x00[0x1e];

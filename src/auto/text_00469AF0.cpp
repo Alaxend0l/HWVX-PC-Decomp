@@ -81,6 +81,16 @@ extern "C" void func_00469AF0(int id, int b)
                       &GROUPS_00469AF0(D_0049D7C8)[id].unk_0x44[j], j + 1);
 }
 
+extern "C" void func_0046A6C8(void)
+{
+    D_0047D44C = func_0046C1B3;
+    D_0047D450 = func_0046BE5D;
+    D_0047D454 = func_0046BEC3;
+    D_0047D458 = func_0046BE03;
+    D_0047D45C = func_0046BEAB;
+    D_0047D460 = func_0046C1B3;
+}
+
 extern "C" void func_00469B80(Arrays_00469B80 *a)
 {
     glEnableClientState(GL_VERTEX_ARRAY);
@@ -118,6 +128,25 @@ extern "C" void func_00469C20(void)
         n = D_0049D7C8->unk_0x24;
     }
     func_00466FF0();
+}
+
+extern "C" void func_00469DD0(Light_00469AF0 *l)
+{
+    l->unk_0x10.z = -1.0f;
+    l->unk_0x0.z = -1.0f;
+    glColor3ub(l->unk_0x20[0], l->unk_0x20[1], l->unk_0x20[2]);
+    glVertex3fv(&l->unk_0x0.x);
+    glVertex3fv(&l->unk_0x10.x);
+}
+
+extern "C" int func_00469F10(Image_00469F10 *img)
+{
+    if (img->unk_0x4 != NULL) {
+        func_0046B013(img->unk_0x4);
+        img->unk_0x4 = NULL;
+    }
+    img->unk_0x4 = func_0046BC4D(img->unk_0x8 * img->unk_0xc * 4, 1);
+    return img->unk_0x4 != NULL;
 }
 
 extern "C" void func_0046A714(void)

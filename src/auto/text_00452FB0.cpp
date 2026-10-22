@@ -9,7 +9,7 @@ extern "C" char D_0047BE0C[];
 extern "C" char D_0047BDF8[];
 extern "C" char *func_0046ABF0(const char *s, int ch);
 extern "C" int func_0046A89F(char *string, const char *format, ...);
-extern "C" int func_0046ADE6(int code);
+extern "C" __declspec(noreturn) void func_0046ADE6(int code);
 
 int func_00452FB0(const char *expr, const char *file, int line, const char *msg)
 {

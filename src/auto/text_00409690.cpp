@@ -150,6 +150,21 @@ extern "C" int func_00409E60(int a)
     return 0;
 }
 
+extern "C" void func_00409E90(int a, int type, int b)
+{
+    switch (type) {
+    case 0:
+        func_00459A30(a, (short)b);
+        break;
+    case 1:
+        func_00459AC0(a, b);
+        break;
+    case 4:
+        func_00459A70(a, b, -0x7fff);
+        break;
+    }
+}
+
 extern "C" void func_00459DA0(int, int);
 extern "C" void func_00459A70(int, int, int);
 extern "C" void func_00459AC0(int, int);

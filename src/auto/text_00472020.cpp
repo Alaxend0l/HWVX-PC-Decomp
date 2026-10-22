@@ -71,6 +71,31 @@ extern "C" int func_004721FC(int fh, long value)
     return -1;
 }
 
+extern "C" int func_00472278(int fh)
+{
+    if ((unsigned)fh < D_006D5AE0 && (D_006D59E0[fh >> 5][fh & 0x1f].osfile & 1)
+        && D_006D59E0[fh >> 5][fh & 0x1f].osfhnd != -1) {
+        if (D_0047D434 == 1) {
+            switch (fh) {
+            case 0:
+                SetStdHandle((unsigned long)-10, NULL);
+                break;
+            case 1:
+                SetStdHandle((unsigned long)-11, NULL);
+                break;
+            case 2:
+                SetStdHandle((unsigned long)-12, NULL);
+                break;
+            }
+        }
+        D_006D59E0[fh >> 5][fh & 0x1f].osfhnd = -1;
+        return 0;
+    }
+    *func_00470486() = 9;
+    *func_0047048F() = 0;
+    return -1;
+}
+
 extern "C" void func_00472095(FILE_ *stream)
 {
     D_0049D870++;

@@ -105,3 +105,18 @@ extern "C" void func_0041B600(void)
     } while (p < D_0068121D);
 }
 
+extern "C" OBox_00663180 *func_0041B630(void)
+{
+    int i = 0;
+    char *p;
+
+    for (p = D_0066321D; p < D_0068121D; p += sizeof(OBox_00663180), i++) {
+        if (*p == 0) {
+            D_0066321D[i * sizeof(OBox_00663180)] = 1;
+            return &D_00663180[i];
+        }
+    }
+    func_00452F70(D_0047A5C8);
+    return 0;
+}
+

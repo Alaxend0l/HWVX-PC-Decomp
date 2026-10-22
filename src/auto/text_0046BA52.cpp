@@ -24,7 +24,6 @@ extern "C" void func_0046BCEF(void)
 }
 
 extern "C" void func_004710DD(unsigned int, unsigned int);
-extern "C" void func_0046BD9C_decl_unused(void);
 extern "C" int func_0047120E(int c);
 extern "C" int func_0047039E(int c, int mask);
 extern "C" unsigned int func_00471CF0(const char *s);

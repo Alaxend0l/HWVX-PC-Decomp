@@ -14,3 +14,52 @@ extern int D_006D6B08;
 extern unsigned char *D_006D6B14;
 extern "C" void func_00472B36(void);
 extern "C" int func_0047271C(unsigned int c);
+
+#pragma optimize("s", on)
+
+extern "C" XcptAction_0046D6D0 *func_0046DD7B(unsigned long xcptnum, XcptAction_0046D6D0 *table)
+{
+    XcptAction_0046D6D0 *p = table;
+
+    while (p->XcptNum != xcptnum && ++p < table + D_0047D7B4)
+        ;
+    if (p >= table + D_0047D7B4 || p->XcptNum != xcptnum)
+        return NULL;
+    return p;
+}
+
+extern "C" unsigned char *func_0046DDB5(void)
+{
+    unsigned char *p;
+
+    if (D_006D6B08 == 0)
+        func_00472B36();
+    p = D_006D6B14;
+    if (*p == '"') {
+        while (*++p != '"' && *p != '\0') {
+            if (func_0047271C(*p))
+                p++;
+        }
+        if (*p == '"')
+            p++;
+    } else {
+        while (*p > ' ')
+            p++;
+    }
+    while (*p != '\0' && *p <= ' ')
+        p++;
+    return p;
+}
+
+extern "C" void func_0046E401(unsigned char *ver)
+{
+    unsigned char *base;
+    int off;
+
+    *(int *)ver = 0;
+    base = (unsigned char *)GetModuleHandleA(NULL);
+    if (*(unsigned short *)base == 0x5a4d && (off = *(int *)(base + 0x3c)) != 0) {
+        ver[0] = base[off + 0x1a];
+        ver[1] = base[off + 0x1b];
+    }
+}

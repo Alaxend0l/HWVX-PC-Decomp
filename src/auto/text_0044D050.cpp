@@ -33,19 +33,29 @@ void func_0044A790(Obj_0044D050 **, Obj_0044D050 *);
 void func_00449AD0(Obj_0044D050 *);
 int func_0045E270(char *, int);
 void func_0044D860(int, int);
+char func_0041ACE0(int, int, int, int);
+char func_0044D370(int, int, int, int);
+char func_004194B0(int, float *, float *, int);
+char func_0044D250(int, Obj_0044D050 *, int);
+char func_00419CA0(int, int);
+char func_0044D140(int, Obj_0044D050 *, int);
 
+extern int *D_0049DBA0;
+extern float D_00692350[4];
+extern unsigned int D_0052E664;
+extern char D_0052E5F0[];
+
+int func_0045E270(float *, float);
 void func_0044D050(void)
 {
     Obj_0044D050 *p;
 
-    p = D_0053A9D0;
-    while (p != NULL) {
-        if ((p->unk_0x74 & 0x200200) == 0 && func_0045E270((char *)p + 0x40, p->unk_0x70) != 0) {
+    for (p = D_0053A9D0; p != NULL; p = p->unk_0xa4) {
+        if ((p->unk_0x74 & 0x200200) == 0 && func_0045E270(p->unk_0x40, p->unk_0x70) != 0) {
             p->unk_0x8c->unk_0x10(p);
             D_0048D97C = p;
             func_00449AD0(p);
         }
-        p = p->unk_0xa4;
     }
     D_0048D97C = NULL;
 }
@@ -63,10 +73,11 @@ Obj_0044D050 *func_0044D0B0(int id, int arg)
     return NULL;
 }
 
-Obj_0044D050 *func_0044D0F0(int id, int arg, char c)
+Obj_0044D050 *func_0044D0F0(unsigned int id, int arg, char c)
 {
-    Obj_0044D050 *p = func_0044A810(&D_0053A9D4[id]);
+    Obj_0044D050 *p;
 
+    p = func_0044A810(D_0053A9D4 + id);
     if (p != NULL) {
         p->unk_0x8c->unk_0x00(p, arg);
         p->unk_0x74 |= 0x20000000;

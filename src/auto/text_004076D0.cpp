@@ -91,6 +91,13 @@ void func_00408260(Obj_004076D0 *obj, int b, Vec4_004076D0 *color)
     func_00407BE0((int *)obj, b, color);
 }
 
+void func_00408290(Obj_004076D0 *obj, Vec4_004076D0 *color)
+{
+    func_004076D0(obj, (List_004076D0 *)(*(char **)obj + 0x2c), color);
+    func_00407DA0(obj, color);
+    return;
+}
+
 void func_004082C0(Obj_004076D0 *obj, int b, Vec4_004076D0 *color)
 {
     func_004081C0(obj, b, color);

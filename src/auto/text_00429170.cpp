@@ -69,6 +69,7 @@ extern char D_0065E339;
 extern char D_0048D4C0;
 extern int D_0065E33C;
 extern int D_0064D160;
+extern char D_0064D400[];
 extern char D_0064D164;
 extern unsigned char D_0064D165;
 extern unsigned char D_0064D166;
@@ -220,6 +221,70 @@ extern "C" void func_00429860(int *ids, unsigned int count)
             }
             i++;
         } while (i < n);
+    }
+}
+
+extern "C" void func_00429C30(void)
+{
+    int i;
+
+    memset(D_0065E2A0, 0, 0xbc);
+    D_0048D4C0 = 1;
+    D_0065E33C = 1;
+    func_00429E60();
+    func_00429E80();
+    func_00429DD0();
+    memset(&D_0064D160, 0, 0x188);
+    D_0064D160 = 0;
+    D_0064D166 = 1;
+    D_0064D165 = 100;
+    D_0064D164 = 100;
+    for (i = 1; i <= 4; i++) {
+        func_00429F10(i);
+        D_0064D148[i].data[0] = 1;
+    }
+    switch (func_00429EA0()) {
+    case 0:
+        D_0064DD34 = D_0064D300;
+        memset(D_0064D300, 0, 0xf4);
+        D_0047AAF4 = 0x928;
+        D_0047AAF8 = 0xf4;
+        D_0064DD38 = D_0064D300 + 0x100;
+        D_0064D300[0x0] = 1;
+        D_0064D300[0x1] = 1;
+        D_0064D300[0x2] = 1;
+        D_0064D300[0x3] = 1;
+        D_0064D300[0x4] = 1;
+        D_0064D300[0x5] = 1;
+        D_0064D300[0x93] = 1;
+        D_0064D300[0x94] = 1;
+        D_0064D300[0x95] = 1;
+        D_0064D300[0x21] = 1;
+        D_0064D300[0x26] = 1;
+        D_0064D300[0x34] = 1;
+        D_0064D300[0x35] = 1;
+        D_0064D300[0x36] = 1;
+        D_0064D300[0x37] = 1;
+        D_0064D300[0x3e] = 1;
+        D_0064D300[0x3f] = 1;
+        D_0064D300[0x40] = 1;
+        D_0064D300[0x41] = 1;
+        D_0064D300[0x48] = 1;
+        D_0064D300[0xaa] = 1;
+        D_0064D300[0xab] = 1;
+        D_0064D300[0xae] = 1;
+        break;
+    case 1:
+        D_0064DD34 = D_0064DD40;
+        memset(D_0064DD40, 0, 0x1cdc);
+        D_0047AB10 = 0xe868;
+        D_0047AB14 = 0x1cdc;
+        D_0064DD38 = D_0064DD40 + 0x1cdc;
+        D_0064DD40[0x0] = 1;
+        D_0064DD40[0x14] = 1;
+        func_00429FA0(0x6a, 10, 1);
+        func_00429FA0(0x6b, 10, 1);
+        break;
     }
 }
 

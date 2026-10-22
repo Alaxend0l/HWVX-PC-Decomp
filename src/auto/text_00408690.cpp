@@ -57,5 +57,5 @@ extern int D_0069236C;
 void func_004268B0(void *, void *, int);
 void func_00426BE0(void *, void *, int);
 void func_00460820(int);
-Out_0045EC70 *func_0045EC70(int);
+Out_0045EC70 *func_0045EC70(u16);
 void func_004088B0(Obj_00408690 *);

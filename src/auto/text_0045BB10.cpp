@@ -24,3 +24,19 @@ extern List_0045C D_00499A68[];
 
 void func_0045D630(Node_0045C *, int);
 void func_0045DC20(Node_0045C *, int);
+
+void func_0045C640(List_0045C *list)
+{
+    list->head = list->head->next;
+    func_0045D630(list->unk_0x4, 3);
+    list->unk_0x4 = NULL;
+}
+
+void func_0045C5E0(List_0045C *list)
+{
+    Node_0045C *n;
+
+    for (n = list->head; n != NULL; n = n->next)
+        func_0045DC20(n, list->unk_0x1a);
+}
+

@@ -17,6 +17,7 @@ extern float D_00477388;
 extern float D_00477384;
 extern float D_0047700C;
 extern float D_00477060;
+extern float D_0047738C;
 extern "C" int D_00496FC0;
 extern "C" int D_00496E40[0x51];
 extern "C" unsigned char D_00496E44[][0x144];
@@ -38,11 +39,34 @@ float func_00456750(int a, int b, float c, float d)
     return (t3 * s + (D_0047700C - s) * t) * ((d - c) * D_00477060) + (c + d) * D_00477060;
 }
 
+void func_00456830(void)
+{
+    memset(D_0068DF20, 0, sizeof(D_0068DF20));
+    memset(D_006924C0, 0, sizeof(D_006924C0));
+    D_00496FCC = 0;
+    if (D_00496FC0)
+        D_006924C2 = 1;
+    if (D_00496E40[0])
+        D_006924C2 = 1;
+}
+
 void func_004567B0(int n, unsigned char b)
 {
     int i;
     for (i = 0; i < 0x100; i++)
         D_00496E44[n][i] = (unsigned char)func_00456750(i, b, 0.0f, 255.0f);
+}
+
+char func_00456800(void)
+{
+    char c;
+    func_00456FE0();
+    c = func_00456D80();
+    D_00496FC0 = c;
+    memset(D_00496E40, 0, sizeof(D_00496E40));
+    func_00456E50();
+    func_00456830();
+    return 1;
 }
 
 void func_004564B0(void)

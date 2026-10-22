@@ -27,12 +27,70 @@ struct Obj_0043EA10 {
     char unk_0x118[1];
 };
 
+struct Obj_0043EA50 {
+    char unk_0x0[0x31];
+    char unk_0x31;
+    char unk_0x32[2];
+    int unk_0x34;
+    char unk_0x38[4];
+    int unk_0x3c;
+    char unk_0x40[0x20];
+    int unk_0x60;
+    char unk_0x64[4];
+    int unk_0x68;
+    int unk_0x6c;
+    char unk_0x70[0x38];
+    char unk_0xa8[4];
+    short unk_0xac;
+    short unk_0xae;
+    char unk_0xb0[0x18];
+    int unk_0xc8;
+};
+
 struct Obj_0043ECA0;
 void func_0043E8F0(void)
 {
     func_004585A0(D_0047B0CC);
     D_0047B0CC = -1;
     D_0048D780 = 0;
+}
+
+void func_0041E450(char *);
+int func_00458EF0(int);
+int func_0043E9F0(char *);
+void func_0043EA50(char *p, int)
+{
+    int i;
+
+    func_0041E450(p);
+    *(char *)(p + 0x40) = 0;
+    *(char *)(p + 0x31) = 0;
+    *(int *)(p + 0x3c) = 0;
+    *(int *)(p + 0x68) = -1;
+    for (i = 0; i < 14; i++)
+        ((int *)(p + 0x70))[i] = 0;
+    *(char *)(p + 0x71) = 1;
+    *(int *)(p + 0x34) = 0;
+    ((short *)(p + 0x94))[0] = 0x1e;
+    ((short *)(p + 0x94))[1] = 0x1e;
+    ((short *)(p + 0x94))[2] = 0x1e;
+    ((short *)(p + 0x94))[3] = 0x1e;
+    ((short *)(p + 0x94))[4] = 0x1e;
+    ((short *)(p + 0x94))[5] = 0x1e;
+    ((short *)(p + 0x94))[6] = 0x1e;
+    ((short *)(p + 0x94))[7] = 0x1e;
+    *(short *)(p + 0xa2) = 0;
+    *(int *)(p + 0x6c) = 0;
+    *(short *)(p + 0xac) = -1;
+    *(short *)(p + 0xae) = -1;
+}
+
+void func_0043EAC0(char *p, int a, const char *s)
+{
+    strcpy(p + 0x40, s);
+    *(int *)(p + 0x60) = a;
+    if (((char (*)(char *))func_0043E9F0)(p))
+        *(int *)(p + 0xc8) = func_00458EF0(*(int *)(p + 0x60));
 }
 
 int func_0043E9F0(char *p)

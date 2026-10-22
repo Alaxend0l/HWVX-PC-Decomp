@@ -2,6 +2,7 @@
 #include "common.h"
 #include <windows.h>
 #include <string.h>
+#include <GL/gl.h>
 
 struct DisplayMode {
     int id;
@@ -22,15 +23,15 @@ extern "C" int func_00466390(char *word, char *list)
 {
     char *p;
     char *end;
+    int len;
 
     if (func_0046B970(word, ' ') == NULL && *word != '\0') {
-        p = func_0046B1E0(list, word);
-        while (p != NULL) {
-            end = p + strlen(word);
+        for (p = func_0046B1E0(list, word); p != NULL; p = func_0046B1E0(list, word)) {
+            len = strlen(word);
+            end = p + len;
             if ((p == list || p[-1] == ' ') && (*end == ' ' || *end == '\0'))
                 return 1;
             list = end;
-            p = func_0046B1E0(list, word);
         }
     }
     return 0;
@@ -55,12 +56,15 @@ extern "C" short func_004664C0(void)
 
 extern "C" void func_00465CB0(int enable)
 {
-    if (D_006C9AC0) {
-        if (!enable) {
-            ChangeDisplaySettingsA(NULL, CDS_FULLSCREEN);
-            return;
-        }
-        if (ChangeDisplaySettingsA(&D_006C9AE0, CDS_FULLSCREEN) != DISP_CHANGE_SUCCESSFUL)
-            MessageBoxA(NULL, D_0047D11C, NULL, MB_ICONHAND);
+    LONG result;
+
+    if (!D_006C9AC0)
+        return;
+    if (!enable) {
+        ChangeDisplaySettingsA(NULL, CDS_FULLSCREEN);
+        return;
     }
+    result = ChangeDisplaySettingsA(&D_006C9AE0, CDS_FULLSCREEN);
+    if (result != DISP_CHANGE_SUCCESSFUL)
+        MessageBoxA(NULL, D_0047D11C, NULL, MB_ICONHAND);
 }

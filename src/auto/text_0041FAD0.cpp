@@ -43,6 +43,15 @@ struct Obj_0041FAD0 {
 };
 
 extern float D_00477000;
+extern char D_0047A658;
+
+struct Slot_00489A9C {
+    char unk_0x00;
+    char unk_0x01[0x4ff];
+};
+
+extern Slot_00489A9C D_00489A9C[];
+extern Slot_00489A9C D_0048D19C[];
 
 extern "C" void func_004533F0(float, Vec4_0041FAD0 *, Vec4_0041FAD0 *, Vec4_0041FAD0 *);
 extern "C" void func_004073A0(Mesh_0041FAD0 **);
@@ -53,14 +62,15 @@ extern "C" void func_00438770(Obj_0041FAD0 *);
 extern "C" void func_0041FC50(Obj_0041FAD0 *o, float dt)
 {
     Vec4_0041FAD0 t;
-    unsigned i;
+    Vec4_0041FAD0 *vel = &o->vel;
     unsigned *count;
+    unsigned i;
 
-    func_004533F0(dt, &o->vel, &o->pos, &t);
+    func_004533F0(dt, vel, &o->pos, &t);
     o->pos = t;
     count = o->mesh->unk_0x14;
     for (i = 0; i < *count; i++) {
-        o->nodes[i].pos.x += dt * o->vel.x;
+        o->nodes[i].pos.x += dt * vel->x;
         o->nodes[i].pos.y += dt * o->vel.y;
         o->nodes[i].pos.z += dt * o->vel.z;
     }
@@ -71,15 +81,15 @@ extern "C" void func_004202B0(Obj_0041FAD0 *o)
 {
     if (o->unk_0x1bc > D_00477000)
         func_004073A0(&o->mesh);
-    o->flags |= 0x4000;
+    o->flags = o->flags | 0x4000;
 }
 
-extern "C" char func_004202E0(Obj_0041FAD0 *a, Obj_0041FAD0 *b)
+extern "C" char func_004202E0(int a, Obj_0041FAD0 *b)
 {
     void *r;
 
     if (*b->unk_0xc0 == 3) {
-        r = func_0044A840(a->unk_0xe4, 8);
+        r = func_0044A840((void *)(a + 0xe4), 8);
         if (r != 0) {
             func_00451C80(r, b->unk_0xc0, b->unk_0xce);
             func_00438770(b);

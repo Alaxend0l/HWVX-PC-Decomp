@@ -36,6 +36,10 @@ struct Obj_004076D0 {
 };
 
 void func_0044AD00(void *, void *, void *, void *, void *, int);
+extern float D_00692378;
+extern float D_0047700C;
+void func_00407BC0(int **obj, int arg);
+void func_00407BE0(int *, int, Vec4_004076D0 *);
 
 void func_004076D0(Obj_004076D0 *obj, List_004076D0 *list, Vec4_004076D0 *color)
 {
@@ -77,5 +81,16 @@ void func_00407BE0(int *, int, Vec4_004076D0 *);
 void func_00407BC0(int **obj, int arg)
 {
     func_004077E0(obj, arg, (*obj)[6]);
+}
+
+void func_00408200(int a, int b, int *obj, int d)
+{
+    char buf[0x800];
+
+    if (obj[4]) {
+        int *q = *(int **)(*obj + 0x14);
+        func_00407350(obj, buf);
+        func_00408440(a, b, buf, *q, d, obj[4]);
+    }
 }
 

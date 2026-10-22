@@ -122,14 +122,16 @@ extern "C" void func_00429F10(int a)
 {
     char *dev = (char *)func_00429EC0();
     Info_00429 *info = func_0042B040(a);
+    Guid_00429 *d;
 
     if (dev != NULL && *(int *)(dev + 0x3c) != 0) {
         int *g = (int *)((int *)**(int **)*(int *)(dev + 0x40))[1];
-        int *d = info->unk_0x2.unk_0x0;
-        d[0] = g[0];
-        d[1] = g[1];
-        d[2] = g[2];
-        d[3] = g[3];
+        int g0 = g[0];
+        d = &info->unk_0x2;
+        d->unk_0x0[0] = g0;
+        d->unk_0x0[1] = g[1];
+        d->unk_0x0[2] = g[2];
+        d->unk_0x0[3] = g[3];
         info->unk_0x12[0] = 10;
         info->unk_0x12[1] = 11;
         info->unk_0x12[2] = 9;
@@ -143,9 +145,9 @@ extern "C" void func_00429F10(int a)
         info->unk_0x12[10] = 12;
         info->unk_0x12[11] = 13;
         info->unk_0x12[12] = 1;
-        return;
+    } else {
+        memset(&info->unk_0x2, 0, sizeof(Guid_00429));
     }
-    memset(&info->unk_0x2, 0, sizeof(Guid_00429));
 }
 
 extern "C" int func_00429EA0(void)

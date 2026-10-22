@@ -122,11 +122,52 @@ void func_00459D70(int a)
     D_0069299C();
 }
 
+char func_00459EC0(void)
+{
+    memset(D_00499230, 0, sizeof(D_00499230));
+    memset(D_00499260, 0, sizeof(D_00499260));
+    D_00499254 = 0;
+    return 1;
+}
+
 char func_00459EF0(void)
 {
     if (D_00499254)
         func_0045A090();
     return 1;
+}
+
+void func_0045A090(void)
+{
+    if (D_00499254 == 0)
+        return;
+    if (!func_00459B10(1)) {
+        if (func_00452FB0(D_0047C02C, D_0047C730, 0x155, 0, 0))
+            _CrtDbgBreak();
+        return;
+    }
+    if (D_00499A60 != 1 && func_00452FB0(D_0047C750, D_0047C730, 0x158, 0, 0))
+        _CrtDbgBreak();
+    func_0045A130(3);
+    func_0045DF10(D_00499254);
+    D_00499254 = 0;
+    memset(D_006929C0, 0, sizeof(D_006929C0));
+    D_00499A60 = 0;
+    func_00459B10(0);
+}
+
+void func_0045A370(void)
+{
+    int i;
+    Chan_00499260 *c;
+    Voice_00459C00 *v;
+
+    c = D_00499260;
+    for (i = 0; i < 16; i++, c++) {
+        func_0045AF50(c);
+        for (v = c->head; v != NULL; v = v->next)
+            func_0045DC20(v, c->unk_0x14);
+    }
 }
 
 void func_00459C40(void)

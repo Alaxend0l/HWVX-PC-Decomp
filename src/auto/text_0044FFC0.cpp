@@ -40,6 +40,40 @@ struct Cmd_00450780 {
     Target_00450780 *targets[1];
 };
 
+struct Trigger_004507E0 {
+    char pad0[0x14];
+    void *unk_14;
+    char pad18[0x4];
+    int unk_1c;
+    char pad20[0x30];
+};
+
+struct Level_004507E0 {
+    char pad0[0x20];
+    unsigned int numTriggers;
+    Trigger_004507E0 *triggers;
+    char pad28[0x38];
+    unsigned int numPaths;
+    char (*paths)[0x10];
+};
+
+struct Slot_0049DCC0 {
+    char *path;
+    char data[0x2c];
+    char active;
+    char pad31[3];
+};
+
+extern "C" Level_004507E0 *D_0049DBA0;
+extern "C" int D_00496DD0;
+extern "C" unsigned int D_00496DCC;
+extern "C" Slot_0049DCC0 D_0049DCC0[];
+extern "C" void *D_0049DBC0[];
+extern "C" int D_0069236C;
+extern "C" void func_004268B0(int, char *, int);
+extern "C" void func_00401090(void);
+extern "C" void func_004508C0(void *p);
+
 extern "C" char func_0044F4D0(char a, int b, int c);
 extern "C" int func_00401140(void *p);
 
@@ -93,9 +127,50 @@ extern "C" void func_004505A0(void)
     }
 }
 
+extern "C" void func_00450640(void)
+{
+    unsigned int i;
+    unsigned int j;
+    int sum;
+
+    if (D_00496DC8)
+        return;
+    for (i = 0; i < D_0047B984; i++) {
+        if (D_00496DB0[i]->state_24 == 2)
+            continue;
+        if (!func_0044F4D0(D_00496DB0[i]->unk_28, D_00496DB0[i]->unk_10, D_00496DB0[i]->unk_c))
+            continue;
+        sum = 0;
+        for (j = 0; j < D_00496DB0[i]->unk_1c; j++)
+            sum += func_00401140(D_00496DB0[i]->unk_14 + j * 0x18);
+        if (sum == 0)
+            D_00496DB0[i]->state_24 = 2;
+    }
+}
+
+extern "C" void func_004506E0(void)
+{
+    if (!D_00496DC8) {
+        for (unsigned int i = 0; i < D_0047B9A8; i++) {
+            if (D_00496DBC[i]->state_24 != 2
+                && func_0044F4D0(D_00496DBC[i]->unk_28, D_00496DBC[i]->unk_10, D_00496DBC[i]->unk_c)) {
+                int sum = 0;
+                unsigned int n = D_00496DBC[i]->unk_1c;
+                for (unsigned int j = 0; j < n; j++) {
+                    sum += func_00401140(&D_00496DBC[i]->unk_14[j * 0x18]);
+                    n = D_00496DBC[i]->unk_1c;
+                }
+                if (sum == 0)
+                    D_00496DBC[i]->state_24 = 2;
+            }
+        }
+    }
+}
+
 extern "C" char func_00450780(Cmd_00450780 *cmd)
 {
-    for (unsigned int i = 0; i < cmd->count; i++) {
+    unsigned int n = cmd->count;
+    for (unsigned int i = 0; i < n; i++) {
         Target_00450780 *t = cmd->targets[i];
         switch (cmd->op) {
         case 0:

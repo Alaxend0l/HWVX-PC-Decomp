@@ -21,6 +21,14 @@ extern unsigned char D_0049D7D0;
 extern unsigned char D_0049D7D1;
 extern unsigned char D_006D3D4C;
 extern int D_006D4D40[0x280];
+void func_00461A80(void)
+{
+    func_00401090();
+    func_0045E970();
+    func_00462100();
+    func_00465490();
+}
+
 void func_004620A0(void)
 {
     func_00401090();

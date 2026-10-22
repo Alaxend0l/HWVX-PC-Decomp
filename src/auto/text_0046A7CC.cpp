@@ -18,3 +18,8 @@ extern "C" void func_0046C897(int, void *);
 extern "C" int func_0046C8BA(void *);
 extern "C" void func_0046C947(int, void *);
 extern "C" int func_0046C971(void *, const char *, va_list);
+
+extern "C" void func_0046A7F3(unsigned int seed)
+{
+    func_0046C653()->holdrand = seed;
+}

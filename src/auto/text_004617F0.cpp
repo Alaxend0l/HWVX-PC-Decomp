@@ -41,6 +41,20 @@ extern unsigned char D_0049D7D0;
 extern unsigned char D_0049D7D1;
 extern unsigned char D_006D3D4C;
 extern int D_006D4D40[0x280];
+void func_00461B50(void)
+{
+    D_006D4D18 = 0;
+    D_006D4D04 = 1;
+    D_006D4D08 = 64.0f;
+    D_006D4D19 = 0xff;
+    D_006D4D16 = 1;
+    D_006D4D17 = 1;
+    D_006D4D1A = 0xff;
+    D_006D4D1C = 0;
+    D_006D4D10 = 0;
+    D_006D4D20 = 0;
+}
+
 int func_00461A10(void)
 {
     func_00453100();
@@ -114,12 +128,18 @@ void func_00461B30(void)
 
 void func_00461BA0(int flags)
 {
-    D_006D4D04 |= flags;
+    int *p = &D_006D4D04;
+    *p |= flags;
 }
 
 void func_00461BC0(int flags)
 {
     D_006D4D04 &= ~flags;
+}
+
+extern "C" void func_00461BE0(unsigned char v)
+{
+    D_006D4D1C = v;
 }
 
 void func_00461D20(int id)

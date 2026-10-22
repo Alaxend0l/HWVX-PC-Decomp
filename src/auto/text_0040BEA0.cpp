@@ -49,6 +49,23 @@ struct Slot_0040BEA0 {
     Model_0040BEA0 *unk_0x168;
 };
 
+struct SlotField_0040BEA0 {
+    void *unk_0x0;
+    char unk_0x4[0x16c - 0x4];
+};
+
+struct SlotSub_0040BEA0 {
+    void *unk_0x0;
+    int unk_0x4;
+    char unk_0x8[0x16c - 0x8];
+};
+
+extern SlotField_0040BEA0 D_0068143C[];
+extern SlotField_0040BEA0 D_00681440[];
+extern SlotSub_0040BEA0 D_006815A8[];
+extern SlotField_0040BEA0 D_006815AC[];
+extern SlotField_0040BEA0 D_00681668[];
+
 extern char D_0047A2E4[];
 extern char D_0053A9D0[];
 void func_0044A910(void *);

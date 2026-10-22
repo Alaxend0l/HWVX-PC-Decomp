@@ -38,6 +38,13 @@ float func_00456750(int a, int b, float c, float d)
     return (t3 * s + (D_0047700C - s) * t) * ((d - c) * D_00477060) + (c + d) * D_00477060;
 }
 
+void func_004567B0(int n, unsigned char b)
+{
+    int i;
+    for (i = 0; i < 0x100; i++)
+        D_00496E44[n][i] = (unsigned char)func_00456750(i, b, 0.0f, 255.0f);
+}
+
 void func_004564B0(void)
 {
     QueryPerformanceFrequency(&D_0068DDB8);

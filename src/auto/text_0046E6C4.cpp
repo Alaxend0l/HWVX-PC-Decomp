@@ -32,6 +32,18 @@ extern "C" int func_0046F017(void)
     sw = 0;
     return sw;
 }
+
+extern "C" double func_0046EED3(double x, int exp)
+{
+    double retval;
+    int biased_exp;
+
+    retval = x;
+    biased_exp = exp + 0x3fe;
+    *((unsigned short *)&retval + 3) = (unsigned short)(*((unsigned short *)&x + 3) & 0x800f | (biased_exp << 4));
+    return retval;
+}
+
 #pragma optimize("y", on)
 
 extern "C" void func_0046EE99(int code)
@@ -45,6 +57,14 @@ extern "C" void func_0046EE99(int code)
         *func_00470486() = 0x22;
         break;
     }
+}
+
+#pragma optimize("y", off)
+extern "C" double func_0046EEC1(double x)
+{
+    double r;
+    r = x;
+    return r;
 }
 
 #pragma optimize("y", on)

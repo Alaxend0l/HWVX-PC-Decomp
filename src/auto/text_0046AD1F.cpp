@@ -131,5 +131,10 @@ extern "C" void func_0046ADE6(int code)
     func_0046AE08(code, 0, 0);
 }
 
+extern "C" void func_0046ADF7(int code)
+{
+    func_0046AE08(code, 1, 0);
+}
+
 #pragma optimize("y", on)
 

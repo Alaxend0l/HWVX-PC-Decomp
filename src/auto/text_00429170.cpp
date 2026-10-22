@@ -96,19 +96,16 @@ extern "C" void func_00429E80(void)
 extern "C" void func_00429DD0(void)
 {
     int i;
-    int *p;
+    Arrays_0065E2D4 *s = (Arrays_0065E2D4 *)D_0065E2D4;
+    int (*x)[4] = (int (*)[4])D_0065E2D4;
 
     D_0065E2D0 = 1;
-    i = 0;
-    p = D_0065E2E4;
-    do {
-        p[-4] = 0;
-        *p = 0;
-        p[4] = 0;
-        D_0065E304[i] = 0;
-        i++;
-        p++;
-    } while (p < D_0065E2F4);
+    for (i = 0; i < 4; i++) {
+        x[0][i] = 0;
+        x[1][i] = 0;
+        x[2][i] = 0;
+        s->d[i] = 0;
+    }
     D_0065E32C = 1;
     D_0065E330 = 1;
     D_0065E339 = 1;
@@ -176,27 +173,31 @@ extern "C" int func_00429EC0(void)
 
 extern "C" void func_00429830(unsigned int mode)
 {
-    unsigned int m = mode;
-    D_0048D1C5 = 1;
-    D_0048D358 = m;
-    if (m < 1 && m > 4)
-        D_0048D358 = -1;
+    *(unsigned char *)&D_0048D1C5 = 1;
+    D_0048D358 = mode;
+    if (mode < 1 && mode > 4)
+        D_0048D358 = 0xffffffff;
 }
 
 extern "C" void func_00429860(int *ids, unsigned int count)
 {
-    unsigned int i = 0;
-    unsigned int n = func_00440160();
+    unsigned int i;
+    unsigned int n;
 
-    for (; i < n; i++) {
-        char *p = func_00440180(i);
-        unsigned int j;
-        for (j = 0; j < count; j++) {
-            if (*(int *)(p + 0xa8) == ids[j]) {
-                *(unsigned int *)(p + 0x60) = j + 1;
-                break;
+    i = 0;
+    n = func_00440160();
+    if (i < n) {
+        do {
+            char *p = func_00440180(i);
+            unsigned int j;
+            for (j = 0; j < count; j++) {
+                if (*(int *)(p + 0xa8) == ids[j]) {
+                    *(unsigned int *)(p + 0x60) = j + 1;
+                    break;
+                }
             }
-        }
+            i++;
+        } while (i < n);
     }
 }
 

@@ -167,6 +167,21 @@ extern "C" int func_0047290B(int codepage)
     return codepage;
 }
 
+extern "C" int func_00472955(int codepage)
+{
+    switch (codepage) {
+    case 932:
+        return 0x411;
+    case 936:
+        return 0x804;
+    case 949:
+        return 0x412;
+    case 950:
+        return 0x404;
+    }
+    return 0;
+}
+
 extern "C" void func_00472988(void)
 {
     int i;

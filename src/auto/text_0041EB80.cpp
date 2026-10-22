@@ -37,18 +37,17 @@ extern "C" void func_0041E850(char *p, int a, int b, int c);
 
 extern "C" void func_0041EB80(char *p)
 {
-    char *s;
+    char *s = p + 0xd0;
     float t;
     float a;
     float b;
 
-    s = p + 0xd0;
     if (*(float *)(p + 0x1bc) >= D_0047700C) {
         *(float *)(s + 0x24) += *(float *)(p + 0xcc) * D_00692378;
         if (*(float *)(s + 0x24) > D_0047700C)
             *(float *)(s + 0x24) = 1.0f;
-        a = 0.0f;
         t = *(float *)(s + 0x24) / (*(float *)(s + 0x44) + *(float *)(s + 0x24));
+        a = 0.0f;
         b = D_00477000;
         if (*(char **)(s + 0x18) != 0)
             a = *(float *)(*(char **)(s + 0x18) + 0x18);
@@ -56,28 +55,27 @@ extern "C" void func_0041EB80(char *p)
             b = *(float *)(*(char **)(s + 0x38) + 0x18);
         func_004077E0(s + 0x18, 2, ((a - b) * t + b) * *(float *)(p + 0x1b8));
         if (*(int *)(s + 0x30) != 0)
-            ((Flags_0041EB80 *)(p + 0x74))->bit4 = 0;
+            *(u32 *)(p + 0x74) &= ~0x10;
         *(float *)(s + 0x24) = 0.0f;
         func_00408290(s, p);
     }
 }
 
-extern "C" int func_0041EC60(List_0041EC60 *list, u32 id)
+extern "C" int func_0041EC60(List_0041EC60 *list, int id)
 {
-    u32 n = list->count;
     u32 i;
 
-    for (i = 0; i < n; i++) {
+    for (i = 0; i < list->count; i++) {
         if (list->entries[i].unk4 == id)
             return i;
     }
     return -1;
 }
 
-extern "C" void func_0041F9C0(char *p)
+extern "C" void func_0041F9C0(Obj_0041EB80 *p)
 {
-    ((Flags_0041EB80 *)(p + 0x74))->bit4 = 0;
-    func_0041E850(p, 10, 1, 0);
+    p->unk_0x74 &= ~0x10;
+    func_0041E850((char *)p, 10, 1, 0);
 }
 
 extern "C" void func_0041EC40(char *p)

@@ -87,6 +87,22 @@ extern "C" void func_0041C180(void)
     } while (p < D_006631A0);
 }
 
+extern "C" void func_0041C1A0(void)
+{
+    int dt = D_00692370;
+    unsigned *p = D_006630E8;
+    do {
+        if (p[-2] != 0)
+            *p += dt;
+        if (*p > 1000) {
+            p[-1] = 0;
+            p[-2] = 0;
+            *p = 99999;
+        }
+        p += sizeof(Timer_006630E0) / sizeof(unsigned);
+    } while (p < D_006631A8);
+}
+
 extern "C" void func_0041B570(void)
 {
     Slot_006614C0 *p = D_006614C0;

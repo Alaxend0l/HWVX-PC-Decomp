@@ -45,6 +45,8 @@ float func_00406AB0(char *car, int target);
 float func_00406A00(Driver_00406770 *d, int target);
 void func_00406950(Driver_00406770 *d, int target);
 
+void func_00454CF0(void *, void *, int);
+void func_0045E120(int, int, void *, int);
 extern "C" void func_0044A990(char *a);
 extern "C" void func_0044A910(char *a);
 extern float D_0047700C;
@@ -242,5 +244,40 @@ void func_00407310(char *p)
         p[7] = 0;
     }
     func_004072F0(p);
+}
+
+void func_004073A0(int **p)
+{
+    unsigned i;
+    int *m = *p;
+    int *s = (int *)m[5];
+
+    for (i = 0; i < (unsigned)m[0]; i++) {
+        func_0045E160(((int *)m[1])[i], (int)p[4], s[0], 0);
+        m = *p;
+    }
+    m = *p;
+    for (i = 0; i < (unsigned)m[2]; i++) {
+        int *e = (int *)(m[3] + i * 8);
+        func_0045E670(e[0], (char *)p[4] + *(unsigned short *)(e + 1) * 0x40);
+        m = *p;
+    }
+    func_00407EF0((char *)p, 0);
+}
+
+void func_00407590(char *p, unsigned *list, int c)
+{
+    unsigned i;
+
+    func_00407280(p, c);
+    for (i = 0; i < list[0]; i++) {
+        float q[4];
+        char *item = (char *)list[1] + i * 0x20;
+        q[0] = 0.0f;
+        q[1] = 0.0f;
+        q[2] = 0.0f;
+        q[3] = 1.0f;
+        func_0044AD00(p + 0x14, item, item, q, D_00692350, c);
+    }
 }
 

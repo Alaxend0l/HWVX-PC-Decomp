@@ -29,6 +29,47 @@ struct List_0041EC60 {
     Entry_0041EC60 *entries;
 };
 
+struct Vec4_0041EB80 {
+    float x, y, z, w;
+};
+
+/* particle spawn records passed to func_0044D0B0 / func_0044D0F0 */
+struct Spawn1_0041EB80 {
+    Vec4_0041EB80 a;
+    Vec4_0041EB80 b;
+    Vec4_0041EB80 c;
+    Vec4_0041EB80 d;
+    int src;
+    int owner;
+    int unk_0x48;
+    int unk_0x4c;
+};
+
+struct Spawn2_0041EB80 {
+    Vec4_0041EB80 a;
+    Vec4_0041EB80 b;
+    Vec4_0041EB80 c;
+    int src;
+    int owner;
+    int unk_0x38;
+};
+
+extern char *D_0049DBA0;
+extern Vec4_0041EB80 D_00692350;
+extern float D_0047702C;
+
+extern "C" float func_0041E7B0(char *p);
+extern "C" void func_0041E7C0(char *p);
+extern "C" void func_0041EC90(char *p, int a, int b);
+extern "C" void func_0041F1C0(char *p);
+extern "C" void func_00450230(char *p);
+extern "C" int func_00454AF0(int, int);
+float func_00454AC0(float, float);
+void func_00454960(Vec4_0041EB80 *);
+char *func_0044D0B0(int, void *);
+char *func_0044D0F0(int, void *, int);
+void func_0044A790(char *, char *);
+
 extern "C" void func_00407310(char *p);
 extern "C" void func_00448330(char *p);
 extern "C" void func_004077E0(char *p, int a, float b);

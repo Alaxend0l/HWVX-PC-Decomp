@@ -41,6 +41,17 @@ extern RecD_00661128 D_00661128[];
 extern unsigned D_006611E8[];
 extern int D_00692370;
 
+extern "C" void func_0041E120(void)
+{
+    Timer_00661120 *p = D_00661120;
+    do {
+        p->unk_0x04 = 0;
+        p->unk_0x00 = 0;
+        p->unk_0x08 = 99999;
+        p++;
+    } while (p < D_006611E0);
+}
+
 extern "C" float func_0041E7B0(Obj_0041E7B0 *o)
 {
     return o->unk_0x1b4;

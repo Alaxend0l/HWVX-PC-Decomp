@@ -29,6 +29,12 @@ extern "C" void func_00461C10(void);
 extern "C" int func_00453550(int, char *, int);
 extern "C" void func_00461C30(int, char *, int);
 
+extern "C" void func_00439310(int i)
+{
+    if (i >= 0)
+        D_005E66E0[i].unk0 = 0;
+}
+
 extern "C" void func_00439210(int a)
 {
     D_005E6E40 = a;

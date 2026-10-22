@@ -40,6 +40,32 @@ extern "C" void func_0046BD6F(void)
     func_0046E9BA(9);
 }
 
+extern "C" int func_0046BD9C(void)
+{
+    double divisor = 3145727.0;
+    double dividend = 4195835.0;
+    double result;
+
+    result = dividend - (dividend / divisor) * divisor;
+    if (result > 1.0)
+        return 1;
+    return 0;
+}
+
+extern "C" int func_0046BDDA(void)
+{
+    void *kernel;
+    int (__stdcall *present)(int);
+
+    kernel = GetModuleHandleA(D_0047899C);
+    if (kernel != NULL) {
+        present = (int (__stdcall *)(int))GetProcAddress(kernel, D_00478980);
+        if (present != NULL)
+            return present(0);
+    }
+    return func_0046BD9C();
+}
+
 extern "C" void func_0046C204(char *s, int dist)
 {
     if (dist)

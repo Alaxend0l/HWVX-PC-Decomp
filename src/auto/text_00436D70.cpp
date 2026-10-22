@@ -44,6 +44,7 @@ struct Team_005E {
     int unk_0x10;
     char unk_0x14[0x67];
     char unk_0x7b;
+    char unk_0x7c[0x4];
     Car_005E *unk_0x80;
     char unk_0x84[0xb0];
 };
@@ -139,5 +140,21 @@ void func_00437CB0(void)
         D_0048D618 = func_0043B500(D_0048D608, D_0048D618);
         D_0048D61C = 300;
     }
+}
+
+char func_00437CF0(int idx)
+{
+    Team_005E *team = &D_005E7660[idx];
+    Team_005E *t;
+    unsigned int i;
+
+    for (i = 0; i < team->unk_0x0; i++) {
+        if (team->unk_0x80[i].unk_0x23b == 6) {
+            t = &D_005E7660[team->unk_0x80[i].unk_0x268];
+            if (t->unk_0x7b == 0 && (t->unk_0x4 == 0 || (t->unk_0x4 == 1 && t->unk_0x10 != 0)))
+                return 0;
+        }
+    }
+    return 1;
 }
 

@@ -16,9 +16,13 @@ struct Obj_0053A9D0 {
     Obj_0053A9D0 *unk_0xa4;
 };
 
+struct Item_0044B310 {
+    char unk_0x00[0x20];
+};
+
 struct List_0044B310 {
     unsigned int count;
-    char *items;
+    Item_0044B310 *items;
 };
 
 extern float D_00692350[4];

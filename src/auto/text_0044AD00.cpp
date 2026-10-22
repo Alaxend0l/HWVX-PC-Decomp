@@ -38,11 +38,12 @@ void func_0041C180(void);
 void func_0041E120(void);
 void func_0044AA50(void);
 void func_0044A8A0(int, int);
-void func_0044AD00(int, void *, void *, float *, float *, int);
+void func_0044AD00(int, void *, void *, void *, void *, int);
 
 void func_0044B310(int a, List_0044B310 *list, int c)
 {
     unsigned int i;
+    Item_0044B310 *item;
     float q[4];
 
     func_0044A8A0(a, c);
@@ -51,7 +52,8 @@ void func_0044B310(int a, List_0044B310 *list, int c)
         q[1] = 0.0f;
         q[2] = 0.0f;
         q[3] = 1.0f;
-        func_0044AD00(a, list->items + i * 0x20, list->items + i * 0x20, q, D_00692350, c);
+        item = &list->items[i];
+        func_0044AD00(a, item, item, q, D_00692350, c);
     }
 }
 

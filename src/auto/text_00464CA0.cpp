@@ -18,6 +18,23 @@ extern float D_004770BC;
 extern "C" u32 func_004639D0(char *s, int a, float b, int c);
 extern "C" float func_004532E0(float x);
 
+extern "C" void func_00464FC0(float *v)
+{
+    float len = v[0] * v[0] + v[1] * v[1] + v[2] * v[2];
+    float inv;
+
+    if (len == D_00477000) {
+        v[0] = 0.0f;
+        v[1] = 0.0f;
+        v[2] = 0.0f;
+        return;
+    }
+    inv = D_0047700C / func_004532E0(len);
+    v[0] = inv * v[0];
+    v[1] = inv * v[1];
+    v[2] = inv * v[2];
+}
+
 extern "C" void func_00464F10(void)
 {
     float total = 0.0f;

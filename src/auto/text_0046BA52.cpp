@@ -25,8 +25,11 @@ extern "C" void func_0046BD6F(void)
     func_0046E9BA(9);
 }
 
-#pragma optimize("sy", off)
 #pragma optimize("s", on)
+extern "C" void func_0046BD8A(void)
+{
+    func_004710DD(0x10000, 0x30000);
+}
 extern "C" void func_0046C120(double *value, char *buf, int ndec, int caps)
 {
     StrFlt_0046BA52 flt;

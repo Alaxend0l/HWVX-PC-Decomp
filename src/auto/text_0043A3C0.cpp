@@ -21,6 +21,23 @@ struct Obj_0043A3C0 {
 extern char D_005D4440[];
 extern char (*D_0048D634)(void);
 
+struct Slot_0048D638 {
+    int used;
+    char *buf;
+};
+
+struct Pool_0048D638 {
+    Slot_0048D638 small[0x60];
+    Slot_0048D638 medium[0x80];
+    Slot_0048D638 large[0x80];
+};
+
+extern Pool_0048D638 *D_0048D638;
+extern const char D_0047AF74[];
+
+extern "C" void *func_00454B80(unsigned int size, int line, const char *file);
+extern "C" void func_00454C50(void *p);
+
 void func_004073A0(char *);
 void func_00407420(char *, char *, char *);
 Obj_0043A3C0 *func_0044D950(char *, char *);
@@ -92,8 +109,9 @@ char func_0043ACA0(void)
 
 void func_0043B020(Obj_0043A3C0 *obj)
 {
-    if (obj->unk_0xc0 != 0)
+    if (obj->unk_0xc0 != 0) {
         func_004073A0(obj->unk_0xb0);
-    else
-        func_00407420(obj->unk_0xb0, obj->unk_0x10, D_005D4440);
+        return;
+    }
+    func_00407420(obj->unk_0xb0, obj->unk_0x10, D_005D4440);
 }

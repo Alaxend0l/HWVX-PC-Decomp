@@ -65,3 +65,11 @@ void func_0040C0A0(Obj_0040BEA0 *, int, Vec4_0040BEA0 *, void *, int, int);
 void func_00440330(void);
 void func_0043EB20(int);
 void func_0040CA20(void);
+
+void func_0040CA50(int *p, int v)
+{
+    *p = v;
+    func_00440330();
+    func_0040CA20();
+    func_0043EB20(v);
+}

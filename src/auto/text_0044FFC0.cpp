@@ -46,6 +46,10 @@ extern "C" int func_00401140(void *p);
 extern "C" char D_00496DC8;
 extern "C" unsigned int D_0047B978;
 extern "C" Entry_004505A0 **D_00496DAC;
+extern "C" unsigned int D_0047B984;
+extern "C" Entry_004505A0 **D_00496DB0;
+extern "C" unsigned int D_0047B9A8;
+extern "C" Entry_004505A0 **D_00496DBC;
 
 extern "C" bool func_0044FFC0(List_0044FFC0 *list)
 {
@@ -87,6 +91,25 @@ extern "C" void func_004505A0(void)
             }
         }
     }
+}
+
+extern "C" char func_00450780(Cmd_00450780 *cmd)
+{
+    for (unsigned int i = 0; i < cmd->count; i++) {
+        Target_00450780 *t = cmd->targets[i];
+        switch (cmd->op) {
+        case 0:
+            t->state_8 = 0;
+            break;
+        case 1:
+            t->state_8 = 1;
+            break;
+        case 2:
+            t->state_8 = !t->state_8;
+            break;
+        }
+    }
+    return 1;
 }
 
 extern "C" int D_00496DE8;

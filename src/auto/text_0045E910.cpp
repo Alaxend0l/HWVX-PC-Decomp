@@ -72,7 +72,8 @@ struct State_0045E910 {
     Rec30_0045E910 unk_0x215c0[2000];
     char pad_0x38cc0[0xc];
     Elem_0045E910 unk_0x38ccc[12000];
-    char pad_0x15dc4c[0x1a8c40 - 0x15dc4c];
+    char pad_0x15dc4c[0x187c40 - 0x15dc4c];
+    Rec84_0045E910 unk_0x187c40[1024];
     Rec84_0045E910 unk_0x1a8c40[32];
     char pad_0x1a9cc0[0x1abdc0 - 0x1a9cc0];
     Light_0045E910 unk_0x1abdc0[2588];

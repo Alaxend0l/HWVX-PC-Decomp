@@ -154,6 +154,17 @@ extern "C" char func_00459470(void)
     return 0;
 }
 
+extern "C" void func_004594B0(void)
+{
+    D_00693E04 = 0;
+    D_00693E08 = 0;
+    func_00401090();
+    func_00401090();
+    func_00459580();
+    func_00459C40();
+    D_00497140 = 0;
+}
+
 #pragma optimize("", on)
 extern "C" void func_00459590(char v)
 {

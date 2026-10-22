@@ -67,6 +67,20 @@ extern "C" Header_0046F464 *func_0046F76D(void)
     return h;
 }
 
+extern "C" void func_0046FD53(Region_0046F464 *r)
+{
+    VirtualFree(r->unk_0x10, 0, MEM_RELEASE);
+    if (D_0047FA78 == r)
+        D_0047FA78 = r->unk_0x4;
+    if (r != &D_0047DA58) {
+        r->unk_0x4->unk_0x0 = r->unk_0x0;
+        r->unk_0x0->unk_0x4 = r->unk_0x4;
+        HeapFree(D_006D59C4, 0, r);
+    } else {
+        D_0047DA68 = -1;
+    }
+}
+
 extern "C" void func_0046FEC2(Region_0046F464 *r, char *page, unsigned char *hdr)
 {
     Entry_0046F464 *e = &r->unk_0x18[(page - r->unk_0x10) >> 12];

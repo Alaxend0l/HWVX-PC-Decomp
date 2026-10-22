@@ -8,6 +8,16 @@ extern float D_0053B160;
 extern float D_0053B1F4;
 extern float D_0053B1FC;
 extern char D_0047B3D0[];
+struct Block_0053B180 {
+    int v[17];
+};
+extern Block_0053B180 D_0053B180;
+extern int D_0053B1E4;
+extern char *D_0048D82C;
+extern unsigned int D_0048D828;
+extern char D_0048D808[];
+extern int D_0048D938;
+extern int D_0048D920;
 float func_00445D30(void);
 float func_00445D40(void);
 void func_00445D80(void);

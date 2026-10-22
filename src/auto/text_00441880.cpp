@@ -27,3 +27,8 @@ extern "C" void func_00441880(Obj_00441880 *, Dir_00441880 *);
 extern "C" void func_004420E0(void);
 extern "C" void *func_00454B80(unsigned int size, int line, const char *file);
 extern "C" void func_00454C50(void *p);
+
+float func_00442050(Obj_00441880 *o)
+{
+    return o->info->unk_0x2c;
+}

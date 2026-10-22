@@ -13,9 +13,7 @@ extern "C" void (__stdcall *_imp__glCullFace)(GLenum);
 extern "C" void (__stdcall *_imp__glFogi)(GLenum, GLint);
 extern "C" void (__stdcall *_imp__glDeleteTextures)(GLsizei, const GLuint *);
 extern "C" void (__stdcall *_imp__glBindTexture)(GLenum, GLuint);
-extern "C" void (__stdcall *const _imp__glTexParameteri)(GLenum, GLenum, GLint);
 #define glBindTexture (*_imp__glBindTexture)
-#define glTexParameteri (*_imp__glTexParameteri)
 #define glBlendFunc (*_imp__glBlendFunc)
 #define glTexEnvf (*_imp__glTexEnvf)
 #define glEnable (*_imp__glEnable)
@@ -192,10 +190,10 @@ void func_004671A0(int on)
 
 int func_00467880(int width, int height, int format)
 {
-    int size = ((width + 3) & ~3) * ((height + 3) & ~3);
+    unsigned int size = ((unsigned int)(width + 3) & ~3) * ((unsigned int)(height + 3) & ~3);
 
     if (format == 0x83f0 || format == 0x83f1)
-        size >>= 1;
+        size = (int)size >> 1;
     return size;
 }
 

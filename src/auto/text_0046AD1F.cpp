@@ -69,3 +69,7 @@ extern "C" void func_0046AD44(int code)
     ExitProcess(255);
 }
 
+extern "C" void func_0046AD67(void)
+{
+}
+

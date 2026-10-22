@@ -18,3 +18,38 @@ extern "C" bool func_00427760(void)
 {
     return D_0048D1A0;
 }
+
+extern "C" int func_00427770(void)
+{
+    return 11;
+}
+
+extern "C" void func_004276B0(void)
+{
+    unsigned int i;
+    unsigned int n;
+
+    D_0048D1AC = 0;
+    D_0048D1B0 = 0;
+    D_0047A934 = 0;
+    for (i = 0; i < 11; i++) {
+        if (i != 7 && (n = D_0047A908[i]) > 0) {
+            D_0065F460[i] = func_00454B80(n * 168, 0x76, D_0047A93C);
+            memset(D_0065F460[i], 0, n * 168);
+        } else {
+            D_0065F460[i] = 0;
+        }
+    }
+    D_0048D1A4 = 0;
+}
+
+extern "C" void func_00427730(void)
+{
+    int i;
+
+    for (i = 0; i < 11; i++) {
+        func_00428A70(i, 1);
+        func_00454C50(D_0065F460[i]);
+    }
+}
+

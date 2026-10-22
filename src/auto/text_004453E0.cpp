@@ -120,6 +120,12 @@ void func_00446060(int a, int b)
     D_0048D920 = b;
 }
 
+void func_00446080(int *a, int *b)
+{
+    *a = D_0048D938;
+    *b = D_0048D920;
+}
+
 void func_004460A0(void)
 {
     D_0048D93C = 1;

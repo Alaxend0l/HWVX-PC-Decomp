@@ -58,13 +58,16 @@ extern Entry18_0045C D_0049BBE8[254];
 void func_0045D630(Node_0045C *, int);
 void func_0045DC20(Node_0045C *, int);
 
+static inline void ReleaseNode_0045C(Node_0045C *n)
+{
+    func_0045D630(n, 3);
+}
+
 void func_0045C640(List_0045C *list)
 {
     Node_0045C *old = list->unk_0x4;
-    Node_0045C *n = list->head->next;
 
-    list->head = n;
-    func_0045D630(old, 3);
+    func_0045D630(old, (list->head = list->head->next, 3));
     list->unk_0x4 = NULL;
 }
 

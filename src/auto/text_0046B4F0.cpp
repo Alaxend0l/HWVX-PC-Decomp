@@ -17,3 +17,34 @@ extern "C" void func_0046C868(FILE *stream);
 extern "C" int func_0046B60F(FILE *stream, long offset, int whence);
 
 #pragma optimize("s", on)
+
+extern "C" _onexit_t func_0046B524(_onexit_t func)
+{
+    _PVFV *p;
+
+    func_0046AEAD();
+    if (func_004707C7(D_006D6B10) < (unsigned)((char *)D_006D6B0C - (char *)D_006D6B10 + sizeof(_PVFV))) {
+        if ((p = (_PVFV *)func_00470498(D_006D6B10, func_004707C7(D_006D6B10) + 4 * sizeof(_PVFV))) == NULL) {
+            func = NULL;
+            goto done;
+        }
+        D_006D6B0C = p + (D_006D6B0C - D_006D6B10);
+        D_006D6B10 = p;
+    }
+    *(D_006D6B0C++) = (_PVFV)func;
+done:
+    func_0046AEB6();
+    return func;
+}
+
+extern "C" int func_0046B5E3(FILE *stream, long offset, int whence)
+{
+    int retval;
+
+    func_0046C816(stream);
+    retval = func_0046B60F(stream, offset, whence);
+    func_0046C868(stream);
+    return retval;
+}
+#pragma optimize("y", on)
+

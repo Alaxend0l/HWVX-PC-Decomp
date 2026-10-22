@@ -172,9 +172,9 @@ struct Emit1_00435B10 {
     Vec4_00435B10 c;
     Vec4_00435B10 d;
     Font_00435B10 *src;
-    int owner;
-    int unk_0x48;
-    int unk_0x4c;
+    float owner;
+    float unk_0x48;
+    float unk_0x4c;
 };
 
 struct Emit2_00435B10 {
@@ -255,8 +255,8 @@ void func_00435B10(Owner_00435B10 *o, int idx)
 
             if (ent->type == 5 && (font = ent->font)->unk_0x12) {
                 Vec4_00435B10 v;
-                float w;
                 float h;
+                float w;
                 float hw;
                 float hh;
 
@@ -266,8 +266,8 @@ void func_00435B10(Owner_00435B10 *o, int idx)
                 v.w = 1.0f;
                 w = font->w;
                 h = font->h;
-                hw = w * D_00477060;
-                hh = h * D_00477060;
+                hw = w * 0.5f;
+                hh = h * 0.5f;
                 v.x = ent->pos.x - hw - hw * desc->ax;
                 v.y = ent->pos.y - hh - hh * desc->ay;
                 func_00434D90(&v, w, h);
@@ -340,10 +340,10 @@ void func_00435B10(Owner_00435B10 *o, int idx)
             off.x -= cam->pos.x;
             off.y -= cam->pos.y;
             off.z -= cam->pos.z;
-            func_00453B20(&m, (cam->rot.y + ent->rot.y) * D_004770AC, (cam->rot.x + ent->rot.x) * D_004770AC,
-                          (cam->rot.z + ent->rot.z) * D_004770AC);
+            func_00453B20(&m, (cam->rot.y + ent->rot.y) * 0.017453292f, (cam->rot.x + ent->rot.x) * 0.017453292f,
+                          (cam->rot.z + ent->rot.z) * 0.017453292f);
         } else {
-            func_00453B20(&m, D_004770AC * ent->rot.y, D_004770AC * ent->rot.x, D_004770AC * ent->rot.z);
+            func_00453B20(&m, ent->rot.y * 0.017453292f, ent->rot.x * 0.017453292f, ent->rot.z * 0.017453292f);
         }
         if (ent->model->vt == &D_0047A2E8) {
             float *d = ent->model->unk_0x398;
@@ -407,7 +407,12 @@ void func_00435B10(Owner_00435B10 *o, int idx)
             float w;
             float h;
 
-            if (!ent->unk_0x1a9 && len < ent->maxLen) {
+            if (ent->unk_0x1a9 || len >= ent->maxLen) {
+                if (ent->text != NULL)
+                    strcpy(buf, ent->text);
+                else
+                    strcpy(buf, ent->textBuf);
+            } else {
                 if (ent->text != NULL)
                     func_0046AAF0(buf, ent->text, len);
                 else
@@ -415,37 +420,33 @@ void func_00435B10(Owner_00435B10 *o, int idx)
                 buf[len] = 0;
                 if (len == 0)
                     break;
-            } else if (ent->text != NULL) {
-                strcpy(buf, ent->text);
-            } else {
-                strcpy(buf, ent->textBuf);
             }
             font = (TextFont_00435B10 *)ent->desc->unk_0x14;
             func_00464F90(ent->color.r, ent->color.g, ent->color.b, ent->color.a);
             func_00463900(buf, ent->unk_0x1a8, &w, &h, ent->unk_0x138);
             if (font->unk_0xf) {
                 if (ent->unk_0x1a9) {
-                    w = font->w * D_00477060;
-                    h = font->h * D_00477060;
+                    w = font->w * 0.5f;
+                    h = font->h * 0.5f;
                     func_00463440(buf, ent->len, ent->pos.x - w - w * ent->desc->ax, ent->pos.y - h - h * ent->desc->ay,
                                   ent->unk_0x1a8, ent->unk_0x138, font->unk_0xe, font->unk_0x11, font->w, font->h,
                                   font->unk_0x18, &ent->scale);
                 } else {
-                    w = D_00477060 * ent->scale.x * w;
-                    h = D_00477060 * ent->scale.y * h;
+                    w = ent->scale.x * 0.5f * w;
+                    h = ent->scale.y * 0.5f * h;
                     func_00463760(buf, ent->pos.x - w - w * ent->desc->ax, ent->pos.y - h - h * ent->desc->ay,
                                   ent->unk_0x1a8, ent->unk_0x138, &ent->scale, font->unk_0xe);
                 }
             } else {
                 if (ent->unk_0x1a9) {
-                    w = font->w * D_00477060;
-                    h = font->h * D_00477060;
+                    w = font->w * 0.5f;
+                    h = font->h * 0.5f;
                     func_00463440(buf, ent->len, ent->pos.x - w - w * ent->desc->ax, ent->pos.y - h - h * ent->desc->ay,
                                   ent->unk_0x1a8, ent->unk_0x138, font->unk_0xe, font->unk_0x11, font->w, font->h,
                                   font->unk_0x18, NULL);
                 } else {
-                    w = D_00477060 * w;
-                    h = D_00477060 * h;
+                    w = w * 0.5f;
+                    h = h * 0.5f;
                     func_004632A0(buf, ent->pos.x - w - w * ent->desc->ax, ent->pos.y - h - h * ent->desc->ay,
                                   ent->unk_0x1a8, ent->unk_0x138, font->unk_0xe);
                 }
@@ -486,10 +487,10 @@ void func_00435B10(Owner_00435B10 *o, int idx)
                 func_0045FE00(&a);
                 if (cam != NULL) {
                     func_00453330(&a, &cam->pos, &a);
-                    func_00453B20(&m2, (cam->rot.y + ent->rot.y) * D_004770AC,
-                                  (cam->rot.x + ent->rot.x) * D_004770AC, (cam->rot.z + ent->rot.z) * D_004770AC);
+                    func_00453B20(&m2, (cam->rot.y + ent->rot.y) * 0.017453292f,
+                                  (cam->rot.x + ent->rot.x) * 0.017453292f, (cam->rot.z + ent->rot.z) * 0.017453292f);
                 } else {
-                    func_00453B20(&m2, D_004770AC * ent->rot.y, D_004770AC * ent->rot.x, D_004770AC * ent->rot.z);
+                    func_00453B20(&m2, ent->rot.y * 0.017453292f, ent->rot.x * 0.017453292f, ent->rot.z * 0.017453292f);
                 }
                 m2.r[3].x = a.x;
                 m2.r[3].y = a.y;
@@ -566,8 +567,8 @@ void func_00435B10(Owner_00435B10 *o, int idx)
             Path_00435B10 *path = (Path_00435B10 *)ent->desc->unk_0x14;
             Vec4_00435B10 a;
             Vec4_00435B10 b;
-            Col_00435B10 c0;
             Col_00435B10 c1;
+            Col_00435B10 c0;
 
             a.z = 0.0f;
             a.w = 1.0f;
@@ -590,21 +591,21 @@ void func_00435B10(Owner_00435B10 *o, int idx)
                     c1.a = (path->pts[i].col.a + ent->color.a) / 2;
                     b.x = path->pts[i].x * ent->scale.x;
                     b.y = path->pts[i].y * ent->scale.y;
-                    if (ent->rot.x != D_00477000) {
+                    if (ent->rot.x != 0.0f) {
                         float ang;
                         float len;
                         float sn;
                         float cs;
 
                         ang = ent->rot.x;
-                        ang = func_004532D0(b.x, b.y) * D_00477040 + ang;
+                        ang = func_004532D0(b.x, b.y) * 57.29578f + ang;
                         len = func_004532E0(b.x * b.x + b.y * b.y);
                         func_00453240(ang, &sn, &cs);
                         b.x = sn * len;
                         b.y = cs * len;
                     }
                     func_00453300(&ent->pos, &b, &b);
-                    func_0045EBA0(&a, &b, &c0, &c1, (u8)path->mode);
+                    func_0045EBA0(&a, &b, &c0, &c1, path->mode);
                     a = b;
                     c0 = c1;
                 }

@@ -22,7 +22,13 @@ struct Obj_0041FAD0 {
     char unk_0x0c[0x40 - 0x0c];
     Vec4_0041FAD0 pos;
     char unk_0x50[0x74 - 0x50];
-    int flags;
+    union {
+        int flags;
+        struct {
+            unsigned unk_0x74_0 : 14;
+            unsigned unk_0x74_14 : 1;
+        };
+    };
     char unk_0x78[0xc0 - 0x78];
     char *unk_0xc0;
     char unk_0xc4[0xce - 0xc4];
@@ -47,8 +53,8 @@ extern "C" void func_00438770(Obj_0041FAD0 *);
 extern "C" void func_0041FC50(Obj_0041FAD0 *o, float dt)
 {
     Vec4_0041FAD0 t;
-    unsigned *count;
     unsigned i;
+    unsigned *count;
 
     func_004533F0(dt, &o->vel, &o->pos, &t);
     o->pos = t;
@@ -73,7 +79,7 @@ extern "C" char func_004202E0(Obj_0041FAD0 *a, Obj_0041FAD0 *b)
     void *r;
 
     if (*b->unk_0xc0 == 3) {
-        r = func_0044A840(&a->nodes + 1, 8);
+        r = func_0044A840(a->unk_0xe4, 8);
         if (r != 0) {
             func_00451C80(r, b->unk_0xc0, b->unk_0xce);
             func_00438770(b);

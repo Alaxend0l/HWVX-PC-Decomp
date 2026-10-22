@@ -40,7 +40,7 @@ struct List_0043B460 {
 
 struct Node_0043B8B0 {
     char unk_0x00[0x37];
-    unsigned char unk_0x37;
+    char unk_0x37;
     Node_0043B8B0 *next;
     Node_0043B8B0 *unk_0x3c;
 };

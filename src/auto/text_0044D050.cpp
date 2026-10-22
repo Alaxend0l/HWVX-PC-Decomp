@@ -62,10 +62,13 @@ void func_0044D050(void)
 
 int func_0044D920(char **out)
 {
-    if (D_0052E664 & 0x201000)
-        return 0;
-    *out = D_0052E5F0;
-    return 1;
+    int r = 0;
+
+    if (!(D_0052E664 & 0x201000)) {
+        *out = D_0052E5F0;
+        r = 1;
+    }
+    return r;
 }
 
 Obj_0044D050 *func_0044D0B0(int id, int arg)
@@ -106,6 +109,22 @@ char func_0044D550(int a, int b, int c, int d)
         return r;
     }
     return 0;
+}
+
+char func_0044D5A0(int a, Obj_0044D050 *p, int c)
+{
+    float f = 1.0f;
+
+    if (!(p->unk_0x74 & 0x40000) && func_004194B0(a, D_00692350, &f, c))
+        return 1;
+    return func_0044D250(a, p, c);
+}
+
+char func_0044D5F0(int a, Obj_0044D050 *p, int c)
+{
+    if (!(p->unk_0x74 & 0x40000) && func_00419CA0(a, c))
+        return 1;
+    return func_0044D140(a, p, c);
 }
 
 void func_0044D940(int a)

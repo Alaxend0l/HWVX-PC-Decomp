@@ -77,6 +77,16 @@ struct State_0045E910 {
 extern State_0045E910 *D_0049D7C8;
 extern int D_0049D7D4;
 extern "C" void func_00464DE0(int a);
+
+static inline Rec20_0045E910 *CurRec20_0045E910(void)
+{
+    return &D_0049D7C8->unk_0x34ef74[D_0049D7C8->unk_0x44];
+}
+
+static inline Rec30_0045E910 *Rec30At_0045E910(int i)
+{
+    return &D_0049D7C8->unk_0x215c0[i];
+}
 extern void *D_0049D7C4;
 extern char D_0047CC44[];
 
@@ -119,6 +129,51 @@ Item_0045E910 *func_0045EB60(void)
         D_0049D7C8->unk_0x34 = 0;
     s = D_0049D7C8;
     return &s->unk_0x1c29d0[s->unk_0x34++];
+}
+
+void func_0045EC70(unsigned short id)
+{
+    unsigned short *p;
+
+    if (D_0049D7C8->unk_0x8 == 1999)
+        D_0049D7C8->unk_0x8 = 0;
+    p = &D_0049D7C8->unk_0x34ef84[id];
+    D_0049D7C8->unk_0x215c0[D_0049D7C8->unk_0x8].unk_0x20 = *p;
+    *p = D_0049D7C8->unk_0x8;
+    D_0049D7C8->unk_0x8++;
+}
+
+void func_0045F0A0(int n)
+{
+    D_0049D7C8->unk_0x34ef74[D_0049D7C8->unk_0x44].unk_0xc += n;
+    if (D_0049D7C8->unk_0x34ef74[D_0049D7C8->unk_0x44].unk_0xc != 0) {
+        switch (D_0049D7C8->unk_0x34ef74[D_0049D7C8->unk_0x44].unk_0x0) {
+        case 0:
+            D_0049D7C8->unk_0x38 += n;
+            break;
+        case 1:
+            D_0049D7C8->unk_0x3c += n;
+            break;
+        case 4:
+            D_0049D7C8->unk_0x40 += n;
+            break;
+        }
+        D_0049D7C8->unk_0x44++;
+    }
+}
+
+Rec84_0045E910 *func_0045F340(void)
+{
+    Rec84_0045E910 *r;
+    unsigned int i;
+
+    if (D_0049D7C8->unk_0x20 >= 0x20)
+        D_0049D7C8->unk_0x20 = 0;
+    D_0049D7C8->unk_0x1a8c40[D_0049D7C8->unk_0x20].unk_0x83 = D_0049D7D4;
+    i = D_0049D7C8->unk_0x20;
+    r = &D_0049D7C8->unk_0x1a8c40[i];
+    D_0049D7C8->unk_0x20 = i + 1;
+    return r;
 }
 
 void func_0045F3D0(int a)

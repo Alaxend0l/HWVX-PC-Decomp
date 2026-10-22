@@ -42,6 +42,7 @@ extern "C" unsigned char *func_00475CF4(const unsigned char *string, unsigned in
     func_0046E9BA(0x19);
     return (c == (unsigned int)cc) ? (unsigned char *)string : NULL;
 }
+#pragma optimize("y", on)
 
 extern "C" char **func_00475C8D(char **oldenv)
 {

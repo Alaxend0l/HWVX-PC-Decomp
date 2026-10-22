@@ -27,6 +27,10 @@ extern "C" void func_0046E9BA(int);
 extern "C" int func_0046A8F1(CRTFILE *);
 extern "C" void func_0046B013(void *);
 extern "C" void func_0046AD1F(int);
+extern "C" int D_0049DAF0;
+extern "C" int D_0047FC8C;
+extern "C" UINT D_0049DB00;
+extern "C" int *func_00470486(void);
 
 #pragma optimize("s", on)
 #pragma optimize("s", on)

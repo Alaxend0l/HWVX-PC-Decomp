@@ -18,7 +18,8 @@ extern Task_00401090 *D_004806E0[80];
 extern void (*D_0047A040[])(TaskArg_00401090 *);
 extern int D_00692370;
 
-__declspec(noreturn) void func_00402290(void);
+void func_00402290(void);
+void func_00405CC0(void);
 
 void func_004010A0(void)
 {

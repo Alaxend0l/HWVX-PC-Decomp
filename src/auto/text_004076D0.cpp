@@ -40,6 +40,7 @@ extern float D_00692378;
 extern float D_0047700C;
 void func_00407BC0(int **obj, int arg);
 void func_00407BE0(int *, int, Vec4_004076D0 *);
+void func_00407DA0(Obj_004076D0 *, Vec4_004076D0 *);
 
 void func_004076D0(Obj_004076D0 *obj, List_004076D0 *list, Vec4_004076D0 *color)
 {

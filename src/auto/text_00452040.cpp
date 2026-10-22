@@ -79,3 +79,8 @@ extern "C" int func_004524C0(void)
     return D_0049DBA0->unk_0x40;
 }
 
+extern "C" int func_00452590(void)
+{
+    return D_0049DBA0->unk_0x78;
+}
+

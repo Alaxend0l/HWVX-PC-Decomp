@@ -30,7 +30,7 @@ struct Obj_0041FAD0 {
     Mesh_0041FAD0 *mesh;
     char unk_0xd4[0xe0 - 0xd4];
     Node_0041FAD0 *nodes;
-    char unk_0xe4[0x198 - 0xe4];
+    char unk_0xe4[0x198 - 0xe4]; /* list passed to func_0044A840 */
     Vec4_0041FAD0 vel;
     char unk_0x1a8[0x1bc - 0x1a8];
     float unk_0x1bc;

@@ -36,3 +36,12 @@ extern Unk_0065EC5C D_0065F3DC[];
 void func_0044DB90(int, int);
 void func_00428BA0(void);
 char func_00428AE0(unsigned int idx, int type);
+
+void func_00428CC0(void)
+{
+    Unk_0065EC5C *p = D_0065EC5C;
+    do {
+        p->unk0 = 0;
+        p++;
+    } while (p < D_0065F3DC);
+}

@@ -76,6 +76,17 @@ extern "C" float func_0041BC60(int a, int b, int c, float d)
     return d;
 }
 
+extern "C" void func_0041C180(void)
+{
+    Timer_006630E0 *p = D_006630E0;
+    do {
+        p->unk_0x04 = 0;
+        p->unk_0x00 = 0;
+        p->unk_0x08 = 99999;
+        p++;
+    } while (p < D_006631A0);
+}
+
 extern "C" void func_0041B570(void)
 {
     Slot_006614C0 *p = D_006614C0;

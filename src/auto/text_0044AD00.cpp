@@ -25,6 +25,13 @@ struct List_0044B310 {
     Item_0044B310 *items;
 };
 
+struct Vec4_0044B310 {
+    float x;
+    float y;
+    float z;
+    float w;
+};
+
 extern float D_00692350[4];
 extern Obj_0053A9D0 *D_0053A9D0;
 extern int D_0053A9D4[0x12];

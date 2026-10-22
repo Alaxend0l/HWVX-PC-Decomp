@@ -118,3 +118,22 @@ char func_00444E30(void)
     return 1;
 }
 
+void func_00444EE0(Msg_00444EE0 *m)
+{
+    switch (m->type) {
+    case 1:
+        if (D_0053B1EC)
+            D_0053B1EC(m);
+        break;
+    case 3:
+        func_00444F30(m);
+        if (D_0053B1E8)
+            D_0053B1E8(m);
+        break;
+    default:
+        if (D_0053B1E8)
+            D_0053B1E8(m);
+        break;
+    }
+}
+

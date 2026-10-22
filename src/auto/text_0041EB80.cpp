@@ -56,6 +56,9 @@ struct Spawn2_0041EB80 {
 
 extern char *D_0049DBA0;
 extern Vec4_0041EB80 D_00692350;
+extern float D_00692354;
+extern float D_00692358;
+extern float D_0069235C;
 extern float D_0047702C;
 
 extern "C" float func_0041E7B0(char *p);
@@ -130,12 +133,12 @@ extern "C" void func_0041F620(char *p, char *v, float t, int dmg)
             Spawn2_0041EB80 s;
             int idx = func_00454AF0(0, **(int **)(*(char **)(p + 0xd0) + 0x14));
 
-            s.src = *(int *)(*(char **)(*(char **)(D_0049DBA0 + 0x9c) + 0xec) + 8);
+            s.src = *(float *)(*(char **)(*(char **)(D_0049DBA0 + 0x9c) + 0xec) + 8);
             s.c = *(Vec4_0041EB80 *)p;
             s.owner = *(int *)(p + 0x94);
-            s.unk_0x38 = 0;
+            s.unk_0x38 = 0.0f;
             s.a = *(Vec4_0041EB80 *)(*(char **)(p + 0xe0) + idx * 0x40 + 0x30);
-            *(int *)&s.a.w = 0x3f800000;
+            s.a.w = 1.0f;
             func_00454960(&s.b);
             func_0044D0B0(2, &s);
         }
@@ -145,12 +148,12 @@ extern "C" void func_0041F620(char *p, char *v, float t, int dmg)
             char *r;
             int idx = func_00454AF0(0, **(int **)(*(char **)(p + 0xd0) + 0x14));
 
-            s.src = *(int *)(*(char **)(*(char **)(D_0049DBA0 + 0x9c) + 0xec) + 0xc);
+            s.src = *(float *)(*(char **)(*(char **)(D_0049DBA0 + 0x9c) + 0xec) + 0xc);
             s.c = *(Vec4_0041EB80 *)p;
             s.owner = *(int *)(p + 0x94);
             s.a = D_00692350;
-            s.unk_0x38 = 0;
-            *(int *)&s.a.w = 0x3f800000;
+            s.unk_0x38 = 0.0f;
+            s.a.w = 1.0f;
             func_00454960(&s.b);
             r = func_0044D0F0(2, &s, idx);
             if (r != NULL) {
@@ -165,19 +168,18 @@ extern "C" void func_0041F620(char *p, char *v, float t, int dmg)
         q = *(char **)(p + 0xb8);
         if (*(int *)(q + 0x3c) != 0) {
             Spawn1_0041EB80 s;
-            u32 n;
+            u32 n = -(*(int *)(p + 0x78) / 8);
 
-            ((float *)p)[0] -= k * *(float *)(v + 0x10) * D_0047702C;
+            ((float *)p)[0] -= D_0047702C * (k * *(float *)(v + 0x10));
+            s.d = D_00692350;
             s.b = D_00692350;
             s.a = *(Vec4_0041EB80 *)(p + 0x40);
-            s.d = D_00692350;
             s.src = **(int **)(q + 0x40);
             s.owner = *(int *)(p + 0x94);
-            s.unk_0x48 = 0;
-            s.unk_0x4c = 0;
-            n = -(*(int *)(p + 0x78) / 8);
-            ((float *)p)[1] -= k * *(float *)(v + 0x14) * D_0047702C;
-            ((float *)p)[2] -= k * *(float *)(v + 0x18) * D_0047702C;
+            s.unk_0x48 = 0.0f;
+            s.unk_0x4c = 0.0f;
+            ((float *)p)[1] -= D_0047702C * (k * *(float *)(v + 0x14));
+            ((float *)p)[2] -= D_0047702C * (k * *(float *)(v + 0x18));
             s.c = *(Vec4_0041EB80 *)p;
             if (n > **(u32 **)(*(char **)(p + 0xd0) + 0x14) - 3) {
                 func_0041F1C0(p);

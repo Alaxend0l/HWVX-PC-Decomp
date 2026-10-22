@@ -29,6 +29,11 @@ void func_00461A80(void)
     func_00465490();
 }
 
+void func_00461AA0(int a, int b, int c, int d, int e, int f)
+{
+    func_00465590(a, b, c, d, e, f);
+}
+
 void func_004620A0(void)
 {
     func_00401090();

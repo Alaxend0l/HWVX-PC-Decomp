@@ -112,6 +112,34 @@ extern "C" unsigned short func_00471185(unsigned int abstr)
     return cw;
 }
 
+extern "C" int func_0047120E(int c)
+{
+    int local_lock_flag;
+
+    if (D_0049DAF0 == 0) {
+        if (c >= 'A' && c <= 'Z')
+            c = c + ('a' - 'A');
+        return c;
+    }
+
+    InterlockedIncrement(&D_006D5788);
+    if (D_006D5784) {
+        InterlockedDecrement(&D_006D5788);
+        func_0046E959(0x13);
+        local_lock_flag = 1;
+    } else
+        local_lock_flag = 0;
+
+    c = func_0047127D(c);
+
+    if (local_lock_flag)
+        func_0046E9BA(0x13);
+    else
+        InterlockedDecrement(&D_006D5788);
+
+    return c;
+}
+
 extern "C" void func_0047148E(void *p)
 {
     memset(p, 0, 12);

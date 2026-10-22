@@ -1,5 +1,6 @@
 /* 1 function from 0x00435B10 to 0x00436D70, found by Ghidra. */
 #include "common.h"
+#include <string.h>
 struct Vec4_00435B10 {
     float x, y, z, w;
 };

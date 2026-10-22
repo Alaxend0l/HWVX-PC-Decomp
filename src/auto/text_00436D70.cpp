@@ -29,6 +29,26 @@ struct Event_00437 {
     Target_00437 *target;
 };
 
+struct Car_005E {
+    char unk_0x0[0x23b];
+    char unk_0x23b;
+    char unk_0x23c[0x2c];
+    int unk_0x268;
+    char unk_0x26c[0x8c];
+};
+
+struct Team_005E {
+    unsigned int unk_0x0;
+    int unk_0x4;
+    char unk_0x8[0x8];
+    int unk_0x10;
+    char unk_0x14[0x67];
+    char unk_0x7b;
+    Car_005E *unk_0x80;
+    char unk_0x84[0xb0];
+};
+
+extern Team_005E D_005E7660[];
 extern int D_00681AB0;
 extern Slot_00437 D_00681500[];
 extern char *D_0048D614;
@@ -45,8 +65,7 @@ int func_0043B500(char *, int);
 
 char func_00437890(Msg_00437 *msg)
 {
-    int v = msg->unk_0x0;
-    func_0042E250(v, 0, 0);
+    func_0042E250(msg->unk_0x0, 0, 0);
     return 1;
 }
 

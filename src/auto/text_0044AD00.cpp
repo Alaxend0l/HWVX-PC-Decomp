@@ -40,6 +40,19 @@ extern float D_00692350[4];
 extern Obj_0053A9D0 *D_0053A9D0;
 extern int D_0053A9D4[0x12];
 
+struct Funcs_00529FAC {
+    void (*unk_0x00)(void *);
+    void (*unk_0x04)(void *);
+    void (*unk_0x08)(void *);
+};
+
+extern Funcs_00529FAC *D_00529FAC;
+extern char D_00529F20[];
+extern Funcs_0053A9D0 D_0047B228;
+
+void func_0044AA70(void);
+void func_0044A970(void *);
+void func_0044A910(void *);
 void func_00401090(void);
 void func_0044B910(void);
 void func_0041B600(void);

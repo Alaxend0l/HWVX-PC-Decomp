@@ -81,8 +81,44 @@ extern "C" unsigned char func_004590E0(int index, unsigned char bit)
     return (D_006924C8[index].flags >> bit) & 1;
 }
 
+extern "C" char func_00459140(int index, unsigned char bit)
+{
+    Unk006924C8 *p;
+
+    if (bit == 0xff)
+        return 0;
+    if (index == -1) {
+        for (p = D_006924C4; p < D_006924F4; p++) {
+            if ((p->flags >> bit) & 1)
+                return D_006924A0[bit];
+        }
+        return 0;
+    }
+    if ((D_006924C4[index].flags >> bit) & 1)
+        return D_006924D0[index * 0x30 + bit];
+    return 0;
+}
+
 extern "C" void func_004591B0(int index, char value)
 {
     D_006924C3[index * 0x30] = value;
+}
+
+extern "C" char func_004591D0(void)
+{
+    char *p;
+    int i;
+
+    p = D_00692518;
+    for (i = 4; i != 0; i--) {
+        *p = 0xff;
+        p += 0x1c;
+    }
+    D_00692380[0] = 0;
+    D_006923C0[0] = 0;
+    D_00692400[0] = 0;
+    D_00692440[0] = 0;
+    D_00692480[0] = 0;
+    return 1;
 }
 

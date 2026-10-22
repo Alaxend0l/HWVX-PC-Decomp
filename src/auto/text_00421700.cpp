@@ -67,7 +67,7 @@ struct Obj_00421700 {
     Vec4_00421700 unk_0x50;
     char unk_0x60[0x10];
     float radius;
-    unsigned int flags;
+    int flags;
     int unk_0x78;
     int unk_0x7c;
     short type;
@@ -145,9 +145,9 @@ char func_00421DD0(Obj_00421700 *obj, Desc_00421700 *desc)
     obj->unk_0xcc = NULL;
     obj->unk_0xd4 = 0;
 
-    if (obj->model->info->type == 3) {
-        Bounds_00421700 *b = obj->model->info->bounds;
-        *b = obj->model->shape->bounds;
+    if (desc->model->info->type == 3) {
+        Bounds_00421700 *b = desc->model->info->bounds;
+        *b = desc->model->shape->bounds;
         b->radius = func_00421CB0(b, &D_00692350);
         obj->model->info->type = 0;
     }
@@ -271,11 +271,6 @@ char func_00421DD0(Obj_00421700 *obj, Desc_00421700 *desc)
         obj->flags |= 0x200;
 
     switch (model->kind) {
-    case 0:
-        func_00449CD0(obj, model->unk_0x18, 0xff);
-        if (obj->model->shape->bounds.unk_0x0[0xc] , *(float *)((char *)obj->model->shape + 0x1c) > obj->radius)
-            obj->radius = *(float *)((char *)obj->model->shape + 0x1c);
-        break;
     case 1: {
         Effect_00421700 e;
         char *r;
@@ -292,6 +287,11 @@ char func_00421DD0(Obj_00421700 *obj, Desc_00421700 *desc)
         }
         break;
     }
+    case 0:
+        func_00449CD0(obj, model->unk_0x18, 0xff);
+        if (obj->model->shape->bounds.unk_0xc > obj->radius)
+            obj->radius = obj->model->shape->bounds.unk_0xc;
+        break;
     }
 
     obj->unk_0x7c = 0;

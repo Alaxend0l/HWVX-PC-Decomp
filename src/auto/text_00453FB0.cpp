@@ -20,6 +20,13 @@ struct Vec4_00453FB0 {
     float x, y, z, w;
 };
 
+static inline void CopyVec3_00453FB0(float *dst, const float *src)
+{
+    dst[0] = src[0];
+    dst[1] = src[1];
+    dst[2] = src[2];
+}
+
 static inline float Length3_00453FB0(float x, float y, float z)
 {
     return func_004532E0(x * x + y * y + z * z);
@@ -45,6 +52,31 @@ void func_00454960(float *q)
     func_00453D20(&axis.x, angle, q);
 }
 
+extern "C" int func_00454AF0(int, int);
+extern float D_0068E2C0[][4];
+extern unsigned int D_006912C0;
+void func_004549A0(float *out)
+{
+    int i = D_006912C0 * 3;
+    float *p;
+    p = D_0068E2C0[i];
+    out[0] = p[0];
+    out[1] = p[1];
+    out[2] = p[2];
+    i++;
+    p = D_0068E2C0[i];
+    out[4] = p[0];
+    out[5] = p[1];
+    out[6] = p[2];
+    i++;
+    p = D_0068E2C0[i];
+    out[8] = p[0];
+    out[9] = p[1];
+    out[10] = p[2];
+    if (++D_006912C0 >= 0x100)
+        D_006912C0 = 0;
+}
+
 void func_004546B0(float *p)
 {
     float len = Length3_00453FB0(p[0], p[1], p[2]);
@@ -56,6 +88,12 @@ void func_004546B0(float *p)
         p[2] = inv * p[2];
         p[3] = inv * p[3];
     }
+}
+
+void func_00454A30(float *out)
+{
+    float *p = D_0068E2C0[func_00454AF0(0, 0x300)];
+    *(Vec4_00453FB0 *)out = *(Vec4_00453FB0 *)p;
 }
 
 void func_00454730(float *out, float *n, float *pt)

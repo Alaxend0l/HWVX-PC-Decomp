@@ -38,6 +38,15 @@ void func_00456630(unsigned int *out)
     *out = now.LowPart;
 }
 
+void func_00456680(unsigned int *io)
+{
+    LARGE_INTEGER now;
+
+    QueryPerformanceCounter(&now);
+    now.QuadPart = now.QuadPart * 1000000 / D_0068DDB8.QuadPart;
+    *io = now.LowPart - *io;
+}
+
 extern "C" DWORD D_00496E38;
 extern "C" HANDLE D_00496E3C;
 extern "C" char D_0047C244[];

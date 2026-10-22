@@ -56,6 +56,7 @@ extern "C" int func_0046BD9C(void)
     return 0;
 }
 #pragma optimize("", on)
+#pragma optimize("gy", on)
 extern "C" int func_0046BDDA(void)
 {
     void *kernel;

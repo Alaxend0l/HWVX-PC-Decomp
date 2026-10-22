@@ -111,8 +111,8 @@ struct Xform_0043D0E0 {
 void func_00453750(Vec4_0043CF10 *, Vec4_0043CF10 *, Vec4_0043CF10 *);
 void func_004536E0(Vec4_0043CF10 *, Vec4_0043CF10 *, int);
 void func_0045E120(int, int, Xform_0043D0E0 *, int);
-void func_0043D550(Elem_0043D010 *);
-void func_0043D620(Elem_0043D010 *);
+void func_0043D550(Part_0043CF50 *);
+void func_0043D620(Part_0043CF50 *);
 
 void func_0043CF10(void)
 {

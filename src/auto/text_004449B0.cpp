@@ -12,8 +12,13 @@ struct Obj_004401B0 {
     int unk_0xc8;
 };
 
-extern void (*D_0053B1E8)(void);
-extern int D_0053B1EC;
+struct Msg_00444EE0 {
+    int unk_0x00;
+    unsigned short type;
+};
+
+extern void (*D_0053B1E8)(Msg_00444EE0 *);
+extern void (*D_0053B1EC)(Msg_00444EE0 *);
 extern char D_0048D974;
 extern char D_00692374;
 extern void (*D_006929A0)(void);
@@ -25,7 +30,8 @@ unsigned char *func_0042B040(int);
 void func_00457120(unsigned char *, unsigned char *);
 void func_0043F4B0(Obj_004401B0 *, int);
 void func_004591B0(int, int);
-void func_00444F50(void);
+void func_00444F50(Msg_00444EE0 *);
+void func_00444F30(Msg_00444EE0 *);
 void func_0040A810(unsigned char);
 void func_00409EE0(int);
 void func_00401090(void);
@@ -48,18 +54,14 @@ void func_004620A0(void);
 
 void func_004449B0(void)
 {
-    Ctx_00429EC0 *ctx;
-    unsigned int n;
-    unsigned int i;
-    Obj_004401B0 *obj;
-    unsigned char *info;
+    Ctx_00429EC0 *ctx = func_00429EC0();
+    int n = func_00440130();
+    int i;
 
-    ctx = func_00429EC0();
-    n = func_00440130();
-    for (i = 0; i < n; i++) {
-        obj = func_004401B0(i);
-        info = func_0042B040(obj->unk_0x60);
-        if (ctx != NULL && ctx->unk_0x3c != 0) {
+    for (i = 0; (unsigned int)i < (unsigned int)n; i++) {
+        Obj_004401B0 *obj = func_004401B0(i);
+        unsigned char *info = func_0042B040(obj->unk_0x60);
+        if (ctx != NULL && ctx->unk_0x3c > 0) {
             if (info[1] >= ctx->unk_0x3c)
                 info[1] = 0;
             func_00457120(info + 4, info + 0x12);

@@ -29,6 +29,11 @@ extern "C" void *func_0046AED9(unsigned int size);
 extern "C" void func_0046B013(void *p);
 extern "C" int func_0046A89F(char *string, const char *format, ...);
 
+void func_00466590(void)
+{
+    memset(D_0049D7C4, 0, 0x18);
+}
+
 void func_00466FD0(int mode)
 {
     switch (mode) {

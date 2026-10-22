@@ -66,14 +66,22 @@ extern "C" char func_0043B2A0(void)
     return 0;
 }
 
+extern "C" unsigned func_0043BD10(void)
+{
+    return D_0048D768->count;
+}
+
 extern "C" void func_0043B2E0(void)
 {
+    int r;
+
     if (D_0048D64C && D_0048D650) {
         if (binkw32_3(D_0048D650)) {
             binkw32_4(D_0048D64C, D_0048D650->unk_0x14, D_0048D650->unk_0x18, D_0048D650->unk_0x04, 0, 0, D_0048D650->unk_0x10);
             binkw32_5(D_0048D650);
         }
-        binkw32_7(D_0048D650, D_0048D64C->unk_0x34, binkw32_6(D_0048D64C, D_0048D650->unk_0x10));
+        r = binkw32_6(D_0048D64C, D_0048D650->unk_0x10);
+        binkw32_7(D_0048D650, D_0048D64C->unk_0x34, r);
     }
 }
 
@@ -83,10 +91,15 @@ extern "C" void func_0043B460(List_0043B460 *list)
 
     D_0048D768 = list;
     D_0048D76C = 0;
-    if (list->count)
+    if (list->count > 0)
         D_0048D76C = (void **)func_00454B80(list->count * 4, 0x57, D_0047B020);
-    for (i = 0; i < D_0048D768->count; i++)
-        D_0048D76C[i] = func_0042D620(5, i, &D_0048D768->items[i], &D_0048D768->items[i]);
+    i = 0;
+    if (D_0048D768->count > 0) {
+        do {
+            D_0048D76C[i] = func_0042D620(5, i, &D_0048D768->items[i], &D_0048D768->items[i]);
+            i++;
+        } while (i < D_0048D768->count);
+    }
 }
 
 extern "C" void func_0043B8F0(void)

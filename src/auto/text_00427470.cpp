@@ -10,6 +10,7 @@ extern "C" int D_0047A934;
 extern "C" unsigned int D_0047A908[11];
 extern "C" char D_0047A93C[];
 extern "C" void *D_0065F460[11];
+extern "C" void *D_0065F48C[];
 extern "C" void *func_00454B80(unsigned int size, int line, const char *file);
 extern "C" void func_00454C50(void *p);
 extern "C" void func_00428A70(int, int);

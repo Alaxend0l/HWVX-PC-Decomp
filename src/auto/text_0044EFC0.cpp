@@ -105,6 +105,11 @@ void func_0044F080(int *out, unsigned int max)
     }
 }
 
+void func_0044F200(char value)
+{
+    D_00496DC8 = value;
+}
+
 char func_0044F210(void)
 {
     return D_00496DC8;

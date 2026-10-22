@@ -11,6 +11,18 @@ extern "C" char *func_0046ABF0(const char *s, int ch);
 extern "C" int func_0046A89F(char *string, const char *format, ...);
 extern "C" __declspec(noreturn) void func_0046ADE6(int code);
 
+struct Vec4_004530C0 {
+    float x, y, z, w;
+};
+
+struct Mat4_004530E0 {
+    float m[16];
+};
+
+extern float D_00477000;
+extern float D_00477014;
+extern float D_004770AC;
+
 int func_00452FB0(const char *expr, const char *file, int line, const char *msg)
 {
     char buf[256];

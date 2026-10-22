@@ -137,3 +137,9 @@ extern "C" void func_00459590(char v)
 {
     D_00693E00 = v;
 }
+
+extern "C" void func_004595A0(int a, int b)
+{
+    func_00401090(a, b, 0x666, 0x28);
+}
+

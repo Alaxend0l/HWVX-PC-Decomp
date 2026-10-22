@@ -46,6 +46,17 @@ extern "C" __declspec(dllimport) void __stdcall binkw32_10(Bink_0048D64C *);
 extern "C" void *func_00454B80(unsigned size, int tag, const char *file);
 extern "C" void *func_0042D620(int type, unsigned index, void *a, void *b);
 
+extern "C" char func_0043B2A0(void)
+{
+    if (D_0048D64C && D_0048D64C->unk_0x0c != D_0048D64C->unk_0x08 - 1) {
+        binkw32_8(D_0048D64C);
+        if (!binkw32_0(D_0048D64C))
+            binkw32_10(D_0048D64C);
+        return 1;
+    }
+    return 0;
+}
+
 extern "C" void func_0043B8F0(void)
 {
     D_0048D760 = 1;

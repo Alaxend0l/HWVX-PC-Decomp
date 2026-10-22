@@ -55,6 +55,18 @@ extern "C" void func_00429E60(void)
     D_0065E2CC = 1;
 }
 
+extern "C" void func_00429E80(void)
+{
+    int *p;
+
+    p = D_0065E2B0;
+    do {
+        p[-4] = -1;
+        *p = -1;
+        p++;
+    } while (p < &D_0065E2C0);
+}
+
 extern "C" void func_00429DD0(void)
 {
     int i;
@@ -82,6 +94,14 @@ extern "C" void func_00429DD0(void)
     D_0065E320 = 3;
     D_0065E324 = 0;
     D_0065E328 = 3;
+}
+
+extern "C" unsigned char func_00429EA0(void)
+{
+    unsigned char *p = (unsigned char *)func_00429EC0();
+    if (p)
+        return p[1];
+    return 0;
 }
 
 extern "C" void func_00429830(unsigned int mode)

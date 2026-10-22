@@ -53,7 +53,8 @@ extern Pool_0042C540 *D_0048D5DC;
 extern char D_0047ACC0[];
 
 void func_0043FF50(void);
-void func_0042D010(int);
+void func_0042D010(char);
+void func_0042D060(int);
 void func_00454C50(void *);
 void *func_00454B80(int, int, const char *);
 

@@ -11,6 +11,28 @@ extern "C" char *func_0046ABF0(const char *s, int ch);
 extern "C" int func_0046A89F(char *string, const char *format, ...);
 extern "C" int func_0046ADE6(int code);
 
+int func_00452FB0(const char *expr, const char *file, int line, const char *msg)
+{
+    char buf[256];
+    const char *p;
+    int r;
+
+    p = func_0046ABF0(file, '\\');
+    if (p != NULL)
+        file = p + 1;
+    func_0046A89F(buf, D_0047BE10, file, line);
+    if (msg != NULL) {
+        strcat(buf, msg);
+        strcat(buf, D_0047BE0C);
+    }
+    if (expr != NULL)
+        strcat(buf, expr);
+    r = MessageBoxA(NULL, buf, D_0047BDF8, MB_ABORTRETRYIGNORE | MB_ICONEXCLAMATION);
+    if (r == IDABORT)
+        func_0046ADE6(-1);
+    return r != IDIGNORE;
+}
+
 float func_004532F0(float x)
 {
     return (float)fabs(x);

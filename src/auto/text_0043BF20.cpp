@@ -51,6 +51,8 @@ void func_004533F0(float, Vec4_0043BF20 *, Vec4_0043BF20 *, Vec4_0043BF20 *);
 void func_00453D20(Vec4_0043BF20 *, float, Vec4_0043BF20 *);
 void func_00453E00(Vec4_0043BF20 *, Vec4_0043BF20 *, Vec4_0043BF20 *);
 
+void func_0043CF50(Part_0043C4F0 *);
+void func_0043D010(Elem_0043C520 *);
 void func_0043C4F0(Part_0043C4F0 *p)
 {
     int i;
@@ -62,21 +64,40 @@ void func_0043C4F0(Part_0043C4F0 *p)
 
 void func_0043C520(Elem_0043C520 *elems)
 {
-    float dt = D_0069236C;
     Elem_0043C520 *e;
     int i;
+    float dt;
 
+    dt = D_0069236C;
     e = elems;
-    for (i = 0; i < 0x200; i++, e++) {
+    for (i = 0x200; i != 0; i--, e++) {
         if (!(e->flags & 8))
             func_0043CCB0(e, elems);
     }
     e = elems;
-    for (i = 0; i < 0x200; i++, e++) {
+    for (i = 0x200; i != 0; i--, e++) {
         if (!(e->flags & 8)) {
             func_004533F0(dt, &e->unk_0x20, &e->unk_0x10, &e->unk_0x10);
             func_004533F0(dt, &e->unk_0x10, &e->unk_0x00, &e->unk_0x00);
         }
+    }
+}
+
+void func_0043C6C0(Body_0043C6C0 *b)
+{
+    Vec4_0043BF20 t;
+    Vec4_0043BF20 r;
+    Vec4_0043BF20 q;
+
+    func_004533F0(D_0069236C, &b->vel, &b->pos, &t);
+    b->pos.x = t.x;
+    b->pos.y = t.y;
+    b->pos.z = t.z;
+    b->pos.w = t.w;
+    if (b->unk_0xc8 != D_00477000) {
+        func_00453D20(&b->spin, b->unk_0xb8 * b->unk_0xc8 * D_0069236C * D_00477158, &q);
+        func_00453E00(&b->rot, &q, &r);
+        b->rot = r;
     }
 }
 

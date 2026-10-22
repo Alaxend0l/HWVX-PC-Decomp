@@ -18,3 +18,34 @@ extern int D_006814E4;
 
 void func_00409DA0(int);
 void func_0040A4F0(void);
+
+int func_0040A4B0(void)
+{
+    return D_00681AB0;
+}
+
+void func_0040A4F0(void)
+{
+    memset(D_00681380, 0, sizeof(D_00681380));
+    memset(D_00681360, 0, sizeof(D_00681360));
+    D_006814E0 = 0;
+    memset(D_00681460, 0, sizeof(D_00681460));
+    memset(D_006813E0, 0, sizeof(D_006813E0));
+    D_006814E4 = 0;
+}
+
+void func_0040A540(void)
+{
+    D_00681AB4 = 0;
+    D_00681AB0 = 0;
+    func_00409DA0(0);
+    func_0040A4F0();
+}
+
+Slot_0040A4B0 *func_0040A4C0(u32 i)
+{
+    if (i < D_00681AB0 && i < 4)
+        return &D_00681500[i];
+    return NULL;
+}
+

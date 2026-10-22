@@ -96,9 +96,10 @@ extern "C" int func_00459360(unsigned int n, const unsigned char *p)
 
 extern "C" int func_00459390(void)
 {
-    unsigned int i;
-    for (i = 0; i < 4; i++) {
-        if (D_00692500[i].unk_0x18 == -1)
+    int i = 0;
+    Slot_00692518 *p;
+    for (p = D_00692518; p < D_00692588; p++, i++) {
+        if (p->unk_0x0 == -1)
             break;
     }
     if (i == 4)

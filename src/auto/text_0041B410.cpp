@@ -60,3 +60,18 @@ extern "C" void func_0041B570(void)
     } while (p < D_006633C0);
 }
 
+extern "C" Entry_006611C0 *func_0041B590(int value)
+{
+    int i = 0;
+    Slot_006614C0 *p;
+
+    for (p = D_006614C0; p < D_006633C0; p++, i++) {
+        if (p->unk_0x00 == 0) {
+            D_006614C0[i].unk_0x00 = value;
+            return &D_006611C0[i];
+        }
+    }
+    func_00452F70(D_0047A59C);
+    return 0;
+}
+

@@ -88,6 +88,32 @@ void func_00461BC0(int);
 void func_0045E730(int, Vec4_0043CF10 *, Vec4_0043CF10 *, Part_0043CF50 *);
 Obj_0045EC70 *func_0045EC70(int);
 
+struct Body_0043D070 {
+    char unk_0x00[0x10];
+    Vec4_0043CF10 unk_0x10;
+    char unk_0x20[0x110 - 0x20];
+    Vec4_0043CF10 unk_0x110;
+    float unk_0x120;
+    float unk_0x124;
+    float unk_0x128;
+};
+
+struct Obj_0043D0E0 {
+    char unk_0x00[0xd4];
+    int unk_0xd4;
+};
+
+struct Xform_0043D0E0 {
+    Vec4_0043CF10 rot;
+    Vec4_0043CF10 pos;
+};
+
+void func_00453750(Vec4_0043CF10 *, Vec4_0043CF10 *, Vec4_0043CF10 *);
+void func_004536E0(Vec4_0043CF10 *, Vec4_0043CF10 *, int);
+void func_0045E120(int, int, Xform_0043D0E0 *, int);
+void func_0043D550(Elem_0043D010 *);
+void func_0043D620(Elem_0043D010 *);
+
 void func_0043CF10(void)
 {
     Group_0043CF10 *g;
@@ -100,18 +126,15 @@ void func_0043CF10(void)
 void func_0043CF50(Part_0043CF50 *p)
 {
     Vec4_0043CF10 v;
-    float s;
-    unsigned char i = p->unk_0xb7;
 
-    p->unk_0xc0 = p->model->table->entries[i];
+    p->unk_0xc0 = p->model->table->entries[p->unk_0xb7];
     if (p->unk_0xb6) {
         func_00461D10(p->unk_0x74);
         func_00461BA0(0x10);
     }
-    s = p->unk_0xd8 * p->unk_0xc4;
-    v.x = s * p->unk_0x80;
-    v.y = s * p->unk_0x84;
-    v.z = s * p->unk_0x88;
+    v.x = p->unk_0xd8 * p->unk_0xc4 * p->unk_0x80;
+    v.y = p->unk_0xd8 * p->unk_0xc4 * p->unk_0x84;
+    v.z = p->unk_0xd8 * p->unk_0xc4 * p->unk_0x88;
     v.w = 1.0f;
     p->unk_0x0c = 1.0f;
     func_0045E730(p->unk_0xc0, &p->unk_0x30, &v, p);
@@ -123,7 +146,7 @@ void func_0043D010(Elem_0043D010 *e)
 {
     Obj_0045EC70 *o;
 
-    o = func_0045EC70(((unsigned short *)e->model->table->entries)[e->unk_0x97 * 2]);
+    o = func_0045EC70(*(unsigned short *)&e->model->table->entries[e->unk_0x97]);
     o->unk_0x2a = e->unk_0x95;
     o->unk_0x24 = e->unk_0x54;
     o->unk_0x1c = e->unk_0x80;

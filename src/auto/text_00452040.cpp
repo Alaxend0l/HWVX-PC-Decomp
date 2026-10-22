@@ -114,6 +114,13 @@ extern "C" void func_00452040(void)
     }
 }
 
+extern "C" Track_00452040 *func_004525A0(void)
+{
+    if (D_0049DBA0)
+        return D_0049DBA0->unk_0x9c;
+    return 0;
+}
+
 extern "C" void func_004520B0(void)
 {
     func_00427780();

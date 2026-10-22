@@ -82,6 +82,12 @@ void func_00461B10(void)
     D_0049D7D0 = 0;
 }
 
+void func_00461B30(void)
+{
+    func_004664A0();
+    memset(D_006D4D40, 0, sizeof(D_006D4D40));
+}
+
 void func_004620A0(void)
 {
     func_00401090();

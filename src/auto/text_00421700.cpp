@@ -67,7 +67,31 @@ struct Obj_00421700 {
     Vec4_00421700 unk_0x50;
     char unk_0x60[0x10];
     float radius;
-    int flags;
+    union {
+        int flags;
+        struct {
+            unsigned int b0 : 1;
+            unsigned int b1 : 1;
+            unsigned int b2 : 1;
+            unsigned int b3 : 1;
+            unsigned int b4 : 3;
+            unsigned int b7 : 1;
+            unsigned int b8 : 1;
+            unsigned int b9 : 1;
+            unsigned int b10 : 7;
+            unsigned int b17 : 1;
+            unsigned int b18 : 1;
+            unsigned int b19 : 1;
+            unsigned int b20 : 1;
+            unsigned int b21 : 5;
+            unsigned int b26 : 1;
+            unsigned int b27 : 1;
+            unsigned int b28 : 1;
+            unsigned int b29 : 1;
+            unsigned int b30 : 1;
+            unsigned int b31 : 1;
+        } bits;
+    };
     int unk_0x78;
     int unk_0x7c;
     short type;

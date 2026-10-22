@@ -14,6 +14,8 @@ extern "C" char **D_0049D834;
 extern "C" int D_006D579C;
 extern "C" unsigned char D_006D58A1[];
 
+#pragma optimize("s", on)
+
 extern "C" unsigned char *func_00475CF4(const unsigned char *string, unsigned int c)
 {
     unsigned short cc;
@@ -38,6 +40,28 @@ extern "C" unsigned char *func_00475CF4(const unsigned char *string, unsigned in
     }
     func_0046E9BA(0x19);
     return (c == (unsigned int)cc) ? (unsigned char *)string : NULL;
+}
+#pragma optimize("y", on)
+extern "C" char **func_00475C8D(char **oldenv)
+{
+    char **oldenvptr = oldenv;
+    char **newenv, **newenvptr;
+    int cvars = 0;
+
+    if (oldenv == NULL)
+        return NULL;
+
+    while (*oldenvptr++)
+        cvars++;
+
+    if (!(newenv = newenvptr = (char **)func_0046AED9((cvars + 1) * sizeof(char *))))
+        func_0046AD1F(9);
+
+    for (oldenvptr = oldenv; *oldenvptr; oldenvptr++)
+        *newenvptr++ = func_00475D8B(*oldenvptr);
+
+    *newenvptr = NULL;
+    return newenv;
 }
 
 extern "C" int func_00475C35(const char *option, unsigned int length)

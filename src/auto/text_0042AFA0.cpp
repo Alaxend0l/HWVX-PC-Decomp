@@ -88,16 +88,16 @@ char func_0042B800(int a, int *o, int *buf)
     return ok;
 }
 
-char func_0042B880(int a, int *o, int *buf)
+char func_0042B880(int a, SaveInfo_0042B800 *o, SaveHdr_0042B800 *buf)
 {
     char ok = 0;
-    int h = func_004584F0(a, o[3], 5, 0);
+    int h = func_004584F0(a, o->unk_0x0c, 5, 0);
 
     if (h != -1) {
-        buf[0] = 4;
-        buf[1] = o[5];
-        buf[2] = func_00459360(o[5], buf + 3);
-        if (func_00458610(h, o[6] * 8 + 0x194, buf))
+        buf->type = 4;
+        buf->id = o->unk_0x14;
+        buf->sum = func_00459360(o->unk_0x14, buf->data);
+        if (func_00458610(h, o->unk_0x18 * 8 + 0x194, (int *)buf))
             ok = 1;
         func_004585A0(h);
     }

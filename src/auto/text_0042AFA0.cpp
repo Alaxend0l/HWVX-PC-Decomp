@@ -25,7 +25,8 @@ void func_00459D70(int);
 void func_004596C0(int);
 void func_00459590(int);
 void func_00429FA0(int, int, int);
-char *func_004401B0(int);
+struct Obj_004401B0 { char pad[0x70]; D_0064DDB8_t data; };
+Obj_004401B0 *func_004401B0(int);
 
 static inline int func_0042AFB0_check(char *p, int idx)
 {
@@ -67,8 +68,12 @@ void func_0042B1C0(int *a, int *b)
 
 void func_0042B210(void)
 {
-    if (func_00429EA0() == 1 && D_0064DDB4 && func_00440130() == 1)
-        *(D_0064DDB8_t *)(func_004401B0(0) + 0x70) = D_0064DDB8;
+    switch (func_00429EA0()) {
+    case 1:
+        if (D_0064DDB4 && func_00440130() == 1)
+            *(D_0064DDB8_t *)(func_004401B0(0) + 0x70) = D_0064DDB8;
+        break;
+    }
 }
 
 unsigned char func_0042AFB0(int idx)

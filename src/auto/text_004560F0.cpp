@@ -55,6 +55,11 @@ void func_00456680(unsigned int *io)
     *io = now.LowPart - *io;
 }
 
+int func_00456730(void)
+{
+    return D_00496E38 == ERROR_ALREADY_EXISTS;
+}
+
 struct EngineMutex {
     EngineMutex()
     {

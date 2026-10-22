@@ -35,6 +35,52 @@ struct Format_0045A550 {
 
 extern int D_00692998;
 
+struct Chan_00499260 {
+    Voice_0045A550 *head;
+    unsigned char flags;
+    char unk_0x05[0x18 - 0x05];
+    int unk_0x18;
+    char unk_0x1c;
+    unsigned char unk_0x1d;
+    char unk_0x1e;
+    unsigned char unk_0x1f;
+};
+
+struct Mode_00499660 {
+    int unk_0x0;
+    char unk_0x4;
+    char unk_0x5;
+    char unk_0x6[2];
+};
+
+struct Chan_00499A68 {
+    char unk_0x00[0x10];
+    unsigned char index;
+    char unk_0x11[0x70 - 0x11];
+};
+
+extern Chan_00499260 D_00499260[16];
+extern Mode_00499660 D_00499660[];
+extern Chan_00499A68 D_00499A68[32];
+extern char D_0049A868[0x30];
+extern int D_0049A898;
+extern unsigned int D_006929AC;
+extern unsigned int D_00692990;
+extern int D_00499230;
+extern int D_00499238;
+extern int D_00499244;
+extern int D_00499248;
+extern char D_0049924C;
+extern char D_0049924D;
+extern unsigned char D_0049924E;
+extern char D_0047C730[];
+extern char D_0047C83C[];
+extern char D_0047C818[];
+
+int func_00452FB0(const char *, const char *, int, int, int);
+void func_0045A4A0(unsigned int, int);
+int func_0045DF40(int *);
+
 int __fastcall func_00459CB0(unsigned int, int);
 void func_00401090(Voice_0045A550 *);
 unsigned int func_0045AF20(unsigned int rate);

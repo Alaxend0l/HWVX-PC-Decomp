@@ -22,6 +22,39 @@ struct List_0045C {
 
 extern List_0045C D_00499A68[];
 
+struct Iface_0045C {
+    void **vtbl;
+};
+
+struct Slot_0045C {
+    Iface_0045C *unk_0x0;
+    Iface_0045C *unk_0x4;
+    char unk_0x8[0xc];
+    int unk_0x14;
+    char unk_0x18[0x8];
+};
+
+struct Entry24_0045C {
+    int unk_0x0;
+    int unk_0x4;
+    int unk_0x8;
+    int unk_0xc;
+    char unk_0x10[0x14];
+};
+
+struct Entry18_0045C {
+    int unk_0x0;
+    int unk_0x4;
+    int unk_0x8;
+    int unk_0xc;
+    int unk_0x10;
+    int unk_0x14;
+};
+
+extern Slot_0045C D_0049B7E8[32];
+extern Entry24_0045C D_0049AEFC[64];
+extern Entry18_0045C D_0049BBE8[254];
+
 void func_0045D630(Node_0045C *, int);
 void func_0045DC20(Node_0045C *, int);
 

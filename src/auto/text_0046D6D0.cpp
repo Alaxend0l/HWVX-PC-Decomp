@@ -98,6 +98,26 @@ extern "C" void func_0046DE0D(void)
     D_006D6B04 = 1;
 }
 
+extern "C" void func_0046DEC6(void)
+{
+    char *p;
+    char *cmdstart;
+    int numargs, numchars;
+
+    if (D_006D6B08 == 0)
+        func_00472B36();
+    GetModuleFileNameA(NULL, D_0049D87C, 260);
+    D_0049D844 = D_0049D87C;
+    cmdstart = (*D_006D6B14 == '\0') ? D_0049D87C : (char *)D_006D6B14;
+    func_0046DF5F(cmdstart, NULL, NULL, &numargs, &numchars);
+    p = (char *)func_0046AED9(numargs * sizeof(char *) + numchars);
+    if (p == NULL)
+        func_0046AD1F(8);
+    func_0046DF5F(cmdstart, (char **)p, p + numargs * sizeof(char *), &numargs, &numchars);
+    D_0049D828 = numargs - 1;
+    D_0049D82C = (char **)p;
+}
+
 extern "C" void func_0046E401(unsigned char *ver)
 {
     unsigned char *base;

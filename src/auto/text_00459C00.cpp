@@ -27,3 +27,34 @@ unsigned int __fastcall func_00459CB0(unsigned int a, unsigned int b)
 {
     return (unsigned int)((unsigned __int64)a * b >> 16);
 }
+
+char func_00459CC0(void)
+{
+    D_00692998 = 0x7fff;
+    D_0049922C = 0x7fff;
+    D_00499228 = 0x7fff;
+    D_006929E8 = 0;
+    D_006929DF = 0;
+    return 1;
+}
+
+void func_00459C40(void)
+{
+    HANDLE h = D_00499218;
+
+    if (h != NULL) {
+        func_00459B10(1);
+        D_00499218 = NULL;
+        ReleaseMutex(h);
+        CloseHandle(h);
+    }
+    if (D_00499224 != NULL) {
+        D_00499224->Release();
+        D_00499224 = NULL;
+    }
+    if (D_00499220 != NULL) {
+        D_00499220->Release();
+        D_00499220 = NULL;
+    }
+}
+

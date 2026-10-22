@@ -7,6 +7,8 @@ extern int D_006C9A68;
 extern int D_006C99F8;
 extern int D_006C9A70;
 extern int D_006C9A74;
+extern int D_006C99F0;
+extern int D_006C99E8;
 
 void func_00467000(int mode)
 {

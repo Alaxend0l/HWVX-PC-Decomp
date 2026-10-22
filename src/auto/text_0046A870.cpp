@@ -69,6 +69,18 @@ extern "C" int func_0046A922(FILE *stream)
     return result;
 }
 
+#pragma optimize("y", off)
+extern "C" size_t func_0046A99D(void *buffer, size_t size, size_t count, FILE *stream);
+extern "C" size_t func_0046A96E(void *buffer, size_t size, size_t count, FILE *stream)
+{
+    size_t retval;
+
+    func_0046C816(stream);
+    retval = func_0046A99D(buffer, size, count, stream);
+    func_0046C868(stream);
+    return retval;
+}
+
 extern "C" void *func_0046D6D0(void *dst, const void *src, size_t count);
 extern "C" int func_0046D4D5(int fh, const void *buf, unsigned int cnt);
 extern "C" size_t func_0046A99D(void *buffer, size_t size, size_t num, FILE *stream)
@@ -76,7 +88,7 @@ extern "C" size_t func_0046A99D(void *buffer, size_t size, size_t num, FILE *str
     const char *data;
     unsigned total;
     unsigned count;
-    int bufsize;
+    unsigned bufsize;
     unsigned nbytes;
     unsigned nwritten;
 
@@ -98,7 +110,7 @@ extern "C" size_t func_0046A99D(void *buffer, size_t size, size_t num, FILE *str
             stream->_ptr += nbytes;
             count -= nbytes;
             data += nbytes;
-        } else if (count >= (unsigned)bufsize) {
+        } else if (count >= bufsize) {
             if (stream->_flag & (_IOMYBUF | 0x100)) {
                 if (func_0046D3CC(stream)) {
                     return (total - count) / size;
@@ -122,23 +134,11 @@ extern "C" size_t func_0046A99D(void *buffer, size_t size, size_t num, FILE *str
             }
             ++data;
             --count;
-            if ((bufsize = stream->_bufsiz) <= 0)
+            if ((int)(bufsize = stream->_bufsiz) <= 0)
                 bufsize = 1;
         }
     }
     return num;
-}
-
-#pragma optimize("y", off)
-extern "C" size_t func_0046A99D(void *buffer, size_t size, size_t count, FILE *stream);
-extern "C" size_t func_0046A96E(void *buffer, size_t size, size_t count, FILE *stream)
-{
-    size_t retval;
-
-    func_0046C816(stream);
-    retval = func_0046A99D(buffer, size, count, stream);
-    func_0046C868(stream);
-    return retval;
 }
 #pragma optimize("y", on)
 

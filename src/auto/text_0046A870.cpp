@@ -69,6 +69,66 @@ extern "C" int func_0046A922(FILE *stream)
     return result;
 }
 
+extern "C" void *func_0046D6D0(void *dst, const void *src, size_t count);
+extern "C" int func_0046D4D5(int fh, const void *buf, unsigned int cnt);
+extern "C" size_t func_0046A99D(void *buffer, size_t size, size_t num, FILE *stream)
+{
+    const char *data;
+    unsigned total;
+    unsigned count;
+    int bufsize;
+    unsigned nbytes;
+    unsigned nwritten;
+
+    data = (const char *)buffer;
+    count = total = size * num;
+    if (0 == count)
+        return 0;
+
+    if (stream->_flag & (_IOMYBUF | _IONBF | 0x100))
+        bufsize = stream->_bufsiz;
+    else
+        bufsize = 0x1000;
+
+    while (count != 0) {
+        if ((stream->_flag & (_IOMYBUF | 0x100)) && stream->_cnt != 0) {
+            nbytes = (count < (unsigned)stream->_cnt) ? count : stream->_cnt;
+            func_0046D6D0(stream->_ptr, data, nbytes);
+            stream->_cnt -= nbytes;
+            stream->_ptr += nbytes;
+            count -= nbytes;
+            data += nbytes;
+        } else if (count >= (unsigned)bufsize) {
+            if (stream->_flag & (_IOMYBUF | 0x100)) {
+                if (func_0046D3CC(stream)) {
+                    return (total - count) / size;
+                }
+            }
+            nbytes = (bufsize ? (count - count % bufsize) : count);
+            nwritten = func_0046D4D5(stream->_file, data, nbytes);
+            if (nwritten == (unsigned)EOF) {
+                stream->_flag |= _IOERR;
+                return (total - count) / size;
+            }
+            count -= nwritten;
+            data += nwritten;
+            if (nwritten < nbytes) {
+                stream->_flag |= _IOERR;
+                return (total - count) / size;
+            }
+        } else {
+            if (func_0046D17B(*data, stream) == EOF) {
+                return (total - count) / size;
+            }
+            ++data;
+            --count;
+            if ((bufsize = stream->_bufsiz) <= 0)
+                bufsize = 1;
+        }
+    }
+    return num;
+}
+
 #pragma optimize("y", off)
 extern "C" size_t func_0046A99D(void *buffer, size_t size, size_t count, FILE *stream);
 extern "C" size_t func_0046A96E(void *buffer, size_t size, size_t count, FILE *stream)

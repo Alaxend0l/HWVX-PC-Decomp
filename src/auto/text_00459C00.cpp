@@ -28,6 +28,39 @@ extern Fn_00692994 D_006929F0;
 void func_0044A5A0(void);
 void func_0045A090(void);
 
+struct Voice_00459C00 {
+    char unk_0x00[4];
+    Voice_00459C00 *next;
+    char unk_0x08[0x34 - 0x08];
+    int unk_0x34;
+};
+
+struct Chan_00499260 {
+    Voice_00459C00 *head;
+    char unk_0x04[0x14 - 0x04];
+    int unk_0x14;
+    int unk_0x18;
+    unsigned char unk_0x1c;
+    unsigned char unk_0x1d;
+    char unk_0x1e[2];
+};
+
+extern int D_00499230[9];
+extern int D_00499250;
+extern Chan_00499260 D_00499260[16];
+extern char D_00499A60;
+extern char D_0047C02C[];
+extern char D_0047C730[];
+extern char D_0047C750[];
+
+int func_00452FB0(const char *, const char *, int, int, int);
+void func_0045A130(int);
+void func_0045DF10(int);
+void func_0045AF50(Chan_00499260 *);
+void func_0045DC20(Voice_00459C00 *, int);
+void func_0045DD10(Voice_00459C00 *);
+int func_0045DF60(unsigned char, unsigned char);
+
 void func_00459BA0(void);
 char func_00459B10(char);
 

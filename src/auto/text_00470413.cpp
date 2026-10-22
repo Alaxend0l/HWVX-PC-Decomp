@@ -26,22 +26,22 @@ extern "C" void func_00470413(unsigned long oserr)
         *func_00470486() = 0x16;
 }
 
-extern "C" unsigned long *func_0047048F(void)
-{
-    return (unsigned long *)(func_0046C653() + 0xc);
-}
-
 extern "C" int *func_00470486(void)
 {
     return (int *)(func_0046C653() + 8);
 }
 
-extern "C" void func_0047062C(void)
+extern "C" unsigned long *func_0047048F(void)
 {
+    return (unsigned long *)(func_0046C653() + 0xc);
 }
 
 extern "C" void func_00470623(void)
 {
     func_0046E9BA(9);
+}
+
+extern "C" void func_0047062C(void)
+{
 }
 

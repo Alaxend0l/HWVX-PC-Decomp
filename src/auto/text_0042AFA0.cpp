@@ -7,7 +7,8 @@ extern char D_0064DD5E[];
 extern char D_0064D39F[];
 extern char D_0065E35A;
 extern char D_0065E350[];
-extern char D_0064D148[][32];
+struct D_0064D148_t { char data[32]; };
+extern D_0064D148_t D_0064D148[];
 extern char D_0064D164;
 unsigned char func_0042AFA0(void)
 {

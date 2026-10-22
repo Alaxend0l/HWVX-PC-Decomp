@@ -2,6 +2,18 @@
 #include "common.h"
 #include <windows.h>
 
+/* The original's import slots are named without the @N decoration. */
+extern "C" LPVOID (__stdcall *_imp__HeapAlloc)(HANDLE, DWORD, SIZE_T);
+extern "C" LPVOID (__stdcall *_imp__HeapReAlloc)(HANDLE, DWORD, LPVOID, SIZE_T);
+extern "C" BOOL (__stdcall *_imp__HeapFree)(HANDLE, DWORD, LPVOID);
+extern "C" LPVOID (__stdcall *_imp__VirtualAlloc)(LPVOID, SIZE_T, DWORD, DWORD);
+extern "C" BOOL (__stdcall *_imp__VirtualFree)(LPVOID, SIZE_T, DWORD);
+#define HeapAlloc (*_imp__HeapAlloc)
+#define HeapReAlloc (*_imp__HeapReAlloc)
+#define HeapFree (*_imp__HeapFree)
+#define VirtualAlloc (*_imp__VirtualAlloc)
+#define VirtualFree (*_imp__VirtualFree)
+
 struct Entry_0046F464 {
     int unk_0x0;
     int unk_0x4;

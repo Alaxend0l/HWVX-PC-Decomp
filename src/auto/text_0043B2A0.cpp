@@ -39,7 +39,8 @@ struct List_0043B460 {
 };
 
 struct Node_0043B8B0 {
-    char unk_0x00[0x38];
+    char unk_0x00[0x37];
+    unsigned char unk_0x37;
     Node_0043B8B0 *next;
     Node_0043B8B0 *unk_0x3c;
 };
@@ -143,6 +144,12 @@ extern "C" int func_0043B7B0(void *a, Elem_0043B460 *e, float *best, unsigned ch
     return result;
 }
 
+extern "C" void func_0043B960(Node_0043B8B0 *n, int tag)
+{
+    unsigned char old = n->unk_0x00[0x37];
+    n->unk_0x00[0x37] = old & ~tag;
+}
+
 extern "C" void func_0043B900(Node_0043B8B0 *n)
 {
     Node_0043B8B0 *p = D_0048D65C;
@@ -177,12 +184,12 @@ extern "C" char func_0043B850(int a, int b)
 
 extern "C" void func_0043B8B0(Node_0043B8B0 *n, Node_0043B8B0 **out, unsigned max)
 {
-    unsigned i;
+    unsigned i = 0;
 
-    for (i = 0; n; n = n->next, i++) {
+    for (; n; n = n->next) {
         if (i >= max)
             return;
-        out[i] = n;
+        out[i++] = n;
     }
     if (i < max)
         out[i] = 0;

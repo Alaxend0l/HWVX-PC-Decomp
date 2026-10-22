@@ -9,6 +9,12 @@ extern "C" void func_0046C816(FILE *stream);
 extern "C" void func_0046C868(FILE *stream);
 extern "C" int func_0046A922(FILE *stream);
 extern "C" FILE *func_0046AAA7(const char *filename, const char *mode, int shflag);
+extern "C" int func_0046D3CC(FILE *stream);
+extern "C" void func_0046D373(FILE *stream);
+extern "C" int func_0046D293(int fh);
+extern "C" void func_0046B013(void *p);
+extern "C" FILE *func_0046DB75(void);
+extern "C" FILE *func_0046DA05(const char *filename, const char *mode, int shflag, FILE *stream);
 
 #pragma optimize("s", on)
 #pragma optimize("y", off)

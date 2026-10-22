@@ -124,32 +124,6 @@ extern "C" void func_004708AC(void)
     func_0046E9BA(9);
 }
 
-extern "C" int func_004722F7(int);
-extern "C" long func_00470ACE(int, int, int);
-extern "C" __declspec(dllimport) unsigned long __stdcall SetFilePointer(void *, long, long *, unsigned long);
-extern "C" __declspec(dllimport) unsigned long __stdcall GetLastError(void);
-extern "C" long func_0047091A(int fh, long pos, int mthd)
-{
-    int osHandle;
-    long newpos;
-    unsigned long dosretval;
-
-    if ((osHandle = func_004722F7(fh)) == -1) {
-        *func_00470486() = 9;
-        return -1;
-    }
-    if ((newpos = SetFilePointer((void *)osHandle, pos, NULL, mthd)) == -1)
-        dosretval = GetLastError();
-    else
-        dosretval = 0;
-    if (dosretval) {
-        func_00470413(dosretval);
-        return -1;
-    }
-    D_006D59E0[fh >> 5][fh & 0x1f].osfile &= ~2;
-    return newpos;
-}
-
 #pragma optimize("s", on)
 extern "C" long func_004708B5(unsigned int fh, long pos, int mthd)
 {

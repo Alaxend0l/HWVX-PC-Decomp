@@ -36,3 +36,8 @@ void func_00456630(void *);
 void func_00456680(void *);
 void func_00401090(void);
 void func_00461AD0(void);
+
+void func_00442500(void)
+{
+    func_00462F20(D_0053B208);
+}

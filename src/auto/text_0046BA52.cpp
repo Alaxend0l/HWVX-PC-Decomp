@@ -10,7 +10,11 @@ struct StrFlt_0046BA52 {
 
 extern "C" StrFlt_0046BA52 *func_004717AB(double value, StrFlt_0046BA52 *flt, char *buf);
 extern "C" int func_00471734(char *buf, int digits, StrFlt_0046BA52 *flt);
-extern "C" void func_0046C079(char *buf, int ndec, StrFlt_0046BA52 *flt, int g_fmt);
+extern "C" char *func_0046C079(char *buf, int ndec, StrFlt_0046BA52 *flt, int g_fmt);
+extern "C" char *func_0046C024(double *value, char *buf, int ndec);
+extern "C" char *func_0046BF01(double *value, char *buf, int ndec, int caps);
+extern "C" void func_0046C120(double *value, char *buf, int ndec, int caps);
+extern "C" void *func_00471050(void *dst, int c, unsigned int n);
 extern "C" char *func_0046BF62(char *buf, int ndec, int caps, StrFlt_0046BA52 *flt, int g_fmt);
 extern "C" void func_0046E9BA(int lock);
 extern "C" void func_0046C204(char *s, int dist);

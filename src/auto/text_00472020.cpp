@@ -47,6 +47,15 @@ extern "C" unsigned __int64 __stdcall func_00472020(unsigned __int64 a, unsigned
     return a % b;
 }
 
+extern "C" int func_004722F7(int fh)
+{
+    if ((unsigned)fh < D_006D5AE0 && (D_006D59E0[fh >> 5][fh & 0x1f].osfile & 1))
+        return D_006D59E0[fh >> 5][fh & 0x1f].osfhnd;
+    *func_00470486() = 9;
+    *func_0047048F() = 0;
+    return -1;
+}
+
 extern "C" int func_004721FC(int fh, long value)
 {
     if ((unsigned)fh < D_006D5AE0 && D_006D59E0[fh >> 5][fh & 0x1f].osfhnd == -1) {

@@ -18,3 +18,8 @@ extern "C" int D_0049DAC0;
 extern "C" void func_0046E959(int);
 extern "C" void func_0046E9BA(int);
 extern "C" void func_00472E62(void);
+
+extern "C" int func_00472E31(void)
+{
+    return 0;
+}

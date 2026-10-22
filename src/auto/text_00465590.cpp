@@ -79,6 +79,15 @@ extern "C" short func_004664C0(void)
     return 0;
 }
 
+extern "C" void func_004664D0(void)
+{
+    func_00460B30(*(int *)(func_00461D50() + 0x270));
+    glViewport(*(int *)(func_00461D50() + 0x2b0), *(int *)(func_00461D50() + 0x2b8),
+               *(int *)(func_00461D50() + 0x280), *(int *)(func_00461D50() + 0x284));
+    glScissor(*(int *)(func_00461D50() + 0x2b0), *(int *)(func_00461D50() + 0x2b8),
+              *(int *)(func_00461D50() + 0x280), *(int *)(func_00461D50() + 0x284));
+}
+
 extern "C" void func_00465CB0(int enable)
 {
     LONG result;

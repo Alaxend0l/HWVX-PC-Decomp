@@ -34,8 +34,7 @@ void func_00444F50(Msg_00444EE0 *);
 void func_00444F30(Msg_00444EE0 *);
 void func_0040A810(unsigned char);
 void func_00409EE0(int);
-void func_00401090(void);
-void func_00401090(int);
+void func_00401090(...);
 void func_0042E200(int);
 void func_0044F200(char);
 char func_00427760(void);
@@ -139,30 +138,32 @@ char func_004450F0(int id, char *name)
 char func_00445180(int id, char *name)
 {
     int p;
-    int q;
 
-    p = func_00428C10(func_004289E0(name, 1, id), 1, 1);
+    p = func_004289E0(name, 1, id);
+    p = func_00428C10(p, 1, 1);
     if (p == 0)
         return 0;
-    q = func_004216C0(p, id);
-    if (q == 0)
+    p = func_004216C0(p, id);
+    if (p == 0)
         return 0;
     D_0053B0E0[D_0048D7FC].name = name;
     D_0053B0E0[D_0048D7FC].id = id;
-    D_0053B0E0[D_0048D7FC].unk_0x08 = func_0042E250(q, 0, func_00445340);
-    D_0048D7FC++;
+    D_0053B0E0[D_0048D7FC].unk_0x08 = func_0042E250(p, 0, func_00445340);
+    ++D_0048D7FC;
     return 1;
 }
 
 void func_004452E0(int h)
 {
     unsigned int i;
+    unsigned int n = D_0048D7FC;
 
-    for (i = 0; i < D_0048D7FC; i++) {
+    for (i = 0; i < n; i++) {
         if (D_0053B0E0[i].unk_0x08 == h) {
-            D_0048D7FC--;
-            for (; i < D_0048D7FC; i++)
+            n--;
+            for (; i < n; i++)
                 D_0053B0E0[i] = D_0053B0E0[i + 1];
+            D_0048D7FC = n;
         }
     }
 }

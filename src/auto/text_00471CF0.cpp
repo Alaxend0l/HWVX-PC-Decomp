@@ -33,3 +33,25 @@ extern "C" void func_00471D6B(void)
 {
     func_0046AD1F(2);
 }
+
+extern "C" int func_00471E44(void)
+{
+    int count = 0;
+    int i;
+
+    func_0046E959(2);
+    for (i = 3; i < D_006D6B00; i++) {
+        if (D_006D5AE4[i] != NULL) {
+            if ((D_006D5AE4[i]->flag & 0x83) && func_0046A8F1(D_006D5AE4[i]) != -1)
+                count++;
+            if (i >= 20) {
+                DeleteCriticalSection(&D_006D5AE4[i]->lock);
+                func_0046B013(D_006D5AE4[i]);
+                D_006D5AE4[i] = NULL;
+            }
+        }
+    }
+    func_0046E9BA(2);
+    return count;
+}
+

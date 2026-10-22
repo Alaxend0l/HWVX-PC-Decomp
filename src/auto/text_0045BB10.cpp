@@ -87,6 +87,38 @@ void func_0045C670(Node_0045C *node)
     }
 }
 
+void func_0045C920(void)
+{
+    int i;
+
+    for (i = 0; i < 32; i++) {
+        D_0049B7E8[i].unk_0x14 = 0;
+        if (D_0049B7E8[i].unk_0x0 != NULL)
+            ((int (__stdcall *)(Iface_0045C *))D_0049B7E8[i].unk_0x0->vtbl[0x48 / 4])(D_0049B7E8[i].unk_0x0);
+        if (D_0049B7E8[i].unk_0x4 != NULL)
+            ((int (__stdcall *)(Iface_0045C *, int, int))D_0049B7E8[i].unk_0x4->vtbl[0xc / 4])(D_0049B7E8[i].unk_0x4, 0, 0);
+    }
+}
+
+int func_0045C960(void)
+{
+    unsigned int i;
+
+    for (i = 0; i < 64; i++) {
+        D_0049AEFC[i].unk_0x0 = 0;
+        D_0049AEFC[i].unk_0x4 = 0;
+        D_0049AEFC[i].unk_0xc = 0;
+    }
+    for (i = 0; i < 254; i++) {
+        D_0049BBE8[i].unk_0x10 = 0;
+        D_0049BBE8[i].unk_0x4 = 0;
+        D_0049BBE8[i].unk_0xc = 0;
+        D_0049BBE8[i].unk_0x0 = 0;
+        D_0049BBE8[i].unk_0x8 = 0;
+    }
+    return 1;
+}
+
 void func_0045C5E0(List_0045C *list)
 {
     Node_0045C *n;

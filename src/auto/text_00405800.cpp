@@ -1,6 +1,30 @@
 /* 7 functions from 0x00405800 to 0x00406770, found by Ghidra. */
 #include "common.h"
 
+struct Obj_00405800 {
+    char pad_0x00[0xb8];
+    Obj_00405800 *unk_0xb8;
+    void (*unk_0xbc)(void);
+    char pad_0xc0[4];
+    char unk_0xc4;
+    char pad_0xc5[3];
+    int unk_0xc8;
+    char pad_0xcc;
+    char unk_0xcd;
+    char pad_0xce[2];
+    int unk_0xd0;
+    char pad_0xd4[4];
+    int unk_0xd8;
+    int unk_0xdc;
+    int unk_0xe0;
+    int unk_0xe4;
+    char pad_0xe8[4];
+    char unk_0xec;
+    char pad_0xed[3];
+    int unk_0xf0;
+    int unk_0xf4;
+};
+
 extern "C" void func_00401F80(char *p);
 extern "C" void func_00401FA0(char *p, int *a);
 extern "C" void func_00406770(void);

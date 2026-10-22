@@ -130,6 +130,7 @@ extern "C" void func_00469C20(void)
     func_00466FF0();
 }
 
+#pragma optimize("p", on)
 extern "C" void func_00469DD0(Light_00469AF0 *l)
 {
     l->unk_0x10.z = -1.0f;
@@ -138,7 +139,7 @@ extern "C" void func_00469DD0(Light_00469AF0 *l)
     glVertex3fv(&l->unk_0x0.x);
     glVertex3fv(&l->unk_0x10.x);
 }
-
+#pragma optimize("p", on)
 extern "C" int func_00469F10(Image_00469F10 *img)
 {
     if (img->unk_0x4 != NULL) {
@@ -149,6 +150,21 @@ extern "C" int func_00469F10(Image_00469F10 *img)
     return img->unk_0x4 != NULL;
 }
 
+extern "C" int func_0046BDDA(void);
+extern "C" void func_0046BD8A(void);
+extern int D_0049D804;
+extern "C" void func_0046A6B0(void)
+{
+    func_0046A6C8();
+    D_0049D804 = func_0046BDDA();
+    func_0046BD8A();
+}
+
+void _func_0046A6C7()
+{
+}
+
+#pragma optimize("", on)
 extern "C" void func_0046A714(void)
 {
 }

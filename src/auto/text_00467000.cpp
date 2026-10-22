@@ -38,6 +38,32 @@ void func_00467000(int mode)
     glBlendFunc(D_006C9A68, D_006C99F8);
 }
 
+void func_00467150(int mode)
+{
+    switch (mode) {
+    case 0:
+        glDisable(GL_CULL_FACE);
+        break;
+    case 1:
+        glCullFace(GL_BACK);
+        glEnable(GL_CULL_FACE);
+        break;
+    case 2:
+        glCullFace(GL_FRONT);
+        glEnable(GL_CULL_FACE);
+        break;
+    }
+    D_006C99F0 = mode;
+}
+
+void func_004671A0(int on)
+{
+    if (on == 1)
+        glEnable(GL_DEPTH_TEST);
+    else
+        glDisable(GL_DEPTH_TEST);
+}
+
 void func_004670B0(int mode)
 {
     D_006C9A74 = mode;
@@ -68,6 +94,16 @@ void func_00467130(int on)
 void func_004671C0(GLboolean flag)
 {
     glDepthMask(flag);
+}
+
+void func_004671D0(int on)
+{
+    glFogi(GL_FOG_MODE, GL_LINEAR);
+    if (on == 1)
+        glEnable(GL_FOG);
+    else
+        glDisable(GL_FOG);
+    D_006C99E8 = on;
 }
 
 void func_00467E10(GLuint tex)

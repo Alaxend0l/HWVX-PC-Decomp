@@ -30,6 +30,15 @@ extern "C" void func_004096C0(unsigned int);
 extern "C" void func_00409A40(void);
 extern "C" void func_00409A60(void);
 
+extern "C" void func_00409690(void)
+{
+    if (func_00459B10(1)) {
+        func_00409A40();
+        func_00409A60();
+        func_00459B10(0);
+    }
+}
+
 extern "C" char *func_0040A490(void)
 {
     return D_00681500;

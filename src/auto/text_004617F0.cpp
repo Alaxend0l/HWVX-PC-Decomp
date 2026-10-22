@@ -80,6 +80,20 @@ void func_00461B50(void)
     D_006D4D20 = 0;
 }
 
+extern "C" float func_004535B0(void *a, void *b);
+extern "C" void *func_00454B80(unsigned int size, int line, const char *file);
+extern char D_006D4000[];
+extern char D_006D4E10[];
+extern char D_006D42D0[];
+extern char D_006D45A0[];
+extern char D_0047CC70[];
+extern int D_006D3D48;
+extern void *D_006D3D44;
+char *func_00461D50(void)
+{
+    return (char *)&D_006D3E80[D_0049D7D4];
+}
+
 int func_00461A10(void)
 {
     func_00453100();
@@ -192,8 +206,8 @@ extern "C" void func_00461C30(int a, Vec4_004617F0 *v, float f)
         D_006D4CA0_set.l[D_006D4CA0_set.count].unk_0x14 = a;
         D_006D4CA0_set.l[D_006D4CA0_set.count].unk_0x0 = *v;
         D_006D4CA0_set.l[D_006D4CA0_set.count].unk_0x10 = f;
+        D_006D4CA0_set.unk_0x76 = 1;
         D_006D4CA0_set.count++;
-        D_006D4D16 = 1;
     }
 }
 

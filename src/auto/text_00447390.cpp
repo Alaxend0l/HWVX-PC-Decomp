@@ -94,3 +94,11 @@ int func_004480B0(void)
 {
     return D_0048D970->unk_0xd0;
 }
+
+int func_004480C0(void)
+{
+    int v = D_0048D970->unk_0xd4;
+    D_0048D970->unk_0xd4 = -1;
+    return v;
+}
+

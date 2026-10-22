@@ -10,6 +10,10 @@ struct Slot_00450E90 {
     int unk_0x4c;
 };
 
+struct Quad_00450E90 {
+    int v[4];
+};
+
 struct Obj_00450E90 {
     char pad_0x00[0x40];
     int unk_0x40[4];
@@ -27,6 +31,22 @@ extern "C" void func_004482C0(Obj_00450E90 *p, int a);
 extern "C" void func_00448330(Obj_00450E90 *p);
 extern "C" void func_00407310(Slot_00450E90 *p);
 extern "C" void func_00451C20(Obj_00450E90 *p, unsigned char idx);
+
+extern "C" void func_00451C20(Obj_00450E90 *p, unsigned char idx)
+{
+    Slot_00450E90 *s = &p->slots[idx];
+    unsigned int i;
+    if (s->unk_0x00 != 0) {
+        s->unk_0x4c = 0;
+        s->unk_0x00 = 0;
+        for (i = 0; i < 12; i++) {
+            if (p->slots[i].unk_0x4c != 0 && p->slots[i].unk_0x00 != 0) {
+                p->unk_0x470 = i;
+                p->slots[i].unk_0x44 = 0;
+            }
+        }
+    }
+}
 
 extern "C" char func_004512B0(Obj_00450E90 *p, int *src)
 {

@@ -223,3 +223,48 @@ extern "C" int func_00470233(Region_0046F464 *r, Page_0046F464 *pg, unsigned cha
     return ok;
 }
 
+extern "C" long func_004702DC(int yr, int mo, int dy, int hr, int mn, int sc, int dstflag)
+{
+    int yday;
+    long t;
+    struct tm tb;
+
+    if ((yr -= 1900) < 70 || yr > 138)
+        return -1;
+    yday = D_00480074[mo] + dy;
+    if (!(yr & 3) && mo > 2)
+        yday++;
+    func_00472E34();
+    t = ((((long)yr * 365 + ((yr - 1) >> 2) + yday - (70 * 365 + 17)) * 24 + hr) * 60 + mn) * 60 + sc + D_0047FF94;
+    tb.tm_yday = yday;
+    tb.tm_year = yr;
+    tb.tm_mon = mo - 1;
+    tb.tm_hour = hr;
+    if (dstflag == 1 || (dstflag == -1 && D_0047FF98 && func_004730E9(&tb)))
+        t += D_0047FF9C;
+    return t;
+}
+
+extern "C" int func_0047039E(int c, int mask)
+{
+    int size;
+    unsigned short type;
+    unsigned char buf[3];
+
+    if ((unsigned)(c + 1) <= 256)
+        return D_0047FA80[c] & mask;
+    if (D_0047FA80[(c >> 8) & 0xff] & 0x8000) {
+        buf[0] = (unsigned char)(c >> 8);
+        buf[1] = (unsigned char)c;
+        buf[2] = 0;
+        size = 2;
+    } else {
+        buf[0] = (unsigned char)c;
+        buf[1] = 0;
+        size = 1;
+    }
+    if (func_004733F6(1, (LPCSTR)buf, size, &type, 0, 0, 1) == 0)
+        return 0;
+    return type & mask;
+}
+

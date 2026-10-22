@@ -9,3 +9,8 @@ extern char D_0047C1BC[];
 extern char D_0047C224[];
 
 extern "C" char func_00455E90(int a);
+
+extern "C" char func_00455E90(int a)
+{
+    return 1;
+}

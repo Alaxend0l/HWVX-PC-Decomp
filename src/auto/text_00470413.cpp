@@ -20,6 +20,10 @@ extern "C" __declspec(dllimport) unsigned long __stdcall HeapSize(void *, unsign
 extern "C" int func_004722F7(int);
 extern "C" long func_0047091A(int, long, int);
 extern "C" long func_00470ACE(int, int, int);
+extern "C" unsigned long (__stdcall *_imp__SetFilePointer)(void *, long, long *, unsigned long);
+extern "C" unsigned long (__stdcall *_imp__GetLastError)(void);
+#define SetFilePointer (*_imp__SetFilePointer)
+#define GetLastError (*_imp__GetLastError)
 
 extern "C" char *func_0046C653(void);
 extern "C" void func_0046E9BA(int);

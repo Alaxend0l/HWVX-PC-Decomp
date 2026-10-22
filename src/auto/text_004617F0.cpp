@@ -147,6 +147,11 @@ extern "C" void func_00461BF0(int v)
     D_006D4D10 = v;
 }
 
+extern "C" void func_00461C00(int v)
+{
+    D_006D4D20 = v;
+}
+
 void func_00461D20(int id)
 {
     D_0049D7D4 = id;

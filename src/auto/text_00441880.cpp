@@ -92,3 +92,11 @@ void func_00442080(void)
     func_004420E0();
 }
 
+void func_004420C0(void)
+{
+    if (D_0053B244 != NULL) {
+        func_00454C50(D_0053B244);
+        D_0053B244 = NULL;
+    }
+}
+

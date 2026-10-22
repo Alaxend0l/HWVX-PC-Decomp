@@ -47,6 +47,12 @@ extern "C" void func_004420E0(void);
 extern "C" void *func_00454B80(unsigned int size, int line, const char *file);
 extern "C" void func_00454C50(void *p);
 
+void func_004420E0(void)
+{
+    D_0053B244->count = 0;
+    D_0053B244->npairs = 0;
+}
+
 void func_00442000(Obj_00441880 *o, Dir_00441880 *d, float f, int n)
 {
     float s;

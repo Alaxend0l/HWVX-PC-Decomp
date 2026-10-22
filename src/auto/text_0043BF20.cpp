@@ -59,3 +59,34 @@ void func_0043C4F0(Part_0043C4F0 *p)
             func_0043C5E0(p);
     }
 }
+
+void func_0043C520(Elem_0043C520 *elems)
+{
+    float dt = D_0069236C;
+    Elem_0043C520 *e;
+    int i;
+
+    e = elems;
+    for (i = 0; i < 0x200; i++, e++) {
+        if (!(e->flags & 8))
+            func_0043CCB0(e, elems);
+    }
+    e = elems;
+    for (i = 0; i < 0x200; i++, e++) {
+        if (!(e->flags & 8)) {
+            func_004533F0(dt, &e->unk_0x20, &e->unk_0x10, &e->unk_0x10);
+            func_004533F0(dt, &e->unk_0x10, &e->unk_0x00, &e->unk_0x00);
+        }
+    }
+}
+
+void func_0043C5A0(void)
+{
+    Group_0043C4F0 *g;
+    if (D_0048D974)
+        return;
+    for (g = D_005463E0; g < (Group_0043C4F0 *)D_005BE410; g++)
+        func_0043C4F0(g->parts);
+    func_0043C520(D_005BE410);
+}
+

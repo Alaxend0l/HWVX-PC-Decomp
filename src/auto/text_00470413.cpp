@@ -132,6 +132,20 @@ extern "C" void func_004708AC(void)
     func_0046E9BA(9);
 }
 
+extern "C" long func_004708B5(unsigned int fh, long pos, int mthd)
+{
+    long r;
+    if (fh < D_006D5AE0 && (D_006D59E0[(int)fh >> 5][fh & 0x1f].osfile & 1)) {
+        func_00472339(fh);
+        r = func_0047091A(fh, pos, mthd);
+        func_00472398(fh);
+        return r;
+    }
+    *func_00470486() = 9;
+    *func_0047048F() = 0;
+    return -1;
+}
+
 extern "C" long func_0047091A(int fh, long pos, int mthd)
 {
     int osHandle;
@@ -154,13 +168,12 @@ extern "C" long func_0047091A(int fh, long pos, int mthd)
     return newpos;
 }
 
-#pragma optimize("s", on)
-extern "C" long func_004708B5(unsigned int fh, long pos, int mthd)
+extern "C" long func_00470A69(unsigned int fh, int a, int b)
 {
     long r;
     if (fh < D_006D5AE0 && (D_006D59E0[(int)fh >> 5][fh & 0x1f].osfile & 1)) {
         func_00472339(fh);
-        r = func_0047091A(fh, pos, mthd);
+        r = func_00470ACE(fh, a, b);
         func_00472398(fh);
         return r;
     }

@@ -33,6 +33,26 @@ extern "C" int func_0047272D(int, int, int);
 extern "C" int (__stdcall *_imp__SetStdHandle)(unsigned long, void *);
 #define SetStdHandle (*_imp__SetStdHandle)
 
+extern "C" unsigned __int64 __stdcall func_00472020(unsigned __int64 a, unsigned __int64 b)
+{
+    return a % b;
+}
+
+extern "C" void func_00472095(FILE_ *stream)
+{
+    D_0049D870++;
+    if ((stream->_base = (char *)func_0046AED9(0x1000)) != NULL) {
+        stream->_flag |= 8;
+        stream->_bufsiz = 0x1000;
+    } else {
+        stream->_flag |= 4;
+        stream->_base = (char *)&stream->_charbuf;
+        stream->_bufsiz = 2;
+    }
+    stream->_ptr = stream->_base;
+    stream->_cnt = 0;
+}
+
 extern "C" int func_0047271C(int c)
 {
     return func_0047272D(c, 0, 4);

@@ -17,6 +17,18 @@ extern float D_00477388;
 extern float D_00477384;
 extern float D_0047700C;
 extern float D_00477060;
+extern "C" int D_00496FC0;
+extern "C" int D_00496E40[0x51];
+extern "C" unsigned char D_00496E44[][0x144];
+extern "C" int D_0068DF20[0x40];
+extern "C" int D_006924C0[0xc];
+extern "C" char D_006924C2;
+extern "C" char D_00496FCC;
+void func_00456FE0(void);
+char func_00456D80(void);
+void func_00456E50(void);
+void func_00456830(void);
+float func_00456750(int a, int b, float c, float d);
 
 float func_00456750(int a, int b, float c, float d)
 {
@@ -61,6 +73,14 @@ void func_00456680(unsigned int *io)
     QueryPerformanceCounter(&now);
     now.QuadPart = now.QuadPart * 1000000 / D_0068DDB8.QuadPart;
     *io = now.LowPart - *io;
+}
+
+void func_004566E0(void);
+void func_00456700(void);
+void func_004566D0(void)
+{
+    func_004566E0();
+    func_00456700();
 }
 
 int func_00456730(void)

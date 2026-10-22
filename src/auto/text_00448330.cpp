@@ -15,6 +15,22 @@ extern "C" void func_0043ED30(char *a);
 extern "C" char *func_004483A0(char *p);
 
 extern float D_0047700C;
+extern "C" void func_00448330(char *p)
+{
+    char *q;
+
+    *(unsigned int *)(p + 0x74) |= 0x200202;
+    if (*(int *)(p + 0x84) != 0)
+        func_0042D770(*(int *)(p + 0x84));
+    *(int *)(p + 0x84) = 0;
+    func_0044A9C0(p + 0x10, p + 0x88);
+    func_0044A990(p + 0x88);
+    func_0044A910(p + 0x88);
+    q = *(char **)(p + 0x94);
+    if (q != NULL && *(char **)(q + 0x2c) == p)
+        func_0043ED30(q);
+}
+
 float func_00448B60(void)
 {
     return D_0047700C;

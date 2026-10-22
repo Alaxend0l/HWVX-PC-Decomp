@@ -1,24 +1,63 @@
 /* 9 functions from 0x0045BB10 to 0x0045C9A0, found by Ghidra. */
 #include "common.h"
 
+struct Src_0045C {
+    char unk_0x0[0x11];
+    unsigned char unk_0x11;
+    unsigned char unk_0x12;
+    char unk_0x13[0x1d];
+    int unk_0x30;
+    int unk_0x34;
+    int unk_0x38;
+    unsigned int unk_0x3c;
+    char unk_0x40[0x8];
+    int unk_0x48;
+};
+
 struct Node_0045C {
-    char unk_0x0[2];
+    char unk_0x0;
+    char unk_0x1;
     unsigned char unk_0x2;
     char unk_0x3;
     Node_0045C *next;
-    char unk_0x8[0x38];
+    char unk_0x8[0x8];
+    Src_0045C *unk_0x10;
+    char unk_0x14[0xc];
+    int unk_0x20;
+    int unk_0x24;
+    int unk_0x28;
+    unsigned char unk_0x2c;
+    char unk_0x2d[0x3];
+    unsigned int unk_0x30;
+    int unk_0x34;
+    int unk_0x38;
+    int unk_0x3c;
     int unk_0x40;
+    int unk_0x44;
 };
 
 struct List_0045C {
     Node_0045C *head;
     Node_0045C *unk_0x4;
-    char unk_0x8[0x12];
+    Src_0045C *unk_0x8;
+    char unk_0xc[0x4];
+    unsigned char unk_0x10;
+    char unk_0x11;
+    unsigned char unk_0x12;
+    char unk_0x13;
+    unsigned char unk_0x14;
+    char unk_0x15[0x4];
+    unsigned char unk_0x19;
     short unk_0x1a;
     char unk_0x1c[0x10];
     int unk_0x2c;
-    char unk_0x30[0x40];
+    char unk_0x30[0x14];
+    int unk_0x44;
+    char unk_0x48[0x28];
 };
+
+extern float D_00477CE0[];
+extern int D_0049A884;
 
 extern List_0045C D_00499A68[];
 

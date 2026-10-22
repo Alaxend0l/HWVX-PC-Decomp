@@ -86,7 +86,7 @@ void func_00461D10(int);
 void func_00461BA0(int);
 void func_00461BC0(int);
 void func_0045E730(int, Vec4_0043CF10 *, Vec4_0043CF10 *, Part_0043CF50 *);
-Obj_0045EC70 *func_0045EC70(int);
+Obj_0045EC70 *func_0045EC70(unsigned short);
 
 void func_0043CF10(void)
 {
@@ -101,18 +101,19 @@ void func_0043CF50(Part_0043CF50 *p)
 {
     Vec4_0043CF10 v;
     float s;
+    unsigned char i = p->unk_0xb7;
 
-    p->unk_0xc0 = p->model->table->entries[p->unk_0xb7];
+    p->unk_0xc0 = p->model->table->entries[i];
     if (p->unk_0xb6) {
         func_00461D10(p->unk_0x74);
         func_00461BA0(0x10);
     }
     s = p->unk_0xd8 * p->unk_0xc4;
     v.x = s * p->unk_0x80;
-    p->unk_0x0c = 1.0f;
-    v.w = 1.0f;
     v.y = s * p->unk_0x84;
     v.z = s * p->unk_0x88;
+    v.w = 1.0f;
+    p->unk_0x0c = 1.0f;
     func_0045E730(p->unk_0xc0, &p->unk_0x30, &v, p);
     if (p->unk_0xb6)
         func_00461BC0(0x10);
@@ -122,7 +123,7 @@ void func_0043D010(Elem_0043D010 *e)
 {
     Obj_0045EC70 *o;
 
-    o = func_0045EC70(*(unsigned short *)&e->model->table->entries[e->unk_0x97]);
+    o = func_0045EC70(((unsigned short *)e->model->table->entries)[e->unk_0x97 * 2]);
     o->unk_0x2a = e->unk_0x95;
     o->unk_0x24 = e->unk_0x54;
     o->unk_0x1c = e->unk_0x80;

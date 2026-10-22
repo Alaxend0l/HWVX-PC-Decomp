@@ -3,6 +3,7 @@
 #include <windows.h>
 #include <GL/gl.h>
 #include <string.h>
+#include <stdio.h>
 
 struct Mode_006C9A0C {
     short unk_0x00;

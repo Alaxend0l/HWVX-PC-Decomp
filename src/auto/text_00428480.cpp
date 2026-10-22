@@ -154,6 +154,12 @@ void func_00428BA0(void)
     D_0048D1B4 = 0;
 }
 
+void func_00428D70(int i)
+{
+    if (i >= 0)
+        D_0065EC00[i].owner = NULL;
+}
+
 int *func_00428C10(unsigned int idx, int type, char flag)
 {
     if (type < 11 && idx < D_0047A908[type] && D_0065F460[type][idx].active && D_0065F460[type][idx].unk_0x1) {

@@ -58,6 +58,21 @@ extern "C" unsigned int func_00401FD0(unsigned int *p)
     return *p;
 }
 
+extern "C" void func_004021D0(Task_00480820 *t)
+{
+    if (t->unk_0xc == 0) {
+        t->unk_0x8 = NULL;
+        if (D_00480824 != NULL) {
+            D_00480824->unk_0x8 = t;
+            D_00480824 = t;
+        } else {
+            D_00480820 = t;
+            D_00480824 = t;
+        }
+        t->unk_0xc = 1;
+    }
+}
+
 extern "C" void func_00402280(int p)
 {
     *(int *)(p + 0xc8) = 500;

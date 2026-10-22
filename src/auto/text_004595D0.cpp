@@ -27,6 +27,7 @@ struct Voice_004595D0 {
 };
 
 extern int D_00497148;
+extern int D_0049714C;
 extern int D_00497150;
 extern Slot_004595D0 D_00497158[];
 extern unsigned char D_00499118[];

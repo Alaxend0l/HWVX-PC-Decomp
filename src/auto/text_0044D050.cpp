@@ -176,6 +176,22 @@ int func_0044D8C0(void **out)
     return count;
 }
 
+int func_0044D8F0(void **out)
+{
+    int count = 0;
+    EntE0_0044D050 *p = D_005305D0;
+
+    do {
+        if ((p->unk_0x74 & 0x201000) == 0) {
+            *out = p;
+            count++;
+            out++;
+        }
+        p++;
+    } while (p < D_005375D0);
+    return count;
+}
+
 Obj_0044D050 *func_0044D0B0(int id, int arg)
 {
     Obj_0044D050 *p;

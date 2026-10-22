@@ -26,8 +26,6 @@ extern "C" unsigned char func_00456F90(void)
 {
     unsigned int i = D_0047C264 & 0xff;
 
-    if (i < 0x10)
-        return D_0047C2F0[i];
-    return (unsigned char)i;
+    return (unsigned char)(i < 0x10 ? D_0047C2F0[i] : i);
 }
 

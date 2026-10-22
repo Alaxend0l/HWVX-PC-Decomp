@@ -60,16 +60,22 @@ extern "C" void func_00458220(int unused, char a, char b, short c)
 
 extern "C" void func_00458250(int unused, short a, short b)
 {
-    short tmp[2];
+    struct { short a; short b; } tmp;
 
-    tmp[0] = a;
-    tmp[1] = b;
-    func_00458000(1, 0, 1, tmp);
+    tmp.a = a;
+    tmp.b = b;
+    func_00458000(1, 0, 1, &tmp);
 }
 
 extern "C" int func_00458460(void)
 {
     return D_00496FD0;
+}
+
+extern "C" char func_004584E0(void)
+{
+    D_00496FD0 = 0;
+    return 0;
 }
 
 extern "C" void func_00457FA0(char enable, DeviceSlot *slot)
@@ -90,9 +96,12 @@ extern "C" void func_00457FA0(char enable, DeviceSlot *slot)
         slot->unk13D = 0;
 }
 
-extern "C" bool func_004582E0(int index)
+extern "C" unsigned char func_004582E0(int index)
 {
-    return D_00496E40[index].unk0 != 0;
+    unsigned char result;
+
+    result = D_00496E40[index].unk0 != 0;
+    return result;
 }
 
 extern "C" void func_00458280(void)

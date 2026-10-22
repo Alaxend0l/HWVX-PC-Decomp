@@ -88,6 +88,23 @@ void func_00442270(void *key, unsigned int idx)
     D_0053B244->pairs[n].item = D_0053B244->items[idx];
 }
 
+void func_004422E0(void *key)
+{
+    unsigned int i;
+    unsigned int n;
+
+    if (D_0053B244 == NULL)
+        return;
+    n = D_0053B244->npairs;
+    for (i = 0; i < n; i++) {
+        if (D_0053B244->pairs[i].key == key) {
+            D_0053B244->npairs = n - 1;
+            D_0053B244->pairs[i] = D_0053B244->pairs[D_0053B244->npairs];
+            return;
+        }
+    }
+}
+
 void func_00442000(Obj_00441880 *o, Dir_00441880 *d, float f, int n)
 {
     float s;

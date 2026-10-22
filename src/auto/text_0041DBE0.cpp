@@ -40,3 +40,8 @@ extern Timer_00661120 D_006611E0[];
 extern RecD_00661128 D_00661128[];
 extern unsigned D_006611E8[];
 extern int D_00692370;
+
+extern "C" float func_0041E7B0(Obj_0041E7B0 *o)
+{
+    return o->unk_0x1b4;
+}

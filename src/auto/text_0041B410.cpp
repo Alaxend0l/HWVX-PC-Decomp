@@ -87,3 +87,9 @@ extern "C" Entry_006611C0 *func_0041B590(int value)
     return 0;
 }
 
+extern "C" void func_0041B5E0(Slot_006614C0 *p)
+{
+    if (p)
+        *(int *)((char *)p + 0x300) = 0;
+}
+

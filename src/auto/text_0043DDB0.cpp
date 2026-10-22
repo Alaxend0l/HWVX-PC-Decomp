@@ -11,6 +11,10 @@ extern int D_005463C4;
 void func_004585A0(int);
 int func_004585D0(int, int, int *);
 char func_00458610(int, int, int *);
+void func_0042DE60(int);
+void func_0043EA50(char *, int);
+void func_0043F4B0(char *, int);
+extern char D_0043F9E0;
 
 struct Obj_0043ECA0;
 void func_0043E8F0(void)
@@ -27,15 +31,16 @@ int func_0043E920(void)
 
     if (D_005463C0 == D_005463C4) {
         func_0043E8F0();
+        v = D_005423C0[D_005463C0];
         D_0048D77C = 1;
-        return D_005423C0[D_005463C0];
-    }
-    v = D_005423C0[D_005463C0++];
-    if (D_005463C0 == 0x1000) {
-        n = func_004585D0(D_0047B0CC, 0x4000, D_005423C0);
-        D_005463C0 = 0;
-        if (n != 0x4000)
-            D_005463C4 = n - 1;
+    } else {
+        v = D_005423C0[D_005463C0++];
+        if (D_005463C0 == 0x1000) {
+            n = func_004585D0(D_0047B0CC, 0x4000, D_005423C0);
+            D_005463C0 = 0;
+            if (n != 0x4000)
+                D_005463C4 = n - 1;
+        }
     }
     return v;
 }

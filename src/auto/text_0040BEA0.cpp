@@ -160,8 +160,8 @@ void func_0040CAA0(unsigned int *p)
 {
     unsigned int i;
     if (*p >= 1 && *p <= 4) {
-        D_00681500[*p - 1].unk_0x0a8 = p + 1;
-        D_00681500[*p - 1].unk_0x0ac = 0;
+        D_0068143C[*p].unk_0x0 = p + 1;
+        D_00681440[*p].unk_0x0 = 0;
         return;
     }
     i = 0;
@@ -170,15 +170,14 @@ void func_0040CAA0(unsigned int *p)
             D_00681500[i].unk_0x0a8 = p + (*p == 0);
             D_00681500[i].unk_0x0ac = 0;
             i++;
-        } while (i < (*(u32 *)&D_00681AB0 & 0xff));
+        } while (i < (*(volatile u32 *)&D_00681AB0 & 0xff));
     }
 }
 
 Slot_0040BEA0 *func_0040CB30(char *key)
 {
     unsigned int i;
-    unsigned int n = *(u32 *)&D_00681AB0 & 0xff;
-    for (i = 0; i < n; i++) {
+    for (i = 0; i < (*(u32 *)&D_00681AB0 & 0xff); i++) {
         if (D_00681500[i].unk_0x000 == key)
             return &D_00681500[i];
     }

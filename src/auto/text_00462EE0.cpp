@@ -31,3 +31,8 @@ extern Chan_006C9C04 D_006C9C04[16];
 extern int D_006C9C00;
 extern u16 D_006D4D14;
 extern Entry_006D3D44 *D_006D3D44;
+
+void func_00462F10(u16 v)
+{
+    D_006D4D14 = v;
+}

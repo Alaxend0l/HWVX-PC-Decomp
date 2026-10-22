@@ -14,6 +14,14 @@ extern "C" char *func_00475D8B(const char *);
 extern "C" char **D_0049D834;
 extern "C" int D_006D579C;
 extern "C" unsigned char D_006D58A1[];
+extern "C" char **D_0049D838;
+extern "C" wchar_t **D_0049D83C;
+extern "C" int func_004755E6(void);
+extern "C" void func_0046B013(void *);
+extern "C" void *func_00470498(void *, unsigned int);
+extern "C" int func_00475C35(const char *, unsigned int);
+extern "C" char **func_00475C8D(char **);
+extern "C" unsigned char *func_00475CF4(const unsigned char *, unsigned int);
 
 #pragma optimize("s", on)
 

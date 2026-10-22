@@ -42,6 +42,29 @@ extern "C" unsigned int func_00471CF0(const char* str)
     return (int)(eos - str - 1);
 }
 
+extern "C" int func_00471F47(char *s, wchar_t wchar)
+{
+    if (!s)
+        return 0;
+    if (!D_0049DAF0) {
+        if (wchar > 255) {
+            *func_00470486() = 42;
+            return -1;
+        }
+        *s = (char)wchar;
+        return sizeof(char);
+    } else {
+        int size;
+        BOOL defused = 0;
+        if ((size = WideCharToMultiByte(D_0049DB00, WC_COMPOSITECHECK | WC_SEPCHARS,
+                                        &wchar, 1, s, D_0047FC8C, NULL, &defused)) == 0 || defused) {
+            *func_00470486() = 42;
+            return -1;
+        }
+        return size;
+    }
+}
+
 extern "C" void func_00471D6B(void)
 {
     func_0046AD1F(2);

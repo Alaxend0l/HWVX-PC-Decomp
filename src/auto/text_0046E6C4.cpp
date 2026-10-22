@@ -11,8 +11,20 @@ extern LPCRITICAL_SECTION D_0047D8A4;
 extern LPCRITICAL_SECTION D_0047D884;
 
 extern "C" void func_0046E7DD(int code);
+extern LPCRITICAL_SECTION D_0047D880[];
+extern "C" void *func_0046AED9(unsigned int size);
+extern "C" void func_0046AD1F(int code);
+extern "C" void func_0046B013(void *p);
+extern "C" int *func_00470486(void);
+extern "C" void func_0046E9BA(int n);
 
 #pragma optimize("s", on)
+extern "C" void func_0046E616(int a, int b);
+extern "C" void __stdcall func_0046E789(int *p)
+{
+    func_0046E616(p[6], p[7]);
+}
+
 extern "C" void func_0046E7A4(void)
 {
     if (D_0049D810 == 1 || (D_0049D810 == 0 && D_0047D434 == 1)) {

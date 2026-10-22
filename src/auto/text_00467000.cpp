@@ -190,10 +190,11 @@ void func_004671A0(int on)
 
 int func_00467880(int width, int height, int format)
 {
-    unsigned int size = ((unsigned int)(width + 3) & ~3) * ((unsigned int)(height + 3) & ~3);
+    int h = (height + 3) & ~3;
+    int size = ((width + 3) & ~3) * h;
 
     if (format == 0x83f0 || format == 0x83f1)
-        size = (int)size >> 1;
+        size >>= 1;
     return size;
 }
 

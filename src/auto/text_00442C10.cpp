@@ -4,7 +4,16 @@ struct Ent_00443 {
     char unk_0x0[0x4];
     char unk_0x4;
     char unk_0x5[0x6f];
-    int unk_0x74;
+    union {
+        int unk_0x74;
+        struct {
+            unsigned int b0 : 20;
+            unsigned int b20 : 1;
+            unsigned int b21 : 9;
+            unsigned int b30 : 1;
+            unsigned int b31 : 1;
+        } bits;
+    };
     char unk_0x78[0x50];
     Ent_00443 *unk_0xc8;
     char unk_0xcc[0x4];
@@ -62,20 +71,21 @@ Ent_00443 *func_00443740(Ent_00443 *owner, Rect_00443 *rect)
     Spawn_00443 s;
     Ent_00443 *e;
 
-    if (owner->unk_0x4 == 0 && func_00440130() > 1)
-        return (Ent_00443 *)-1;
-    if (rect != NULL)
-        s.rect = *rect;
-    else
-        s.rect = D_00692350;
-    s.owner = owner;
-    s.unk_0x14 = 0;
-    e = func_0044D0B0(0x10, &s);
-    if (e == NULL)
-        return (Ent_00443 *)-1;
-    if (D_0048D974)
-        e->unk_0x74 |= 0x100000;
-    return e;
+    if (owner->unk_0x4 != 0 || func_00440130() <= 1) {
+        if (rect != NULL)
+            s.rect = *rect;
+        else
+            s.rect = D_00692350;
+        s.owner = owner;
+        s.unk_0x14 = 0;
+        e = func_0044D0B0(0x10, &s);
+        if (e != NULL) {
+            if (D_0048D974)
+                e->unk_0x74 |= 0x100000;
+            return e;
+        }
+    }
+    return (Ent_00443 *)-1;
 }
 
 Ent_00443 *func_004437E0(Ent_00443 *owner, Rect_00443 *rect)
@@ -85,19 +95,19 @@ Ent_00443 *func_004437E0(Ent_00443 *owner, Rect_00443 *rect)
     unsigned int n;
 
     e = func_00443740(owner, rect);
-    if (e == (Ent_00443 *)-1)
-        return e;
-    n = func_0044D8F0(list, 0x80);
-    while (n > 0) {
-        n--;
-        if ((list[n]->unk_0x74 & 0x40000000) && list[n]->unk_0xc8 == NULL) {
-            list[n]->unk_0xc8 = e;
-            e->unk_0x74 |= 0x80000000;
-            break;
+    if (e != (Ent_00443 *)-1) {
+        n = func_0044D8F0(list, 0x80);
+        while (n > 0) {
+            n--;
+            if ((list[n]->unk_0x74 & 0x40000000) && list[n]->unk_0xc8 == NULL) {
+                list[n]->unk_0xc8 = e;
+                e->unk_0x74 |= 0x80000000;
+                break;
+            }
         }
+        e->unk_0x74 |= 0x40000000;
+        e->unk_0xc8 = NULL;
     }
-    e->unk_0x74 |= 0x40000000;
-    e->unk_0xc8 = NULL;
     return e;
 }
 

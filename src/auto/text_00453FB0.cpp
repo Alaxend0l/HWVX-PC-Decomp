@@ -8,6 +8,9 @@ void func_00453330(float *, float *, float *);
 float func_00454800(float *, float *);
 float func_004532E0(float);
 void func_004546B0(float *);
+float func_00454AC0(float, float);
+void func_00454A30(float *);
+void func_00453D20(float *, float, float *);
 
 struct Vec3_00453FB0 {
     float x, y, z;

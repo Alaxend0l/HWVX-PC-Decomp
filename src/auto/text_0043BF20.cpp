@@ -34,7 +34,10 @@ struct Elem_0043C520 {
     Vec4_0043BF20 unk_0x00;
     Vec4_0043BF20 unk_0x10;
     Vec4_0043BF20 unk_0x20;
-    char unk_0x30[0x88 - 0x30];
+    char unk_0x30[0x60 - 0x30];
+    float f60;
+    char unk_0x64[0x84 - 0x64];
+    unsigned char b84;
     int f88;
     float f8c;
     int f90;
@@ -125,6 +128,64 @@ void func_0043C6C0(Body_0043C6C0 *b)
         func_00453E00(&b->rot, &q, &r);
         b->rot = r;
     }
+}
+
+int func_00454AF0(int, int);
+int func_0046A7CC(void);
+void func_004268B0(int, float *, float);
+void func_004266F0(char *, float *, float);
+float func_00454AC0(float, float);
+float func_00454B20(float, float);
+extern int D_005D4410;
+extern float D_0047700C;
+void func_0043C2D0(Vec4_0043BF20 *s0, int a1, Src20_0043BF20 *src, int a3, int a4, float scale)
+{
+    Elem_0043C520 *e;
+    float fl;
+    float fv;
+    Body_0043C6C0 *b;
+    int c;
+
+    fl = (float)func_00454AF0(src->f08, src->f0c);
+    fv = (float)(int)func_0046A7CC();
+    b = (Body_0043C6C0 *)src->f04;
+    if (b == NULL)
+        return;
+    e = &D_005BE410[D_005D4410];
+    D_005D4410 = D_005D4410 + 1;
+    if (D_005D4410 >= 0x200)
+        D_005D4410 = 0;
+    e->unk_0x00 = *s0;
+    e->unk_0x10 = *(Vec4_0043BF20 *)a1;
+    e->unk_0x20 = *(Vec4_0043BF20 *)src;
+    e->f90 = (int)b;
+    e->flags &= 0xf3;
+    if (src->b01 == 0) {
+        e->b97 = 0;
+        e->fa0 = *(float *)&src->f20;
+    } else {
+        e->fa0 = *(float *)&src->f1c;
+    }
+    e->f88 = func_0046A7CC();
+    e->f98 = fl;
+    e->f9c = 1.0f;
+    if (src->f0c != 0 && src->f08 != 0)
+        e->f9c = D_0047700C / (fl / (float)src->f08);
+    e->b95 = src->b00;
+    func_004268B0(src->f04 + 0x14, (float *)&b->pos, fv);
+    e->b96 = 1;
+    func_004266F0((char *)src + 0x28, &e->f9c, fv);
+    e->fa0 = func_00454B20(*(float *)&src->f04, *(float *)&src->f08);
+    e->f8c = func_00454AC0(*(float *)&src->f0c, *(float *)&src->f10);
+    if (b->f14 != 0) {
+        if (b->f14 != 1)
+            return;
+        c = **(int **)&b->f18;
+        if ((char)c == -1 && (char)(c >> 8) == -1 && (char)(c >> 16) == -1)
+            e->b96 = 0;
+        return;
+    }
+    e->b96 = 0;
 }
 
 void func_0043CEB0(Part_0043C4F0 *p)

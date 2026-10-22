@@ -45,6 +45,17 @@ int func_00452FB0(const char *expr, const char *file, int line, const char *msg)
     return r != IDIGNORE;
 }
 
+void func_00453240(float angle, float *s, float *c)
+{
+    while (angle < D_00477000)
+        angle += D_00477014;
+    while (angle >= D_00477014)
+        angle -= D_00477014;
+    angle *= D_004770AC;
+    *s = (float)sin(angle);
+    *c = (float)cos(angle);
+}
+
 float func_004532F0(float x)
 {
     return (float)fabs(x);

@@ -19,10 +19,30 @@ extern "C" void func_0046BCE6(void)
     func_0046E9BA(9);
 }
 
+extern "C" void func_0046BCEF(void)
+{
+}
+
 extern "C" void func_004710DD(unsigned int, unsigned int);
+extern "C" void func_0046BD9C_decl_unused(void);
+extern "C" int func_0047120E(int c);
+extern "C" int func_0047039E(int c, int mask);
+extern "C" unsigned int func_00471CF0(const char *s);
+extern "C" void *func_004719B0(void *dst, const void *src, unsigned int n);
+extern int D_0047FC8C;
+extern unsigned short *D_0047FA80;
+extern char D_0047FC90[];
+extern char D_0047899C[];
+extern char D_00478980[];
+extern "C" __declspec(dllimport) void *__stdcall GetModuleHandleA(const char *name);
+extern "C" __declspec(dllimport) void *__stdcall GetProcAddress(void *module, const char *name);
 extern "C" void func_0046BD6F(void)
 {
     func_0046E9BA(9);
+}
+
+extern "C" void func_0046BD78(void)
+{
 }
 
 #pragma optimize("s", on)

@@ -63,6 +63,13 @@ extern float D_0047700C;
 extern float D_00477290;
 extern Vec4_0041B410 D_00692350;
 
+static inline void VecMulAdd_0041B680(Vec4_0041B410 *out, const Vec4_0041B410 *a, const Vec4_0041B410 *b, const float &s)
+{
+    out->x = s * b->x + a->x;
+    out->y = s * b->y + a->y;
+    out->z = s * b->z + a->z;
+}
+
 extern "C" float func_004534E0(Vec4_0041B410 *v);
 extern "C" float func_004534B0(Vec4_0041B410 *v);
 extern "C" float func_004532E0(float f);
@@ -95,6 +102,136 @@ extern "C" void func_0041B410(int a, Mtx_0041B410 *m, int b, Obj_0041B410 *obj)
 extern "C" float func_0041BC60(int a, int b, int c, float d)
 {
     return d;
+}
+
+extern "C" float func_0041B680(Vec4_0041B410 *pos, Vec4_0041B410 *dir, Box_0041B680 *box, float t, Hit_0041B680 *hit)
+{
+    float frac;
+    Vec4_0041B410 s;
+    Vec4_0041B410 e;
+    char side;
+    float f;
+    float len;
+
+    side = 0;
+    frac = 0.0f;
+    s = *pos;
+    e.x = t * dir->x + pos->x;
+    e.y = t * dir->y + pos->y;
+    e.z = t * dir->z + pos->z;
+
+    if (s.x > box->max.x && e.x < box->max.x) {
+        f = (s.x - box->max.x) / (s.x - e.x);
+        s.x += (e.x - s.x) * f;
+        s.y += (e.y - s.y) * f;
+        s.z += (e.z - s.z) * f;
+        side = 1;
+        frac = f;
+    } else if (s.x < box->min.x && e.x > box->min.x) {
+        f = (s.x - box->min.x) / (s.x - e.x);
+        s.x += (e.x - s.x) * f;
+        s.y += (e.y - s.y) * f;
+        s.z += (e.z - s.z) * f;
+        side = 2;
+        frac = f;
+    }
+
+    if (s.y > box->max.y && e.y < box->max.y) {
+        f = (s.y - box->max.y) / (s.y - e.y);
+        s.x += (e.x - s.x) * f;
+        s.y += (e.y - s.y) * f;
+        s.z += (e.z - s.z) * f;
+        side = 3;
+        frac += f;
+    } else if (s.y < box->min.y && e.y > box->min.y) {
+        f = (s.y - box->min.y) / (s.y - e.y);
+        s.x += (e.x - s.x) * f;
+        s.y += (e.y - s.y) * f;
+        s.z += (e.z - s.z) * f;
+        side = 4;
+        frac += f;
+    }
+
+    if (s.z > box->max.z && e.z < box->max.z) {
+        f = (s.z - box->max.z) / (s.z - e.z);
+        s.x += (e.x - s.x) * f;
+        s.y += (e.y - s.y) * f;
+        s.z += (e.z - s.z) * f;
+        side = 5;
+        frac += f;
+    } else if (s.z < box->min.z && e.z > box->min.z) {
+        f = (s.z - box->min.z) / (s.z - e.z);
+        s.x += (e.x - s.x) * f;
+        s.y += (e.y - s.y) * f;
+        s.z += (e.z - s.z) * f;
+        side = 6;
+        frac += f;
+    }
+
+    if (frac > D_0047700C)
+        return t;
+    if (s.x > box->max.x && e.x > box->max.x)
+        return t;
+    if (s.y > box->max.y && e.y > box->max.y)
+        return t;
+    if (s.z > box->max.z && e.z > box->max.z)
+        return t;
+    if (box->min.x > s.x && box->min.x > e.x)
+        return t;
+    if (box->min.y > s.y && box->min.y > e.y)
+        return t;
+    if (box->min.z > s.z && box->min.z > e.z)
+        return t;
+
+    if (s.x < box->max.x && s.x > box->min.x &&
+        s.y < box->max.y && s.y > box->min.y &&
+        s.z < box->max.z && s.z > box->min.z) {
+        func_004534E0(&s);
+        func_004534E0(&e);
+        len = func_004534E0(&s);
+        if (func_004534E0(&e) - D_00477290 <= len) {
+            if (hit) {
+                len = func_004532E0(func_004534B0(dir));
+                if (len < D_00477290)
+                    return t;
+                hit->pos = s;
+                hit->normal.x = -(dir->x / len);
+                hit->normal.y = -(dir->y / len);
+                hit->normal.z = -(dir->z / len);
+            }
+            return D_00477000;
+        }
+    }
+
+    if (side == 0)
+        return t;
+    if (hit) {
+        hit->pos = s;
+        hit->normal = D_00692350;
+        hit->side = side;
+        switch (side) {
+        case 1:
+            hit->normal.x = 1.0f;
+            break;
+        case 2:
+            hit->normal.x = -1.0f;
+            break;
+        case 3:
+            hit->normal.y = 1.0f;
+            break;
+        case 4:
+            hit->normal.y = -1.0f;
+            break;
+        case 5:
+            hit->normal.z = 1.0f;
+            break;
+        case 6:
+            hit->normal.z = -1.0f;
+            break;
+        }
+    }
+    t = frac * t;
+    return t;
 }
 
 extern "C" void func_0041C180(void)

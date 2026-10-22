@@ -1,6 +1,8 @@
 /* 18 functions from 0x00459C00 to 0x0045A550, found by Ghidra. */
 #include "common.h"
 #include <windows.h>
+#include <string.h>
+#include <crtdbg.h>
 
 extern HANDLE D_00499218;
 extern IUnknown *D_00499220;

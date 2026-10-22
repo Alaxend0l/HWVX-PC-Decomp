@@ -35,3 +35,8 @@ extern "C" int func_00401140(void *p);
 extern "C" char D_00496DC8;
 extern "C" unsigned int D_0047B978;
 extern "C" Entry_004505A0 **D_00496DAC;
+
+extern "C" char func_00450220(void)
+{
+    return 0;
+}

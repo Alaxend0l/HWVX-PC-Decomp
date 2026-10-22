@@ -40,6 +40,33 @@ extern "C" void func_0046FDA9(int);
 
 #pragma optimize("s", on)
 
+extern "C" Header_0046F464 *func_0046F76D(void)
+{
+    Header_0046F464 *h;
+    void *p;
+
+    if (D_006D59B8 == D_006D59A8) {
+        p = HeapReAlloc(D_006D59C4, 0, D_006D59BC, (D_006D59A8 + 0x10) * sizeof(Header_0046F464));
+        if (p == NULL)
+            return NULL;
+        D_006D59A8 += 0x10;
+        D_006D59BC = (Header_0046F464 *)p;
+    }
+    h = D_006D59BC + D_006D59B8;
+    if ((h->unk_0x10 = (int *)HeapAlloc(D_006D59C4, HEAP_ZERO_MEMORY, 0x41c4)) == NULL)
+        return NULL;
+    if ((h->unk_0xc = VirtualAlloc(NULL, 0x100000, MEM_RESERVE, PAGE_READWRITE)) == NULL) {
+        HeapFree(D_006D59C4, 0, h->unk_0x10);
+        return NULL;
+    }
+    h->unk_0x8 = -1;
+    h->unk_0x0 = 0;
+    h->unk_0x4 = 0;
+    D_006D59B8++;
+    *h->unk_0x10 = -1;
+    return h;
+}
+
 extern "C" void func_0046FEC2(Region_0046F464 *r, char *page, unsigned char *hdr)
 {
     Entry_0046F464 *e = &r->unk_0x18[(page - r->unk_0x10) >> 12];

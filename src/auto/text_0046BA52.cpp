@@ -135,6 +135,42 @@ extern "C" void func_0046BEC3(int flag, char *arg, char *number)
     }
 }
 
+extern "C" char *func_0046BF62(char *buf, int ndec, int caps, StrFlt_0046BA52 *flt, int g_fmt)
+{
+    char *p;
+    int exp;
+
+    if ((char)g_fmt)
+        func_0046C204(buf + (flt->sign == '-'), ndec > 0);
+    p = buf;
+    if (flt->sign == '-')
+        *p++ = '-';
+    if (ndec > 0) {
+        *p = *(p + 1);
+        *++p = *D_0047FC90;
+    }
+    p = func_004718C0(p + ndec + ((char)g_fmt == 0), D_004789B0);
+    if (caps)
+        *p = 'E';
+    if (*flt->mantissa != '0') {
+        exp = flt->decpt - 1;
+        if (exp < 0) {
+            exp = -exp;
+            *(p + 1) = '-';
+        }
+        if (exp >= 100) {
+            *(p + 2) += (char)(exp / 100);
+            exp %= 100;
+        }
+        if (exp >= 10) {
+            *(p + 3) += (char)(exp / 10);
+            exp %= 10;
+        }
+        *(p + 4) += (char)exp;
+    }
+    return buf;
+}
+
 extern "C" void func_0046C204(char *s, int dist)
 {
     if (dist)

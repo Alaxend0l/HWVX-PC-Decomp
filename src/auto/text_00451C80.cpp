@@ -10,9 +10,9 @@ extern "C" void func_004520B0(void);
 extern "C" bool func_00451FC0(int p, unsigned int lo, unsigned int hi)
 {
     unsigned int i;
-    unsigned int *e = (unsigned int *)(p + 0xfc);
-    for (i = 0; i < 12; i++, e += 0x14) {
-        if (*e >= lo && *e < hi)
+    for (i = 0; i < 12; i++) {
+        unsigned int v = *(unsigned int *)(p + 0xfc + i * 0x50);
+        if (v >= lo && v < hi)
             return true;
     }
     return false;
@@ -22,7 +22,7 @@ extern "C" bool func_00452000(void)
 {
     D_0049DB90 = 0;
     D_0049DBA0 = 0;
-    D_0049DBB8 = 1;
+    *(unsigned int *)&D_0049DBB8 = 1;
     return true;
 }
 

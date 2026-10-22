@@ -114,6 +114,12 @@ extern "C" bool func_0041E180(int a, int b, Vec4_0041DBE0 *out1, Vec4_0041DBE0 *
     return false;
 }
 
+extern "C" void func_0041E460(void)
+{
+    D_0065FCE0 = 0;
+    D_0048956C = 0;
+}
+
 extern "C" float func_0041E7B0(Obj_0041E7B0 *o)
 {
     return o->unk_0x1b4;

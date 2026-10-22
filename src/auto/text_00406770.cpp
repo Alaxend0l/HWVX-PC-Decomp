@@ -45,6 +45,11 @@ float func_00406AB0(char *car, int target);
 float func_00406A00(Driver_00406770 *d, int target);
 void func_00406950(Driver_00406770 *d, int target);
 
+struct Pair_004073A0 {
+    int a;
+    unsigned short b;
+};
+
 void func_00454CF0(void *, void *, int);
 void func_0045E120(int, int, void *, int);
 extern "C" void func_0044A990(char *a);

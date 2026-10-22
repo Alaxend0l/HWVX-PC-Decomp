@@ -257,3 +257,35 @@ void func_0044D940(void **out)
 {
     func_0044D860(out, 0x20);
 }
+
+char func_0044DF30(unsigned int *a)
+{
+    unsigned int n;
+    unsigned int i;
+    int mode;
+    int d;
+    int *vals;
+    Racer_0044DF30 **racers;
+    Car_0044DF30 *car;
+    char r;
+
+    n = a[0];
+    racers = (Racer_0044DF30 **)&a[1];
+    mode = a[n + 1];
+    vals = (int *)&a[n + 3];
+    d = a[n + 2];
+    r = 0;
+    for (i = 0; i < n; i++) {
+        car = racers[i]->unk_0x28;
+        if (mode == 0x2a) {
+            if (car->unk_0x78 < vals[i] - d)
+                r = 1;
+            vals[i] = car->unk_0x78;
+        } else if (mode == 0x2b) {
+            if (car->unk_0x78 < car->unk_0x398->unk_0xa0->unk_0x14 / d)
+                r = 1;
+        }
+    }
+    return r;
+}
+

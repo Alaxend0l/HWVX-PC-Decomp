@@ -96,3 +96,44 @@ void func_0043CF10(void)
     func_0043CEE0(D_005BE410);
     D_0048D774 = 0;
 }
+
+void func_0043CF50(Part_0043CF50 *p)
+{
+    Vec4_0043CF10 v;
+    float s;
+
+    p->unk_0xc0 = p->model->table->entries[p->unk_0xb7];
+    if (p->unk_0xb6) {
+        func_00461D10(p->unk_0x74);
+        func_00461BA0(0x10);
+    }
+    s = p->unk_0xd8 * p->unk_0xc4;
+    v.x = s * p->unk_0x80;
+    p->unk_0x0c = 1.0f;
+    v.w = 1.0f;
+    v.y = s * p->unk_0x84;
+    v.z = s * p->unk_0x88;
+    func_0045E730(p->unk_0xc0, &p->unk_0x30, &v, p);
+    if (p->unk_0xb6)
+        func_00461BC0(0x10);
+}
+
+void func_0043D010(Elem_0043D010 *e)
+{
+    Obj_0045EC70 *o;
+
+    o = func_0045EC70(*(unsigned short *)&e->model->table->entries[e->unk_0x97]);
+    o->unk_0x2a = e->unk_0x95;
+    o->unk_0x24 = e->unk_0x54;
+    o->unk_0x1c = e->unk_0x80;
+    o->unk_0x0c = e->unk_0x8c * e->unk_0x60;
+    o->unk_0x00 = e->unk_0x00;
+    o->unk_0x04 = e->unk_0x04;
+    o->unk_0x08 = e->unk_0x08;
+}
+
+void func_0043D530(int a, int b)
+{
+    func_0043D280(a, b);
+}
+

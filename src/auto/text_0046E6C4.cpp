@@ -11,6 +11,9 @@ extern LPCRITICAL_SECTION D_0047D8A4;
 extern LPCRITICAL_SECTION D_0047D884;
 
 extern "C" void func_0046E7DD(int code);
+
+/* The original's import slots are named without the @N decoration. */
+extern "C" void (__stdcall *_imp__LeaveCriticalSection)(LPCRITICAL_SECTION);
 extern LPCRITICAL_SECTION D_0047D880[];
 extern "C" void *func_0046AED9(unsigned int size);
 extern "C" void func_0046AD1F(int code);

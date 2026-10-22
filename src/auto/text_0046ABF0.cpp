@@ -20,7 +20,7 @@ extern "C" void func_0046ADB9(void);
 extern "C" char *func_0046DDB5(void);
 extern "C" __declspec(noreturn) void func_0046ADE6(int);
 extern "C" int func_0046DC3D(unsigned long, struct _EXCEPTION_POINTERS *);
-extern "C" void func_0046AD24(int);
+extern "C" __declspec(noreturn) void func_0046AD24(int);
 extern "C" int __stdcall func_00454E70(HINSTANCE, HINSTANCE, char *, int);
 
 extern "C" char *func_0046ABF0(const char *s, int ch)

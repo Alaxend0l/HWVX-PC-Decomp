@@ -84,7 +84,6 @@ struct Slot_0065EC00 {
     int unk_0x74;
 };
 
-extern Slot_0065E360 D_0065E360_[24];
 extern Slot_0065EC00 D_0065EC00[16];
 extern int D_0069236C;
 extern int D_00692370;

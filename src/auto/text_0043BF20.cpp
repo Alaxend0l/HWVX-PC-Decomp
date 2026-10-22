@@ -35,8 +35,9 @@ struct Elem_0043C520 {
     Vec4_0043BF20 unk_0x10;
     Vec4_0043BF20 unk_0x20;
     char unk_0x30[0x5c - 0x30];
-    unsigned char b5c;
-    char unk_0x5d[0x60 - 0x5d];
+    char unk_0x5c[0x5d - 0x5c];
+    unsigned char b5d;
+    char unk_0x5e[0x60 - 0x5e];
     float f60;
     char unk_0x64[0x80 - 0x64];
     float f80;

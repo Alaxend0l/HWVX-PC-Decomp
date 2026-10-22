@@ -93,3 +93,15 @@ extern "C" void func_0041B5E0(Slot_006614C0 *p)
         *(int *)((char *)p + 0x300) = 0;
 }
 
+extern "C" void func_0041B600(void)
+{
+    char *p;
+
+    func_00452F70(D_0047A5B8, D_00663180);
+    p = D_0066321D;
+    do {
+        *p = 0;
+        p += sizeof(OBox_00663180);
+    } while (p < D_0068121D);
+}
+

@@ -71,6 +71,13 @@ extern "C" void func_0046AE08(int code, int quick, int retcaller)
     ExitProcess(code);
 }
 
+extern "C" void func_0046E959(int);
+extern "C" void func_0046E9BA(int);
+extern "C" void func_0046AEAD(void)
+{
+    func_0046E959(13);
+}
+
 extern "C" void func_0046AD41(void)
 {
 }

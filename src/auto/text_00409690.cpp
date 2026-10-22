@@ -25,6 +25,13 @@ extern VecSlot_00409690 D_0068DAE0[];
 extern VecSlot_00409690 D_0068DAF0[];
 extern MtxSlot_00409690 D_0068DB30[];
 
+struct Entry_0068DAE0 {
+    Vec4_00409690 unk_0x00;
+    Vec4_00409690 unk_0x10;
+    char unk_0x20[0x30];
+    Mtx_00409690 unk_0x50;
+};
+
 extern "C" char func_00459B10(int);
 extern "C" void func_004096C0(unsigned int);
 extern "C" void func_00409A40(void);
@@ -46,6 +53,27 @@ extern "C" void func_00409A40(void)
     D_0068DAC0 = 0;
     for (i = 0; i < 100; i++)
         func_004096C0(i);
+}
+
+extern "C" void func_00409D10(int index, int type, void *data)
+{
+    Vec4_00409690 *v;
+    Mtx_00409690 *m;
+
+    switch (type) {
+    case 5:
+        v = &D_0068DAE0[index].v;
+        *v = *(Vec4_00409690 *)data;
+        break;
+    case 6:
+        v = &D_0068DAF0[index].v;
+        *v = *(Vec4_00409690 *)data;
+        break;
+    case 7:
+        m = &D_0068DB30[index].m;
+        *m = *(Mtx_00409690 *)data;
+        break;
+    }
 }
 
 extern "C" char *func_0040A490(void)

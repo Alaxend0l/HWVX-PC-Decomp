@@ -94,6 +94,12 @@ extern "C" bool func_0044FFC0(List_0044FFC0 *list)
     return false;
 }
 
+extern "C" void func_004508C0(void *p)
+{
+    if (p != NULL)
+        D_0049DBC0[D_00496DD0++] = p;
+}
+
 extern "C" bool func_004500E0(List_0044FFC0 *list)
 {
     for (int i = 0; i < list->count; i++) {
@@ -191,6 +197,39 @@ extern "C" void func_004507D0(void)
 {
     D_00496DD0 = 0;
     D_00496DCC = 0;
+}
+
+extern "C" void func_004507E0(void)
+{
+    Level_004507E0 *lv = D_0049DBA0;
+    unsigned int i;
+
+    D_00496DD0 = 0;
+    D_00496DCC = 0;
+    if (lv != NULL) {
+        for (i = 0; i < lv->numPaths; i++) {
+            D_0049DCC0[D_00496DCC].path = lv->paths[i];
+            D_0049DCC0[D_00496DCC].active = 1;
+            D_00496DCC++;
+        }
+        for (i = 0; i < lv->numTriggers; i++) {
+            if (lv->triggers[i].unk_1c == 0) {
+                if (lv->triggers[i].unk_14 != NULL)
+                    func_004508C0(lv->triggers[i].unk_14);
+                return;
+            }
+        }
+    }
+}
+
+extern "C" void func_00450870(void)
+{
+    int dt = D_0069236C;
+    unsigned int i;
+
+    for (i = 0; i < D_00496DCC; i++)
+        func_004268B0(*(int *)(D_0049DCC0[i].path + 4), D_0049DCC0[i].data, dt);
+    func_00401090();
 }
 
 extern "C" int D_00496DE8;

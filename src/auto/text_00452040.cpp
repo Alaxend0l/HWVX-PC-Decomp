@@ -32,3 +32,8 @@ extern "C" void func_00461C00(int);
 extern "C" void func_00427780(void);
 extern "C" void func_00428A70(int, int);
 extern "C" void func_00450C10(void);
+
+extern "C" int func_004524B0(void)
+{
+    return D_0049DBA0->unk_0x08;
+}

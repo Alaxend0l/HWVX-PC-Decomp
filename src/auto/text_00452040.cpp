@@ -26,7 +26,7 @@ extern int D_0049DBB0;
 
 extern "C" Track_00452040 *func_004525A0(void);
 extern "C" void func_0045F9C0(int, int, int, int, int);
-extern "C" void func_00466A40(float, int, float, int);
+extern "C" void func_00466A40(unsigned char, int, float, int);
 extern "C" void func_00409F50(void);
 extern "C" void func_00461C00(int);
 extern "C" void func_00427780(void);
@@ -39,7 +39,7 @@ extern "C" void func_00452040(void)
 
     if (t) {
         func_0045F9C0(t->unk_0x8c, t->unk_0x90, t->unk_0x0c, t->unk_0x10, 1);
-        func_00466A40(*t->unk_0xc0, 0, t->unk_0x14, t->unk_0x18);
+        func_00466A40(*(float *)t->unk_0xc0, 0, t->unk_0x14, t->unk_0x18);
         func_00409F50();
         func_00461C00(t->unk_0x20);
     } else {
@@ -63,7 +63,7 @@ extern "C" void func_004520B0(void)
     D_0049DBAC = 0;
     D_0049DBB0 = 0;
     func_00450C10();
-    func_00466A40(0, 0, 1.0f, 0);
+    func_00466A40(0.0f, 0, 1.0f, 0);
 }
 
 extern "C" int func_004524B0(void)

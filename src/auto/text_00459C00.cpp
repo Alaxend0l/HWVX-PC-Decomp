@@ -54,6 +54,32 @@ char func_00459CC0(void)
     return 1;
 }
 
+char func_00459CF0(void)
+{
+    int i;
+
+    D_006929A0 = func_0044A5A0;
+    D_00692994 = func_0044A5A0;
+    D_0069299C = func_0044A5A0;
+    D_006929EC = func_0044A5A0;
+    D_006929A8 = func_0044A5A0;
+    D_006929E4 = func_0044A5A0;
+    D_006929B0 = func_0044A5A0;
+    D_006929A4 = func_0044A5A0;
+    D_006929E0 = func_0044A5A0;
+    D_006929F0 = func_0044A5A0;
+    for (i = 0; i < 8; i++)
+        D_006929C0[i] = 0;
+    return 1;
+}
+
+void func_00459D40(int a)
+{
+    D_0049922C = a;
+    D_00692998 = (unsigned int)(D_00499228 * a) >> 15;
+    D_0069299C();
+}
+
 char func_00459EF0(void)
 {
     if (D_00499254)

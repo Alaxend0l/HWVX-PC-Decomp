@@ -1,2 +1,43 @@
 /* 8 functions from 0x0045B480 to 0x0045BB10, found by Ghidra. */
 #include "common.h"
+struct Node_0045B {
+    char unk_0x0[0x4];
+    Node_0045B *next;
+};
+
+struct Chan_0045B {
+    Node_0045B *head;
+    char unk_0x4[0xd];
+    unsigned char unk_0x11;
+    char unk_0x12[0x8];
+    unsigned short unk_0x1a;
+    char unk_0x1c[0x54];
+};
+
+struct Voice_0045B {
+    char unk_0x0[0x3];
+    char unk_0x3;
+    char unk_0x4[0x11];
+    char unk_0x15;
+    char unk_0x16[0x1e];
+    int unk_0x34;
+    char unk_0x38[0x18];
+};
+
+extern Chan_0045B D_00499A68[32];
+extern char D_0049A868[];
+extern unsigned int D_006929AC;
+extern int D_0049A898;
+extern int D_0049A884;
+extern int D_006929C0[8];
+extern char D_0047CA0C[];
+extern char D_0047C984[];
+extern char D_0047C9D4[];
+extern Voice_0045B D_00692A00[64];
+
+int func_00452FB0(const char *, const char *, int, int, int);
+void func_0045B680(int);
+void func_0045E0C0(int);
+void func_0045DC20(Node_0045B *, int);
+unsigned short __fastcall func_0045E100(void *, Chan_0045B *);
+void func_0045DD10(Voice_0045B *);

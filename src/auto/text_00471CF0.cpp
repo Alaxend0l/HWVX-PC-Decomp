@@ -55,3 +55,10 @@ extern "C" int func_00471E44(void)
     return count;
 }
 
+extern "C" int func_00471EC5(int fh)
+{
+    if ((unsigned)fh >= D_006D5AE0)
+        return 0;
+    return (int)(D_006D59E0[fh >> 5][fh & 0x1f].osfile & 0x40);
+}
+

@@ -123,3 +123,12 @@ void func_00428CC0(void)
         p++;
     } while (p < D_0065F3DC);
 }
+
+void func_00428F00(void)
+{
+    int i;
+
+    for (i = 0; i < 24; i++)
+        D_0065E360[i].unk0 = 0;
+}
+

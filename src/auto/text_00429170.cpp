@@ -1,5 +1,6 @@
 /* 11 functions from 0x00429170 to 0x00429FA0, found by Ghidra. */
 #include "common.h"
+#include <string.h>
 
 extern char D_0047AB18;
 extern char D_0047A778[];
@@ -106,6 +107,37 @@ extern "C" void func_00429DD0(void)
     D_0065E320 = 3;
     D_0065E324 = 0;
     D_0065E328 = 3;
+}
+
+extern "C" void func_00429F10(int a)
+{
+    char *dev = (char *)func_00429EC0();
+    Info_00429 *info = func_0042B040(a);
+
+    if (dev != NULL && *(int *)(dev + 0x3c) != 0) {
+        info->unk_0x2 = *(Guid_00429 *)((int *)**(int **)*(int *)(dev + 0x40))[1];
+        info->unk_0x12[0] = 10;
+        info->unk_0x12[1] = 11;
+        info->unk_0x12[2] = 9;
+        info->unk_0x12[3] = 7;
+        info->unk_0x12[4] = 8;
+        info->unk_0x12[5] = 6;
+        info->unk_0x12[6] = 4;
+        info->unk_0x12[7] = 5;
+        info->unk_0x12[8] = 3;
+        info->unk_0x12[9] = 2;
+        info->unk_0x12[10] = 12;
+        info->unk_0x12[11] = 13;
+        info->unk_0x12[12] = 1;
+        return;
+    }
+    {
+        Guid_00429 *g = &info->unk_0x2;
+        g->unk_0x0[0] = 0;
+        g->unk_0x0[1] = 0;
+        g->unk_0x0[2] = 0;
+        g->unk_0x0[3] = 0;
+    }
 }
 
 extern "C" int func_00429EA0(void)

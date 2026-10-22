@@ -10,11 +10,29 @@ struct TaskArg_00401090 {
 struct Task_00401090 {
     int type;
     TaskArg_00401090 *arg;
-    char unk_0x08[0x14 - 0x08];
+    char unk_0x08[0x0c - 0x08];
+    int unk_0x0c;
+    int unk_0x10;
     int delay;
 };
 
 extern Task_00401090 *D_004806E0[80];
+extern int D_00480820;
+extern int D_00480824;
+extern int D_0068DD20;
+extern int D_0068DD24;
+extern char D_0047A0F0[];
+
+struct Group_004018C0 {
+    char value;
+    char unk_0x01[3];
+    unsigned int count;
+    char *items[1];
+};
+
+extern "C" void func_00452F70(const char *fmt, ...);
+extern "C" unsigned int func_0042A680(int, int);
+void func_0043EA50(int, int);
 extern void (*D_0047A040[])(TaskArg_00401090 *);
 extern u32 D_00692370;
 
@@ -32,10 +50,10 @@ void func_004010C0(void)
     for (p = D_004806E0; p < D_004806E0 + 80; p++) {
         if (*p != NULL && (*p)->delay <= 0) {
             D_0047A040[(*p)->type]((*p)->arg);
-            if ((*p)->type != 0x14 || (*p)->arg->unk_0x4 == 0)
+            if (!((*p)->type == 0x14 && (*p)->arg->unk_0x4 != 0))
                 *p = NULL;
         } else if (*p != NULL) {
-            (*p)->delay -= D_00692370;
+            (*p)->delay = (*p)->delay - D_00692370;
         }
     }
 }

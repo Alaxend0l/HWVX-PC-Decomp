@@ -47,7 +47,7 @@ struct Particle_00416A40 {
     Vec4_00416A40 vel;
     Vec4_00416A40 unk_0x30;
     int unk_0x40;
-    int unk_0x44;
+    Vec4_00416A40 *unk_0x44;
     int unk_0x48;
     float unk_0x4c;
 };

@@ -8,7 +8,9 @@ struct Vec4_0040BEA0 {
 struct Model_0040BEA0;
 
 struct Ops_0040BEA0 {
-    char unk_0x00[0x3c];
+    char unk_0x00[0x4];
+    void (*unk_0x04)(Model_0040BEA0 *);
+    char unk_0x08[0x3c - 0x8];
     void (*unk_0x3c)(Model_0040BEA0 *, void *);
 };
 
@@ -68,12 +70,12 @@ void func_0040CA20(void);
 
 void func_0040C4B0(Obj_0040BEA0 *obj)
 {
-    Model_0040BEA0 *m;
-    if (obj->unk_0x168 != 0 && obj->unk_0x0 != 0 && (m = obj->unk_0x0->unk_0x2c) != 0) {
-        float s = D_0049DBA0->unk_0x9c->unk_0x3c;
-        obj->unk_0x168->unk_0x40[0] = obj->unk_0x054.x + s * m->unk_0x00[0];
-        obj->unk_0x168->unk_0x40[1] = obj->unk_0x054.y + s * obj->unk_0x0->unk_0x2c->unk_0x00[1];
-        obj->unk_0x168->unk_0x40[2] = obj->unk_0x054.z + s * obj->unk_0x0->unk_0x2c->unk_0x00[2];
+    if (obj->unk_0x168 != 0 && obj->unk_0x0 != 0 && obj->unk_0x0->unk_0x2c != 0) {
+        Inner_0049DBA0 *in = D_0049DBA0->unk_0x9c;
+        float s = in->unk_0x3c;
+        obj->unk_0x168->unk_0x40[0] = s * obj->unk_0x0->unk_0x2c->unk_0x00[0] + obj->unk_0x054.x;
+        obj->unk_0x168->unk_0x40[1] = s * obj->unk_0x0->unk_0x2c->unk_0x00[1] + obj->unk_0x054.y;
+        obj->unk_0x168->unk_0x40[2] = s * obj->unk_0x0->unk_0x2c->unk_0x00[2] + obj->unk_0x054.z;
     }
 }
 
@@ -82,19 +84,20 @@ void func_0040C2A0(Obj_0040BEA0 *obj, int arg)
     char mtx[16];
     Vec4_0040BEA0 dir;
     float dist;
-    Vec4_0040BEA0 *pos;
     Vec4_0040BEA0 *hit;
+    Vec4_0040BEA0 *pos;
+    Model_0040BEA0 *m;
 
-    obj->unk_0x0->unk_0x2c->unk_0x8c->unk_0x3c(obj->unk_0x0->unk_0x2c, mtx);
+    m = obj->unk_0x0->unk_0x2c;
+    m->unk_0x8c->unk_0x3c(m, mtx);
     pos = &obj->unk_0x054;
     func_00453330(mtx, pos, &dir);
     dist = 1.0f;
-    if (func_0044D550(pos, &dir, &dist, 0)) {
-        hit = func_0043BD20(func_0043B500(mtx, -1));
-        if (hit != 0)
-            *pos = *hit;
-    }
-    func_0040C0A0(obj, arg, pos, mtx, obj->unk_0x0->unk_0x2c->unk_0x70, 0);
+    if (func_0044D550(pos, &dir, &dist, 0) &&
+        (hit = func_0043BD20(func_0043B500(mtx, -1))) != 0)
+        *pos = *hit;
+    m = obj->unk_0x0->unk_0x2c;
+    func_0040C0A0(obj, arg, pos, mtx, m->unk_0x70, 0);
 }
 
 void func_0040CA20(void)

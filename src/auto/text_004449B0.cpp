@@ -125,8 +125,8 @@ void func_00444F30(Msg_00444EE0 *m)
 
 char func_004450F0(int id, char *name)
 {
-    unsigned int i;
-    for (i = 0; i < D_0048D7FC; i++) {
+    int i;
+    for (i = 0; (unsigned int)i < D_0048D7FC; i++) {
         if (D_0053B0E0[i].id == id && strcmp(D_0053B0E0[i].name, name) == 0)
             return 0;
     }

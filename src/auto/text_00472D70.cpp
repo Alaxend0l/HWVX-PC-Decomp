@@ -57,3 +57,14 @@ extern "C" void func_00472E34(void)
     }
 }
 
+extern "C" int func_0047310A(int);
+extern "C" int func_004730E9(int arg)
+{
+    int retval;
+
+    func_0046E959(0xb);
+    retval = func_0047310A(arg);
+    func_0046E9BA(0xb);
+    return retval;
+}
+

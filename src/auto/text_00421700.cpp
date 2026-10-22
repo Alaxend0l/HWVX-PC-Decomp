@@ -71,6 +71,7 @@ struct Obj_00421700 {
     float radius;
     union {
         int flags;
+        ObjFlags_00421700 eflags;
         struct {
             unsigned int b0 : 1;
             unsigned int b1 : 1;

@@ -52,15 +52,36 @@ void func_00450A60(void);
 void func_00429FA0(int, int, int);
 void func_004620A0(void);
 
+struct Entry_0053B0E0 {
+    char *name;
+    int id;
+    int unk_0x08;
+};
+
+struct Key_00445160 {
+    int id;
+    char name[1];
+};
+
+extern unsigned int D_0048D7FC;
+extern Entry_0053B0E0 D_0053B0E0[];
+
+extern "C" int strcmp(const char *, const char *);
+char func_004450F0(int, char *);
+
 void func_004449B0(void)
 {
-    Ctx_00429EC0 *ctx = func_00429EC0();
-    int n = func_00440130();
-    int i;
+    Ctx_00429EC0 *ctx;
+    unsigned int n;
+    unsigned int i;
+    Obj_004401B0 *obj;
+    unsigned char *info;
 
-    for (i = 0; (unsigned int)i < (unsigned int)n; i++) {
-        Obj_004401B0 *obj = func_004401B0(i);
-        unsigned char *info = func_0042B040(obj->unk_0x60);
+    ctx = func_00429EC0();
+    n = func_00440130();
+    for (i = 0; i < n; i++) {
+        obj = func_004401B0(i);
+        info = func_0042B040(obj->unk_0x60);
         if (ctx != NULL && ctx->unk_0x3c > 0) {
             if (info[1] >= ctx->unk_0x3c)
                 info[1] = 0;

@@ -45,6 +45,15 @@ void func_0045DC20(Voice_004595D0 *, int);
 void func_0045D620(Voice_004595D0 *);
 int func_0045DD10(Voice_004595D0 *);
 
+static inline Voice_004595D0 *GetVoice_004595D0(unsigned int id)
+{
+    Voice_004595D0 *v = &D_00692A00[id & 0xff];
+
+    if (v->id != id)
+        return 0;
+    return v;
+}
+
 int func_004595D0(Slot_004595D0 *src)
 {
     Slot_004595D0 *s;
@@ -106,3 +115,74 @@ void func_00459950(unsigned int id)
     if (vid == id)
         func_0045D630(v, 3);
 }
+
+int func_00459980(unsigned int id, int state)
+{
+    Voice_004595D0 *v;
+
+    v = &D_00692A00[id & 0xff];
+    if (v->id == id) {
+        if ((unsigned char)v->unk_0x15 == state)
+            return state;
+        switch (state) {
+        case 1:
+            if (v->unk_0x15 == 2) {
+                func_0045D630(v, 1);
+                D_0049714C = 1;
+                return (unsigned char)v->unk_0x15;
+            }
+        case 4:
+            func_0045D620(v);
+            func_0045DC20(v, D_00497150);
+            D_0049714C = 1;
+            return (unsigned char)v->unk_0x15;
+        case 2:
+        case 3:
+            func_0045D630(v, 2);
+        }
+        return (unsigned char)v->unk_0x15;
+    }
+    return 0;
+}
+
+char func_00459A30(unsigned int id, int arg)
+{
+    Voice_004595D0 *v = &D_00692A00[id & 0xff];
+
+    if (v->id == id) {
+        v->unk_0x38 = arg;
+        if (v->unk_0x15 == 1)
+            func_0045DC20(v, D_00497150);
+        return 1;
+    }
+    return 0;
+}
+
+char func_00459A70(unsigned int id, short x, short y)
+{
+    Voice_004595D0 *v = &D_00692A00[id & 0xff];
+
+    if (v->id == id) {
+        v->unk_0x40 = x;
+        v->unk_0x44 = y;
+        if (v->unk_0x15 == 1)
+            func_0045DC20(v, D_00497150);
+        return 1;
+    }
+    return 0;
+}
+
+char func_00459AC0(unsigned int id, int arg)
+{
+    Voice_004595D0 *v;
+
+    v = &D_00692A00[id & 0xff];
+    if (v->id == id) {
+        v->unk_0x34 = arg;
+        if (func_0045DD10(v))
+            return 1;
+        func_0045D630(v, 3);
+    }
+    return 0;
+}
+

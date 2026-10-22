@@ -89,15 +89,14 @@ void func_00461B50(void)
     D_006D4D20 = 0;
 }
 
-extern "C" float func_004535B0(void *a, void *b);
-extern "C" void *func_00454B80(unsigned int size, int line, const char *file);
-extern char D_006D4000[];
-extern char D_006D4E10[];
-extern char D_006D42D0[];
-extern char D_006D45A0[];
-extern char D_0047CC70[];
-extern int D_006D3D48;
-extern void *D_006D3D44;
+int func_004620B0(void)
+{
+    D_006D3D48 = 0x1ff;
+    D_006D3D44 = func_00454B80(0x7fc0, 0x5d, D_0047CC70);
+    memset(D_006D3D44, 0, D_006D3D48 * 64);
+    return 1;
+}
+
 char *func_00461D50(void)
 {
     return (char *)&D_006D3E80[D_0049D7D4];

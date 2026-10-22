@@ -167,10 +167,10 @@ extern "C" void func_00429830(unsigned int mode)
 
 extern "C" void func_00429860(int *ids, unsigned int count)
 {
-    unsigned int i;
-    unsigned int n;
+    unsigned int i = 0;
+    unsigned int n = func_00440160();
 
-    for (i = 0, n = func_00440160(); i < n; i++) {
+    for (; i < n; i++) {
         char *p = func_00440180(i);
         unsigned int j;
         for (j = 0; j < count; j++) {

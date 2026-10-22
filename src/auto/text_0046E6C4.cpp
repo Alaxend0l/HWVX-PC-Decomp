@@ -12,7 +12,7 @@ extern LPCRITICAL_SECTION D_0047D884;
 
 extern "C" void func_0046E7DD(int code);
 
-#pragma optimize("y", off)
+#pragma optimize("s", on)
 extern "C" void func_0046E7A4(void)
 {
     if (D_0049D810 == 1 || (D_0049D810 == 0 && D_0047D434 == 1)) {
@@ -22,7 +22,6 @@ extern "C" void func_0046E7A4(void)
         func_0046E7DD(0xff);
     }
 }
-
 extern "C" void func_0046E930(void)
 {
     InitializeCriticalSection(D_0047D8C4);

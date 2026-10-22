@@ -17,10 +17,17 @@ struct PoolItem {
 };
 
 struct PoolObj {
-    char unk_0x0[0x14];
+    int type;
+    int *unk_0x4;
+    int unk_0x8;
+    int unk_0xc;
+    int unk_0x10;
     PoolItem *items;
     int unk_0x18;
     unsigned int numItems;
+    int unk_0x20;
+    int state;
+    char unk_0x28;
 };
 
 struct PoolSlot {
@@ -39,6 +46,55 @@ void func_0044EFC0(void)
 {
     func_00454C50(D_00496DC4);
     D_00496DC4 = NULL;
+}
+
+void func_0044EFE0(void)
+{
+    int i;
+    int total;
+    int offset;
+    PoolObj **base;
+
+    total = 0;
+    offset = 0;
+    if (D_00496DC4 != NULL) {
+        func_00454C50(D_00496DC4);
+        D_00496DC4 = NULL;
+    }
+    for (i = 0; i < 28; i++) {
+        D_0047B870[i].count = 0;
+        total += D_0047B870[i].size;
+    }
+    base = (PoolObj **)func_00454B80(total * 4, 0xde, D_0047BD28);
+    D_00496DC4 = base;
+    for (i = 0; i < 28; i++) {
+        D_00496D54[i] = &base[offset];
+        offset += D_0047B870[i].size;
+    }
+    for (i = 0; i < 10; i++)
+        D_00496D00[i].unk_0x0 = 0;
+    D_00496DC8 = 0;
+}
+
+void func_0044F080(int *out, unsigned int max)
+{
+    unsigned int n = 0;
+    int k;
+    unsigned int i;
+    unsigned int j;
+    int id;
+
+    for (k = 0; k < 28; k++) {
+        for (i = 0; i < D_0047B870[k].count; i++) {
+            for (j = 0; j < D_00496D54[k][i]->numItems; j++) {
+                if (n >= max)
+                    return;
+                id = D_00496D54[k][i]->items[j].id;
+                if (id != -1)
+                    out[n++] = id;
+            }
+        }
+    }
 }
 
 char func_0044F210(void)

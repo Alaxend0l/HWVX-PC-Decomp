@@ -18,6 +18,29 @@ struct Obj_0043A3C0 {
     int unk_0xc0;
 };
 
+struct Vec4_0043A3C0 {
+    float x, y, z, w;
+};
+
+struct Desc_0043A3C0 {
+    char unk_0x0[0x10];
+    Vec4_0043A3C0 unk_0x10;
+    Vec4_0043A3C0 unk_0x20;
+    int unk_0x30;
+    int unk_0x34;
+};
+
+struct Ent_0043A3C0 {
+    char unk_0x0[0x10];
+    char unk_0x10[0x30];
+    Vec4_0043A3C0 unk_0x40;
+    Vec4_0043A3C0 unk_0x50;
+    char unk_0x60[0x50];
+    int unk_0xb0;
+    char unk_0xb4[0x20];
+    int unk_0xd4;
+};
+
 extern char D_005D4440[];
 extern char (*D_0048D634)(void);
 
@@ -81,17 +104,17 @@ void func_0043AD10(void)
 
     D_0048D638 = (Pool_0048D638 *)func_00454B80(0xa6b00, 0x20, D_0047AF74);
     p = (char *)(D_0048D638 + 1);
-    for (i = 0; i < 0x60; i++) {
+    for (i = 0; i < sizeof(D_0048D638->small) / sizeof(D_0048D638->small[0]); i++) {
         D_0048D638->small[i].buf = p;
         D_0048D638->small[i].used = 0;
         p += 0x100;
     }
-    for (i = 0; i < 0x80; i++) {
+    for (i = 0; i < sizeof(D_0048D638->medium) / sizeof(D_0048D638->medium[0]); i++) {
         D_0048D638->medium[i].buf = p;
         D_0048D638->medium[i].used = 0;
         p += 0x400;
     }
-    for (i = 0; i < 0x80; i++) {
+    for (i = 0; i < sizeof(D_0048D638->large) / sizeof(D_0048D638->large[0]); i++) {
         D_0048D638->large[i].buf = p;
         D_0048D638->large[i].used = 0;
         p += 0x1000;

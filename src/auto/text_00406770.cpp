@@ -83,18 +83,30 @@ void func_00406880(Driver_00406770 *d)
 
 void func_00406B30(Driver_00406770 *d)
 {
-    if (d->unk_0xec == 0) {
+    if (d->unk_0xec != 0) {
+        d->unk_0xec--;
+    } else {
         d->unk_0xed = 0x7f;
         d->unk_0xee = func_0046A800() % 256 + 0x80;
         d->unk_0xef = 1;
         d->unk_0xec = func_0046A800() % 64 + 0x40;
-    } else {
-        d->unk_0xec--;
     }
     d->unk_0x0 = d->unk_0xee;
     d->unk_0x1 = d->unk_0xed;
     if (d->unk_0xef)
         d->unk_0x14 = -1;
+}
+
+extern int D_0053A9D4[0x12];
+void func_0044A7C0(char **list, char *o);
+void func_0044A790(char *list, char *o);
+void func_00406FA0(Driver_00406770 *d)
+{
+    if (func_004535B0(d->car + 0x40, *(void **)(d->car + 0x90)) > 25.0f) {
+        func_00406950(d, *(int *)(d->car + 0x90));
+        d->unk_0x14 = -1;
+        d->unk_0xc8 = 100;
+    }
 }
 
 void func_00406950(Driver_00406770 *d, int target)
@@ -140,7 +152,7 @@ float func_00406AB0(char *car, int target)
 {
     float *t = (float *)target;
     float a = func_004532D0(t[2] - *(float *)(car + 0x48), t[0] - *(float *)(car + 0x40));
-    float r = -(a - func_004532D0(*(float *)(car + 0x38), *(float *)(car + 0x30)));
+    float r = func_004532D0(*(float *)(car + 0x38), *(float *)(car + 0x30)) - a;
 
     while (r > 3.1415927f)
         r -= 6.2831855f;
@@ -153,13 +165,12 @@ float func_00406EE0(char *a, char *b)
 {
     float r;
 
-    if (func_00406AB0(b, (int)(a + 0x40)) < D_00477000) {
-        float h = func_004532D0(*(float *)(a + 0x38), *(float *)(a + 0x30));
-        r = h - func_004532D0(-*(float *)(b + 0x18), -*(float *)(b + 0x10));
-    } else {
-        float h = func_004532D0(*(float *)(a + 0x38), *(float *)(a + 0x30));
-        r = h - func_004532D0(*(float *)(b + 0x18), *(float *)(b + 0x10));
-    }
+    if (func_00406AB0(b, (int)(a + 0x40)) < D_00477000)
+        r = func_004532D0(*(float *)(a + 0x38), *(float *)(a + 0x30)) -
+            func_004532D0(-*(float *)(b + 0x18), -*(float *)(b + 0x10));
+    else
+        r = func_004532D0(*(float *)(a + 0x38), *(float *)(a + 0x30)) -
+            func_004532D0(*(float *)(b + 0x18), *(float *)(b + 0x10));
     while (r > 3.1415927f)
         r -= 6.2831855f;
     while (r < -3.1415927f)

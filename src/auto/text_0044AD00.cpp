@@ -61,6 +61,16 @@ void func_0044B8A0(void)
     func_0044AA50();
 }
 
+void func_0044B8C0(void)
+{
+    Obj_0053A9D0 *p;
+
+    for (p = D_0053A9D0; p != 0; p = p->unk_0xa4)
+        p->unk_0x8c->unk_0x04(p);
+    D_0053A9D0 = 0;
+    memset(D_0053A9D4, 0, sizeof(D_0053A9D4));
+}
+
 void func_0044B900(void)
 {
     func_0044B910();

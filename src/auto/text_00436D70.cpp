@@ -43,9 +43,9 @@ void func_0043EB20(Obj_00437 *);
 void func_0042DE60(int);
 int func_0043B500(char *, int);
 
-char func_00437890(int *arg)
+char func_00437890(Msg_00437 *msg)
 {
-    func_0042E250(*arg, 0, 0);
+    func_0042E250(msg->unk_0x0, 0, 0);
     return 1;
 }
 
@@ -53,7 +53,7 @@ char func_004378B0(Msg_00437 *msg)
 {
     int i;
 
-    for (i = 0; i < D_00681AB0; i++) {
+    for (i = 0; i < (unsigned char)D_00681AB0; i++) {
         if (msg->unk_0x4 == 1) {
             func_0043EB20(D_00681500[i].unk_0x0);
         } else {

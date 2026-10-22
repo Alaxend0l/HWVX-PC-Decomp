@@ -32,3 +32,52 @@ struct Unk00458220 {
 extern "C" DeviceSlot D_00496E40[];
 extern "C" int D_00496FD0;
 extern "C" void func_00458000(int, int, int, void *);
+
+extern "C" unsigned char func_004581C0(int index, int device)
+{
+    unsigned char state;
+    Device *dev;
+
+    if (D_00496E40[index].unk0 == 0)
+        return 0;
+    if (device == 9)
+        return D_00496E40[index].unk13D;
+    dev = D_00496E40[index].unk104[device];
+    if (dev == NULL)
+        return 0;
+    dev->unk24(&state);
+    return state & 1;
+}
+
+extern "C" void func_00458220(int unused, char a, char b, short c)
+{
+    Unk00458220 tmp;
+
+    tmp.a = a;
+    tmp.b = b;
+    tmp.c = c;
+    func_00458000(1, 0, 0, &tmp);
+}
+
+extern "C" int func_00458460(void)
+{
+    return D_00496FD0;
+}
+
+extern "C" void func_00457FA0(char enable, DeviceSlot *slot)
+{
+    int i;
+
+    if (enable) {
+        if (!slot->unk13D) {
+            for (i = 0; i < 8; i++) {
+                if (slot->unk104[i])
+                    slot->unk104[i]->unk20();
+            }
+            slot->unk13D = 1;
+        }
+    }
+    else if (slot->unk13D) {
+        slot->unk13D = 0;
+    }
+}

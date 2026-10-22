@@ -1,6 +1,7 @@
 /* 14 functions from 0x0046F464 to 0x00470413, found by Ghidra. */
 #include "common.h"
 #include <windows.h>
+#include <time.h>
 
 /* The original's import slots are named without the @N decoration. */
 extern "C" LPVOID (__stdcall *_imp__HeapAlloc)(HANDLE, DWORD, SIZE_T);

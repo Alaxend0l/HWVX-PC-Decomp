@@ -35,6 +35,12 @@ extern PoolObj **D_00496D54[28];
 extern void *D_00496DC4;
 extern char D_00496DC8;
 
+void func_0044EFC0(void)
+{
+    func_00454C50(D_00496DC4);
+    D_00496DC4 = NULL;
+}
+
 char func_0044F210(void)
 {
     return D_00496DC8;

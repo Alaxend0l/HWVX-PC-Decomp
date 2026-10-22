@@ -46,6 +46,22 @@ extern "C" char *func_004483A0(char *p)
     return 0;
 }
 
+extern "C" int func_00448400(char *p)
+{
+    char *d = func_004483A0(p);
+    int k = *(unsigned char *)(d + 0x10);
+
+    switch (k) {
+    case 0:
+        return *(int *)(d + 0x44);
+    case 1:
+        return *(int *)(d + 0x48);
+    case 7:
+        return *(int *)(d + 0x44);
+    }
+    return 0;
+}
+
 float func_00448B60(void)
 {
     return D_0047700C;
@@ -58,5 +74,32 @@ extern "C" int func_00448B70(char *p)
     if (q != NULL)
         return *(int *)(q + 0x2c);
     return 0;
+}
+
+extern "C" void func_004543B0(float *a, float b, float *c, float *d);
+extern "C" bool func_004490C0(int *p)
+{
+    int mode = p[0];
+    unsigned int n = p[1];
+    int **it;
+    unsigned int i;
+
+    it = (int **)(p + 2);
+    for (i = 0; i < n; i++) {
+        int *e = *it;
+        switch (mode) {
+        case 0:
+            e[1] = 0;
+            break;
+        case 2:
+            e[1] = e[1] != 1;
+            break;
+        default:
+            e[1] = 1;
+            break;
+        }
+        it++;
+    }
+    return true;
 }
 

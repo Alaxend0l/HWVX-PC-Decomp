@@ -29,7 +29,7 @@ extern Slot_0053B220 D_0053B220[2];
 extern Slot_0053B220 *D_0053B240;
 
 Obj_004525A0 *func_004525A0(void);
-int func_00462F60(short, float, float, unsigned char, int);
+int func_00462F60(short, float, float, int, int);
 void func_00462F10(int);
 void func_00462F20(int);
 void func_00456630(void *);
@@ -41,16 +41,16 @@ void func_00442480(void)
 {
     Rec_00442480 *r;
 
-    if (func_004525A0() != 0) {
-        r = func_004525A0()->unk_0xc8;
-        memset(D_0053B220, 0, sizeof(D_0053B220));
-        D_0053B200 = 1;
-        D_0053B204 = 0;
-        if (r != 0) {
-            D_0053B208 = func_00462F60(r->unk_0x00, r->unk_0x09, r->unk_0x0a, r->unk_0x0b, r->unk_0x28);
-            func_00462F10(D_0053B208);
-        }
-    }
+    if (func_004525A0() == 0)
+        return;
+    r = func_004525A0()->unk_0xc8;
+    memset(D_0053B220, 0, sizeof(D_0053B220));
+    D_0053B200 = 1;
+    D_0053B204 = 0;
+    if (r == 0)
+        return;
+    D_0053B208 = func_00462F60(r->unk_0x00, (float)r->unk_0x09, (float)r->unk_0x0a, r->unk_0x0b, r->unk_0x28);
+    func_00462F10(D_0053B208);
 }
 
 void func_00442500(void)

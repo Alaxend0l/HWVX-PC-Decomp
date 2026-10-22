@@ -13,9 +13,34 @@ struct Vec3_00453FB0 {
     float x, y, z;
 };
 
+static inline float Length3_00453FB0(float x, float y, float z)
+{
+    return func_004532E0(x * x + y * y + z * z);
+}
+
 extern float D_0047700C;
 extern float D_00477000;
 extern float D_00477008;
+void func_004546B0(float *p)
+{
+    float len = func_004532E0(p[0] * p[0] + p[1] * p[1] + p[2] * p[2]);
+
+    if (len != D_0047700C && len != D_00477000) {
+        float inv = D_0047700C / len;
+        p[0] = inv * p[0];
+        p[1] = inv * p[1];
+        p[2] = inv * p[2];
+        p[3] = inv * p[3];
+    }
+}
+
+void func_00454730(float *out, float *n, float *pt)
+{
+    *(Vec3_00453FB0 *)out = *(Vec3_00453FB0 *)n;
+    out[3] = (pt[1] * n[1] + pt[2] * n[2] + n[0] * pt[0]) * D_00477008;
+    func_004546B0(out);
+}
+
 void *func_00454B60(void)
 {
     return func_0046AED9(0x54);
@@ -111,7 +136,7 @@ void func_00454610(float *m, float *s)
     m[15] *= s[3];
 }
 
-void func_00454780(float *out, float *n, float *pt)
+void func_00454780(float *out, const float *n, const float *pt)
 {
     out[0] = n[0];
     out[1] = n[1];

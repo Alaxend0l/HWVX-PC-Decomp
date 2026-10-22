@@ -40,6 +40,37 @@ int func_0042AFA0(void)
     return func_00440130();
 }
 
+void func_0042B150(void)
+{
+    func_004449B0();
+    func_00459D70((int)((D_0064D165 * 0x7fff) * 0.01f));
+    func_004596C0((int)((*(int *)&D_0064D164 & 0xff) * 0x7fff * 0.01f));
+    func_00459590(D_0064D166);
+}
+
+void func_0042B1C0(int *a, int *b)
+{
+    switch (func_00429EA0()) {
+    case 0:
+        *a = 0;
+        *b = 0;
+        break;
+    case 1: {
+        int x = D_0064DDAC;
+        *a = x;
+        *b = D_0064DDB0;
+        func_00429FA0(0xcb, 1, D_0064FA14);
+        break;
+    }
+    }
+}
+
+void func_0042B210(void)
+{
+    if (func_00429EA0() == 1 && D_0064DDB4 && func_00440130() == 1)
+        *(D_0064DDB8_t *)(func_004401B0(0) + 0x70) = D_0064DDB8;
+}
+
 unsigned char func_0042AFB0(int idx)
 {
     char *p;

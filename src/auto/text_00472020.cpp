@@ -34,6 +34,14 @@ extern "C" int D_006D578C;
 extern "C" int D_006D579C;
 extern "C" int D_006D59A4;
 extern "C" unsigned int D_006D5790[];
+extern "C" unsigned char D_006D58A1[];
+extern "C" unsigned short D_0047FA8A[];
+extern "C" int D_0049D9F8;
+extern "C" int D_0049DB00;
+extern "C" unsigned int (__stdcall *_imp__GetOEMCP)(void);
+extern "C" unsigned int (__stdcall *_imp__GetACP)(void);
+#define GetOEMCP (*_imp__GetOEMCP)
+#define GetACP (*_imp__GetACP)
 extern "C" void *func_0046AED9(unsigned int size);
 extern "C" int *func_00470486(void);
 extern "C" unsigned long *func_0047048F(void);

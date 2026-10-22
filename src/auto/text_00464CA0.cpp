@@ -44,26 +44,33 @@ extern "C" void func_00465030(float *v, u8 *out)
 {
     float f;
 
-    f = D_004770BC * v[0];
-    *out++ = (u8)(f + D_004770BC);
-    f = D_004770BC * v[1];
-    *out = (u8)(f + D_004770BC);
-    f = D_004770BC * v[2];
-    out[1] = (u8)(f + D_004770BC);
+    f = v[0];
+    f *= D_004770BC;
+    f += D_004770BC;
+    out[0] = (u8)f;
+    f = v[1];
+    f *= D_004770BC;
+    f += D_004770BC;
+    out[1] = (u8)f;
+    f = v[2];
+    f *= D_004770BC;
+    f += D_004770BC;
+    out[2] = (u8)f;
 }
 
 extern "C" void func_00464F10(void)
 {
     float total = 0.0f;
-    int i;
+    Name_006D4D40 *p = D_006D4D40;
     char buf[0x51];
 
-    for (i = 0; i < 32; i++) {
-        *(Name_006D4D40 *)buf = D_006D4D40[i];
+    do {
+        *(Name_006D4D40 *)buf = *p;
         buf[0x50] = 0;
-        if (buf[0])
+        if (buf[0] != 0)
             total += (float)func_004639D0(buf, 0, total, D_006D4D14 & 0xffff);
-    }
+        p++;
+    } while ((int)p < (int)D_006D5740);
 }
 
 extern "C" void func_00464F90(u8 a, u8 b, u8 c, u8 d)

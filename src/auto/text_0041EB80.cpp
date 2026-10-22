@@ -51,7 +51,7 @@ struct Spawn2_0041EB80 {
     Vec4_0041EB80 c;
     float src;
     int owner;
-    float unk_0x38;
+    int unk_0x38;
 };
 
 extern char *D_0049DBA0;
@@ -137,7 +137,7 @@ extern "C" void func_0041F620(char *p, char *v, float t, int dmg)
             s.c = *(Vec4_0041EB80 *)p;
             s.owner = *(int *)(p + 0x94);
             s.unk_0x38 = 0.0f;
-            s.a = *(Vec4_0041EB80 *)(*(char **)(p + 0xe0) + idx * 0x40 + 0x30);
+            s.a = *(Vec4_0041EB80 *)(*(char **)(p + 0xe0) + (idx << 6) + 0x30);
             s.a.w = 1.0f;
             func_00454960(&s.b);
             func_0044D0B0(2, &s);
@@ -172,9 +172,9 @@ extern "C" void func_0041F620(char *p, char *v, float t, int dmg)
 
             ((float *)p)[0] -= D_0047702C * (k * *(float *)(v + 0x10));
             s.d.x = s.b.x = D_00692350.x;
-            s.d.y = s.b.y = D_00692354;
-            s.d.z = s.b.z = D_00692358;
-            s.d.w = s.b.w = D_0069235C;
+            s.d.y = s.b.y = *(float *)&D_00692354;
+            s.d.z = s.b.z = *(float *)&D_00692358;
+            s.d.w = s.b.w = *(float *)&D_0069235C;
             s.a = *(Vec4_0041EB80 *)(p + 0x40);
             s.src = **(int **)(q + 0x40);
             s.owner = *(int *)(p + 0x94);

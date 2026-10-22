@@ -53,8 +53,25 @@ void func_0040A540(void)
     func_0040A4F0();
 }
 
-char func_0041ACE0(int, int, int, int);
-char func_0040A960(int, int, int, int);
+void func_0040A7D0(void)
+{
+    Slot_0040A4B0 *s;
+    for (s = D_00681500; s < D_00681500 + 4; s++) {
+        s->unk_0x054[0] = 0.0f;
+        s->unk_0x054[1] = 0.0f;
+        s->unk_0x054[2] = 0.0f;
+        s->unk_0x074[0] = 0.0f;
+        s->unk_0x074[1] = 0.0f;
+        s->unk_0x074[2] = 1.0f;
+        s->unk_0x084[0] = 0.0f;
+        s->unk_0x084[1] = 1.0f;
+        s->unk_0x084[2] = 0.0f;
+        s->unk_0x094[0] = 1.0f;
+        s->unk_0x094[1] = 0.0f;
+        s->unk_0x094[2] = 0.0f;
+    }
+}
+
 void func_0040A810(u8 n)
 {
     D_00681AB4 = n;

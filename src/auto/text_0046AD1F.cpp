@@ -5,6 +5,22 @@ extern "C" void (__cdecl *D_0047D430)(int);
 extern "C" void func_0046E7A4(void);
 extern "C" void func_0046E7DD(int);
 extern "C" __declspec(dllimport) __declspec(noreturn) void __stdcall ExitProcess(unsigned int);
+extern "C" __declspec(dllimport) void *__stdcall GetCurrentProcess(void);
+extern "C" __declspec(dllimport) int __stdcall TerminateProcess(void *, unsigned int);
+
+typedef void (__cdecl *_PVFV)(void);
+extern "C" int D_0049D854;
+extern "C" int D_0049D850;
+extern "C" char D_0049D84C;
+extern "C" _PVFV *D_006D6B10;
+extern "C" _PVFV *D_006D6B0C;
+extern "C" _PVFV D_0047A020[];
+extern "C" _PVFV D_0047A028[];
+extern "C" _PVFV D_0047A02C[];
+extern "C" _PVFV D_0047A030[];
+extern "C" void func_0046AEAD(void);
+extern "C" void func_0046AEB6(void);
+extern "C" void func_0046AEBF(_PVFV *, _PVFV *);
 
 #pragma optimize("s", on)
 

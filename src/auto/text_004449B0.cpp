@@ -112,7 +112,7 @@ void func_00444E00(unsigned char id)
 {
     func_0040A810(id);
     func_00409EE0(id);
-    func_00401090(id);
+    func_00401090((int)id);
     func_0042E200(id);
     D_0048D974 = 1;
 }

@@ -29,6 +29,17 @@ struct Entry_004505A0 {
     char unk_28;
 };
 
+struct Target_00450780 {
+    char pad0[0x8];
+    int state_8;
+};
+
+struct Cmd_00450780 {
+    int op;
+    unsigned int count;
+    Target_00450780 *targets[1];
+};
+
 extern "C" char func_0044F4D0(char a, int b, int c);
 extern "C" int func_00401140(void *p);
 

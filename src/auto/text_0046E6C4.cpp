@@ -20,10 +20,19 @@ extern "C" void func_0046E9BA(int n);
 
 #pragma optimize("s", on)
 extern "C" void func_0046E616(int a, int b);
+#pragma optimize("y", off)
 extern "C" void func_0046E9BA(int n)
 {
     LeaveCriticalSection(D_0047D880[n]);
 }
+#pragma optimize("y", on)
+extern "C" int func_0046F017(void)
+{
+    short sw;
+    sw = 0;
+    return sw;
+}
+#pragma optimize("y", on)
 
 extern "C" void func_0046EE99(int code)
 {

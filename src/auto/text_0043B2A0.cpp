@@ -143,6 +143,51 @@ extern "C" int func_0043B7B0(void *a, Elem_0043B460 *e, float *best, unsigned ch
     return result;
 }
 
+extern "C" void func_0043B900(Node_0043B8B0 *n)
+{
+    Node_0043B8B0 *p = D_0048D65C;
+
+    if (n == p) {
+        D_0048D65C = p->unk_0x3c;
+    } else {
+        for (; p->next; p = p->next) {
+            if (p->next == n) {
+                p->next = n->next;
+                break;
+            }
+        }
+    }
+    func_0043B960(n, 4);
+}
+
+extern "C" char func_0043B850(int a, int b)
+{
+    unsigned char i;
+
+    if (a >= 0 && b >= 0) {
+        if (a == b)
+            return 1;
+        for (i = 0; i < D_0048D768->items[a].unk_0x1c; i++) {
+            if (D_0048D768->items[a].unk_0x20[i] == b)
+                return 1;
+        }
+    }
+    return 0;
+}
+
+extern "C" void func_0043B8B0(Node_0043B8B0 *n, Node_0043B8B0 **out, unsigned max)
+{
+    unsigned i;
+
+    for (i = 0; n; n = n->next, i++) {
+        if (i >= max)
+            return;
+        out[i] = n;
+    }
+    if (i < max)
+        out[i] = 0;
+}
+
 extern "C" unsigned func_0043BD40(void)
 {
     return D_0048D768->unk_0x08;

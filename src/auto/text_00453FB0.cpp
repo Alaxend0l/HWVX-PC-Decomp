@@ -11,6 +11,16 @@ void *func_00454B60(void)
     return func_0046AED9(0x54);
 }
 
+extern "C" void func_0046B013(void *p);
+float func_004532E0(float);
+extern float D_0047700C;
+extern float D_00477000;
+extern float D_00477008;
+void func_00454B70(void *p)
+{
+    func_0046B013(p);
+}
+
 void func_004542D0(float *a, float *b)
 {
     float d = func_00453360(a, b);
@@ -45,16 +55,16 @@ float func_00454340(float *a, float *b, float *c)
 
 void func_00454520(float *lo, float *hi, float *p)
 {
-    if (lo[0] > p[0])
-        lo[0] = p[0];
+    if (*lo > *p)
+        *lo = *p;
     if (lo[1] > p[1])
         lo[1] = p[1];
     if (lo[2] > p[2])
         lo[2] = p[2];
     if (lo[3] > p[3])
         lo[3] = p[3];
-    if (hi[0] < p[0])
-        hi[0] = p[0];
+    if (*hi < *p)
+        *hi = *p;
     if (hi[1] < p[1])
         hi[1] = p[1];
     if (hi[2] < p[2])
@@ -65,10 +75,10 @@ void func_00454520(float *lo, float *hi, float *p)
 
 void func_004545C0(float *m, float *v, float *out)
 {
-    out[0] = func_00454800(m, v);
-    out[1] = func_00454800(m + 4, v);
-    out[2] = func_00454800(m + 8, v);
-    out[3] = func_00454800(m + 12, v);
+    out[0] = func_00454800(&m[0], v);
+    out[1] = func_00454800(&m[4], v);
+    out[2] = func_00454800(&m[8], v);
+    out[3] = func_00454800(&m[12], v);
 }
 
 void func_00454610(float *m, float *s)

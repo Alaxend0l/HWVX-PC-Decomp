@@ -79,3 +79,34 @@ void func_00444E00(unsigned char id)
     D_0048D974 = 1;
 }
 
+char func_00444E30(void)
+{
+    func_0044F200(1);
+    while (func_00427760())
+        ;
+    D_00692374 = 0;
+    func_00461AD0();
+    func_00461B10();
+    func_00461B30();
+    func_00461AD0();
+    func_00461B10();
+    func_00461B30();
+    func_0043B4E0();
+    func_0040CB70();
+    func_0044B910();
+    func_00401090();
+    func_00401090();
+    D_006929A0();
+    func_00401090();
+    func_00401090();
+    func_00442500();
+    func_0043FF10();
+    func_0044F200(0);
+    func_004520B0();
+    func_00450A60();
+    func_00429FA0(0x19b, 0, 1);
+    D_0048D974 = 0;
+    func_004620A0();
+    return 1;
+}
+

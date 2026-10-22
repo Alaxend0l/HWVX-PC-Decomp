@@ -33,15 +33,17 @@ extern "C" int func_0046A800(void)
 extern "C" int func_0046A822(const char *format, ...)
 {
     va_list arglist;
+    char *stream;
     int buffing;
     int retval;
 
     va_start(arglist, format);
-    func_0046C845(1, D_0047D4C8);
-    buffing = func_0046C8BA(D_0047D4C8);
-    retval = func_0046C971(D_0047D4C8, format, arglist);
-    func_0046C947(buffing, D_0047D4C8);
-    func_0046C897(1, D_0047D4C8);
+    stream = D_0047D4C8;
+    func_0046C845(1, stream);
+    buffing = func_0046C8BA(stream);
+    retval = func_0046C971(stream, format, arglist);
+    func_0046C947(buffing, stream);
+    func_0046C897(1, stream);
     return retval;
 }
 

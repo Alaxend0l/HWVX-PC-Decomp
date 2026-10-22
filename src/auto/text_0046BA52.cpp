@@ -91,6 +91,25 @@ extern "C" void func_0046BE03(char *buf)
     } while (*buf++);
 }
 
+extern "C" void func_0046BE5D(char *buf)
+{
+    char *stop;
+
+    while (*buf && *buf != *D_0047FC90)
+        buf++;
+    if (*buf++) {
+        while (*buf && *buf != 'e' && *buf != 'E')
+            buf++;
+        stop = buf--;
+        while (*buf == '0')
+            buf--;
+        if (*buf == *D_0047FC90)
+            buf--;
+        while ((*++buf = *stop++) != '\0')
+            ;
+    }
+}
+
 extern "C" void func_004716DA(int *dbl, char *str);
 extern "C" void func_00471707(int *flt, char *str);
 extern "C" char *func_004718C0(char *dst, const char *src);
@@ -151,6 +170,17 @@ extern "C" void func_0046C120(double *value, char *buf, int ndec, int caps)
         }
         func_0046C079(buf, ndec, &flt, 1);
     }
+}
+
+extern "C" char *func_0046BF01(double *value, char *buf, int ndec, int caps)
+{
+    StrFlt_0046BA52 flt;
+    char digits[24];
+
+    func_004717AB(*value, &flt, digits);
+    func_00471734(buf + (ndec > 0) + (flt.sign == '-'), ndec + 1, &flt);
+    func_0046BF62(buf, ndec, caps, &flt, 0);
+    return buf;
 }
 
 #pragma optimize("sy", off)

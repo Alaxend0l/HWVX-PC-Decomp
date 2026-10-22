@@ -22,3 +22,17 @@ int func_004438E0(void);
 void func_0045F0A0(int);
 char *func_0045EE10(int, int, int);
 void func_00454CF0(void *, void *, int);
+
+void func_0044EB60(void)
+{
+    int i;
+    for (i = 0; i < 1000; i++)
+        D_0049E9E0[i].unk_0x50 = 0;
+    D_0049E9C0 = 0;
+    D_0049E9C4 = 0;
+}
+
+BOOL func_0044EFA0(void)
+{
+    return func_004438E0() == 0;
+}

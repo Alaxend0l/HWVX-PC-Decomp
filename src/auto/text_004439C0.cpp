@@ -22,3 +22,8 @@ extern "C" char D_0053B1F0;
 extern "C" void func_00428A70(int, int);
 extern "C" int func_0042A680(int, int);
 extern "C" void func_004480E0(int);
+
+extern "C" void func_00443D20(void)
+{
+    func_00428A70(3, 1);
+}

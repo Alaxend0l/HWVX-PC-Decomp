@@ -96,7 +96,7 @@ extern "C" void func_00429DD0(void)
     D_0065E328 = 3;
 }
 
-extern "C" unsigned char func_00429EA0(void)
+extern "C" int func_00429EA0(void)
 {
     unsigned char *p = (unsigned char *)func_00429EC0();
     if (p)

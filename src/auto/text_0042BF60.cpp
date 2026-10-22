@@ -3,7 +3,9 @@
 #include <string.h>
 
 struct Info_0042B050 {
-    char unk_0x00[0x18];
+    char unk_0x00[0xc];
+    int unk_0x0c;
+    char unk_0x10[8];
     unsigned int unk_0x18;
 };
 
@@ -53,6 +55,7 @@ char func_0042C1A0(void)
 
 void func_0042C3F0(void)
 {
+    struct Blk { int d[0x62]; };
     int a = D_0065E33C - 1;
     int b = D_0065E340 - 1;
     Info_0042B050 info;
@@ -65,7 +68,7 @@ void func_0042C3F0(void)
     }
     p = D_0064DD38;
     memcpy(D_0064DD34, p + 0x194 + info.unk_0x18 * b, info.unk_0x18);
-    memcpy(D_0064D160, p + 0xc, 0x188);
+    *(Blk *)D_0064D160 = *(Blk *)(p + 0xc);
     D_0065E350 = 0;
     D_0065E354 = 0;
     D_0065E358 = 0;

@@ -113,11 +113,12 @@ extern "C" void func_004752AA(LDBL12_00475270 *px, LDBL12_00475270 *py)
         if ((short)expsum < 0) {
             int shift = -(short)expsum;
             expsum += shift;
+            i = shift;
             do {
                 if (*U_XT_12(&tempman) & 1)
                     sticky++;
                 func_00474659(&tempman);
-            } while (--shift);
+            } while (--i);
             if (sticky)
                 *U_XT_12(&tempman) |= 1;
         }
@@ -148,7 +149,8 @@ extern "C" void func_004752AA(LDBL12_00475270 *px, LDBL12_00475270 *py)
         *UL_LO_12(px) = 0;
     } else {
         *U_XT_12(px) = *USHORT_12(&tempman, 2);
-        *UL_MED_12(px) = *ULONG_12(&tempman, 4) /* placeholder */;
+        *ULONG_12(px, 2) = *ULONG_12(&tempman, 4);
+        *ULONG_12(px, 6) = *ULONG_12(&tempman, 8);
         *U_EXP_12(px) = expsum | sign;
     }
 }

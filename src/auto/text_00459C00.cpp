@@ -52,6 +52,24 @@ extern int D_00499230[9];
 extern int D_00499250;
 extern Chan_00499260 D_00499260[16];
 extern char D_00499A60;
+extern unsigned int D_00499234;
+extern int D_0049923C;
+extern unsigned int D_00499240;
+extern unsigned char D_0049924E;
+extern char D_0049924F;
+extern unsigned int D_00692990;
+extern unsigned int D_006929AC;
+
+struct Mode_00499660 {
+    int unk_0x0;
+    char unk_0x4;
+    char unk_0x5;
+    char unk_0x6[2];
+};
+
+extern Mode_00499660 D_00499660[];
+
+void func_0045AFE0(Chan_00499260 *);
 extern char D_0047C02C[];
 extern char D_0047C730[];
 extern char D_0047C750[];

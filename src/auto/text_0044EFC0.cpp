@@ -41,6 +41,14 @@ extern PoolSlot D_00496D00[10];
 extern PoolObj **D_00496D54[28];
 extern void *D_00496DC4;
 extern char D_00496DC8;
+extern char *D_0047B800[28];
+extern char D_0047BD44[];
+extern unsigned int D_0047B8C4;
+extern PoolObj **D_00496D70;
+
+extern "C" int func_0046A89F(char *string, const char *format, ...);
+extern "C" char func_0044F4D0(char a, int b, int c);
+extern "C" int func_00401140(void *p);
 
 void func_0044EFC0(void)
 {

@@ -21,7 +21,7 @@ void func_0040A4F0(void);
 
 int func_0040A4B0(void)
 {
-    return D_00681AB0;
+    return *(int *)&D_00681AB0 & 0xff;
 }
 
 void func_0040A4F0(void)

@@ -19,7 +19,7 @@ extern "C" void func_0046C640(_tiddata* ptd);
 extern "C" void func_0046B013(void* p);
 extern "C" void func_00470413(unsigned long err);
 extern "C" void func_0046AD1F(int code);
-extern "C" void func_0046ADF7(int code);
+extern "C" __declspec(noreturn) void func_0046ADF7(int code);
 extern "C" int func_0046DC3D(unsigned long code, struct _EXCEPTION_POINTERS* ep);
 extern "C" _tiddata* func_0046C653(void);
 extern "C" void func_0046C6BA(_tiddata* ptd);
@@ -113,6 +113,24 @@ error_return:
     if (errcode != 0L)
         func_00470413(errcode);
     return (unsigned long)-1L;
+}
+
+extern "C" unsigned long WINAPI func_0046B36D(void* ptd)
+{
+    if (!TlsSetValue(D_0047D4A0, ptd))
+        func_0046AD1F(0x10);
+
+    if (D_0047D40C != NULL)
+        (*D_0047D40C)();
+
+    __try {
+        ((void(__cdecl*)(void*))(((_tiddata*)ptd)->_initaddr))(((_tiddata*)ptd)->_initarg);
+        func_0046B400();
+    }
+    __except (func_0046DC3D(GetExceptionCode(), GetExceptionInformation())) {
+        func_0046ADF7(GetExceptionCode());
+    }
+    return 0L;
 }
 
 extern "C" void func_0046B43D(void)

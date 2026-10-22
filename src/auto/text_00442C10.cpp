@@ -33,6 +33,18 @@ struct Spawn_00443 {
     char unk_0x14;
 };
 
+struct Res_00443 {
+    char unk_0x0[0x2c];
+    unsigned int unk_0x2c;
+    unsigned short *unk_0x30;
+};
+
+extern char D_0047A778[];
+void *func_004287E0(char *, int, int, int);
+Res_00443 *func_00428C10(void *, int, int);
+void func_00462E30(unsigned short);
+void func_00421320(Res_00443 *);
+
 extern Rect_00443 D_00692350;
 extern char D_0048D974;
 
@@ -52,7 +64,7 @@ void func_00443560(Ent_00443 *e)
 
     if (e->unk_0x74 & 0x40000000) {
         if (e->unk_0xc8 != NULL) {
-            e->unk_0xc8->unk_0x74 &= 0x7fffffff;
+            e->unk_0xc8->unk_0x74 &= 0x7fffffffu;
             e->unk_0xc8 = NULL;
         } else {
             func_004506E0();
@@ -92,14 +104,15 @@ Ent_00443 *func_004437E0(Ent_00443 *owner, Rect_00443 *rect)
 {
     Ent_00443 *list[128];
     Ent_00443 *e;
+    Ent_00443 *p;
     unsigned int n;
 
     e = func_00443740(owner, rect);
     if (e != (Ent_00443 *)-1) {
         n = func_0044D8F0(list, 0x80);
         while (n > 0) {
-            n--;
-            if ((list[n]->unk_0x74 & 0x40000000) && list[n]->unk_0xc8 == NULL) {
+            p = list[--n];
+            if (p->bits.b30 && p->unk_0xc8 == NULL) {
                 list[n]->unk_0xc8 = e;
                 e->unk_0x74 |= 0x80000000;
                 break;

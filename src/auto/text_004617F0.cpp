@@ -122,6 +122,12 @@ void func_00461BC0(int flags)
     D_006D4D04 &= ~flags;
 }
 
+void func_00461D20(int id)
+{
+    D_0049D7D4 = id;
+    D_006D3E60 = &D_006D3E80[id];
+}
+
 int func_00461D40(void)
 {
     return D_0049D7D4;

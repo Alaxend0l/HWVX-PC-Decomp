@@ -46,6 +46,10 @@ extern "C" void (__stdcall *_imp__LeaveCriticalSection)(void *);
 #define LeaveCriticalSection (*_imp__LeaveCriticalSection)
 #define InitializeCriticalSection (*_imp__InitializeCriticalSection)
 #define EnterCriticalSection (*_imp__EnterCriticalSection)
+extern "C" int (__stdcall *_imp__FlushFileBuffers)(void *);
+extern "C" unsigned long (__stdcall *_imp__GetLastError)(void);
+#define FlushFileBuffers (*_imp__FlushFileBuffers)
+#define GetLastError (*_imp__GetLastError)
 extern "C" void func_0046E959(int);
 extern "C" void func_0046E9BA(int);
 extern "C" int func_00472B69(int, int, int, int);

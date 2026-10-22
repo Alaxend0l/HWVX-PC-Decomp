@@ -28,6 +28,20 @@ void func_00459590(int);
 void func_00429FA0(int, int, int);
 struct Obj_004401B0 { char pad[0x70]; D_0064DDB8_t data; };
 Obj_004401B0 *func_004401B0(int);
+extern int D_0065E340;
+extern char D_0048D4CF[];
+extern char D_0065E347;
+struct D_0064D160_t { int data[0x62]; };
+extern D_0064D160_t D_0064D160;
+extern int *D_0064DD38;
+int func_004584F0(int, int, int, int);
+void func_004585D0(int, int, int *);
+char func_00458610(int, int, int *);
+void func_004585A0(int);
+int func_00459360(int, int *);
+int func_0042B980(int *, int);
+void func_0042B050(int *);
+char func_0042B800(int, int *, int *);
 
 static inline int func_0042AFB0_check(char *p, int idx)
 {
@@ -53,14 +67,14 @@ void func_0042B150(void)
 void func_0042B1C0(int *a, int *b)
 {
     switch (func_00429EA0()) {
+    case 0:
+        *a = 0;
+        *b = 0;
+        break;
     case 1:
         *a = D_0064DDAC;
         *b = D_0064DDB0;
         func_00429FA0(0xcb, 1, D_0064FA14);
-        break;
-    case 0:
-        *a = 0;
-        *b = 0;
         break;
     }
 }
@@ -70,7 +84,7 @@ void func_0042B210(void)
     switch (func_00429EA0()) {
     case 1:
         if (D_0064DDB4 && func_00440130() == 1)
-            func_004401B0(0)->data = D_0064DDB8;
+            memcpy((char *)func_004401B0(0) + 0x70, &D_0064DDB8, sizeof(D_0064DDB8));
         break;
     }
 }

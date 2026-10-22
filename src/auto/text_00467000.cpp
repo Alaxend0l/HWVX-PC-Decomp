@@ -74,6 +74,22 @@ void func_00467000(int mode)
     glBlendFunc(D_006C9A68, D_006C99F8);
 }
 
+void func_004675B0(Elem_004675B0 *elems, unsigned int count, void *v)
+{
+    unsigned int i;
+
+    for (i = 0; i < count; i++) {
+        float a = func_00453360(elems[i].unk_0x0, v);
+        float b = func_00453360(elems[i].unk_0x10, v);
+        if (a < D_00477000 && b > D_00477000)
+            elems[i].unk_0x1c = 2;
+        else if (a > D_00477000 && b < D_00477000)
+            elems[i].unk_0x1c = 1;
+        else
+            elems[i].unk_0x1c = 0;
+    }
+}
+
 void func_00467150(int mode)
 {
     switch (mode) {
@@ -144,6 +160,13 @@ void func_004671D0(int on)
     else
         glDisable(GL_FOG);
     D_006C99E8 = on;
+}
+
+void func_00467210(Blk_00467210 *dst)
+{
+    D_006D3D60 = D_0049D7C8[5];
+    D_006D3D64 = D_006C9AC4;
+    *dst = *(Blk_00467210 *)&D_006D3D60;
 }
 
 void func_00467E10(GLuint tex)

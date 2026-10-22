@@ -119,6 +119,16 @@ char func_0044D250(int, Obj_0044D050 *, int);
 char func_00419CA0(int, int);
 char func_0044D140(int, Obj_0044D050 *, int);
 
+struct Pair_0044D050 {
+    int unk_0x0;
+    Obj_0044D050 *obj;
+};
+
+void func_0044A0D0(Obj_0044D050 *, float *, float *);
+int func_0042D7A0(float *, float *, int, Pair_0044D050 *, int);
+float func_004535B0(float *, float *);
+char func_0041CE70(int, int, int);
+
 extern int *D_0049DBA0;
 extern float D_00692350[4];
 extern unsigned int D_0052E664;

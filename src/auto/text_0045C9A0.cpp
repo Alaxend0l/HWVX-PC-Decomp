@@ -4,6 +4,17 @@ struct Iface_0045D {
     void **vtbl;
 };
 
+struct SndVtbl_0045D {
+    void *unk_0x0[2];
+    unsigned long (__stdcall *Release)(Iface_0045D *);
+    void *unk_0xc[15];
+    long (__stdcall *Stop)(Iface_0045D *);
+};
+
+struct SndC_0045D {
+    SndVtbl_0045D *lpVtbl;
+};
+
 /* IDirectSoundBuffer-like COM interface */
 struct Snd_0045D {
     virtual long __stdcall QueryInterface(void *, void **) = 0;
@@ -67,27 +78,26 @@ void func_0045D110(int id)
     int i;
 
     for (i = 0; i < 254; i++) {
-        if (D_0049BBE8[i].unk_0x4 == id)
-            break;
-    }
-    if (i == 254)
-        return;
-    b = &D_0049BBE8[i];
-    if (b != NULL && (b->unk_0x8 & 1)) {
-        if (b->unk_0x0 != NULL) {
-            for (i = 0; i < 64; i++) {
-                if (D_0049AEFC[i].unk_0xc == b) {
-                    v = &D_00692A00[i];
-                    if (i >= 32 && v->unk_0x15 && v->unk_0x2 != 0xff)
-                        D_006929F4(v);
-                    func_0045D1C0(v, 1);
+        if (D_0049BBE8[i].unk_0x4 == id) {
+            b = &D_0049BBE8[i];
+            if (b != NULL && (b->unk_0x8 & 1)) {
+                if (b->unk_0x0 != NULL) {
+                    for (i = 0; i < 64; i++) {
+                        if (D_0049AEFC[i].unk_0xc == b) {
+                            v = &D_00692A00[i];
+                            if (i >= 32 && v->unk_0x15 && v->unk_0x2 != 0xff)
+                                D_006929F4(v);
+                            func_0045D1C0(v, 1);
+                        }
+                    }
+                    ((Snd_0045D *)b->unk_0x0)->Stop();
+                    ((Snd_0045D *)b->unk_0x0)->Release();
+                    b->unk_0x0 = NULL;
                 }
+                b->unk_0x8 = 0;
             }
-            ((int (__stdcall *)(Iface_0045D *))b->unk_0x0->vtbl[0x48 / 4])(b->unk_0x0);
-            ((int (__stdcall *)(Iface_0045D *))b->unk_0x0->vtbl[0x8 / 4])(b->unk_0x0);
-            b->unk_0x0 = NULL;
+            return;
         }
-        b->unk_0x8 = 0;
     }
 }
 

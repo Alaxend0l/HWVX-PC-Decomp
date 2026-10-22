@@ -30,6 +30,12 @@ struct Desc_0043A3C0 {
     int unk_0x34;
 };
 
+struct Anim_0043A3C0 {
+    int unk_0x0;
+    char unk_0x4[0x20];
+    int unk_0x24;
+};
+
 struct Ent_0043A3C0 {
     char unk_0x0[0x10];
     char unk_0x10[0x30];
@@ -211,6 +217,13 @@ void func_0043AFC0(Ent_0043A3C0 *ent)
 {
     func_00407310(&ent->unk_0xb0);
     func_00448330(ent);
+}
+
+char func_0043AFE0(Ent_0043A3C0 *ent)
+{
+    func_00408200(&ent->unk_0x50, &ent->unk_0x40, &ent->unk_0xb0, 1.0f);
+    func_004082C0(&ent->unk_0xb0, ent->unk_0x10, ent);
+    return 1;
 }
 
 char func_0043AC70(void)

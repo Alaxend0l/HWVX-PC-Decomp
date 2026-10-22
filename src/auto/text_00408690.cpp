@@ -154,3 +154,11 @@ char func_00408CF0(Obj_00408690 *o, unsigned int lo, unsigned int hi)
         return 0;
     return 1;
 }
+
+void func_004093C0(void)
+{
+    func_004594B0();
+    func_00454C50(D_0048955C);
+    func_00454C50(D_00489564);
+}
+

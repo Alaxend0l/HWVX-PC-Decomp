@@ -29,3 +29,41 @@ struct Obj_0044EB30 {
     char unk_0x00[0xb0];
     unsigned int unk_0xb0;
 };
+
+int func_0044E050(void)
+{
+    int i = 0;
+    short *p;
+    for (p = &D_0048D980[0].unk_0x492; p < &D_0048D980[32].unk_0x492; p = (short *)((char *)p + sizeof(Entry_0048D980)), i++) {
+        if (*p == 0)
+            break;
+    }
+    return i;
+}
+
+void func_0044E840(int idx)
+{
+    int i;
+
+    D_0048D980[idx].unk_0x474 = D_0048D980[idx].nodes;
+    D_0048D980[idx].unk_0x478 = D_0048D980[idx].nodes;
+    D_0048D980[idx].unk_0x490 = 0;
+    D_0048D980[idx].unk_0x492 = 0;
+    D_0048D980[idx].unk_0x494 = -1;
+    for (i = 0; i < 14; i++) {
+        D_0048D980[idx].nodes[i].next = &D_0048D980[idx].nodes[i + 1];
+        D_0048D980[idx].nodes[i].unk_0x0c = 1.0f;
+        D_0048D980[idx].nodes[i].unk_0x1c = 1.0f;
+        D_0048D980[idx].nodes[i].unk_0x40 = 1.0f;
+    }
+    D_0048D980[idx].nodes[14].next = D_0048D980[idx].nodes;
+}
+
+bool func_0044EB30(Obj_0044EB30 *p, unsigned int lo, unsigned int hi)
+{
+    unsigned int v = p->unk_0xb0;
+    if (v >= lo && v < hi)
+        return true;
+    return false;
+}
+

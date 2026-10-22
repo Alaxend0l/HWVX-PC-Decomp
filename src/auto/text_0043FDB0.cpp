@@ -34,3 +34,8 @@ extern int D_0053B260;
 extern "C" char func_0043E9F0(Player_0043FDB0 *p);
 extern "C" void func_004591B0(int index, char value);
 extern "C" char *func_0042B040(int i);
+
+extern "C" void func_004403C0(void)
+{
+    D_0053B260 = 0;
+}

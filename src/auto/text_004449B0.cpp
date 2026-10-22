@@ -127,10 +127,8 @@ char func_004450F0(int id, char *name)
 {
     unsigned int i;
     for (i = 0; i < D_0048D7FC; i++) {
-        if (D_0053B0E0[i].id == id) {
-            if (strcmp(D_0053B0E0[i].name, name) == 0)
-                return 0;
-        }
+        if (D_0053B0E0[i].id == id && strcmp(D_0053B0E0[i].name, name) == 0)
+            return 0;
     }
     return 1;
 }

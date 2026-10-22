@@ -15,6 +15,14 @@ extern "C" void func_0046AD1F(int);
 extern "C" void func_0046C816(FILE *stream);
 extern "C" void func_0046C868(FILE *stream);
 extern "C" int func_0046B60F(FILE *stream, long offset, int whence);
+extern "C" long func_0046B6BE(FILE *stream);
+extern "C" int func_0046D3CC(FILE *stream);
+extern "C" long func_004708B5(int fh, long pos, int mthd);
+extern "C" int *func_00470486(void);
+extern "C" void func_00470413(unsigned long oserr);
+extern "C" size_t func_0046B878(const void *buffer, size_t size, size_t count, FILE *stream);
+extern "C" __declspec(dllimport) int __stdcall DeleteFileA(const char *);
+extern "C" __declspec(dllimport) unsigned long __stdcall GetLastError(void);
 
 #pragma optimize("s", on)
 

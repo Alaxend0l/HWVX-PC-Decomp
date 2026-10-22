@@ -37,3 +37,22 @@ float func_00460DB0(void)
 {
     return func_00461D50()->unk_0x270;
 }
+
+void func_00460DC0(void)
+{
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(0.0, D_006C9A0C[D_006C9A78].unk_0x00, D_006C9A0C[D_006C9A78].unk_0x02, 0.0, 1.0, 30000.0);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    func_004608C0(0, 0, 0, 0);
+}
+
+void func_00460E60(void)
+{
+    D_006D5740 = func_00461D50()->unk_0x180;
+    D_006D5770 = func_00461D50()->unk_0x190;
+    D_006D5750 = func_00461D50()->unk_0x1a0;
+    D_006D5760 = func_00461D50()->unk_0x1b0;
+}
+

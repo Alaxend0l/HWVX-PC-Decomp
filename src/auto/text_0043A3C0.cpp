@@ -22,6 +22,14 @@ struct Vec4_0043A3C0 {
     float x, y, z, w;
 };
 
+inline void Vec4Copy_0043A3C0(Vec4_0043A3C0 *dst, const Vec4_0043A3C0 *src)
+{
+    dst->x = src->x;
+    dst->y = src->y;
+    dst->z = src->z;
+    dst->w = src->w;
+}
+
 struct Desc_0043A3C0 {
     char unk_0x0[0x10];
     Vec4_0043A3C0 unk_0x10;
@@ -219,8 +227,10 @@ void func_0043AFC0(Ent_0043A3C0 *ent)
 
 char func_0043AFE0(Ent_0043A3C0 *ent)
 {
-    func_00408200(&ent->unk_0x50, &ent->unk_0x40, (Anim_0043A3C0 *)&ent->unk_0xb0, 1.0f);
-    func_004082C0(&ent->unk_0xb0, ent->unk_0x10, ent);
+    Anim_0043A3C0 *anim = &ent->unk_0xb0;
+
+    func_00408200(&ent->unk_0x50, &ent->unk_0x40, anim, 1.0f);
+    func_004082C0(anim, ent->unk_0x10, ent);
     return 1;
 }
 

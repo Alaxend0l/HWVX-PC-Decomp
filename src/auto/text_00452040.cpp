@@ -26,7 +26,7 @@ extern int D_0049DBB0;
 
 extern "C" Track_00452040 *func_004525A0(void);
 extern "C" void func_0045F9C0(int, int, int, int, int);
-extern "C" void func_00466A40(int, short, float, int);
+extern "C" void func_00466A40(short, int, float, int);
 extern "C" void func_00409F50(void);
 extern "C" void func_00461C00(int);
 extern "C" void func_00427780(void);

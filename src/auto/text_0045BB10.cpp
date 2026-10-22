@@ -107,8 +107,7 @@ static inline void ReleaseNode_0045C(Node_0045C *n)
 
 void func_0045C640(List_0045C *list)
 {
-    list->head = list->head->next;
-    ReleaseNode_0045C(list->unk_0x4);
+    func_0045D630((list->head = list->head->next, list->unk_0x4), 3);
     list->unk_0x4 = NULL;
 }
 

@@ -28,3 +28,9 @@ extern "C" void func_00462E00(int, int);
 extern "C" void func_00461C10(void);
 extern "C" int func_00453550(int, char *, int);
 extern "C" void func_00461C30(int, char *, int);
+
+extern "C" void func_00439210(int a)
+{
+    D_005E6E40 = a;
+    func_00462E00(a, 1);
+}

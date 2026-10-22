@@ -1,6 +1,7 @@
 /* 8 functions from 0x00475660 to 0x00475DB6, found by Ghidra. */
 #include "common.h"
 #include <windows.h>
+#include <malloc.h>
 
 extern "C" unsigned int func_00471CF0(const char *);
 extern "C" void *func_0046AED9(unsigned int);

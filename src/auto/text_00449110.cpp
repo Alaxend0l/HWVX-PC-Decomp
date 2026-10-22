@@ -2,8 +2,12 @@
 #include "common.h"
 
 void func_0044B310(int a, void *list, int c);
-extern "C" void func_00449E20(void *obj, float *a, float *b, int arg);
-void *func_0042D620(int x, void *y, float *from, float *to);
+struct Vec4_00449110 {
+    float x, y, z, w;
+};
+
+extern "C" void func_00449E20(void *obj, void *a, void *b, int arg);
+void *func_0042D620(int x, void *y, void *from, void *to);
 
 char func_00449860(unsigned int *p)
 {
@@ -30,3 +34,13 @@ void func_00449CD0(char *p, void *list, int c)
 {
     func_0044B310((int)(p + 0x88), list, c);
 }
+
+void func_00449DE0(char *obj, int x)
+{
+    float a[4];
+    float b[4];
+
+    func_00449E20(obj, b, a, 0);
+    *(void **)(obj + 0x84) = func_0042D620(x, obj, b, a);
+}
+

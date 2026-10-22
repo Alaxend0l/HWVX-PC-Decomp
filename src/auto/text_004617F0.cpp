@@ -67,10 +67,15 @@ void func_00466D60(void);
 void func_004664A0(void);
 void func_00461AD0(void)
 {
+    int *p;
+    int i;
+
     D_006D4D04 = 0;
     func_00466CA0();
     func_0045E990();
-    memset(D_006D3D60, 0, sizeof(D_006D3D60));
+    p = D_006D3D60;
+    for (i = 0x40; i != 0; i--)
+        *p++ = 0;
     func_00460B30(*(int *)(func_00461D50() + 0x270));
     func_00460820(0);
 }
@@ -87,6 +92,23 @@ void func_00461B30(void)
     func_004664A0();
     memset(D_006D4D40, 0, sizeof(D_006D4D40));
 }
+
+extern float D_006D4D08;
+extern int D_006D4D10;
+extern unsigned char D_006D4D16;
+extern unsigned char D_006D4D17;
+extern unsigned char D_006D4D18;
+extern unsigned char D_006D4D19;
+extern unsigned char D_006D4D1A;
+extern unsigned char D_006D4D1C;
+extern int D_006D4D20;
+
+struct Slot_006D3E80 {
+    char unk_0x0[0x2d0];
+};
+
+extern Slot_006D3E80 D_006D3E80[];
+extern Slot_006D3E80 *D_006D3E60;
 
 int func_00461D40(void)
 {

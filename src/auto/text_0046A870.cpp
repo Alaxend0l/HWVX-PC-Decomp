@@ -51,6 +51,10 @@ extern "C" int func_0046A8F1(FILE *stream)
     return result;
 }
 
+extern "C" void func_0046A870(void)
+{
+}
+
 extern "C" int func_0046A922(FILE *stream)
 {
     int result = EOF;

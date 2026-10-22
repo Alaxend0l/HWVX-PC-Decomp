@@ -45,7 +45,8 @@ int func_0043B500(char *, int);
 
 char func_00437890(Msg_00437 *msg)
 {
-    func_0042E250(msg->unk_0x0, 0, 0);
+    int v = msg->unk_0x0;
+    func_0042E250(v, 0, 0);
     return 1;
 }
 
@@ -66,32 +67,37 @@ char func_004378B0(Msg_00437 *msg)
 
 char func_00437C00(Event_00437 *ev)
 {
+    Target_00437 *t;
     char *p;
 
     D_0048D614 = NULL;
     switch (ev->type) {
     case 1:
-        p = (char *)ev->target;
-        if (ev->target->unk_0x28 != NULL)
-            p = ev->target->unk_0x28 + 0x40;
-        break;
-    case 2:
-        p = (char *)ev->target;
-        if (ev->target->unk_0x2c != NULL)
-            p = ev->target->unk_0x2c + 0x40;
-        break;
-    case 3:
-        p = (char *)ev->target;
-        if (ev->target->unk_0x24 != NULL) {
-            D_0048D614 = ev->target->unk_0x24;
-            p = ev->target->unk_0x24 + 0x40;
-        }
+        t = ev->target;
+        p = (char *)t;
+        if (t->unk_0x28 != NULL)
+            p = t->unk_0x28 + 0x40;
         break;
     case 4:
-        if (ev->target->unk_0x10 != NULL)
-            p = ev->target->unk_0x10 + 0x40;
+        t = ev->target;
+        if (t->unk_0x10 != NULL)
+            p = t->unk_0x10 + 0x40;
         else
             p = D_00692350;
+        break;
+    case 2:
+        t = ev->target;
+        p = (char *)t;
+        if (t->unk_0x2c != NULL)
+            p = t->unk_0x2c + 0x40;
+        break;
+    case 3:
+        t = ev->target;
+        p = (char *)t;
+        if (t->unk_0x24 != NULL) {
+            D_0048D614 = t->unk_0x24;
+            p = t->unk_0x24 + 0x40;
+        }
         break;
     case 6:
         p = (char *)ev->target;

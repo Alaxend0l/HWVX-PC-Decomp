@@ -44,6 +44,21 @@ extern "C" int D_00693E04;
 extern "C" void func_004585A0(int);
 extern "C" int func_00475660(const char *, const char *);
 extern "C" void func_0045CD20(void);
+extern "C" void func_00401090(...);
+extern "C" void func_00459580(void);
+extern "C" void func_00459C40(void);
+extern "C" char func_00459CC0(void);
+extern "C" char func_0045B400(void);
+extern "C" char func_00459EC0(void);
+extern "C" char func_00459500(void);
+extern "C" char func_00459C00(void);
+extern "C" char func_00459CF0(void);
+extern "C" char func_0045B440(void);
+extern "C" char func_00459EF0(void);
+extern "C" char func_00459530(void);
+extern "C" char func_00401070(void);
+extern "C" char D_00497140;
+extern "C" int D_00693E08;
 
 extern "C" void func_00459220(void)
 {

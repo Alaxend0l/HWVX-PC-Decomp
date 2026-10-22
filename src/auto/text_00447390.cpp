@@ -31,6 +31,37 @@ void func_00447910(int a, int b)
     D_0053AA24 = b;
 }
 
+void func_00447C60(Msg_00447C60 *msg)
+{
+    switch (msg->type) {
+    case 5:
+        if (func_0042A680(0x198, 0))
+            func_004480E0(0xb);
+        break;
+    case 9:
+        func_004480E0(2);
+        break;
+    case 0xf:
+        if (func_00427760())
+            msg->unk_0x20 = 0xb;
+        break;
+    case 0x11:
+        D_0048D960 = msg->unk_0x24;
+        D_0048D964 = 1;
+    case 6:
+        msg->unk_0x20 = 4;
+        break;
+    }
+}
+
+void func_00447FA0(void)
+{
+    if (D_0048D970 != NULL) {
+        func_00454C50(D_0048D970);
+        D_0048D970 = NULL;
+    }
+}
+
 int func_004480B0(void)
 {
     return D_0048D970->unk_0xd0;

@@ -68,7 +68,7 @@ extern char D_0065E330;
 extern char D_0065E339;
 extern char D_0048D4C0;
 extern int D_0065E33C;
-extern int D_0064D160;
+extern int D_0064D160[0x62];
 extern char D_0064D400[];
 extern char D_0064D164;
 extern unsigned char D_0064D165;
@@ -227,6 +227,7 @@ extern "C" void func_00429860(int *ids, unsigned int count)
 extern "C" void func_00429C30(void)
 {
     int i;
+    D_0064D148_t *p;
 
     memset(D_0065E2A0, 0, 0xbc);
     D_0048D4C0 = 1;
@@ -235,13 +236,13 @@ extern "C" void func_00429C30(void)
     func_00429E80();
     func_00429DD0();
     memset(&D_0064D160, 0, 0x188);
-    D_0064D160 = 0;
+    *(int *)&D_0064D160 = 0;
     D_0064D166 = 1;
     D_0064D165 = 100;
     D_0064D164 = 100;
-    for (i = 1; i <= 4; i++) {
+    for (i = 1, p = &D_0064D148[1]; p <= &D_0064D148[4]; p++, i++) {
         func_00429F10(i);
-        D_0064D148[i].data[0] = 1;
+        p->data[0] = 1;
     }
     switch (func_00429EA0()) {
     case 0:
@@ -249,7 +250,7 @@ extern "C" void func_00429C30(void)
         memset(D_0064D300, 0, 0xf4);
         D_0047AAF4 = 0x928;
         D_0047AAF8 = 0xf4;
-        D_0064DD38 = D_0064D300 + 0x100;
+        D_0064DD38 = D_0064D400;
         D_0064D300[0x0] = 1;
         D_0064D300[0x1] = 1;
         D_0064D300[0x2] = 1;

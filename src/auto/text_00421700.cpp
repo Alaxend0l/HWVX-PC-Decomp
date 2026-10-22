@@ -59,6 +59,8 @@ struct Desc_00421700 {
     int unk_0x5c;
 };
 
+enum ObjFlags_00421700 { OBJFLAGS_00421700_NONE = 0 };
+
 struct Obj_00421700 {
     Vec4_00421700 unk_0x0;
     Vec4_00421700 unk_0x10;
@@ -176,14 +178,14 @@ char func_00421DD0(Obj_00421700 *obj, Desc_00421700 *desc)
         obj->model->info->type = 0;
     }
 
-    obj->flags |= 4;
+    obj->bits.b2 = 1;
     switch (obj->model->info->type) {
     case 0: {
         Box_00421700 *box;
         int i;
 
         obj->type = 1;
-        obj->flags |= 0x80;
+        obj->bits.b7 = 1;
         obj->unk_0xd0 = func_0041B630();
         *(int *)(obj->unk_0xd0 + 0xcc) = 0;
         box = func_00422910(obj);
@@ -221,7 +223,8 @@ char func_00421DD0(Obj_00421700 *obj, Desc_00421700 *desc)
         obj->radius = 30.0f;
         break;
     case 4:
-        obj->flags |= 0x20002;
+        obj->bits.b1 = 1;
+        obj->bits.b17 = 1;
         obj->type = 0;
         break;
     case 6:
@@ -245,33 +248,46 @@ char func_00421DD0(Obj_00421700 *obj, Desc_00421700 *desc)
         break;
     }
     default:
-        obj->flags = (obj->flags & ~4) | 0x60002;
+        obj->bits.b2 = 0;
+        obj->bits.b1 = 1;
+        obj->bits.b17 = 1;
+        obj->bits.b18 = 1;
         obj->type = 0;
         obj->radius = 0.0f;
         break;
     }
 
-    obj->flags |= 0x40000;
+    obj->bits.b18 = 1;
     switch (desc->unk_0x50) {
     case 0:
-        obj->flags = (obj->flags & ~4) | 0x40000008;
+        obj->bits.b2 = 0;
+        obj->bits.b3 = 1;
+        obj->bits.b30 = 1;
         obj->unk_0xd4 = 0;
         obj->unk_0x8c = D_0047A830;
         break;
     case 1:
-        obj->flags = (obj->flags & ~8) | 0x4000000;
+        obj->bits.b3 = 0;
+        obj->bits.b26 = 1;
         obj->unk_0xd4 = desc->unk_0x5c;
         obj->unk_0xdc = 0;
         obj->unk_0xd8 = desc->unk_0x54;
         obj->unk_0x8c = D_0047B088;
         break;
     case 2:
-        obj->flags = (obj->flags & 0xfffbfff3) | 0x120000;
+        obj->bits.b2 = 0;
+        obj->bits.b3 = 0;
+        obj->bits.b18 = 0;
+        obj->bits.b17 = 1;
+        obj->bits.b20 = 1;
         obj->unk_0xd4 = 0;
         obj->unk_0x8c = D_0047B040;
         break;
     case 3:
-        obj->flags = (obj->flags & 0xfffbfff3) | 0x20000;
+        obj->bits.b2 = 0;
+        obj->bits.b3 = 0;
+        obj->bits.b18 = 0;
+        obj->bits.b17 = 1;
         obj->unk_0xd4 = 0;
         obj->unk_0x8c = D_0047A3B0;
         break;
@@ -280,7 +296,7 @@ char func_00421DD0(Obj_00421700 *obj, Desc_00421700 *desc)
     model = obj->model;
     info = model->info;
     if (info->unk_0x1c < 0)
-        obj->flags |= 0x10000000;
+        obj->bits.b28 = 1;
     else
         obj->unk_0xc8 = info->unk_0x1c;
     if (model->info->unk_0x11)
@@ -292,7 +308,7 @@ char func_00421DD0(Obj_00421700 *obj, Desc_00421700 *desc)
     if (desc->unk_0x48 == 0.0f && desc->model->unk_0x6)
         obj->unk_0xc4 = desc->model->unk_0x8;
     if (!desc->model->unk_0x5)
-        obj->flags |= 0x200;
+        obj->bits.b9 = 1;
 
     switch (model->kind) {
     case 1: {
@@ -321,7 +337,7 @@ char func_00421DD0(Obj_00421700 *obj, Desc_00421700 *desc)
     obj->unk_0x7c = 0;
     if (!(obj->flags & 0x20002))
         func_00449DE0(obj, 2);
-    if (obj->flags & 2)
-        obj->flags &= ~4;
+    if (obj->bits.b1)
+        obj->bits.b2 = 0;
     return 1;
 }

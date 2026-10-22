@@ -32,3 +32,8 @@ extern "C" unsigned long *func_0047048F(void);
 extern "C" int func_0047272D(int, int, int);
 extern "C" int (__stdcall *_imp__SetStdHandle)(unsigned long, void *);
 #define SetStdHandle (*_imp__SetStdHandle)
+
+extern "C" int func_0047271C(int c)
+{
+    return func_0047272D(c, 0, 4);
+}

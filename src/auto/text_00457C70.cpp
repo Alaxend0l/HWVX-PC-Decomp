@@ -32,6 +32,7 @@ struct Unk00458220 {
 extern "C" DeviceSlot D_00496E40[];
 extern "C" int D_00496FD0;
 extern "C" void func_00458000(int, int, int, void *);
+extern "C" void func_00458280(int unused);
 
 extern "C" unsigned char func_004581C0(int index, int device)
 {

@@ -44,6 +44,9 @@ struct Obj_0041FAD0 {
 
 extern float D_00477000;
 extern char D_0047A658;
+extern int D_0047A65C;
+extern int D_0047A660;
+extern "C" void func_004585A0(int);
 
 struct Slot_00489A9C {
     char unk_0x00;
@@ -104,9 +107,9 @@ extern "C" char func_004202E0(int a, Obj_0041FAD0 *b)
 extern "C" char func_00420340(Obj_0041FAD0 *o, unsigned lo, unsigned hi)
 {
     unsigned v = *(unsigned *)((char *)o + 0xb8);
-    if (v >= lo && v < hi)
-        return 1;
-    return 0;
+    if (v < lo || v >= hi)
+        return 0;
+    return 1;
 }
 
 extern "C" int func_00420600(Obj_0041FAD0 *o)

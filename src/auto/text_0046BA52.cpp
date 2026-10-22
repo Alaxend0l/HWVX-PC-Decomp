@@ -42,18 +42,20 @@ extern "C" void func_0046BD6F(void)
     func_0046E9BA(9);
 }
 
+#pragma optimize("y", off)
+#pragma optimize("s", on)
 extern "C" int func_0046BD9C(void)
 {
-    double divisor = 3145727.0;
-    double dividend = 4195835.0;
-    double result;
+    volatile double divisor = 3145727.0;
+    volatile double dividend = 4195835.0;
+    volatile double result;
 
     result = dividend - (dividend / divisor) * divisor;
     if (result > 1.0)
         return 1;
     return 0;
 }
-
+#pragma optimize("", on)
 extern "C" int func_0046BDDA(void)
 {
     void *kernel;

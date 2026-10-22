@@ -31,6 +31,21 @@ extern "C" void func_00448330(char *p)
         func_0043ED30(q);
 }
 
+extern "C" char *func_004483A0(char *p)
+{
+    char *t = *(char **)(p + 0x8c);
+
+    if (t == D_0047A2E8)
+        return *(char **)(*(char **)(p + 0x398) + 0xa0);
+    if (t == D_0047A830 || t == D_0047B088 || t == D_0047B040)
+        return *(char **)(*(char **)(p + 0xc0) + 0x10);
+    if (t == D_0047AED8)
+        return 0;
+    if (t == D_0047A3B0)
+        return *(char **)(*(char **)(p + 0xc0) + 0x10);
+    return 0;
+}
+
 float func_00448B60(void)
 {
     return D_0047700C;

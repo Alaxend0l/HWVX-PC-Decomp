@@ -1,7 +1,55 @@
 /* 22 functions from 0x00452040 to 0x00452FB0, found by Ghidra. */
 #include "common.h"
+struct ElemA_00452040 {
+    char unk_0x00[0x18];
+    int unk_0x18;
+    char unk_0x1c[0x20 - 0x1c];
+};
+
+struct ElemB_00452040 {
+    char unk_0x00[0x20];
+    int unk_0x20;
+    char unk_0x24[0x30 - 0x24];
+};
+
+struct Sub_00452040 {
+    char unk_0x00[0x48];
+    unsigned int unk_0x48;
+    ElemA_00452040 *unk_0x4c;
+    unsigned int unk_0x50;
+    ElemB_00452040 *unk_0x54;
+    int unk_0x58;
+};
+
+struct Vec4_00452040 {
+    float x, y, z, w;
+};
+
+struct Obj_00452040 {
+    char unk_0x00[0x30];
+    Vec4_00452040 unk_0x30;
+    char unk_0x40[0x48 - 0x40];
+    int unk_0x48;
+    char unk_0x4c[0x60 - 0x4c];
+    int unk_0x60;
+    char unk_0x64[0x70 - 0x64];
+};
+
+struct Desc_00452660 {
+    Vec4_00452040 unk_0x00;
+    char unk_0x10[0x10];
+    int unk_0x20;
+    int unk_0x24;
+    int unk_0x28;
+    int unk_0x2c;
+    int unk_0x30;
+    int unk_0x34;
+    int unk_0x38;
+};
+
 struct Track_00452040 {
-    char unk_0x00[0x8];
+    Sub_00452040 *unk_0x00;
+    char unk_0x04[0x8 - 0x4];
     int unk_0x08;
     int unk_0x0c;
     int unk_0x10;
@@ -138,7 +186,7 @@ extern "C" int func_00452590(void)
 
 extern "C" void func_00452650(void)
 {
-    if (++D_0049DBA4 == 0)
+    if (++*(unsigned int *)&D_0049DBA4 == 0)
         func_004525C0();
 }
 

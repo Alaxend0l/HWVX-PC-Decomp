@@ -8,6 +8,9 @@ extern "C" char *D_006D59E0[];
 extern "C" int func_00475831(int, int, const char *, int, const char *, int, int);
 extern "C" int *func_00470486(void);
 
+/* C runtime code: built for size */
+#pragma optimize("s", on)
+
 extern "C" int func_00475546(int fh, int mode)
 {
     char old = *(D_006D59E0[fh >> 5] + (fh & 0x1f) * 0x24 + 4);

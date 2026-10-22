@@ -135,10 +135,11 @@ char func_004450F0(int id, char *name)
 
 extern Entry_0053B0E0 D_0053B0E4[];
 extern Entry_0053B0E0 D_0053B0E8[];
+#pragma optimize("a", off)
 char func_00445180(int id, char *name)
 {
     int p;
-    unsigned int n;
+    int h;
 
     p = func_004289E0(name, 1, id);
     p = func_00428C10(p, 1, 1);
@@ -147,14 +148,17 @@ char func_00445180(int id, char *name)
     p = func_004216C0(p, id);
     if (p == 0)
         return 0;
-    n = D_0048D7FC;
-    D_0053B0E0[n].name = name;
-    D_0053B0E0[n].id = id;
-    D_0053B0E0[D_0048D7FC].unk_0x08 = func_0042E250(p, 0, func_00445340);
-    D_0048D7FC++;
+    D_0053B0E0[D_0048D7FC].name = name;
+    D_0053B0E4[D_0048D7FC].name = (char *)id;
+    h = func_0042E250(p, 0, func_00445340);
+    {
+        unsigned int n = D_0048D7FC;
+        D_0053B0E8[n].name = (char *)h;
+        D_0048D7FC = n + 1;
+    }
     return 1;
 }
-
+#pragma optimize("", on)
 void func_00445200(Key_00445160 *k)
 {
     func_00445180(k->id, k->name);

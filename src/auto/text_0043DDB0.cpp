@@ -1,5 +1,6 @@
 /* 17 functions from 0x0043DDB0 to 0x0043EDB0, found by Ghidra. */
 #include "common.h"
+#include <string.h>
 
 extern int D_0047B0CC;
 extern int D_0048D780;
@@ -41,13 +42,13 @@ int func_0043E9F0(char *p)
     return 0;
 }
 
-void func_0043EA10(char *p)
+void func_0043EA10(Obj_0043EA10 *o)
 {
-    func_0043EA50(p, 0);
-    *(int *)(p + 0xc8) = 0;
-    func_0043F4B0(p, 0);
-    *(int *)(p + 0x6c) = 0;
-    *(char **)(p + 0x114) = p + 0x118;
+    func_0043EA50((char *)o, 0);
+    o->unk_0xc8 = 0;
+    func_0043F4B0((char *)o, 0);
+    o->unk_0x6c = 0;
+    o->unk_0x114 = &o->unk_0x118[0];
 }
 
 int func_0043E920(void)

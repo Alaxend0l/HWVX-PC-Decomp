@@ -60,6 +60,21 @@ extern "C" char func_00401070(void);
 extern "C" char D_00497140;
 extern "C" int D_00693E08;
 
+struct Rec_00497158 {
+    int unk_0x0;
+    char unk_0x4[0x20 - 0x4];
+};
+
+extern "C" int D_00692A00[0x500];
+extern "C" int D_00497150;
+extern "C" Rec_00497158 D_00497158[];
+extern "C" char D_00499118[];
+extern "C" unsigned char D_00499215;
+extern "C" int D_00497148;
+extern "C" char func_0045C960(int *);
+extern "C" void func_0045C9A0(void);
+extern "C" void func_004595C0(void);
+
 extern "C" void func_00459220(void)
 {
     int i = 0;

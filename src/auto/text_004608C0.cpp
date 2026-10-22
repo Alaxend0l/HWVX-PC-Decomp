@@ -32,3 +32,8 @@ extern Vec4_00460E60 D_006D5770;
 
 Obj_00461D50 *func_00461D50(void);
 void func_004608C0(int, int, int, int);
+
+float func_00460DB0(void)
+{
+    return func_00461D50()->unk_0x270;
+}

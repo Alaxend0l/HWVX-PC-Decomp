@@ -49,7 +49,9 @@ struct Rec20_0045E910 {
 struct State_0045E910 {
     char pad_0x0[0x8];
     int unk_0x8;
-    char pad_0xc[0x14];
+    char pad_0xc[0xc];
+    unsigned int unk_0x18;
+    char pad_0x1c[0x4];
     unsigned int unk_0x20;
     int unk_0x24;
     char pad_0x28[0xc];
@@ -165,15 +167,12 @@ void func_0045F0A0(int n)
 Rec84_0045E910 *func_0045F340(void)
 {
     Rec84_0045E910 *r;
-    unsigned int i;
 
     if (D_0049D7C8->unk_0x20 >= 0x20)
         D_0049D7C8->unk_0x20 = 0;
     D_0049D7C8->unk_0x1a8c40[D_0049D7C8->unk_0x20].unk_0x83 = D_0049D7D4;
-    i = D_0049D7C8->unk_0x20;
-    r = &D_0049D7C8->unk_0x1a8c40[i];
-    D_0049D7C8->unk_0x20 = i + 1;
-    return r;
+    r = D_0049D7C8->unk_0x1a8c40;
+    return &r[D_0049D7C8->unk_0x20++];
 }
 
 void func_0045F3D0(int a)

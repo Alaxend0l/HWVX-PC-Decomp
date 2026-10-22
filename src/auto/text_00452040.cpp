@@ -79,6 +79,13 @@ extern "C" int func_004524C0(void)
     return D_0049DBA0->unk_0x40;
 }
 
+extern "C" int func_004524D0(unsigned int i)
+{
+    if (i < (unsigned int)D_0049DBA0->unk_0x08)
+        return D_0049DBA0->unk_0x0c + i * 0x60;
+    return 0;
+}
+
 extern "C" int func_00452590(void)
 {
     return D_0049DBA0->unk_0x78;

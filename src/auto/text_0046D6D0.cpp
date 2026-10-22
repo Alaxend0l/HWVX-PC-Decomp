@@ -59,7 +59,8 @@ extern "C" void func_0046E401(unsigned char *ver)
     *(int *)ver = 0;
     base = (unsigned char *)GetModuleHandleA(NULL);
     if (*(unsigned short *)base == 0x5a4d && (off = *(int *)(base + 0x3c)) != 0) {
-        ver[0] = base[off + 0x1a];
-        ver[1] = base[off + 0x1b];
+        base += off;
+        ver[0] = base[0x1a];
+        ver[1] = base[0x1b];
     }
 }

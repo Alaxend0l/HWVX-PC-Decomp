@@ -49,7 +49,26 @@ extern "C" void func_004745CD(unsigned int *x, unsigned int *y)
     func_004745AC(x[2], y[2], &x[2]);
 }
 
-extern "C" void func_0047462B(unsigned int *p);
+extern "C" void func_0047462B(unsigned int *p)
+{
+    unsigned int c0 = p[0] >> 31;
+    unsigned int c1 = p[1] >> 31;
+
+    p[0] <<= 1;
+    p[1] = (p[1] << 1) | c0;
+    p[2] = (p[2] << 1) | c1;
+}
+
+extern "C" void func_00474659(unsigned int *p)
+{
+    unsigned int c2 = p[2] << 31;
+    unsigned int c1 = p[1] << 31;
+
+    p[2] >>= 1;
+    p[1] = (p[1] >> 1) | c2;
+    p[0] = (p[0] >> 1) | c1;
+}
+
 extern "C" void func_00474686(char *manptr, unsigned int manlen, LDBL12_0047435D *ld)
 {
     LDBL12_0047435D tmp;

@@ -53,14 +53,16 @@ extern "C" char **func_00475C8D(char **oldenv)
     if (oldenv == NULL)
         return NULL;
 
-    while (*oldenvptr++)
+    while (*oldenvptr) {
+        oldenvptr++;
         cvars++;
+    }
 
     if (!(newenv = newenvptr = (char **)func_0046AED9((cvars + 1) * sizeof(char *))))
         func_0046AD1F(9);
 
-    for (oldenvptr = oldenv; *oldenvptr; oldenvptr++)
-        *newenvptr++ = func_00475D8B(*oldenvptr);
+    for (oldenvptr = oldenv; *oldenvptr; )
+        *newenvptr++ = func_00475D8B(*oldenvptr++);
 
     *newenvptr = NULL;
     return newenv;

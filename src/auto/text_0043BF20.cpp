@@ -50,3 +50,12 @@ void func_0043CCB0(Elem_0043C520 *, Elem_0043C520 *);
 void func_004533F0(float, Vec4_0043BF20 *, Vec4_0043BF20 *, Vec4_0043BF20 *);
 void func_00453D20(Vec4_0043BF20 *, float, Vec4_0043BF20 *);
 void func_00453E00(Vec4_0043BF20 *, Vec4_0043BF20 *, Vec4_0043BF20 *);
+
+void func_0043C4F0(Part_0043C4F0 *p)
+{
+    int i;
+    for (i = 0; i < 0x280; i++, p++) {
+        if (!(p->flags & 8))
+            func_0043C5E0(p);
+    }
+}

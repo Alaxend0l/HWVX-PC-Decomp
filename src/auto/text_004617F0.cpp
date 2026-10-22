@@ -152,6 +152,14 @@ extern "C" void func_00461C00(int v)
     D_006D4D20 = v;
 }
 
+extern "C" void func_00461C10(void)
+{
+    if (D_006D4D18) {
+        D_006D4D18 = 0;
+        D_006D4D16 = 1;
+    }
+}
+
 void func_00461D20(int id)
 {
     D_0049D7D4 = id;

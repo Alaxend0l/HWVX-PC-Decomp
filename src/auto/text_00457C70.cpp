@@ -105,6 +105,12 @@ extern "C" unsigned char func_004582E0(int index)
     return result;
 }
 
+extern "C" void func_00458300(void)
+{
+    if (func_004582E0(0))
+        func_00458280(0);
+}
+
 extern "C" void func_00458280(int unused)
 {
     func_00458000(1, 0, 9, 0);
@@ -125,10 +131,9 @@ extern "C" void func_004582A0(void)
     func_00458000(0, 0, 9, 0);
 }
 
-extern "C" void func_004582C0(int unused, unsigned char a)
+extern "C" void func_004582C0(int unused, unsigned short a)
 {
-    unsigned short tmp = a;
-
-    func_00458000(1, 0, 4, &tmp);
+    a = (unsigned char)a;
+    func_00458000(1, 0, 4, &a);
 }
 

@@ -85,6 +85,37 @@ void func_0044D050(void)
     D_0048D97C = NULL;
 }
 
+int func_0044D860(void **out, int n);
+int func_0044D860(void **out, int n)
+{
+    int count = 0;
+    Ent560_0044D050 *p = D_0051F720;
+
+    do {
+        if ((p->unk_0x74 & 0x201000) == 0) {
+            *out++ = p;
+            count++;
+        }
+        p++;
+    } while (p < D_00522220);
+    return count;
+}
+
+int func_0044D890(void **out)
+{
+    int count = 0;
+    EntF0_0044D050 *p = D_004F3C20;
+
+    do {
+        if ((p->unk_0x74 & 0x201000) == 0) {
+            *out++ = p;
+            count++;
+        }
+        p++;
+    } while (p < D_004F9620);
+    return count;
+}
+
 int func_0044D920(char **out)
 {
     int r = 0;
@@ -94,6 +125,21 @@ int func_0044D920(char **out)
         r = 1;
     }
     return r;
+}
+
+int func_0044D8C0(void **out)
+{
+    int count = 0;
+    Ent1D0_0044D050 *p = D_00511E20;
+
+    do {
+        if ((p->unk_0x74 & 0x201000) == 0) {
+            *out++ = p;
+            count++;
+        }
+        p++;
+    } while (p < D_0051AF20);
+    return count;
 }
 
 Obj_0044D050 *func_0044D0B0(int id, int arg)
@@ -157,7 +203,7 @@ char func_0044D5F0(int a, Obj_0044D050 *p, int c)
     return func_0044D140(a, p, c);
 }
 
-void func_0044D940(int a)
+void func_0044D940(void **out)
 {
-    func_0044D860(a, 0x20);
+    func_0044D860(out, 0x20);
 }

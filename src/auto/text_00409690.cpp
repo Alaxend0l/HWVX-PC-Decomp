@@ -32,6 +32,20 @@ struct Entry_0068DAE0 {
     Mtx_00409690 unk_0x50;
 };
 
+struct Entry_0048955C {
+    char unk_0x00[0x49];
+    char unk_0x49;
+    char unk_0x4a[2];
+};
+
+extern int D_0068DAC4;
+extern Entry_0048955C *D_0048955C;
+extern char D_00489554;
+extern float D_00489530;
+extern double D_00477140;
+extern void (*D_00692994)(int);
+
+extern "C" void func_00459D40(int);
 extern "C" char func_00459B10(int);
 extern "C" void func_004096C0(unsigned int);
 extern "C" void func_00409A40(void);
@@ -57,21 +71,15 @@ extern "C" void func_00409A40(void)
 
 extern "C" void func_00409D10(int index, int type, void *data)
 {
-    Vec4_00409690 *v;
-    Mtx_00409690 *m;
-
     switch (type) {
     case 5:
-        v = &D_0068DAE0[index].v;
-        *v = *(Vec4_00409690 *)data;
+        D_0068DAE0[index].v = *(Vec4_00409690 *)data;
         break;
     case 6:
-        v = &D_0068DAF0[index].v;
-        *v = *(Vec4_00409690 *)data;
+        D_0068DAF0[index].v = *(Vec4_00409690 *)data;
         break;
     case 7:
-        m = &D_0068DB30[index].m;
-        *m = *(Mtx_00409690 *)data;
+        D_0068DB30[index].m = *(Mtx_00409690 *)data;
         break;
     }
 }

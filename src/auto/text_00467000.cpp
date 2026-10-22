@@ -35,3 +35,23 @@ void func_00467000(int mode)
     D_006C9A70 = mode;
     glBlendFunc(D_006C9A68, D_006C99F8);
 }
+
+void func_004670B0(int mode)
+{
+    D_006C9A74 = mode;
+    switch (mode) {
+    case 1:
+        glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
+        break;
+    case 2:
+        glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+        break;
+    case 3:
+        glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+        break;
+    case 4:
+        glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);
+        break;
+    }
+}
+

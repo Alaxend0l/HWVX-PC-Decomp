@@ -177,7 +177,8 @@ void func_0040CAA0(unsigned int *p)
 Slot_0040BEA0 *func_0040CB30(char *key)
 {
     unsigned int i;
-    for (i = 0; i < (*(u32 *)&D_00681AB0 & 0xff); i++) {
+    unsigned int n = *(u32 *)&D_00681AB0 & 0xff;
+    for (i = 0; i < n; i++) {
         if (D_00681500[i].unk_0x000 == key)
             return &D_00681500[i];
     }
@@ -189,9 +190,10 @@ void func_0040CB70(void)
     unsigned int i = 0;
     if (D_00681AB0 > 0) {
         do {
-            if (D_00681500[i].unk_0x168 != 0) {
-                D_00681500[i].unk_0x168->unk_0x8c->unk_0x04(D_00681500[i].unk_0x168);
-                D_00681500[i].unk_0x168 = 0;
+            Model_0040BEA0 *m = (Model_0040BEA0 *)D_00681668[i].unk_0x0;
+            if (m != 0) {
+                m->unk_0x8c->unk_0x04(m);
+                D_00681668[i].unk_0x0 = 0;
             }
             i++;
         } while (i < (*(u32 *)&D_00681AB0 & 0xff));

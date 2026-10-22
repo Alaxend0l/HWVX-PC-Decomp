@@ -13,7 +13,7 @@ extern "C" void (__stdcall *_imp__glCullFace)(GLenum);
 extern "C" void (__stdcall *_imp__glFogi)(GLenum, GLint);
 extern "C" void (__stdcall *_imp__glDeleteTextures)(GLsizei, const GLuint *);
 extern "C" void (__stdcall *_imp__glBindTexture)(GLenum, GLuint);
-extern "C" void (__stdcall *_imp__glTexParameteri)(GLenum, GLenum, GLint);
+extern "C" void (__stdcall *const _imp__glTexParameteri)(GLenum, GLenum, GLint);
 #define glBindTexture (*_imp__glBindTexture)
 #define glTexParameteri (*_imp__glTexParameteri)
 #define glBlendFunc (*_imp__glBlendFunc)
@@ -100,6 +100,21 @@ void func_00467E20(unsigned short tex)
     D_006D4D0C = tex;
     glBindTexture(GL_TEXTURE_2D, tex);
     glEnable(GL_TEXTURE_2D);
+}
+
+void func_00467E80(unsigned short tex)
+{
+    short wrap;
+
+    glBindTexture(GL_TEXTURE_2D, tex);
+    wrap = D_006D3D44[tex].unk_0x3e;
+    if (wrap == 0) {
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    } else if (wrap == 1) {
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+    }
 }
 
 void func_004675B0(Elem_004675B0 *elems, unsigned int count, void *v)

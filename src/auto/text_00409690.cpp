@@ -144,6 +144,20 @@ extern "C" int func_00409E60(int a)
     return 0;
 }
 
+extern "C" void func_00459DA0(int, int);
+extern "C" void func_00459A70(int, int, int);
+extern "C" void func_00459AC0(int, int);
+extern "C" void func_00459A30(int, int);
+extern "C" void func_00459700(int);
+extern char D_00489560;
+extern "C" float func_00454800(Node_0040A170 *, int);
+extern float D_00477000;
+extern "C" void func_00409F30(int a, int b)
+{
+    func_00459DA0(a, b);
+    D_00489554 = 1;
+}
+
 extern "C" void func_00409F50(void)
 {
     if (D_00489554) {

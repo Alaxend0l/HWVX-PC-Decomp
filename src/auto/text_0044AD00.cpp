@@ -35,3 +35,9 @@ void func_0041E120(void);
 void func_0044AA50(void);
 void func_0044A8A0(int, int);
 void func_0044AD00(int, char *, char *, float *, float *, int);
+
+void func_0044B900(void)
+{
+    func_0044B910();
+    func_00401090();
+}

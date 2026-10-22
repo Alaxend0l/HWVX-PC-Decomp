@@ -25,6 +25,12 @@ int func_0042A680(int, int);
 char func_00427760(void);
 void func_004480E0(int);
 
+void func_00447910(int a, int b)
+{
+    D_0048D95C = a;
+    D_0053AA24 = b;
+}
+
 int func_004480B0(void)
 {
     return D_0048D970->unk_0xd0;

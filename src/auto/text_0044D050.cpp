@@ -136,8 +136,9 @@ int func_0044D8C0(void **out)
 
     do {
         if ((p->unk_0x74 & 0x201000) == 0) {
-            *out++ = p;
+            *out = p;
             count++;
+            out++;
         }
         p++;
     } while (p < D_0051AF20);

@@ -49,11 +49,6 @@ struct Car_0042C540 {
 
 extern Slot_0042C540 D_0064D080[4];
 extern Pool_0042C540 *D_0048D5DC;
-struct SlotPtr_0042C540 {
-    char *ptr;
-    char unk_0x4[0x34];
-};
-extern SlotPtr_0042C540 D_0064D0A4[4];
 extern char D_0047ACC0[];
 
 void func_0043FF50(void);

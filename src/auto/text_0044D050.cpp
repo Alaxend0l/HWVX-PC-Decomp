@@ -303,3 +303,24 @@ char func_0044DF30(unsigned int *a)
     return r;
 }
 
+char func_0044DFC0(Cond_0044DFC0 *c)
+{
+    Player_0044DFC0 *p = D_00681500->unk_0x2c;
+
+    if (p != NULL && p->unk_0x4b4 == c->unk_0x4)
+        return 1;
+    return 0;
+}
+char func_0044DFF0(Cond_0044DFC0 *c)
+{
+    Player_0044DFC0 *p = D_00681500 != NULL ? D_00681500->unk_0x2c : NULL;
+
+    if (c->unk_0x8 == 0) {
+        if (p != NULL && p->unk_0x434 >= c->unk_0x4)
+            return c->unk_0x8 = 1;
+    } else if (p != NULL && p->unk_0x434 == 0) {
+        c->unk_0x8 = 0;
+        return 1;
+    }
+    return 0;
+}

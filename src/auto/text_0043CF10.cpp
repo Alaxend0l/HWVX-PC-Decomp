@@ -86,7 +86,7 @@ void func_00461D10(int);
 void func_00461BA0(int);
 void func_00461BC0(int);
 void func_0045E730(int, Vec4_0043CF10 *, Vec4_0043CF10 *, Part_0043CF50 *);
-Obj_0045EC70 *func_0045EC70(unsigned short);
+Obj_0045EC70 *func_0045EC70(int);
 
 void func_0043CF10(void)
 {

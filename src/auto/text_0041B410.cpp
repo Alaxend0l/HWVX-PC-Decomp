@@ -195,22 +195,22 @@ extern "C" float func_0041B680(Vec4_0041B410 *pos, Vec4_0041B410 *dir, Box_0041B
                 switch (side) {
                 case 1:
                     hit->normal.x = 1.0f;
-                    break;
+                    return frac * t;
                 case 2:
                     hit->normal.x = -1.0f;
-                    break;
+                    return frac * t;
                 case 3:
                     hit->normal.y = 1.0f;
-                    break;
+                    return frac * t;
                 case 4:
                     hit->normal.y = -1.0f;
-                    break;
+                    return frac * t;
                 case 5:
                     hit->normal.z = 1.0f;
-                    break;
+                    return frac * t;
                 case 6:
                     hit->normal.z = -1.0f;
-                    break;
+                    return frac * t;
                 }
             }
             return frac * t;

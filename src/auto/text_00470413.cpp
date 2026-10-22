@@ -72,6 +72,20 @@ extern "C" void func_004708AC(void)
     func_0046E9BA(9);
 }
 
+#pragma optimize("s", on)
+extern "C" long func_004708B5(unsigned int fh, long pos, int mthd)
+{
+    long r;
+    if (fh < D_006D5AE0 && (D_006D59E0[(int)fh >> 5][fh & 0x1f].osfile & 1)) {
+        func_00472339(fh);
+        r = func_0047091A(fh, pos, mthd);
+        func_00472398(fh);
+        return r;
+    }
+    *func_00470486() = 9;
+    *func_0047048F() = 0;
+    return -1;
+}
 extern "C" int D_006D59C8;
 extern "C" void *D_006D59C4;
 extern "C" void func_0046E959(int);

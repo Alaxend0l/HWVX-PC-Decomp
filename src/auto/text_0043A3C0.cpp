@@ -42,9 +42,7 @@ struct Ent_0043A3C0 {
     Vec4_0043A3C0 unk_0x40;
     Vec4_0043A3C0 unk_0x50;
     char unk_0x60[0x50];
-    int unk_0xb0;
-    char unk_0xb4[0x20];
-    int unk_0xd4;
+    Anim_0043A3C0 unk_0xb0;
 };
 
 extern char D_005D4440[];

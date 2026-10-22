@@ -70,6 +70,17 @@ extern Rec50_0065FD00<int> D_0065FD48[64];
 extern Rec50_0065FD00<char> D_0065FD4C[64];
 extern float D_00477108;
 
+struct Rec_0065FD00 {
+    Obj_0041E470 *obj;
+    Vec4_0041DBE0 pos;
+    char unk_0x14[0x2c];
+    char unk_0x40;
+    int unk_0x44;
+    int unk_0x48;
+    char unk_0x4c;
+};
+extern Rec_0065FD00 D_0065FD00_rec[64];
+
 int func_00438AF0(void *, int, Vec4_0041DBE0 *);
 
 extern "C" void func_0041E120(void)
@@ -123,6 +134,33 @@ extern "C" void func_0041E460(void)
 {
     D_0065FCE0 = 0;
     D_0048956C = 0;
+}
+
+extern "C" int func_0041E470(Obj_0041E470 *obj, Vec4_0041DBE0 *pos)
+{
+    unsigned n = D_0048956C;
+
+    if (n >= 64)
+        return -1;
+    if (obj == NULL)
+        return -1;
+    D_0065FD00[n].v = obj;
+    D_0065FD04[n].v = *pos;
+    D_0065FD44[n].v = -1;
+    D_0065FD4C[n].v = 0;
+    D_0065FD48[n].v = 0;
+    D_0065FD40[n].v = 1;
+    if (obj->unk_0x20 != NULL)
+        D_0065FD44[n].v = func_00438AF0(obj->unk_0x20, 0, pos);
+    return D_0048956C++;
+}
+
+extern "C" void func_0041E780(Obj_0041E780 *o, Vec4_0041DBE0 *out)
+{
+    out->x = o->unk_0x40;
+    out->y = o->unk_0x44 + 4.0f;
+    out->z = o->unk_0x48;
+    *(int *)&out->w = 0x3f800000;
 }
 
 extern "C" float func_0041E7B0(Obj_0041E7B0 *o)

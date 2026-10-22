@@ -40,6 +40,44 @@ extern "C" int func_0046F025(void)
     sw = 0;
     return sw;
 }
+
+extern double D_004789A8;
+#pragma optimize("y", off)
+#pragma optimize("p", on)
+extern "C" double func_0046EF56(double x, int *pexp)
+{
+    int exp;
+    double man;
+
+    if (x == D_004789A8) {
+        man = 0.0;
+        exp = 0;
+    } else if ((*((unsigned short *)&x + 3) & 0x7ff0) == 0
+               && ((*((unsigned int *)&x + 1) & 0xfffff) || *(unsigned int *)&x)) {
+        int neg;
+        exp = -0x3fd;
+        neg = x < D_004789A8;
+        while ((*((unsigned short *)&x + 3) & 0x10) == 0) {
+            *((unsigned int *)&x + 1) <<= 1;
+            if (*(unsigned int *)&x & 0x80000000)
+                *((unsigned int *)&x + 1) |= 1;
+            *(unsigned int *)&x <<= 1;
+            exp--;
+        }
+        *((unsigned short *)&x + 3) &= 0xffef;
+        if (neg)
+            *((unsigned short *)&x + 3) |= 0x8000;
+        man = func_0046EED3(x, 0);
+    } else {
+        man = func_0046EED3(x, 0);
+        exp = (short)((*((unsigned short *)&x + 3) & 0x7ff0) >> 4) - 0x3fe;
+    }
+    *pexp = exp;
+    return man;
+}
+#pragma optimize("p", off)
+#pragma optimize("y", on)
+
 #pragma optimize("y", on)
 
 extern "C" double func_0046EED3(double x, int exp)

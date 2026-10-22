@@ -161,6 +161,52 @@ extern "C" void *func_0046AF17(unsigned int size)
     return HeapAlloc(D_006D59C4, 0, size);
 }
 
+extern "C" void func_0046AFE6(void)
+{
+}
+
+extern "C" void *func_0046F110(void *);
+extern "C" void func_0046F13B(void *, void *);
+extern "C" void *func_0046FE6B(void *, void **, void **);
+extern "C" void func_0046FEC2(void *, void *, void *);
+extern "C" __declspec(dllimport) int __stdcall HeapFree(void *, unsigned long, void *);
+extern "C" void func_0046B013(void *pBlock)
+{
+    if (pBlock == NULL)
+        return;
+
+    if (D_006D59C8 == 3) {
+        void *pHeader;
+
+        func_0046E959(9);
+        __try {
+            if ((pHeader = func_0046F110(pBlock)) != NULL)
+                func_0046F13B(pHeader, pBlock);
+        }
+        __finally {
+            func_0046E9BA(9);
+        }
+        if (pHeader)
+            return;
+    } else if (D_006D59C8 == 2) {
+        void *pRegion;
+        void *pPage;
+        void *pHeader;
+
+        func_0046E959(9);
+        __try {
+            if ((pHeader = func_0046FE6B(pBlock, &pRegion, &pPage)) != NULL)
+                func_0046FEC2(pRegion, pPage, pHeader);
+        }
+        __finally {
+            func_0046E9BA(9);
+        }
+        if (pHeader)
+            return;
+    }
+    HeapFree(D_006D59C4, 0, pBlock);
+}
+
 extern "C" void *func_0046AEEB(unsigned int, int);
 extern "C" int D_0049D9E8;
 extern "C" void func_0046AF7E(void)

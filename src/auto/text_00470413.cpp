@@ -1,5 +1,9 @@
 /* 17 functions from 0x00470413 to 0x00470CA7, found by Ghidra. */
 #include "common.h"
+
+/* C runtime code, built size-optimized */
+#pragma optimize("s", on)
+
 typedef struct {
     int osfhnd;
     char osfile;
@@ -48,6 +52,20 @@ extern "C" void func_00470413(unsigned long oserr)
         *func_00470486() = 8;
     else
         *func_00470486() = 0x16;
+}
+
+extern "C" long func_00470A69(unsigned int fh, int a, int b)
+{
+    long r;
+    if (fh < D_006D5AE0 && (D_006D59E0[(int)fh >> 5][fh & 0x1f].osfile & 1)) {
+        func_00472339(fh);
+        r = func_00470ACE(fh, a, b);
+        func_00472398(fh);
+        return r;
+    }
+    *func_00470486() = 9;
+    *func_0047048F() = 0;
+    return -1;
 }
 
 extern "C" int *func_00470486(void)

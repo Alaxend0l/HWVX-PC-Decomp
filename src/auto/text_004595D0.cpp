@@ -1,6 +1,7 @@
 /* 12 functions from 0x004595D0 to 0x00459BF8, found by Ghidra. */
 #include "common.h"
 #include <crtdbg.h>
+#include <windows.h>
 
 struct Slot_004595D0 {
     int unk_0x00;
@@ -165,15 +166,14 @@ char func_00459A70(unsigned int id, short x, short y)
 
 char func_00459AC0(unsigned int id, int arg)
 {
-    Voice_004595D0 *v;
+    Voice_004595D0 *v = &D_00692A00[id & 0xff];
 
-    v = &D_00692A00[id & 0xff];
-    if (v->id == id) {
-        v->unk_0x34 = arg;
-        if (func_0045DD10(v))
-            return 1;
-        func_0045D630(v, 3);
-    }
+    if (v->id != id)
+        return 0;
+    v->unk_0x34 = arg;
+    if (func_0045DD10(v))
+        return 1;
+    func_0045D630(v, 3);
     return 0;
 }
 

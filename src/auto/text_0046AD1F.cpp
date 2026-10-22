@@ -53,6 +53,11 @@ extern "C" void func_0046AEBF(_PVFV *pfbegin, _PVFV *pfend)
     }
 }
 
+extern "C" void *func_0046AED9(unsigned int size)
+{
+    return func_0046AEEB(size, D_0049D9E8);
+}
+
 extern "C" void func_0046AE08(int code, int quick, int retcaller)
 {
     func_0046AEAD();

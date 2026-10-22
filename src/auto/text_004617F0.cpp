@@ -28,6 +28,12 @@ struct Light_006D4CA0 {
 };
 
 extern Light_006D4CA0 D_006D4CA0[3];
+
+struct LightSet_006D4CA0 {
+    Light_006D4CA0 l[3];
+    char unk_0x48[0x30];
+    unsigned char count;
+};
 extern Vec4_004617F0 D_006D4CE8;
 void func_00453470(void *);
 
@@ -180,20 +186,27 @@ extern "C" void func_00461C10(void)
 extern "C" void func_00461C30(int a, Vec4_004617F0 *v, float f)
 {
     if (D_006D4D18 < 3) {
-        D_006D4CA0[D_006D4D18].unk_0x14 = a;
-        D_006D4CA0[D_006D4D18].unk_0x0 = *v;
-        D_006D4CA0[D_006D4D18].unk_0x10 = f;
+        D_006D4CA0[*(volatile unsigned char *)&D_006D4D18].unk_0x14 = a;
+        D_006D4CA0[*(volatile unsigned char *)&D_006D4D18].unk_0x0 = *v;
+        D_006D4CA0[*(volatile unsigned char *)&D_006D4D18].unk_0x10 = f;
         D_006D4D18++;
         D_006D4D16 = 1;
     }
 }
 
+extern int D_006D4CEC;
+extern int D_006D4CF0;
+extern int D_006D4CF4;
 extern "C" void func_00461CB0(int a, Vec4_004617F0 *v)
 {
     D_006D4CF8 = a;
     if (v) {
-        D_006D4CE8 = *v;
-        func_00453470(&D_006D4CE8);
+        Vec4_004617F0 *d = (Vec4_004617F0 *)&D_006D4CE8;
+        d->x = v->x;
+        d->y = v->y;
+        d->z = v->z;
+        d->w = v->w;
+        func_00453470(d);
     }
     D_006D4D16 = 1;
 }

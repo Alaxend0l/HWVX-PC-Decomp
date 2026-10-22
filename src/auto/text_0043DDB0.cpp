@@ -172,23 +172,22 @@ void func_0043EBF0(char *p)
         func_0042DE60(*(int *)(p + 0x68));
 }
 
-void func_0043EC10(Obj_0043ED30 *p, Obj_0043ED30_Sub *o)
+void func_0043EC10(char *p, char *o)
 {
-    p->unk_0x2c = o;
-    if (o != NULL) {
-        o->unk_0x94 = p;
-        *(int *)((char *)p + 0x38) = *(int *)((char *)o + 0xa8);
-        if (o->unk_0x8c == &D_0047A2E8) {
-            *(int *)((char *)p + 0x3c) = *(int *)((char *)o + 0x398);
-            func_0040F670((char *)o);
-            if (!((char (*)(Obj_0043ED30 *))func_0043E9F0)(p)) {
-                func_00402EA0((char *)p);
-            }
-        } else if (o->unk_0x8c == &D_0047A5E0) {
-            *(int *)((char *)p + 0x3c) = *(int *)((char *)o + 0xb8);
+    *(char **)(p + 0x2c) = o;
+    if (o != 0) {
+        *(char **)(o + 0x94) = p;
+        *(char **)(p + 0x38) = *(char **)(o + 0xa8);
+        if (*(char **)(o + 0x8c) == &D_0047A2E8) {
+            *(char **)(p + 0x3c) = *(char **)(o + 0x398);
+            func_0040F670(o);
+            if (!((char (*)(char *))func_0043E9F0)(p))
+                func_00402EA0(p);
+        } else if (*(char **)(o + 0x8c) == &D_0047A5E0) {
+            *(char **)(p + 0x3c) = *(char **)(o + 0xb8);
         }
-        func_00449AA0((char *)o);
-        func_0043EB20((char *)p);
+        func_00449AA0(o);
+        func_0043EB20(p);
     }
 }
 
@@ -228,10 +227,9 @@ void func_0043ED50(char *p)
     int a;
     int b;
     int c;
-    char *o = *(char **)(p + 0x2c);
 
-    if (o != 0 && !(*(char *)(o + 0x74) & 2)) {
-        func_00429060(o + 0x40, &a, &b, &c);
+    if (*(char **)(p + 0x2c) != 0 && !(*(char *)(*(char **)(p + 0x2c) + 0x74) & 2)) {
+        func_00429060(*(char **)(p + 0x2c) + 0x40, &a, &b, &c);
         func_00401090(*(int *)(p + 0xc8), a, b);
     }
     func_0043EDB0(p);

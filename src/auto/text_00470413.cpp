@@ -61,7 +61,7 @@ extern "C" void func_00470623(void)
     func_0046E9BA(9);
 }
 
-extern "C" void func_0047077C(void)
+extern "C" void func_0047062C(void)
 {
 }
 
@@ -70,7 +70,46 @@ extern "C" void func_00470771(void)
     func_0046E9BA(9);
 }
 
-extern "C" long func_0047091A(int, long, int);
+extern "C" void func_0047077C(void)
+{
+}
+
+#pragma optimize("s", on)
+extern "C" unsigned int func_004707C7(void *pblock)
+{
+    void *pHeader;
+    unsigned int retval;
+
+    if (D_006D59C8 == 3) {
+        func_0046E959(9);
+        __try {
+            if ((pHeader = func_0046F110(pblock)) != NULL)
+                retval = ((int *)pblock)[-1] - 9;
+        }
+        __finally {
+            func_0046E9BA(9);
+        }
+        if (pHeader != NULL)
+            return retval;
+    } else if (D_006D59C8 == 2) {
+        void *pRegion;
+        void *pPage;
+        unsigned char *pMap;
+
+        func_0046E959(9);
+        __try {
+            if ((pMap = func_0046FE6B(pblock, &pRegion, &pPage)) != NULL)
+                retval = (unsigned int)*pMap << 4;
+        }
+        __finally {
+            func_0046E9BA(9);
+        }
+        if (pMap != NULL)
+            return retval;
+    }
+    return HeapSize(D_006D59C4, 0, pblock);
+}
+
 extern "C" void func_00470831(void)
 {
     func_0046E9BA(9);

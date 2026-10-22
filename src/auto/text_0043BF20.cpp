@@ -154,7 +154,7 @@ void func_0043C6C0(Body_0043C6C0 *b)
 int func_00454AF0(int, int);
 int func_0046A7CC(void);
 void func_004268B0(int, float *, float);
-void func_004266F0(char *, float *, float);
+void func_004266F0(int, char *, float *);
 float func_00454AC0(float, float);
 float func_00454B20(float, float);
 extern int D_005D4410;
@@ -195,7 +195,7 @@ void func_0043C2D0(Vec4_0043BF20 *s0, int a1, Src20_0043BF20 *src, int a3, int a
     e->b95 = src->b00;
     func_004268B0(src->f04 + 0x14, (float *)&b->pos, fv);
     e->b96 = 1;
-    func_004266F0((char *)src + 0x28, &e->f9c, fv);
+    func_004266F0((int)&e->f9c, (char *)src + 0x28, &e->f60);
     e->fa0 = func_00454B20(*(float *)&src->f04, *(float *)&src->f08);
     e->f8c = func_00454AC0(*(float *)&src->f0c, *(float *)&src->f10);
     if (b->f14 != 0) {

@@ -112,6 +112,47 @@ void func_0045C640(List_0045C *list)
     list->unk_0x4 = NULL;
 }
 
+char func_0045C4A0(List_0045C *list)
+{
+    unsigned int rate;
+    Src_0045C *src;
+    Node_0045C *n;
+
+    src = list->unk_0x8;
+    rate = (unsigned int)(src->unk_0x3c * D_00477CE0[list->unk_0x19]);
+    if (rate > 0x2ee00 || rate < 0x60) {
+        if (list->unk_0x4 != NULL)
+            func_0045C640(list);
+        return 0;
+    }
+    if (list->unk_0x4 != NULL) {
+        func_0045D630(list->unk_0x4, 3);
+        list->head = list->head->next;
+    }
+    if ((list->unk_0x4 = func_0045D4E0(0, list->unk_0x12)) == NULL)
+        return 0;
+    list->unk_0x4->unk_0x2 = list->unk_0x10;
+    list->unk_0x4->unk_0x1 = list->unk_0x14;
+    list->unk_0x4->next = list->head;
+    n = list->unk_0x4;
+    list->head = n;
+    n->unk_0x10 = list->unk_0x8;
+    src = list->unk_0x8;
+    n->unk_0x20 = src->unk_0x48;
+    n->unk_0x24 = (src->unk_0x12 & 0x10) ? src->unk_0x34 : -1;
+    n->unk_0x28 = (src->unk_0x12 & 0x10) ? src->unk_0x38 : src->unk_0x30;
+    n->unk_0x2c = (src->unk_0x12 & 2) ? 16 : 8;
+    n->unk_0x30 = rate;
+    n->unk_0x34 = D_0049A884;
+    n->unk_0x38 = list->unk_0x44;
+    n->unk_0x3c = src->unk_0x11 << 9;
+    n->unk_0x40 = list->unk_0x2c;
+    n->unk_0x44 = -0x7fff;
+    func_0045D620(n);
+    func_0045DC20(n, list->unk_0x1a);
+    return 1;
+}
+
 void func_0045C670(Node_0045C *node)
 {
     int idx = node->unk_0x2;

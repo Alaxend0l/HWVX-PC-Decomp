@@ -57,6 +57,7 @@ extern "C" int func_0046D431(int flag)
         return count;
     return err;
 }
+#pragma optimize("s", on)
 extern "C" int func_0046D4D5(unsigned int fh, const void *buf, unsigned int cnt)
 {
     int r;

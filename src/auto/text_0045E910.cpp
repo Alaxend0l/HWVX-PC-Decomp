@@ -87,6 +87,9 @@ struct State_0045E910 {
 
 extern State_0045E910 *D_0049D7C8;
 extern int D_0049D7D4;
+extern float D_0047CC3C;
+extern float D_0047CC40;
+extern float D_006D5780;
 extern "C" void func_00464DE0(int a);
 
 static inline Rec20_0045E910 *CurRec20_0045E910(void)
@@ -184,8 +187,32 @@ Rec84_0045E910 *func_0045F340(void)
     return &r[D_0049D7C8->unk_0x20++];
 }
 
+extern float D_0047CC3C;
+extern float D_0047CC40;
+extern float D_006D5780;
+Rec84_0045E910 *func_0045F390(void)
+{
+    State_0045E910 *s;
+
+    if (D_0049D7C8->unk_0x18 >= 0x400)
+        D_0049D7C8->unk_0x18 = 0;
+    s = D_0049D7C8;
+    return &s->unk_0x187c40[s->unk_0x18++];
+}
+
 void func_0045F3D0(int a)
 {
     func_00464DE0(a);
+}
+
+void func_0045F880(void)
+{
+    int i;
+    unsigned short n;
+
+    for (i = 0; i < 256; i++) {
+        for (n = D_0049D7C8->unk_0x80[i]; n != 0; n = D_0049D7C8->unk_0x280[n].unk_0x6)
+            D_0049D7C8->unk_0x280[n].unk_0x0(D_0049D7C8->unk_0x280[n].unk_0x4);
+    }
 }
 

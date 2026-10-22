@@ -25,6 +25,12 @@ struct Obj_00405800 {
     int unk_0xf4;
 };
 
+struct Cmd_00405800 {
+    char *desc;
+    char pad_0x4[0xc];
+    char *target;
+};
+
 extern "C" void func_00401F80(char *p);
 extern "C" void func_00401FA0(char *p, int *a);
 extern "C" void func_00406770(void);

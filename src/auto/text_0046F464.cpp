@@ -13,8 +13,15 @@ struct Region_0046F464 {
     int unk_0x8;
     Entry_0046F464 *unk_0xc;
     char *unk_0x10;
-    int unk_0x14;
+    char *unk_0x14;
     Entry_0046F464 unk_0x18[0x400];
+};
+
+struct Page_0046F464 {
+    unsigned char *unk_0x0;
+    int unk_0x4;
+    unsigned char unk_0x8[0xf0];
+    unsigned char unk_0xf8[0x1000 - 0xf8];
 };
 
 struct Header_0046F464 {

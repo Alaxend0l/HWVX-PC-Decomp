@@ -53,7 +53,7 @@ extern char D_0065E339;
 extern "C" int func_004287E0(void *name, int a, int b, int c);
 extern "C" int func_00428C10(int a, int b, int c);
 extern "C" int func_004216C0(int a, int b);
-extern "C" int func_00440160(void);
+extern "C" unsigned char func_00440160(void);
 extern "C" char *func_00440180(unsigned int i);
 extern "C" int func_00429EC0(void)
 {

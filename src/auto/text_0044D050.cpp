@@ -134,6 +134,19 @@ int func_0042D7A0(float *, float *, int, Pair_0044D050 *, int);
 float func_004535B0(float *, float *);
 char func_0041CE70(int, int, int);
 
+static inline char Touch_0044D050(Obj_0044D050 *obj, Obj_0044D050 *o, int c)
+{
+    if (Sq_0044D050(o->unk_0x70 + obj->unk_0x70) > func_004535B0(obj->unk_0x40, o->unk_0x40) &&
+        o->unk_0x80 == 1 && func_0041CE70((int)obj, o->unk_0x8c->unk_0x40(o), c)) {
+        if (c != 0) {
+            *(Obj_0044D050 **)(c + 0x20) = obj;
+            *(Obj_0044D050 **)(c + 0x24) = o;
+        }
+        return 1;
+    }
+    return 0;
+}
+
 extern int *D_0049DBA0;
 extern float D_00692350[4];
 extern unsigned int D_0052E664;
@@ -154,25 +167,22 @@ void func_0044D050(void)
     D_0048D97C = NULL;
 }
 
-char func_0044D140(int a, Obj_0044D050 *obj, int c)
+char func_0044D140(int a, Obj_0044D050 *obj, register int c)
 {
     unsigned int n;
     float mn[4];
     float mx[4];
     Pair_0044D050 hits[0x100];
-    unsigned int i;
+    register unsigned int i;
     Obj_0044D050 *o;
-    float r;
 
     func_0044A0D0(obj, mx, mn);
     n = func_0042D7A0(mx, mn, 5, hits, 0x100);
     for (i = 0; i < n; i++) {
         o = hits[i].obj;
         if (!(o->unk_0x74 & 2) && o->unk_0x80 != 0 && o != obj) {
-            r = o->unk_0x70 + obj->unk_0x70;
-            r *= r;
-            if (func_004535B0(obj->unk_0x40, o->unk_0x40) < r && o->unk_0x80 == 1 &&
-                func_0041CE70((int)obj, o->unk_0x8c->unk_0x40(o), c)) {
+            if (Sq_0044D050(o->unk_0x70 + obj->unk_0x70) > func_004535B0(obj->unk_0x40, o->unk_0x40) &&
+                o->unk_0x80 == 1 && func_0041CE70((int)obj, o->unk_0x8c->unk_0x40(o), c)) {
                 if (c != 0) {
                     *(Obj_0044D050 **)(c + 0x20) = obj;
                     *(Obj_0044D050 **)(c + 0x24) = o;

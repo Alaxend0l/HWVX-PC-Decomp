@@ -52,14 +52,29 @@ struct Elem_0043C520 {
 };
 
 struct Body_0043C6C0 {
-    Vec4_0043BF20 pos;
-    char unk_0x10[0x14 - 0x10];
+    unsigned char b00;
+    unsigned char b01;
+    char unk_0x02[0x4 - 0x2];
+    int f04;
+    int f08;
+    int f0c;
+    int f10;
     int f14;
     int f18;
-    char unk_0x1c[0x30 - 0x1c];
+    int f1c;
+    int f20;
+    char unk_0x24[0x28 - 0x24];
+    float f28;
+    char unk_0x2c[0x30 - 0x2c];
+    Vec4_0043BF20 pos;
     Vec4_0043BF20 rot;
     Vec4_0043BF20 spin;
-    char unk_0x50[0xb8 - 0x50];
+    char unk_0x50[0x80 - 0x50];
+    float f80;
+    float f84;
+    char unk_0x88[0x8c - 0x88];
+    float f8c;
+    char unk_0x90[0xb8 - 0x90];
     float unk_0xb8;
     char unk_0xbc[0xc8 - 0xbc];
     float unk_0xc8;

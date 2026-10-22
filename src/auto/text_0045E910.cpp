@@ -121,3 +121,8 @@ Item_0045E910 *func_0045EB60(void)
     return &s->unk_0x1c29d0[s->unk_0x34++];
 }
 
+void func_0045F3D0(int a)
+{
+    func_00464DE0(a);
+}
+

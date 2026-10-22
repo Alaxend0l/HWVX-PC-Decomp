@@ -59,6 +59,7 @@ extern "C" int func_0046BD9C(void)
         return 1;
     return 0;
 }
+
 #pragma optimize("", on)
 extern "C" int func_0046BDDA(void)
 {

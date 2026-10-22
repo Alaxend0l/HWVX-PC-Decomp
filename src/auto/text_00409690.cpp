@@ -29,3 +29,8 @@ extern "C" char func_00459B10(int);
 extern "C" void func_004096C0(unsigned int);
 extern "C" void func_00409A40(void);
 extern "C" void func_00409A60(void);
+
+extern "C" char *func_0040A490(void)
+{
+    return D_00681500;
+}

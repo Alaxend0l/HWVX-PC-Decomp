@@ -53,6 +53,7 @@ extern "C" int func_00475C35(const char *option, unsigned int length)
     return -(env - D_0049D834);
 }
 
+#pragma optimize("s", on)
 extern "C" char *func_00475D8B(const char *str)
 {
     char *copy;

@@ -81,12 +81,7 @@ void func_00401120(void)
 
 int func_00401140(Task_00401090 *task)
 {
-    unsigned int i = 0;
-    Task_00401090 **p;
-    for (p = D_004806E0; p < D_004806E0 + 80; p++, i++) {
-        if (*p == NULL)
-            break;
-    }
+    unsigned int i = FindFreeTask_00401090();
     if (i >= 80) {
         func_00452F70(D_0047A0F0, 80);
         return 1;

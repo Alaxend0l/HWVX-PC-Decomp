@@ -44,7 +44,7 @@ void func_0040A540(void)
 
 Slot_0040A4B0 *func_0040A4C0(u32 i)
 {
-    if (i < D_00681AB0 && i < 4)
+    if (i < (*(u32 *)&D_00681AB0 & 0xff) && i < 4)
         return &D_00681500[i];
     return NULL;
 }

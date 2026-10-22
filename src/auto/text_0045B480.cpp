@@ -39,5 +39,55 @@ int func_00452FB0(const char *, const char *, int, int, int);
 void func_0045B680(int);
 void func_0045E0C0(int);
 void func_0045DC20(Node_0045B *, int);
-unsigned short __fastcall func_0045E100(void *, Chan_0045B *);
+int __fastcall func_0045E100(void *, Chan_0045B *);
 void func_0045DD10(Voice_0045B *);
+
+void func_0045B8F0(void)
+{
+    Chan_0045B *c;
+    Node_0045B *n;
+    int i;
+    int v;
+
+    c = D_00499A68;
+    for (i = 32; i != 0; i--) {
+        n = c->head;
+        v = (unsigned short)func_0045E100(D_0049A868, c);
+        c->unk_0x1a = v;
+        for (; n != NULL; n = n->next)
+            func_0045DC20(n, v);
+        c++;
+    }
+}
+
+void func_0045B940(int arg)
+{
+    Voice_0045B *v;
+    int i;
+
+    D_0049A884 = arg;
+    v = D_00692A00;
+    for (i = 64; i != 0; i--) {
+        if (v->unk_0x15 != 0 && v->unk_0x3 == 0) {
+            v->unk_0x34 = arg;
+            func_0045DD10(v);
+        }
+        v++;
+    }
+}
+
+void func_0045BA60(unsigned int mask, char global)
+{
+    unsigned char *p;
+
+    if (global) {
+        D_006929AC |= mask;
+    } else {
+        p = &D_00499A68[0].unk_0x11;
+        while (mask != 0) {
+            *p |= mask & 1;
+            mask >>= 1;
+            p += sizeof(Chan_0045B);
+        }
+    }
+}

@@ -145,6 +145,12 @@ extern "C" int func_004721FC(int fh, long value)
     return -1;
 }
 
+extern "C" int func_0047272D(int c, int cmask, int kmask)
+{
+    c = (unsigned char)c;
+    return (D_006D58A1[c] & kmask) || (cmask ? (D_0047FA8A[c] & cmask) : 0);
+}
+
 extern "C" void func_00472988(void)
 {
     int i;

@@ -29,6 +29,16 @@ float func_00454800(float *plane, float *v)
     return plane[2] * v[2] + plane[1] * v[1] + plane[0] * v[0] + plane[3];
 }
 
+void func_00454960(float *q)
+{
+    float angle;
+    float axis[4];
+
+    angle = func_00454AC0(0.0f, 6.2831855f);
+    func_00454A30(axis);
+    func_00453D20(axis, angle, q);
+}
+
 void func_004546B0(float *p)
 {
     float len = Length3_00453FB0(p[0], p[1], p[2]);
@@ -157,9 +167,9 @@ void func_00454A30(float *);
 void func_00453D20(float *, float, float *);
 void func_004547C0(float *p)
 {
-    p[0] = p[0] * D_00477008;
-    p[1] = p[1] * D_00477008;
-    p[2] = p[2] * D_00477008;
-    p[3] = p[3] * D_00477008;
+    p[0] *= -1.0f;
+    p[1] *= -1.0f;
+    p[2] *= -1.0f;
+    p[3] *= -1.0f;
 }
 

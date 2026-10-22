@@ -27,3 +27,9 @@ extern "C" void func_0046E9BA(int);
 extern "C" int func_0046A8F1(CRTFILE *);
 extern "C" void func_0046B013(void *);
 extern "C" void func_0046AD1F(int);
+
+#pragma optimize("s", on)
+extern "C" void func_00471D6B(void)
+{
+    func_0046AD1F(2);
+}

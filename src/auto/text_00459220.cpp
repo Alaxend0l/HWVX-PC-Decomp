@@ -180,6 +180,14 @@ extern "C" void func_004594B0(void)
     D_00497140 = 0;
 }
 
+extern "C" void func_004594E0(int a)
+{
+    if (D_00693E08)
+        ((void (*)(int))D_00693E08)(a);
+    if (D_00693E04)
+        ((void (*)(void))D_00693E04)();
+}
+
 #pragma optimize("", on)
 extern "C" void func_00459590(char v)
 {

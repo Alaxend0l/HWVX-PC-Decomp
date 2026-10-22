@@ -177,9 +177,35 @@ extern "C" void func_00461C10(void)
     }
 }
 
+extern "C" void func_00461C30(int a, Vec4_004617F0 *v, float f)
+{
+    if (D_006D4D18 < 3) {
+        D_006D4CA0[D_006D4D18].unk_0x14 = a;
+        D_006D4CA0[D_006D4D18].unk_0x0 = *v;
+        D_006D4CA0[D_006D4D18].unk_0x10 = f;
+        D_006D4D18++;
+        D_006D4D16 = 1;
+    }
+}
+
+extern "C" void func_00461CB0(int a, Vec4_004617F0 *v)
+{
+    D_006D4CF8 = a;
+    if (v) {
+        D_006D4CE8 = *v;
+        func_00453470(&D_006D4CE8);
+    }
+    D_006D4D16 = 1;
+}
+
 extern "C" void func_00461D00(int v)
 {
     D_006D4D00 = v;
+}
+
+extern "C" void func_00461D10(int v)
+{
+    D_006D4CFC = v;
 }
 
 void func_00461D20(int id)

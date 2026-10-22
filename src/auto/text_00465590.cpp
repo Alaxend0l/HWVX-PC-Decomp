@@ -53,6 +53,11 @@ extern "C" void func_00466410(int id)
         D_006C9A78 = i;
 }
 
+extern "C" void func_00466440(int v)
+{
+    D_0049D7E0 = v;
+}
+
 extern "C" short func_004664C0(void)
 {
     return 0;

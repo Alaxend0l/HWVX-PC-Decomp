@@ -27,8 +27,8 @@ extern char D_0047C048[];
 extern char D_0047C044[];
 extern char D_0068E0A4;
 extern char D_0068DF04;
-int D_0068DEE0;
-int D_0068DEE4;
+extern int D_0068DEE0;
+extern int D_0068DEE4;
 extern int D_0068DEE8;
 extern unsigned int D_0068DEEC;
 extern unsigned int D_0068DEF0;
@@ -41,20 +41,18 @@ void func_004553B0(const char *key, const char *value)
     if (func_00475660(key, D_0047C1A4) == 0) {
         D_0068E0A4 = 1;
     } else if (func_00475660(key, D_0047C1A0) == 0) {
-        int *mode;
+        int width = func_0046B2EB(value);
+        int height = 0;
         char *p;
-        int height;
-        int width;
+        int *mode;
 
-        width = func_0046B2EB(value);
-        height = 0;
         if ((p = func_0046B1E0(value, D_0047C048)) != NULL || (p = func_0046B1E0(value, D_0047C044)) != NULL)
             height = func_0046B2EB(p + 1);
         for (mode = &D_0047BF60[0].height; mode < &D_0047BF60[5].height; mode += 3) {
-            if (mode[-1] == width && *mode == height) {
+            if (mode[-1] == width && mode[0] == height) {
                 D_0068DEE4 = height;
                 D_0068DEE0 = width;
-                break;
+                return;
             }
         }
     } else if (func_00475660(key, D_0047C19C) == 0) {

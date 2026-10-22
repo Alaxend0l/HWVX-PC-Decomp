@@ -78,6 +78,11 @@ extern "C" void func_0046AEAD(void)
     func_0046E959(13);
 }
 
+extern "C" void func_0046AEB6(void)
+{
+    func_0046E9BA(13);
+}
+
 extern "C" void func_0046AD41(void)
 {
 }

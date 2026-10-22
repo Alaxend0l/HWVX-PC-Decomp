@@ -24,3 +24,8 @@ extern "C" void func_00454C50(void *p);
 int func_0042A680(int, int);
 char func_00427760(void);
 void func_004480E0(int);
+
+int func_004480B0(void)
+{
+    return D_0048D970->unk_0xd0;
+}

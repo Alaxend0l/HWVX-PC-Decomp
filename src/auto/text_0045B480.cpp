@@ -9,7 +9,8 @@ struct Node_0045B {
 
 struct Chan_0045B {
     Node_0045B *head;
-    char unk_0x4[0xd];
+    Node_0045B *unk_0x4;
+    char unk_0x8[0x9];
     unsigned char unk_0x11;
     char unk_0x12[0x8];
     unsigned short unk_0x1a;
@@ -43,6 +44,18 @@ void func_0045E0C0(int);
 void func_0045DC20(Node_0045B *, int);
 unsigned short __fastcall func_0045E100(void *, Chan_0045B *);
 void func_0045DD10(Voice_0045B *);
+
+void func_0045B610(void)
+{
+    if (!D_0049A898 && !D_0047CA0C && func_00452FB0(D_0047C9D4, D_0047C984, 0x16c, 0, 0))
+        _CrtDbgBreak();
+    if (D_0049A898) {
+        func_0045B680(3);
+        func_0045E0C0(D_0049A898);
+        memset(D_006929C0, 0, sizeof(D_006929C0));
+        D_0049A898 = 0;
+    }
+}
 
 void func_0045B8F0(void)
 {

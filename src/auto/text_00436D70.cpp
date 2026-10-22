@@ -29,7 +29,7 @@ struct Event_00437 {
     Target_00437 *target;
 };
 
-extern unsigned char D_00681AB0;
+extern int D_00681AB0;
 extern Slot_00437 D_00681500[];
 extern char *D_0048D614;
 extern char *D_0048D608;

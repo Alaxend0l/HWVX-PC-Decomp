@@ -133,3 +133,9 @@ extern "C" OBox_00663180 *func_0041B630(void)
     return 0;
 }
 
+extern "C" void func_0041B670(OBox_00663180 *p)
+{
+    if (p)
+        p->unk_0x9d = 0;
+}
+

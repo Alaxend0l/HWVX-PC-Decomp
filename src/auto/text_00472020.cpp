@@ -151,6 +151,22 @@ extern "C" int func_0047272D(int c, int cmask, int kmask)
     return (D_006D58A1[c] & kmask) || (cmask ? (D_0047FA8A[c] & cmask) : 0);
 }
 
+extern "C" int func_0047290B(int codepage)
+{
+    D_0049D9F8 = 0;
+    if (codepage == -2) {
+        D_0049D9F8 = 1;
+        return GetOEMCP();
+    } else if (codepage == -3) {
+        D_0049D9F8 = 1;
+        return GetACP();
+    } else if (codepage == -4) {
+        D_0049D9F8 = 1;
+        return D_0049DB00;
+    }
+    return codepage;
+}
+
 extern "C" void func_00472988(void)
 {
     int i;

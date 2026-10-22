@@ -29,3 +29,13 @@ extern "C" BOOL func_00456040(HWND hwnd)
     return TRUE;
 }
 
+extern "C" int func_00456060(void)
+{
+    int ret = DialogBoxParamA(D_00496E20, MAKEINTRESOURCE(0x6c), NULL, func_00456090, 0);
+    if (ret < 0) {
+        GetLastError();
+        ret = 2;
+    }
+    return ret;
+}
+

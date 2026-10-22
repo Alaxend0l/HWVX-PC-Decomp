@@ -34,7 +34,29 @@ extern "C" void func_004535E0(Mtx_0041B410 *m, int b, Vec4_0041B410 *out);
 extern "C" void func_0041B1B0(int a, Mtx_0041B410 *m, Obj_0041B410 *obj);
 extern "C" void func_00452F70(const char *msg);
 
+extern "C" void func_0041B410(int a, Mtx_0041B410 *m, int b, Obj_0041B410 *obj)
+{
+    Mtx_0041B410 tmp;
+
+    tmp = *m;
+    func_004535E0(m, b, &tmp.row[3]);
+    func_0041B1B0(a, &tmp, obj);
+    obj->unk_0xa4 = m;
+    obj->unk_0xa8 = &m->row[1];
+    obj->unk_0xa0 = &m->row[2];
+}
+
 extern "C" float func_0041BC60(int a, int b, int c, float d)
 {
     return d;
 }
+
+extern "C" void func_0041B570(void)
+{
+    Slot_006614C0 *p = D_006614C0;
+    do {
+        p->unk_0x00 = 0;
+        p++;
+    } while (p < D_006633C0);
+}
+

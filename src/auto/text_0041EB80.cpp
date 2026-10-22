@@ -5,6 +5,15 @@ extern float D_0047700C;
 extern float D_00477000;
 extern float D_00692378;
 
+struct Flags_0041EB80 {
+    u32 bit0 : 1;
+    u32 bit1 : 1;
+    u32 bit2 : 1;
+    u32 bit3 : 1;
+    u32 bit4 : 1;
+    u32 rest : 27;
+};
+
 struct Entry_0041EC60 {
     u32 unk0;
     u16 unk4;
@@ -23,13 +32,14 @@ extern "C" void func_0041E850(char *p, int a, int b, int c);
 
 extern "C" void func_0041EB80(char *p)
 {
-    char *s = p + 0xd0;
+    char *s;
     float t;
     float a;
     float b;
 
+    s = p + 0xd0;
     if (*(float *)(p + 0x1bc) >= D_0047700C) {
-        *(float *)(s + 0x24) += *(float *)(p + 0xcc) * D_00692378;
+        *(float *)(s + 0x24) += D_00692378 * *(float *)(p + 0xcc);
         if (*(float *)(s + 0x24) > D_0047700C)
             *(float *)(s + 0x24) = 1.0f;
         t = *(float *)(s + 0x24) / (*(float *)(s + 0x44) + *(float *)(s + 0x24));
@@ -41,10 +51,28 @@ extern "C" void func_0041EB80(char *p)
             b = *(float *)(*(char **)(s + 0x38) + 0x18);
         func_004077E0(s + 0x18, 2, ((a - b) * t + b) * *(float *)(p + 0x1b8));
         if (*(int *)(s + 0x30) != 0)
-            *(u32 *)(p + 0x74) &= ~0x10;
+            *(int *)(p + 0x74) &= ~0x10;
         *(float *)(s + 0x24) = 0.0f;
         func_00408290(s, p);
     }
+}
+
+extern "C" int func_0041EC60(List_0041EC60 *list, u32 id)
+{
+    u32 n = list->count;
+    u32 i;
+
+    for (i = 0; i < n; i++) {
+        if (list->entries[i].unk4 == id)
+            return i;
+    }
+    return -1;
+}
+
+extern "C" void func_0041F9C0(char *p)
+{
+    *(int *)(p + 0x74) &= ~0x10;
+    func_0041E850(p, 10, 1, 0);
 }
 
 extern "C" void func_0041EC40(char *p)

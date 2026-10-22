@@ -36,6 +36,12 @@ extern Voice_004595D0 D_00692A00[64];
 extern char D_0047C5BC[];
 extern char D_0047C5F4[];
 extern char D_0047C618[];
+extern DWORD D_0047C6B4;
+extern char D_0047C6B8[];
+extern char D_0047C6CC[];
+extern char D_0047C6E0[];
+extern HANDLE D_00499218;
+extern int D_0049921C;
 
 int func_00452FB0(const char *, const char *, int, int, int);
 int func_0045CE10(Slot_004595D0 *);

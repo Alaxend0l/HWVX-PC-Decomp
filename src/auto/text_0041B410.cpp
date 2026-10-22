@@ -46,6 +46,27 @@ extern char D_0068121D[];
 extern char D_0047A5B8[];
 extern char D_0047A5C8[];
 
+struct Box_0041B680 {
+    Vec4_0041B410 min;
+    Vec4_0041B410 max;
+};
+
+struct Hit_0041B680 {
+    Vec4_0041B410 pos;
+    Vec4_0041B410 normal;
+    char unk_0x20[0x1c];
+    char side;
+};
+
+extern float D_00477000;
+extern float D_0047700C;
+extern float D_00477290;
+extern Vec4_0041B410 D_00692350;
+
+extern "C" float func_004534E0(Vec4_0041B410 *v);
+extern "C" float func_004534B0(Vec4_0041B410 *v);
+extern "C" float func_004532E0(float f);
+
 struct Timer_006630E0 {
     int unk_0x00;
     int unk_0x04;

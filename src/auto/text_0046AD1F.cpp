@@ -186,7 +186,7 @@ extern "C" void func_0046B013(void *pBlock)
         __finally {
             func_0046E9BA(9);
         }
-        if (pHeader)
+        if (pHeader != NULL)
             return;
     } else if (D_006D59C8 == 2) {
         void *pRegion;
@@ -201,10 +201,10 @@ extern "C" void func_0046B013(void *pBlock)
         __finally {
             func_0046E9BA(9);
         }
-        if (pHeader)
+        if (pHeader != NULL)
             return;
     }
-    HeapFree(D_006D59C4, 0, (void *)pBlock);
+    HeapFree(D_006D59C4, 0, pBlock);
 }
 
 extern "C" void *func_0046AEEB(unsigned int, int);

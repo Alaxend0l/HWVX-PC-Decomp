@@ -81,6 +81,40 @@ extern "C" int func_0046B2EB(const char* nptr)
     return (int)func_0046B260(nptr);
 }
 
+#pragma optimize("s", on)
+extern "C" unsigned long func_0046B2F6(void (*initialcode)(void*), unsigned stacksize, void* argument)
+{
+    _tiddata* ptd;
+    unsigned long thdl;
+    unsigned long errcode = 0L;
+
+    if ((ptd = (_tiddata*)func_0046BC4D(1, sizeof(_tiddata))) == NULL)
+        goto error_return;
+
+    func_0046C640(ptd);
+
+    ptd->_initaddr = (void*)initialcode;
+    ptd->_initarg = argument;
+
+    if ((ptd->_thandle = thdl = (unsigned long)CreateThread(NULL, stacksize, func_0046B36D, (LPVOID)ptd, CREATE_SUSPENDED, (LPDWORD)&(ptd->_tid))) == 0L) {
+        errcode = GetLastError();
+        goto error_return;
+    }
+
+    if (ResumeThread((HANDLE)thdl) == (DWORD)(-1L)) {
+        errcode = GetLastError();
+        goto error_return;
+    }
+
+    return thdl;
+
+error_return:
+    func_0046B013(ptd);
+    if (errcode != 0L)
+        func_00470413(errcode);
+    return (unsigned long)-1L;
+}
+
 extern "C" void func_0046B43D(void)
 {
 }

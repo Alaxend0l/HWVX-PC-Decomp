@@ -161,3 +161,12 @@ void func_0043D530(int a, int b)
     func_0043D280(a, b);
 }
 
+char func_0043D720(Part_0043CF50 *p)
+{
+    if (!(p->unk_0x74 & 8)) {
+        func_0043D550(p);
+        func_0043D620(p);
+    }
+    return 1;
+}
+

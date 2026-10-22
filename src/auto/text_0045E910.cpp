@@ -28,20 +28,55 @@ struct Item_0045E910 {
     char unk_0x0[0x2c];
 };
 
+struct Rec30_0045E910 {
+    char pad_0x0[0x20];
+    int unk_0x20;
+    char pad_0x24[0xc];
+};
+
+struct Rec84_0045E910 {
+    char pad_0x0[0x83];
+    char unk_0x83;
+};
+
+struct Rec20_0045E910 {
+    unsigned char unk_0x0;
+    char pad_0x1[0xb];
+    int unk_0xc;
+    char pad_0x10[0x10];
+};
+
 struct State_0045E910 {
-    char pad_0x0[0x24];
+    char pad_0x0[0x8];
+    int unk_0x8;
+    char pad_0xc[0x14];
+    unsigned int unk_0x20;
     int unk_0x24;
     char pad_0x28[0xc];
     unsigned int unk_0x34;
-    char pad_0x38[0x38ccc - 0x38];
+    int unk_0x38;
+    int unk_0x3c;
+    int unk_0x40;
+    int unk_0x44;
+    char pad_0x48[0x215c0 - 0x48];
+    Rec30_0045E910 unk_0x215c0[2000];
+    char pad_0x38cc0[0xc];
     Elem_0045E910 unk_0x38ccc[12000];
-    char pad_0x15dc4c[0x1abdc0 - 0x15dc4c];
+    char pad_0x15dc4c[0x1a8c40 - 0x15dc4c];
+    Rec84_0045E910 unk_0x1a8c40[32];
+    char pad_0x1a9cc0[0x1abdc0 - 0x1a9cc0];
     Light_0045E910 unk_0x1abdc0[2588];
     char pad_0x1c29b0[0x20];
     Item_0045E910 unk_0x1c29d0[256];
+    char pad_0x1c55d0[0x34ef74 - 0x1c55d0];
+    Rec20_0045E910 *unk_0x34ef74;
+    char pad_0x34ef78[0xc];
+    unsigned short unk_0x34ef84[0x200];
 };
 
 extern State_0045E910 *D_0049D7C8;
+extern int D_0049D7D4;
+extern "C" void func_00464DE0(int a);
 extern void *D_0049D7C4;
 extern char D_0047CC44[];
 
@@ -53,9 +88,9 @@ int func_0045E910(void)
     if (D_0049D7C8 == NULL)
         return 0;
     for (i = 0; i < sizeof(D_0049D7C8->unk_0x38ccc); i += sizeof(Elem_0045E910)) {
-        *(float *)(i + (char *)&D_0049D7C8->unk_0x38ccc[0].unk_0x0) = 1.0f;
-        *(float *)(i + (char *)&D_0049D7C8->unk_0x38ccc[0].unk_0x20) = 1.0f;
-        *(float *)(i + (char *)&D_0049D7C8->unk_0x38ccc[0].unk_0x40) = 1.0f;
+        ((Elem_0045E910 *)((char *)D_0049D7C8->unk_0x38ccc + i))->unk_0x0 = 1.0f;
+        ((Elem_0045E910 *)((char *)D_0049D7C8->unk_0x38ccc + i))->unk_0x20 = 1.0f;
+        ((Elem_0045E910 *)((char *)D_0049D7C8->unk_0x38ccc + i))->unk_0x40 = 1.0f;
     }
     return 1;
 }
@@ -66,15 +101,11 @@ void func_0045E970(void)
     func_00454C50(D_0049D7C4);
 }
 
-void func_0045EAD0(Vec4_0045E910 *a, Vec4_0045E910 *b, int *c)
+void func_0045EAD0(const Vec4_0045E910 &a, const Vec4_0045E910 &b, const int &c)
 {
-    Light_0045E910 *l;
-
-    l = &D_0049D7C8->unk_0x1abdc0[D_0049D7C8->unk_0x24];
-    l->unk_0x0 = *a;
-    l = &D_0049D7C8->unk_0x1abdc0[D_0049D7C8->unk_0x24];
-    l->unk_0x10 = *b;
-    D_0049D7C8->unk_0x1abdc0[D_0049D7C8->unk_0x24].unk_0x20 = *c;
+    D_0049D7C8->unk_0x1abdc0[D_0049D7C8->unk_0x24].unk_0x0 = a;
+    D_0049D7C8->unk_0x1abdc0[D_0049D7C8->unk_0x24].unk_0x10 = b;
+    D_0049D7C8->unk_0x1abdc0[D_0049D7C8->unk_0x24].unk_0x20 = c;
     D_0049D7C8->unk_0x24++;
     func_00469C20();
     D_0049D7C8->unk_0x24 = 0;

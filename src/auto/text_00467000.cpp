@@ -55,3 +55,16 @@ void func_004670B0(int mode)
     }
 }
 
+void func_00467130(int on)
+{
+    if (on == 1)
+        glEnable(GL_BLEND);
+    else
+        glDisable(GL_BLEND);
+}
+
+void func_004671C0(GLboolean flag)
+{
+    glDepthMask(flag);
+}
+

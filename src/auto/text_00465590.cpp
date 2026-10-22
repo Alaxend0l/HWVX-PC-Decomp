@@ -58,6 +58,22 @@ extern "C" void func_00466440(int v)
     D_0049D7E0 = v;
 }
 
+extern "C" void func_00466450(int *x, int *y, int *w, int *h)
+{
+    RECT r;
+
+    GetWindowRect((HWND)D_006C9A00[D_006C9A78].id, &r);
+    *x = r.left;
+    *y = r.top;
+    *w = r.right - r.left;
+    *h = r.bottom - r.top;
+}
+
+extern "C" void func_004664A0(void)
+{
+    SwapBuffers((HDC)D_006C9A00[D_006C9A78].unk_4[1]);
+}
+
 extern "C" short func_004664C0(void)
 {
     return 0;

@@ -67,6 +67,10 @@ extern "C" void (__stdcall *_imp__binkw32_10)(Bink_0048D64C *);
 
 extern "C" void *func_00454B80(unsigned size, int tag, const char *file);
 extern "C" void *func_0042D620(int type, unsigned index, void *a, void *b);
+extern "C" float func_004535B0(void *a, Elem_0043B460 *e);
+extern "C" Elem_0043B460 *func_0043BD20(int id);
+extern "C" int func_0043B700(void *a, Elem_0043B460 *e, float *best, unsigned char depth);
+extern "C" int func_0043B7B0(void *a, Elem_0043B460 *e, float *best, unsigned char depth);
 
 extern "C" char func_0043B2A0(void)
 {

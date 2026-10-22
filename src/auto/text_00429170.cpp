@@ -11,6 +11,13 @@ struct Guid_00429 {
     int unk_0x0[4];
 };
 
+struct Guid2_00429 {
+    unsigned long Data1;
+    unsigned short Data2;
+    unsigned short Data3;
+    unsigned char Data4[8];
+};
+
 #pragma pack(push, 2)
 struct Info_00429 {
     char unk_0x0[0x2];
@@ -117,7 +124,12 @@ extern "C" void func_00429F10(int a)
     Info_00429 *info = func_0042B040(a);
 
     if (dev != NULL && *(int *)(dev + 0x3c) != 0) {
-        info->unk_0x2 = *(Guid_00429 *)((int *)**(int **)*(int *)(dev + 0x40))[1];
+        int *g = (int *)((int *)**(int **)*(int *)(dev + 0x40))[1];
+        int *d = info->unk_0x2.unk_0x0;
+        d[0] = g[0];
+        d[1] = g[1];
+        d[2] = g[2];
+        d[3] = g[3];
         info->unk_0x12[0] = 10;
         info->unk_0x12[1] = 11;
         info->unk_0x12[2] = 9;

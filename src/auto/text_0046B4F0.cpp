@@ -26,6 +26,26 @@ extern "C" __declspec(dllimport) unsigned long __stdcall GetLastError(void);
 
 #pragma optimize("s", on)
 
+extern "C" int func_0046B60F(FILE *stream, long offset, int whence)
+{
+    if (!(stream->_flag & (_IOREAD | _IOWRT | _IORW)) ||
+        ((whence != SEEK_SET) && (whence != SEEK_CUR) && (whence != SEEK_END))) {
+        *func_00470486() = 0x16;
+        return -1;
+    }
+    stream->_flag &= ~_IOEOF;
+    if (whence == SEEK_CUR) {
+        offset += func_0046B6BE(stream);
+        whence = SEEK_SET;
+    }
+    func_0046D3CC(stream);
+    if (stream->_flag & _IORW)
+        stream->_flag &= ~(_IOWRT | _IOREAD);
+    else if ((stream->_flag & _IOREAD) && (stream->_flag & _IOMYBUF) && !(stream->_flag & 0x400))
+        stream->_bufsiz = 0x200;
+    return (func_004708B5(stream->_file, offset, whence) == -1L ? -1 : 0);
+}
+
 extern "C" _onexit_t func_0046B524(_onexit_t func)
 {
     _onexit_t retval;

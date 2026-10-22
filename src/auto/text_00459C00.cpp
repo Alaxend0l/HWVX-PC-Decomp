@@ -61,7 +61,7 @@ void func_0045DF10(int);
 void func_0045AF50(Chan_00499260 *);
 void func_0045DC20(Voice_00459C00 *, int);
 void func_0045DD10(Voice_00459C00 *);
-int func_0045DF60(unsigned char, unsigned char);
+int func_0045DF60(int, int);
 
 void func_00459BA0(void);
 char func_00459B10(char);
@@ -167,6 +167,23 @@ void func_0045A370(void)
         func_0045AF50(c);
         for (v = c->head; v != NULL; v = v->next)
             func_0045DC20(v, c->unk_0x14);
+    }
+}
+
+void func_0045A3B0(int vol)
+{
+    int i;
+    Chan_00499260 *c;
+    Voice_00459C00 *v;
+
+    D_00499250 = vol;
+    c = D_00499260;
+    for (i = 0; i < 16; i++, c++) {
+        c->unk_0x18 = func_00459CB0(func_0045DF60(c->unk_0x1d, c->unk_0x1c), vol);
+        for (v = c->head; v != NULL; v = v->next) {
+            v->unk_0x34 = c->unk_0x18;
+            func_0045DD10(v);
+        }
     }
 }
 

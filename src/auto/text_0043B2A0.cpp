@@ -40,6 +40,8 @@ struct List_0043B460 {
 
 extern Bink_0048D64C *D_0048D64C;
 extern BinkBuf_0048D650 *D_0048D650;
+extern int D_0048D660[];
+extern int D_0048D664[];
 extern char D_0048D760;
 extern List_0043B460 *D_0048D768;
 extern void **D_0048D76C;

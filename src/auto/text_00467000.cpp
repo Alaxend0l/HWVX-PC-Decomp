@@ -33,6 +33,57 @@ struct Tex_00467E80 {
     short unk_0x3e;
 };
 
+struct Mesh_00467240 {
+    char unk_0x0[0x10];
+    int unk_0x10;
+    char unk_0x14[0x1c - 0x14];
+    Elem_004675B0 *unk_0x1c;
+};
+
+struct Obj_00467240 {
+    int unk_0x0;
+    int unk_0x4;
+    Mesh_00467240 *unk_0x8;
+    int unk_0xc;
+};
+
+struct Shadow_00467240 {
+    Obj_00467240 *unk_0x0;
+    int unk_0x4;
+    unsigned short unk_0x8;
+    unsigned char unk_0xc;
+};
+
+struct World_00467240 {
+    char unk_0x0[0x16];
+    unsigned short unk_0x16;
+    char unk_0x18[0x101e0 - 0x18];
+    Shadow_00467240 unk_0x101e0[1];
+};
+
+struct Mode_006C9A0C {
+    short unk_0x00;
+    short unk_0x02;
+    char unk_0x04[0x18 - 0x04];
+};
+
+extern char D_006C9B89;
+extern World_00467240 *D_0049D7C4;
+extern Mode_006C9A0C D_006C9A0C[];
+extern int D_006C9A78;
+extern float D_00477034;
+
+void *func_0045FCB0(int);
+void func_00460820(void *);
+void func_00453750(void *, float *, float *);
+void func_00467650(int, Elem_004675B0 *, int, float, float, float);
+void func_00460E60(void);
+void func_00460DC0(void);
+void func_00460F20(void);
+void func_00467150(int);
+void func_004671A0(int);
+void func_00467E20(unsigned short);
+
 extern int D_006D4D0C;
 extern int D_006D3E30;
 extern Tex_00467E80 *D_006D3D44;

@@ -4,3 +4,9 @@
 #include <objbase.h>
 
 extern "C" int func_0046B2F6(int, int, int);
+
+extern "C" void func_00455BD0(void)
+{
+    CoUninitialize();
+    ShowCursor(TRUE);
+}

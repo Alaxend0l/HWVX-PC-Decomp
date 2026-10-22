@@ -136,6 +136,69 @@ char func_004450F0(int id, char *name)
     return 1;
 }
 
+char func_00445180(int id, char *name)
+{
+    int p;
+    int q;
+
+    p = func_00428C10(func_004289E0(name, 1, id), 1, 1);
+    if (p == 0)
+        return 0;
+    q = func_004216C0(p, id);
+    if (q == 0)
+        return 0;
+    D_0053B0E0[D_0048D7FC].name = name;
+    D_0053B0E0[D_0048D7FC].id = id;
+    D_0053B0E0[D_0048D7FC].unk_0x08 = func_0042E250(q, 0, func_00445340);
+    D_0048D7FC++;
+    return 1;
+}
+
+void func_004452E0(int h)
+{
+    unsigned int i;
+
+    for (i = 0; i < D_0048D7FC; i++) {
+        if (D_0053B0E0[i].unk_0x08 == h) {
+            D_0048D7FC--;
+            for (; i < D_0048D7FC; i++)
+                D_0053B0E0[i] = D_0053B0E0[i + 1];
+        }
+    }
+}
+
+void func_00445340(Msg_00445340 *m)
+{
+    switch (m->type) {
+    case 0:
+        func_0042E130(m->unk_0x00, 0);
+        break;
+    case 2:
+        if (func_00429EA0() == 0) {
+            func_0042C600(m);
+            func_0042E130(m->unk_0x00, func_0042C600);
+            break;
+        }
+        if (func_00429EA0() == 1) {
+            func_004453E0(m);
+            func_0042E130(m->unk_0x00, func_004453E0);
+            break;
+        }
+        func_0042E130(m->unk_0x00, 0);
+        break;
+    case 1:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+        break;
+    default:
+        func_0042E130(m->unk_0x00, 0);
+        break;
+    }
+}
+
 void func_00445160(Key_00445160 *k)
 {
     func_004450F0(k->id, k->name);

@@ -96,6 +96,32 @@ void func_00466C50(unsigned char on)
     D_006C99E8 = on;
 }
 
+void func_00466CA0(void)
+{
+    float color[4];
+
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+    func_00467000(1);
+    func_004670B0(2);
+    func_00467130(0);
+    func_00467150(1);
+    glBlendFunc(GL_SRC_ALPHA, GL_ZERO);
+    func_00466C50(1);
+    func_00465CF0();
+    func_00466590();
+    D_006C99EC = 0;
+    D_006C9AC4 = 0;
+    D_006D4D1B = 0;
+    D_006C9ABC = -1;
+    D_006C9A70 = -1;
+    color[0] = 1.0f;
+    color[1] = 1.0f;
+    color[2] = 1.0f;
+    color[3] = 1.0f;
+    glEnable(GL_LIGHT0);
+    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, color);
+}
+
 void func_00466FD0(int mode)
 {
     switch (mode) {

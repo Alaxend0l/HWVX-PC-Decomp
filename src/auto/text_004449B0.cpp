@@ -117,7 +117,7 @@ void func_00444E00(unsigned char id)
     D_0048D974 = 1;
 }
 
-void func_00444F30(void)
+void func_00444F30(Msg_00444EE0 *m)
 {
     D_0053B1E8 = func_00444F50;
     D_0053B1EC = 0;

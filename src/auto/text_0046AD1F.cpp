@@ -92,6 +92,13 @@ extern "C" void func_0046AEB6(void)
     func_0046E9BA(13);
 }
 
+extern "C" void *func_0046AEEB(unsigned int, int);
+extern "C" int D_0049D9E8;
+extern "C" void func_0046AF7E(void)
+{
+    func_0046E9BA(9);
+}
+
 extern "C" void func_0046AD41(void)
 {
 }

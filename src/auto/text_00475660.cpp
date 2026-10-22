@@ -16,6 +16,7 @@ extern "C" unsigned char D_006D58A1[];
 
 #pragma optimize("s", on)
 
+#pragma optimize("y", off)
 extern "C" unsigned char *func_00475CF4(const unsigned char *string, unsigned int c)
 {
     unsigned short cc;

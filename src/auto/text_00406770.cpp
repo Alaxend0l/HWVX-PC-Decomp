@@ -7,6 +7,11 @@ struct List_00406770 {
     int *items;
 };
 
+struct State_00407160 {
+    char *p;
+    char state;
+};
+
 struct Driver_00406770 {
     char unk_0x0;
     char unk_0x1;

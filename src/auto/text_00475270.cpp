@@ -213,4 +213,26 @@ extern "C" int func_004755A7(const char *a, const char *b, int n)
         return 0x7fffffff;
     return r - 2;
 }
-#pragma optimize("", on)
+#pragma optimize("y", on)
+
+extern "C" wchar_t **D_0049D83C_w;
+extern "C" void *func_0046AED9(unsigned int);
+extern "C" int func_00475AAE(char *, int);
+
+extern "C" int func_004755E6(void)
+{
+    wchar_t **wenvp = D_0049D83C_w;
+    char *envp;
+    int size;
+    while (*wenvp) {
+        if ((size = WideCharToMultiByte(1, 0, *wenvp, -1, NULL, 0, NULL, NULL)) == 0)
+            return -1;
+        if ((envp = (char *)func_0046AED9(size)) == NULL)
+            return -1;
+        if (WideCharToMultiByte(1, 0, *wenvp, -1, envp, size, NULL, NULL) == 0)
+            return -1;
+        func_00475AAE(envp, 0);
+        wenvp++;
+    }
+    return 0;
+}

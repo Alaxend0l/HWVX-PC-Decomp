@@ -96,18 +96,26 @@ int func_00401140(Task_00401090 *task)
 char func_004018C0(Group_004018C0 *g)
 {
     unsigned int i;
-    for (i = 0; i < g->count; i++)
-        g->items[i][0x50] = g->value;
+    for (i = 0; i < g->count; i++) {
+        Item_004018C0 *item = (Item_004018C0 *)g->items[i];
+        item->unk_0x50 = g->value;
+    }
     return 1;
 }
 
 void func_00401F40(void)
 {
-    D_00480820 = 0;
     D_0068DD20 = -1;
+    D_00480820 = 0;
     D_00480824 = 0;
     if (func_0042A680(0x12d, 0) >= 3)
         D_0068DD24 = 8000;
+}
+
+void func_00401F80(char *obj)
+{
+    *(int *)(obj + 0xc8) = 1;
+    obj[0xcc] = 0;
 }
 
 void func_00401FA0(int a, int b)

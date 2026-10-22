@@ -61,9 +61,8 @@ void func_0044E840(int idx)
 
 bool func_0044EB30(Obj_0044EB30 *p, unsigned int lo, unsigned int hi)
 {
-    unsigned int v = p->unk_0xb0;
-    if (v >= lo && v < hi)
-        return true;
-    return false;
+    if (p->unk_0xb0 < lo || p->unk_0xb0 >= hi)
+        return false;
+    return true;
 }
 

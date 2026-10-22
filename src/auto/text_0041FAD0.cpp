@@ -101,13 +101,35 @@ extern "C" char func_004202E0(int a, Obj_0041FAD0 *b)
     return 0;
 }
 
+extern "C" char func_00420340(Obj_0041FAD0 *o, unsigned lo, unsigned hi)
+{
+    unsigned v = *(unsigned *)((char *)o + 0xb8);
+    if (v >= lo && v < hi)
+        return 1;
+    return 0;
+}
+
 extern "C" int func_00420600(Obj_0041FAD0 *o)
 {
     return o->unk_0x08;
 }
 
+extern "C" int func_00420610(Mesh_0041FAD0 *m)
+{
+    return *(int *)((char *)m + 0x14);
+}
+
 extern "C" void func_004206B0(char c)
 {
     D_0047A658 = c;
+}
+
+extern "C" void func_004206C0(void)
+{
+    Slot_00489A9C *p = D_00489A9C;
+    do {
+        p->unk_0x00 = 0;
+        p++;
+    } while (p < D_0048D19C);
 }
 

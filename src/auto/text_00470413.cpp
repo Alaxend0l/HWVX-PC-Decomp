@@ -43,3 +43,9 @@ extern "C" int *func_00470486(void)
 extern "C" void func_0047062C(void)
 {
 }
+
+extern "C" void func_00470623(void)
+{
+    func_0046E9BA(9);
+}
+

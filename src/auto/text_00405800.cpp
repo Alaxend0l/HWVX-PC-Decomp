@@ -29,18 +29,18 @@ extern "C" void func_00401F80(char *p);
 extern "C" void func_00401FA0(char *p, int *a);
 extern "C" void func_00406770(void);
 extern "C" void func_004061D0(char *p);
-extern "C" void func_004061D0(char *p)
+extern "C" void func_004061D0(char *q)
 {
-    func_00401F80(p);
-    *(int *)(p + 0xe4) = 0;
-    *(char *)(p + 0xec) = 0;
-    *(int *)(p + 0xf4) = 0;
-    *(int *)(p + 0xf0) = 0;
-    *(char *)(p + 0xcd) = 0;
-    *(int *)(p + 0xc8) = 0;
-    *(int *)(p + 0xd8) = 0;
-    *(int *)(p + 0xdc) = -1;
-    *(int *)(p + 0xe0) = 0;
+    func_00401F80(q);
+    ((Obj_00405800 *)q)->unk_0xe4 = 0;
+    ((Obj_00405800 *)q)->unk_0xec = 0;
+    ((Obj_00405800 *)q)->unk_0xf4 = 0;
+    ((Obj_00405800 *)q)->unk_0xf0 = 0;
+    ((Obj_00405800 *)q)->unk_0xcd = 0;
+    ((Obj_00405800 *)q)->unk_0xc8 = 0;
+    ((Obj_00405800 *)q)->unk_0xd8 = 0;
+    ((Obj_00405800 *)q)->unk_0xdc = -1;
+    ((Obj_00405800 *)q)->unk_0xe0 = 0;
 }
 
 extern "C" float func_004065F0(float *a, float *b)

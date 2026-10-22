@@ -63,3 +63,15 @@ extern "C" int func_00455F70(void)
     return ret;
 }
 
+extern "C" BOOL CALLBACK func_00455FA0(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
+{
+    switch (msg) {
+    case WM_INITDIALOG:
+        return func_00456040(hwnd, wParam, lParam);
+    case WM_COMMAND:
+        func_00456000(hwnd, LOWORD(wParam), (HWND)lParam, HIWORD(wParam));
+        break;
+    }
+    return FALSE;
+}
+

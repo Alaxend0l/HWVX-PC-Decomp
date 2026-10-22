@@ -53,6 +53,41 @@ void func_004420E0(void)
     D_0053B244->npairs = 0;
 }
 
+void func_00442200(int id)
+{
+    unsigned int i;
+
+    if (D_0053B244 == NULL)
+        return;
+    for (i = 0; i < D_0053B244->count; i++) {
+        if (D_0053B244->items[i]->id == id) {
+            D_0053B244->items[i]->refs--;
+            if (D_0053B244->items[i]->refs == 0) {
+                D_0053B244->count--;
+                D_0053B244->items[i] = D_0053B244->items[D_0053B244->count];
+            }
+            return;
+        }
+    }
+}
+
+void func_00442270(void *key, unsigned int idx)
+{
+    unsigned int i;
+    unsigned int n;
+
+    if (key == NULL || idx >= D_0053B244->count)
+        return;
+    n = D_0053B244->npairs;
+    for (i = 0; i < n; i++) {
+        if (D_0053B244->pairs[i].key == key)
+            return;
+    }
+    D_0053B244->npairs = n + 1;
+    D_0053B244->pairs[n].key = key;
+    D_0053B244->pairs[n].item = D_0053B244->items[idx];
+}
+
 void func_00442000(Obj_00441880 *o, Dir_00441880 *d, float f, int n)
 {
     float s;

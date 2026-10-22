@@ -38,7 +38,8 @@ struct Entry_0048955C {
     char unk_0x28[0x2c - 0x28];
     int unk_0x2c;
     int unk_0x30;
-    char unk_0x34[0x49 - 0x34];
+    char unk_0x34[0x48 - 0x34];
+    char unk_0x48;
     char unk_0x49;
     char unk_0x4a[2];
 };
@@ -114,12 +115,25 @@ extern "C" void func_00409DD0(int index)
 
 extern "C" int func_00409E20(int index)
 {
-    return D_0048955C[index].unk_0x2c != -1;
+    return D_0048955C[index].unk_0x2c != -1 ? 1 : 0;
 }
 
 extern "C" char func_00409E40(int index)
 {
     return (char)D_0048955C[index].unk_0x30;
+}
+
+extern "C" int func_00409E60(int a)
+{
+    int h = 0;
+    if (a) {
+        h = func_00459880(a, 5);
+        if (h) {
+            func_00459980(h, 1);
+            return h;
+        }
+    }
+    return 0;
 }
 
 extern "C" void func_00409F50(void)

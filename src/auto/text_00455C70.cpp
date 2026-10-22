@@ -52,3 +52,14 @@ extern "C" char func_00455E90(int a)
 {
     return 1;
 }
+
+extern "C" int func_00455F70(void)
+{
+    int ret = DialogBoxParamA(D_00496E20, MAKEINTRESOURCE(0x67), NULL, func_00455FA0, 0);
+    if (ret < 0) {
+        GetLastError();
+        ret = 2;
+    }
+    return ret;
+}
+

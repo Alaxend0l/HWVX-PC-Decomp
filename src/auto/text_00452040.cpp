@@ -60,7 +60,8 @@ struct Track_00452040 {
     char unk_0x24[0x28 - 0x24];
     int unk_0x28;
     int unk_0x2c;
-    char unk_0x30[0x38 - 0x30];
+    unsigned int unk_0x30;
+    Obj_00452040 *unk_0x34;
     int unk_0x38;
     int unk_0x3c;
     int unk_0x40;

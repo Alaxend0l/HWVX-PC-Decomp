@@ -10,9 +10,9 @@ extern "C" int func_00474581(const char *string, int cnt)
     while (n-- && *cp)
         cp++;
 
-    if (*cp)
-        return cnt;
-    return cp - string;
+    if (!*cp)
+        return cp - string;
+    return cnt;
 }
 extern "C" int func_004745AC(unsigned int x, unsigned int y, unsigned int *sum)
 {

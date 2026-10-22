@@ -42,6 +42,7 @@ int func_00459360(int, int *);
 int func_0042B980(int *, int);
 void func_0042B050(int *);
 char func_0042B800(int, int *, int *);
+void func_0042B150(void);
 
 static inline int func_0042AFB0_check(char *p, int idx)
 {
@@ -54,6 +55,36 @@ static inline int func_0042AFB0_check(char *p, int idx)
 int func_0042AFA0(void)
 {
     return func_00440130();
+}
+
+char func_0042B800(int a, int *o, int *buf)
+{
+    char ok = 0;
+    int h = func_004584F0(a, o[3], 0, 0);
+
+    if (h == -1)
+        return 0;
+    func_004585D0(h, o[6] * 8 + 0x194, buf);
+    if (buf[0] == 4 && buf[1] == o[5] && buf[2] == func_00459360(o[5], buf + 3))
+        ok = 1;
+    func_004585A0(h);
+    return ok;
+}
+
+char func_0042B880(int a, int *o, int *buf)
+{
+    char ok = 0;
+    int h = func_004584F0(a, o[3], 5, 0);
+
+    if (h != -1) {
+        buf[0] = 4;
+        buf[1] = o[5];
+        buf[2] = func_00459360(o[5], buf + 3);
+        if (func_00458610(h, o[6] * 8 + 0x194, buf))
+            ok = 1;
+        func_004585A0(h);
+    }
+    return ok;
 }
 
 void func_0042B150(void)

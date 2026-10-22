@@ -131,3 +131,29 @@ extern "C" void func_0046E401(unsigned char *ver)
         ver[1] = base[0x1b];
     }
 }
+
+extern "C" void *(__stdcall *_imp__HeapCreate)(unsigned long options, unsigned long initial, unsigned long maximum);
+extern "C" int (__stdcall *_imp__HeapDestroy)(void *heap);
+extern void *D_006D59C4;
+extern int D_006D59C8;
+extern "C" int func_0046E42E(void);
+extern "C" int func_0046F0C8(int threshold);
+extern "C" int func_0046FC0F(void);
+extern "C" int func_0046E576(int mtflag)
+{
+    if ((D_006D59C4 = (*_imp__HeapCreate)(mtflag == 0, 0x1000, 0)) == NULL)
+        return 0;
+    if ((D_006D59C8 = func_0046E42E()) == 3) {
+        if (!func_0046F0C8(0x3f8)) {
+            (*_imp__HeapDestroy)(D_006D59C4);
+            return 0;
+        }
+    } else if (D_006D59C8 == 2) {
+        if (func_0046FC0F() == 0) {
+            (*_imp__HeapDestroy)(D_006D59C4);
+            return 0;
+        }
+    }
+    return 1;
+}
+

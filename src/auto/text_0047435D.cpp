@@ -28,14 +28,12 @@ extern "C" int func_004745AC(unsigned int x, unsigned int y, unsigned int *sum)
 
 extern "C" void func_0047462B(unsigned int *p)
 {
-    unsigned int c0 = p[0] & 0x80000000;
-    unsigned int c1 = p[1] & 0x80000000;
+    unsigned int c0 = p[0] >> 31;
+    unsigned int c1 = p[1] >> 31;
 
     p[0] <<= 1;
-    p[1] <<= 1;
-    p[1] |= c0 ? 1 : 0;
-    p[2] <<= 1;
-    p[2] |= c1 ? 1 : 0;
+    p[1] = (p[1] << 1) | c0;
+    p[2] = (p[2] << 1) | c1;
 }
 
 extern "C" void func_004745CD(unsigned int *x, unsigned int *y)

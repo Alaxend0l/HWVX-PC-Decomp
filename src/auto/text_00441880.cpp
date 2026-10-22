@@ -57,16 +57,16 @@ void func_00442200(int id)
 {
     unsigned int i;
 
-    if (D_0053B244 == NULL)
-        return;
-    for (i = 0; i < D_0053B244->count; i++) {
-        if (D_0053B244->items[i]->id == id) {
-            D_0053B244->items[i]->refs--;
-            if (D_0053B244->items[i]->refs == 0) {
-                D_0053B244->count--;
-                D_0053B244->items[i] = D_0053B244->items[D_0053B244->count];
+    if (D_0053B244 != NULL) {
+        for (i = 0; i < D_0053B244->count; i++) {
+            if (D_0053B244->items[i]->id == id) {
+                D_0053B244->items[i]->refs -= 1;
+                if (D_0053B244->items[i]->refs == 0) {
+                    D_0053B244->count -= 1;
+                    D_0053B244->items[i] = D_0053B244->items[D_0053B244->count];
+                }
+                break;
             }
-            return;
         }
     }
 }

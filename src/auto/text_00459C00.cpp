@@ -80,6 +80,13 @@ void func_00459D40(int a)
     D_0069299C();
 }
 
+void func_00459D70(int a)
+{
+    D_00499228 = a;
+    D_00692998 = (unsigned int)(D_0049922C * a) >> 15;
+    D_0069299C();
+}
+
 char func_00459EF0(void)
 {
     if (D_00499254)

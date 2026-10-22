@@ -27,6 +27,24 @@ extern int D_006C9A70;
 extern int D_006C9A74;
 extern int D_006C99F0;
 extern int D_006C99E8;
+extern int *D_0049D7C8;
+extern int D_006C9AC4;
+extern int D_006D3D60;
+extern int D_006D3D64;
+extern int D_006C9A6C;
+extern float D_00477000;
+
+struct Blk_00467210 {
+    int unk[64];
+};
+
+struct Elem_004675B0 {
+    float unk_0x0[4];
+    float unk_0x10[3];
+    int unk_0x1c;
+};
+
+float func_00453360(void *, void *);
 
 void func_00467000(int mode)
 {
@@ -120,11 +138,11 @@ void func_004671C0(GLboolean flag)
 
 void func_004671D0(int on)
 {
-    (*_imp__glFogi)(GL_FOG_MODE, GL_LINEAR);
+    glFogi(GL_FOG_MODE, GL_LINEAR);
     if (on == 1)
-        (*_imp__glEnable)(GL_FOG);
+        glEnable(GL_FOG);
     else
-        (*_imp__glDisable)(GL_FOG);
+        glDisable(GL_FOG);
     D_006C99E8 = on;
 }
 

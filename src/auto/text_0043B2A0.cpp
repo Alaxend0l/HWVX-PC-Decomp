@@ -146,8 +146,7 @@ extern "C" int func_0043B7B0(void *a, Elem_0043B460 *e, float *best, unsigned ch
 
 extern "C" void func_0043B960(Node_0043B8B0 *n, int tag)
 {
-    unsigned char old = n->unk_0x00[0x37];
-    n->unk_0x00[0x37] = old & ~tag;
+    n->unk_0x37 &= ~tag;
 }
 
 extern "C" void func_0043B900(Node_0043B8B0 *n)

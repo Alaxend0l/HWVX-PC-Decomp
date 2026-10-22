@@ -79,6 +79,12 @@ void func_00444E00(unsigned char id)
     D_0048D974 = 1;
 }
 
+void func_00444F30(void)
+{
+    D_0053B1E8 = func_00444F50;
+    D_0053B1EC = 0;
+}
+
 char func_00444E30(void)
 {
     func_0044F200(1);

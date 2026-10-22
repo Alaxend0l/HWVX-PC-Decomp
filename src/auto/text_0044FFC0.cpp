@@ -187,6 +187,12 @@ extern "C" char func_00450780(Cmd_00450780 *cmd)
     return 1;
 }
 
+extern "C" void func_004507D0(void)
+{
+    D_00496DD0 = 0;
+    D_00496DCC = 0;
+}
+
 extern "C" int D_00496DE8;
 int func_00450A50(void)
 {

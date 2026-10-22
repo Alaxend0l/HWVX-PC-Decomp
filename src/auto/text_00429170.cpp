@@ -6,6 +6,18 @@ extern char D_0047A778[];
 extern int D_0048D4C4;
 extern char D_0048D1C5;
 extern unsigned int D_0048D358;
+struct Guid_00429 {
+    int unk_0x0[4];
+};
+
+struct Info_00429 {
+    char unk_0x0[0x2];
+    Guid_00429 unk_0x2;
+    unsigned char unk_0x12[13];
+};
+
+extern "C" Info_00429 *func_0042B040(int a);
+
 extern int D_0065E2A0[4];
 extern int D_0065E2B0[4];
 extern int D_0065E2C0;

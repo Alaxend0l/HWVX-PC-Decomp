@@ -136,3 +136,12 @@ extern "C" void func_004206C0(void)
     } while (p < D_0048D19C);
 }
 
+void func_004206E0(void)
+{
+    if (D_0047A65C > 0) {
+        func_004585A0(D_0047A65C);
+        D_0047A65C = -1;
+        D_0047A660 = 0xb;
+    }
+}
+

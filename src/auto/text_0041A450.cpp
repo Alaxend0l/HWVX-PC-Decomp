@@ -30,3 +30,21 @@ char *func_00419420(int, int, int);
 char func_0041A350(char *, float *);
 int func_0041A550(float *, float *, int, int, int, int, float *, float *);
 char func_0041A4D0(float *, float *);
+
+char func_0041A450(int a, Obj_0041A450 *obj, int c)
+{
+    unsigned int i;
+    Cell_0041A450 *cell;
+
+    if (obj->unk_0x3c == 0 && obj->count == 0)
+        return 0;
+    for (i = 0; i < obj->count; i++) {
+        cell = &(*D_0049DBA0)->cells[obj->ids[i]];
+        if (cell->unk_0x20 != D_0049DBA4) {
+            cell->unk_0x20 = D_0049DBA4;
+            if (func_0041DBE0(a, cell, c))
+                return 1;
+        }
+    }
+    return 0;
+}

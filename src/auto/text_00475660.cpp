@@ -98,3 +98,86 @@ extern "C" char *func_00475D8B(const char *str)
         return func_004718C0(copy, str);
     return NULL;
 }
+
+#pragma optimize("y", off)
+extern "C" int func_00475AAE(const char *option, const int primary)
+{
+    int ix;
+    int remove;
+    char **env;
+    char *name, *value;
+    const char *equal;
+
+    if (option == NULL || (equal = (const char *)func_00475CF4((const unsigned char *)option, '=')) == NULL
+        || option == equal)
+        return -1;
+
+    remove = (*(equal + 1) == '\0');
+
+    if (D_0049D834 == D_0049D838)
+        D_0049D834 = func_00475C8D(D_0049D834);
+
+    if (D_0049D834 == NULL) {
+        if (primary && D_0049D83C) {
+            if (func_004755E6() != 0)
+                return -1;
+        }
+        else {
+            if (remove)
+                return 0;
+            else {
+                if ((D_0049D834 = (char **)func_0046AED9(sizeof(char *))) == NULL)
+                    return -1;
+                *D_0049D834 = NULL;
+                if (D_0049D83C == NULL) {
+                    if ((D_0049D83C = (wchar_t **)func_0046AED9(sizeof(wchar_t *))) == NULL)
+                        return -1;
+                    *D_0049D83C = NULL;
+                }
+            }
+        }
+    }
+
+    env = D_0049D834;
+    ix = func_00475C35(option, equal - option);
+
+    if (ix >= 0 && *env != NULL) {
+        if (remove) {
+            func_0046B013(env[ix]);
+            for (; env[ix] != NULL; ++ix)
+                env[ix] = env[ix + 1];
+            if ((env = (char **)func_00470498(env, ix * sizeof(char *))) != NULL)
+                D_0049D834 = env;
+        }
+        else {
+            env[ix] = (char *)option;
+        }
+    }
+    else {
+        if (!remove) {
+            if (ix < 0)
+                ix = -ix;
+            if ((env = (char **)func_00470498(env, sizeof(char *) * (ix + 2))) == NULL)
+                return -1;
+            env[ix] = (char *)option;
+            env[ix + 1] = NULL;
+            D_0049D834 = env;
+        }
+        else
+            return 0;
+    }
+
+    if (primary) {
+        if ((name = (char *)func_0046AED9(func_00471CF0(option) + 2)) != NULL) {
+            func_004718C0(name, option);
+            value = name + (equal - option);
+            *value++ = '\0';
+            SetEnvironmentVariableA(name, remove ? NULL : value);
+            func_0046B013(name);
+        }
+    }
+    return 0;
+}
+#pragma optimize("", on)
+#pragma optimize("s", on)
+

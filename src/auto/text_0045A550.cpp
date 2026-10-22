@@ -7,7 +7,9 @@ struct Sound_0045A550 {
 };
 
 struct Voice_0045A550 {
-    char unk_0x00[4];
+    char unk_0x00[2];
+    unsigned char chan;
+    char unk_0x03;
     Voice_0045A550 *next;
     char unk_0x08[0x10 - 0x08];
     Sound_0045A550 *sound;
@@ -56,25 +58,14 @@ static inline void StartVoice_0045A550(Voice_0045A550 *v, unsigned char state)
 
 unsigned int func_0045AF20(unsigned int rate)
 {
-    return (unsigned short)rate ? 0xffffffff / ((unsigned short)rate * 1000) : 0xffffffff;
+    if ((unsigned short)rate != 0)
+        return 0xffffffff / ((unsigned short)rate * 1000U);
+    return 0xffffffff;
 }
 
 void func_0045AF90(Voice_0045A550 *v)
 {
-    int step;
-    unsigned char state = 4;
-    if (v->unk_0x16 != state) {
-        v->unk_0x16 = state;
-        v->unk_0x17 = 0;
-        step = func_0045AF20(v->sound->unk_0x1e);
-        if (step == -1) {
-            v->unk_0x1c = 0x10000;
-            step = 0;
-        }
-        v->unk_0x18 = step;
-        v->unk_0x14 -= 15;
-        func_00401090(v);
-    }
+    StartVoice_0045A550(v, 4);
 }
 
 void func_0045AF50(Format_0045A550 *fmt)

@@ -13,6 +13,7 @@ extern "C" void func_0044A990(char *a);
 extern "C" void func_0044A910(char *a);
 extern "C" void func_0043ED30(char *a);
 extern "C" char *func_004483A0(char *p);
+extern "C" void func_004543B0(float *a, float b, float *c, float *d);
 
 extern float D_0047700C;
 extern "C" void func_00448330(char *p)
@@ -60,6 +61,26 @@ extern "C" int func_00448400(char *p)
         return *(int *)(d + 0x44);
     }
     return 0;
+}
+
+extern "C" void func_004484A0(float *a, float *b, float *c)
+{
+    if (c[0] < a[0])
+        c[0] = a[0];
+    if (c[1] < a[1])
+        c[1] = a[1];
+    if (c[2] < a[2])
+        c[2] = a[2];
+    if (c[3] < a[3])
+        c[3] = a[3];
+    if (c[0] > b[0])
+        c[0] = b[0];
+    if (c[1] > b[1])
+        c[1] = b[1];
+    if (c[2] > b[2])
+        c[2] = b[2];
+    if (c[3] > b[3])
+        c[3] = b[3];
 }
 
 float func_00448B60(void)

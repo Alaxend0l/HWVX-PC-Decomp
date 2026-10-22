@@ -81,6 +81,46 @@ extern "C" void func_0046FD53(Region_0046F464 *r)
     }
 }
 
+extern "C" void func_0046FDA9(int n)
+{
+    Region_0046F464 *r = D_0047DA5C;
+    Region_0046F464 *cur;
+    Entry_0046F464 *e;
+    int off;
+    int freed;
+    int i;
+
+    do {
+        if (r->unk_0x10 != (char *)-1) {
+            freed = 0;
+            e = &r->unk_0x18[0x3ff];
+            off = 0x3ff000;
+            do {
+                if (e->unk_0x0 == 0xf0 && VirtualFree(r->unk_0x10 + off, 0x1000, MEM_DECOMMIT)) {
+                    e->unk_0x0 = -1;
+                    D_0049D9F0--;
+                    if (r->unk_0xc == NULL || r->unk_0xc > e)
+                        r->unk_0xc = e;
+                    freed++;
+                    if (--n == 0)
+                        break;
+                }
+                off -= 0x1000;
+                e--;
+            } while (off >= 0);
+            cur = r;
+            r = r->unk_0x4;
+            if (freed && cur->unk_0x18[0].unk_0x0 == -1) {
+                for (i = 1; i < 0x400; i++)
+                    if (cur->unk_0x18[i].unk_0x0 != -1)
+                        break;
+                if (i == 0x400)
+                    func_0046FD53(cur);
+            }
+        }
+    } while (r != D_0047DA5C && n > 0);
+}
+
 extern "C" void func_0046FEC2(Region_0046F464 *r, char *page, unsigned char *hdr)
 {
     Entry_0046F464 *e = &r->unk_0x18[(page - r->unk_0x10) >> 12];

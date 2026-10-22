@@ -21,7 +21,7 @@ extern "C" int func_004745AC(unsigned int x, unsigned int y, unsigned int *sum)
 
     r = x + y;
     if (r < x || r < y)
-        carry++;
+        carry = 1;
     *sum = r;
     return carry;
 }

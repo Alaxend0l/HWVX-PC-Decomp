@@ -1,5 +1,6 @@
 /* 16 functions from 0x004453E0 to 0x004460B0, found by Ghidra. */
 #include "common.h"
+#include <string.h>
 
 extern float D_0053B158;
 extern float D_0053B1E0;

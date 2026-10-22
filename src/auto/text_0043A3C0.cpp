@@ -74,10 +74,65 @@ void func_0043A760(Obj_0043A3C0 *obj)
     obj->unk_0x94->unk_0x32 = 0;
 }
 
+void func_0043AD10(void)
+{
+    char *p;
+    unsigned int i;
+
+    D_0048D638 = (Pool_0048D638 *)func_00454B80(0xa6b00, 0x20, D_0047AF74);
+    p = (char *)(D_0048D638 + 1);
+    for (i = 0; i < 0x60; i++) {
+        D_0048D638->small[i].buf = p;
+        D_0048D638->small[i].used = 0;
+        p += 0x100;
+    }
+    for (i = 0; i < 0x80; i++) {
+        D_0048D638->medium[i].buf = p;
+        D_0048D638->medium[i].used = 0;
+        p += 0x400;
+    }
+    for (i = 0; i < 0x80; i++) {
+        D_0048D638->large[i].buf = p;
+        D_0048D638->large[i].used = 0;
+        p += 0x1000;
+    }
+}
+
 void func_0043ADC0(void)
 {
     func_00454C50(D_0048D638);
     D_0048D638 = NULL;
+}
+
+char *func_0043ADE0(unsigned int size, int tag)
+{
+    unsigned int i;
+
+    if (size > 0x10) {
+        for (i = 0; i < 0x80; i++) {
+            if (D_0048D638->large[i].used == 0) {
+                D_0048D638->large[i].used = tag;
+                return D_0048D638->large[i].buf;
+            }
+        }
+        return NULL;
+    }
+    if (size > 4) {
+        for (i = 0; i < 0x80; i++) {
+            if (D_0048D638->medium[i].used == 0) {
+                D_0048D638->medium[i].used = tag;
+                return D_0048D638->medium[i].buf;
+            }
+        }
+        return NULL;
+    }
+    for (i = 0; i < 0x60; i++) {
+        if (D_0048D638->small[i].used == 0) {
+            D_0048D638->small[i].used = tag;
+            return D_0048D638->small[i].buf;
+        }
+    }
+    return NULL;
 }
 
 char func_0043AC70(void)

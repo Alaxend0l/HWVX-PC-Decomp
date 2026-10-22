@@ -95,6 +95,53 @@ void func_0042D5C0(Region_0042D500 *r)
     r->next = NULL;
 }
 
+#pragma optimize("s", on)
+void func_0042D680(Node_0042D500 *node)
+{
+    if (node->next != NULL)
+        node->next->prev = node->prev;
+    if (node->prev != NULL)
+        node->prev->next = node->next;
+    else
+        node->cell->head = node->next;
+    node->cell->count--;
+    node->next = D_00645074;
+    D_00645074 = node;
+}
+#pragma optimize("", on)
+void func_0042D6C0(Region_0042D500 *r)
+{
+    Node_0042D500 *node = r->nodes;
+    Node_0042D500 *link;
+
+    while (node != NULL) {
+        link = node->link;
+        func_0042D680(node);
+        node = link;
+    }
+}
+
+void func_0042D6E0(Region_0042D500 *r, int from, int to)
+{
+    unsigned int minA;
+    unsigned int minB;
+    unsigned int maxA;
+    unsigned int maxB;
+
+    if (r != NULL) {
+        func_0042D430(from, &minA, &minB);
+        func_0042D430(to, &maxA, &maxB);
+        if (minA != r->minA || minB != r->minB || maxA != r->maxA || maxB != r->maxB) {
+            func_0042D6C0(r);
+            r->minA = minA;
+            r->minB = minB;
+            r->maxA = maxA;
+            r->maxB = maxB;
+            func_0042D5C0(r);
+        }
+    }
+}
+
 Region_0042D500 *func_0042D620(int x, int y, int from, int to)
 {
     Region_0042D500 *r = D_0064D078;

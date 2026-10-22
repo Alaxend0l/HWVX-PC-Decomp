@@ -88,14 +88,13 @@ extern "C" int func_00459360(unsigned int n, const unsigned char *p)
 
 extern "C" int func_00459390(void)
 {
-    int i = 0;
-    Pad_00692500 *p;
-    for (p = D_00692500; p < D_00692500 + 4; p++, i++) {
-        if (p->unk_0x18 == -1)
+    int i;
+    for (i = 0; i < 4; i++) {
+        if (D_00692500[i].unk_0x18 == -1)
             break;
     }
     if (i == 4)
-        i = -1;
+        return -1;
     return i;
 }
 
@@ -104,7 +103,7 @@ extern "C" int func_004593C0(const char *name)
     unsigned int i;
     for (i = 0; i < D_0047C528; i++) {
         if (func_00475660(name, D_0047C470[i].unk_0x0) == 0)
-            return D_0047C470[i].unk_0x4;
+            return D_0047C474[i].unk_0x0;
     }
     return 0;
 }

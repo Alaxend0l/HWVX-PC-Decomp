@@ -33,6 +33,8 @@ extern "C" void func_0046AEB6(void);
 extern "C" void func_0046AEBF(_PVFV *, _PVFV *);
 extern "C" void *func_0046AEEB(unsigned int, int);
 extern "C" int D_0049D9E8;
+extern "C" void *func_0046AF17(unsigned int);
+extern "C" int func_0046F0AD(unsigned int);
 
 #pragma optimize("s", on)
 

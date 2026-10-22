@@ -13,16 +13,16 @@ extern "C" int *func_00470486(void);
 
 extern "C" int func_00475546(int fh, int mode)
 {
-    char old = *(D_006D59E0[fh >> 5] + (fh & 0x1f) * 0x24 + 4);
+    int oldmode = *(unsigned char *)(D_006D59E0[fh >> 5] + (fh & 0x1f) * 0x24 + 4) & 0x80;
     if (mode == 0x8000)
-        *(D_006D59E0[fh >> 5] + (fh & 0x1f) * 0x24 + 4) &= ~0x80;
+        *(unsigned char *)(D_006D59E0[fh >> 5] + (fh & 0x1f) * 0x24 + 4) &= ~0x80;
     else if (mode == 0x4000)
-        *(D_006D59E0[fh >> 5] + (fh & 0x1f) * 0x24 + 4) |= 0x80;
+        *(unsigned char *)(D_006D59E0[fh >> 5] + (fh & 0x1f) * 0x24 + 4) |= 0x80;
     else {
         *func_00470486() = 0x16;
         return -1;
     }
-    return (old & 0x80) ? 0x4000 : 0x8000;
+    return oldmode ? 0x4000 : 0x8000;
 }
 
 #pragma optimize("y", off)

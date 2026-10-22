@@ -38,7 +38,7 @@ extern int D_0048D610;
 extern int D_0048D61C;
 extern char D_00692350[];
 
-void func_0042E250(int, int, int);
+void func_0042E250(int, char, char);
 void func_0043EB20(Obj_00437 *);
 void func_0042DE60(int);
 int func_0043B500(char *, int);

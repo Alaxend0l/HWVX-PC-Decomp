@@ -12,3 +12,8 @@ extern "C" Entry_004B6300 D_004B6300[8];
 extern "C" char D_0047B7A0[];
 extern "C" void func_00454D10(void *, int);
 extern "C" void func_00452F70(const char *);
+
+extern "C" void func_0044B9C0(void)
+{
+    func_00454D10(D_004B62E0, 0x200);
+}

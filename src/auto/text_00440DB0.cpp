@@ -7,3 +7,10 @@ extern "C" void func_00448330(int);
 extern "C" void func_00439310(int);
 extern "C" void func_00440FD0(int);
 extern "C" void func_00449110(int);
+
+extern "C" char func_00441640(int arg)
+{
+    func_00440FD0(arg);
+    func_00449110(arg);
+    return 1;
+}

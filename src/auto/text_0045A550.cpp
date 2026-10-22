@@ -56,7 +56,9 @@ struct Mode_00499660 {
 };
 
 struct Chan_00499A68 {
-    char unk_0x00[0x10];
+    int unk_0x00;
+    int unk_0x04;
+    char unk_0x08[0x10 - 0x08];
     unsigned char index;
     char unk_0x11[0x70 - 0x11];
 };
@@ -107,12 +109,12 @@ static inline void StartVoice_0045A550(Voice_0045A550 *v, unsigned char state)
 void func_0045AFE0(VoiceList_0045A550 *list);
 void func_0045B330(void)
 {
-    unsigned int i;
+    int i;
     Chan_00499260 *c;
     func_0045A4A0(D_006929AC, 0);
     if (D_00692990 != 0) {
-        for (i = 0; i >= 0; i++)
-            D_00499260[i].flags &= (unsigned char)~(D_00692990 & 1);
+        for (i = 0; ; i++)
+            D_00499260[i].flags &= ~(D_00692990 & 1);
     }
     D_006929AC = 0;
     D_00692990 = 0;
@@ -179,13 +181,12 @@ void func_0045B000(Voice_0045A550 *v)
 char func_0045B400(void)
 {
     unsigned char i;
-    memset(D_0049A868, 0, 0x30);
-    memset(D_00499A68, 0, 0xe00);
+    memset(D_0049A868, 0, sizeof(D_0049A868));
+    memset(D_00499A68, 0, sizeof(D_00499A68));
     i = 0;
     do {
         D_00499A68[i].index = i;
-        i++;
-    } while (i < 32);
+    } while (++i < 32);
     D_0049A898 = 0;
     return 1;
 }

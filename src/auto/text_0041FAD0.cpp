@@ -105,3 +105,9 @@ extern "C" int func_00420600(Obj_0041FAD0 *o)
 {
     return o->unk_0x08;
 }
+
+extern "C" void func_004206B0(char c)
+{
+    D_0047A658 = c;
+}
+

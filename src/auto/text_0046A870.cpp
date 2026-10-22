@@ -134,8 +134,7 @@ extern "C" size_t func_0046A99D(void *buffer, size_t size, size_t num, FILE *str
             }
             ++data;
             --count;
-            if ((int)(bufsize = stream->_bufsiz) <= 0)
-                bufsize = 1;
+            bufsize = stream->_bufsiz > 0 ? stream->_bufsiz : 1;
         }
     }
     return num;

@@ -166,7 +166,7 @@ struct Car_00416A40 {
     char unk_0x430[0x440 - 0x430];
     int unk_0x440;
     char unk_0x444[0x460 - 0x444];
-    u32 flags;
+    int flags;
     char unk_0x464[0x4b0 - 0x464];
     float unk_0x4b0;
     u8 gear;
@@ -241,6 +241,10 @@ void func_00416080(float *, float *, float);
 void func_004093E0(int, int, void *);
 void func_004160C0(Car_00416A40 *);
 
+extern float D_00477268;
+extern float D_0047724C;
+extern float D_00477248;
+extern float D_00477018;
 void func_00416A40(Car_00416A40 *car)
 {
     int slipCount = 0;
@@ -264,7 +268,7 @@ void func_00416A40(Car_00416A40 *car)
 
     func_00453360(&car->mat.row2, car);
     rideHeight = car->def->params->unk_0x14;
-    grip = car->def->wheels->unk_0x18 * D_0047728C;
+    grip = car->def->wheels->unk_0x18 * 0.083333f;
     sum = D_00692350;
     gripScale = 1.0f;
     bestSurf = NULL;
@@ -275,25 +279,25 @@ void func_00416A40(Car_00416A40 *car)
         float speed, f, a, b, fwd, side;
         pl = car->player;
         speed = func_004534B0(car);
-        f = speed * D_00477288;
-        if (f < D_0047700C)
-            a = f;
-        else
+        f = speed * 0.014285714f;
+        if (1.0f <= f)
             a = 1.0f;
-        b = D_0047700C - f;
-        if (b > D_00477000)
-            ;
         else
+            a = f;
+        f = 1.0f - f;
+        if (0.0f >= f)
             b = 0.0f;
+        else
+            b = f;
         fwd = func_004532F0(func_00453360(car, &car->mat.row2));
         side = func_004532F0(func_00453360(car, &car->mat.row0));
-        func_00458220(pl->unk_0xc8, 0, (int)(a * D_00477284), (int)(a * D_00477284));
-        func_00401090(pl->unk_0xc8, (int)(b * D_00477280), 0xff);
+        func_00458220(pl->unk_0xc8, 0, (int)(a * 40.0f), (unsigned int)(a * 40.0f));
+        func_00401090(pl->unk_0xc8, (int)(b * 130.0f), 0xff);
         if (!car->player->unk_0x12 && !(car->flags & 0x8020)) {
-            if (side < D_004771D8 || side * D_0047727C < fwd) {
-                if (speed < D_004771A4 && car->speed < D_004771A4)
-                    grip += car->def->wheels->unk_0x18 * speed * D_00477278;
-                if (grip > D_0047714C)
+            if (side < 2.0f || side * 1.7f < fwd) {
+                if (speed < 70.0f && car->speed < 70.0f)
+                    grip += car->def->wheels->unk_0x18 * speed * 0.0167f;
+                if (grip > 1.8f)
                     grip = 1.8f;
             }
         }
@@ -308,25 +312,34 @@ void func_00416A40(Car_00416A40 *car)
         float b = p->unk_0x44;
         float c = p->unk_0x48;
         float spd = func_004534B0(car);
-        if (spd < a)
-            rideHeight = car->mat.row1.y - spd / a * (car->mat.row1.y - car->def->params->unk_0x14);
+        if (spd < a) {
+            float y = car->mat.row1.y;
+            rideHeight = y - (y - car->def->params->unk_0x14) * (spd / a);
+        }
         if (spd < b)
-            gripScale = spd / b * (D_0047700C - c) + c;
+            gripScale = spd / b * (1.0f - c) + c;
     }
     func_004535E0(&car->mat.row0, &car->unk_0x4ec, tmp);
     def = car->def;
-    if (def->type <= 1)
-        steer = -def->params->unk_0x04;
-    else if (def->type == 2 && car->player != NULL && !car->player->unk_0x12)
-        steer = -def->params->unk_0x08;
+    if (def->type > 1) {
+        if (def->type != 2 || car->player == NULL || car->player->unk_0x12)
+            goto noSteer;
+        steer = def->params->unk_0x08;
+    } else {
+        steer = def->params->unk_0x04;
+    }
+    steer = -steer;
+noSteer:
     ws = car->ws;
     for (i = 0; i < def->numWheels; i++, ws++) {
         Wheel_00416A40 *w = &def->wheels[i];
         Vec4_00416A40 up, fwd, side, dir, origin;
         Hit_00416A40 hit;
         float dist, compress;
+        char hitOk;
+        int parent = w->unk_0x40 - w->unk_0x3f;
         if (w->unk_0x3f) {
-            Mat4_00416A40 *m = &car->bones[w->unk_0x40 - w->unk_0x3f];
+            Mat4_00416A40 *m = &car->bones[parent];
             up = m->row1;
             fwd = m->row2;
             side = m->row0;
@@ -344,23 +357,24 @@ void func_00416A40(Car_00416A40 *car)
         origin.z = car->bones[w->unk_0x40].pos.z - dir.z * w->radius;
         D_0048D97C = car;
         dist = w->radius + w->radius + w->unk_0x0c;
-        if (func_0044D550(&origin, &dir, &dist, &hit)) {
+        hitOk = func_0044D550(&origin, &dir, &dist, &hit);
+        D_0048D97C = NULL;
+        ((u8 *)&ws->color)[3] = 0;
+        compress = w->radius + w->radius - dist;
+        if (hitOk) {
             float pen;
-            D_0048D97C = NULL;
-            ((u8 *)&ws->color)[3] = 0;
-            compress = w->radius + w->radius - dist;
             car->contacts++;
             pen = compress + w->unk_0x0c;
             if (w->unk_0x3c) {
                 float wload, reach, slip;
                 Vec4_00416A40 contact, rel, rel2, pv, slipV;
-                wload = pen * w->unk_0x10;
                 reach = pen + w->radius;
-                grip = (compress - ws->unk_0x0c) / ((float)D_00692364 * D_004771B4) * w->unk_0x1c * gripScale;
+                wload = pen * w->unk_0x10;
+                grip = (compress - ws->unk_0x0c) / ((float)D_00692364 * 0.001f) * w->unk_0x1c * gripScale;
                 sum.x += hit.normal.x;
                 sum.y += hit.normal.y;
                 sum.z += hit.normal.z;
-                if (car->def->phys->unk_0x6c != D_0047700C)
+                if (car->def->phys->unk_0x6c != 1.0f)
                     reach = pen;
                 if (wload > bestLoad && hit.surface->unk_0x3c != NULL) {
                     bestSurf = hit.surface->unk_0x3c;
@@ -370,7 +384,7 @@ void func_00416A40(Car_00416A40 *car)
                 contact.y = reach * dir.y + car->bones[w->unk_0x40].pos.y;
                 contact.z = reach * dir.z + car->bones[w->unk_0x40].pos.z;
                 contact.w = 1.0f;
-                if (w->unk_0x38 != D_00477000 && wload > D_00477000 && grip > w->unk_0x38)
+                if (w->unk_0x38 != 0.0f && wload > 0.0f && grip > w->unk_0x38)
                     grip = w->unk_0x38;
                 func_0040E070(car, &contact, &up, (grip + wload) * func_00453360(&up, &hit.normal));
                 limit = 110.0f;
@@ -383,7 +397,7 @@ void func_00416A40(Car_00416A40 *car)
                 func_00454300(&hit.normal, &slipV);
                 ws->slip = slipV;
                 slip = func_004534B0(&slipV);
-                if (slip > D_00477000) {
+                if (slip > 0.0f) {
                     float maxF, k, f, d, throttle, lat, h, off, ny;
                     Vec4_00416A40 n2, force, p, t40;
                     func_00453360(&up, &hit.normal);
@@ -392,22 +406,22 @@ void func_00416A40(Car_00416A40 *car)
                         maxF = w->unk_0x20;
                     func_00453380(&fwd, &hit.normal, &n2);
                     func_00453470(&n2);
-                    k = (D_0047700C - func_00453360(&n2, &up) * D_0047714C) * D_00477234;
-                    if (k < D_00477064)
+                    k = (1.0f - func_00453360(&n2, &up) * 1.8f) * 1.1f;
+                    if (k < 0.1f)
                         k = 0.1f;
-                    else if (k > D_0047700C)
+                    else if (k > 1.0f)
                         k = 1.0f;
                     if (car->unk_0x440 < 10000)
                         k = 0.0f;
                     if (car->flags & 0x8000)
-                        maxF = (D_0047700C - w->unk_0x24) * maxF;
+                        maxF = (1.0f - w->unk_0x24) * maxF;
                     if (car->def->type == 2)
                         f = func_004532F0(hit.normal.y * hit.normal.y * hit.normal.y) * hit.surface->unk_0x14 * maxF;
                     else
                         f = maxF * hit.surface->unk_0x14;
                     if ((car->flags & 0x100) && f * k * D_00692378 > slip) {
                         slipCount++;
-                        f = D_0047700C / D_00692378;
+                        f = 1.0f / D_00692378;
                     } else {
                         f = f * k / slip;
                     }
@@ -416,23 +430,28 @@ void func_00416A40(Car_00416A40 *car)
                     force.x = -(f * slipV.x);
                     force.y = -(f * slipV.y);
                     force.z = -(f * slipV.z);
-                    if (pl == NULL || (throttle = pl->unk_0x00, !pl->unk_0x13) || pl->unk_0x12) {
+                    if (pl != NULL)
+                        throttle = pl->unk_0x00;
+                    if (pl == NULL || !pl->unk_0x13 || pl->unk_0x12) {
                         d = func_00453360(&fwd, &force);
-                        lat = -((D_0047700C - car->unk_0x4c8) * w->unk_0x14 * throttle);
-                        d = (D_0047700C - w->unk_0x14 * car->unk_0x4c8) * d;
-                        force.x = force.x - d * fwd.x - side.x * lat;
-                        force.y = force.y - d * fwd.y - side.y * lat;
-                        force.z = force.z - d * fwd.z - side.z * lat;
+                        lat = -((1.0f - car->unk_0x4c8) * w->unk_0x14 * throttle);
+                        d = (1.0f - w->unk_0x14 * car->unk_0x4c8) * d;
+                        force.x -= d * fwd.x;
+                        force.y -= d * fwd.y;
+                        force.z -= d * fwd.z;
+                        force.x -= side.x * lat;
+                        force.y -= side.y * lat;
+                        force.z -= side.z * lat;
                     } else {
-                        d = D_00477000;
+                        d = 0.0f;
                     }
                     drive += d;
                     ny = hit.normal.y;
                     func_00453330(&contact, &car->mat.pos, &t40);
                     h = func_00453360(&up, &t40);
-                    off = -((D_0047700C - rideHeight) * h);
+                    off = -((1.0f - rideHeight) * h);
                     if (car->unk_0x3e0 < 500)
-                        off = h * ny * D_00477008;
+                        off = h * ny * -1.0f;
                     p.x = off * up.x + contact.x;
                     p.y = off * up.y + contact.y;
                     p.z = off * up.z + contact.z;
@@ -441,15 +460,15 @@ void func_00416A40(Car_00416A40 *car)
                         frontSlip += func_00453360(&side, &slipV);
                 }
                 if (D_0068DF05) {
-                    if (w->unk_0x42 && hit.surface->unk_0x40 && w->unk_0x14 != D_00477000 && slip > D_004771AC) {
-                        float sz = D_00477274 - (slip - D_004771AC) * w->unk_0x14 * D_00477078;
-                        if (sz < D_00477120)
-                            sz = D_00477120;
-                        else if (sz > D_0047721C)
-                            sz = D_0047721C;
+                    if (w->unk_0x42 && hit.surface->unk_0x40 && w->unk_0x14 != 0.0f && slip > 20.0f) {
+                        float sz = 450.0f - (slip - 20.0f) * w->unk_0x14 * 3.0f;
+                        if (sz < 50.0f)
+                            sz = 50.0f;
+                        else if (sz > 1000.0f)
+                            sz = 1000.0f;
                         ws->unk_0x02 += D_00692370;
                         if (ws->unk_0x02 > 50) {
-                            sz *= D_00477158;
+                            sz *= 0.01f;
                             do {
                                 Particle_00416A40 pa;
                                 pa.unk_0x40 = hit.surface->unk_0x40;
@@ -460,7 +479,7 @@ void func_00416A40(Car_00416A40 *car)
                                 pa.unk_0x10.y = 0.0f;
                                 pa.unk_0x10.z = 0.0f;
                                 pa.unk_0x10.w = 1.0f;
-                                pa.unk_0x44 = 0;
+                                pa.unk_0x44 = &car->mat.pos;
                                 pa.unk_0x48 = 0;
                                 pa.unk_0x4c = sz;
                                 func_0044D0B0(1, &pa);
@@ -468,38 +487,38 @@ void func_00416A40(Car_00416A40 *car)
                             } while (ws->unk_0x02 > 50);
                         }
                     }
-                    if (hit.surface->unk_0x30 && func_004532F0(car->speed) > D_00477120) {
-                        int n = (int)func_004532F0(car->speed) + 10;
+                    if (hit.surface->unk_0x30 && func_004532F0(car->speed) > 50.0f) {
+                        u32 n = (int)(50.0f / func_004532F0(car->speed) * hit.surface->unk_0x1c + slip);
                         if (n > 200)
                             n = 200;
                         ws->unk_0x02 += D_00692370;
-                        while (ws->unk_0x02 > n) {
+                        while (ws->unk_0x02 > (int)n) {
                             Particle_00416A40 pb;
                             pb.unk_0x40 = hit.surface->unk_0x30;
+                            pb.pos = contact;
                             pb.vel = car->vel;
+                            pb.unk_0x30 = D_00692350;
                             pb.unk_0x10.x = 0.0f;
                             pb.unk_0x10.y = 0.0f;
                             pb.unk_0x10.z = 0.0f;
                             pb.unk_0x10.w = 1.0f;
-                            pb.unk_0x44 = 0;
+                            pb.unk_0x44 = NULL;
                             pb.unk_0x48 = 0;
                             pb.unk_0x4c = 0;
-                            pb.pos = contact;
-                            pb.unk_0x30 = D_00692350;
                             func_0044D0B0(1, &pb);
                             ws->unk_0x02 -= n;
                         }
                     }
-                    if (hit.surface->unk_0x34 && slip > D_00477270 && wload > D_00477270 &&
-                        func_00462040(&car->mat.pos) < D_0047726C) {
-                        u16 n = (int)(slip);
+                    if (hit.surface->unk_0x34 && slip > 60.0f && wload > 60.0f &&
+                        func_00462040(&car->mat.pos) < 40000.0f) {
+                        int n = (int)(62500.0f / wload * hit.surface->unk_0x20);
                         ws->unk_0x00 += D_00692370;
                         while (ws->unk_0x00 > n && func_0043BDF0(hit.surface->unk_0x34)) {
                             Vec4_00416A40 acc, grav, v;
                             float s, r;
                             acc.x = 0.0f;
                             acc.y = 0.0f;
-                            s = w->unk_0x14 * car->speed * D_00477038;
+                            s = w->unk_0x14 * car->speed * 0.3f;
                             acc.z = 0.0f;
                             acc.w = 1.0f;
                             r = func_00454AC0(5.0f, 30.0f) * w->unk_0x14;
@@ -507,52 +526,46 @@ void func_00416A40(Car_00416A40 *car)
                             grav.y = -0.0001f;
                             grav.z = 0.0f;
                             grav.w = 0.0f;
-                            v.x = (r * up.x + (car->vel.x * D_00477264 - s * fwd.x)) * D_00477260;
-                            v.y = (r * up.y + (car->vel.y * D_00477264 - s * fwd.y)) * D_00477260;
-                            v.z = (r * up.z + (car->vel.z * D_00477264 - s * fwd.z)) * D_00477260;
+                            v.x = (r * up.x + (car->vel.x * 1.02f - s * fwd.x)) * 0.001f;
+                            v.y = (r * up.y + (car->vel.y * 1.02f - s * fwd.y)) * 0.001f;
+                            v.z = (r * up.z + (car->vel.z * 1.02f - s * fwd.z)) * 0.001f;
                             func_0043BE70(&contact, &v, &grav, &acc, hit.surface->unk_0x34, 1.0f, 0);
                             ws->unk_0x00 -= n;
                         }
                     }
                 }
-                limit = 110.0f;
-                if (car->player != NULL && car->def->type == 2 && ((car->flags & 0x8000) || (car->flags & 0x20)))
-                    limit = D_00477078;
                 def = car->def;
-                if (slip > limit && def->unk_0x50 && w->unk_0x3e && hit.surface->unk_0x00 != 1) {
-                    float s = wload * D_0047725C;
-                    u16 tex = def->unk_0x14;
-                    u32 color;
-                    u8 alpha = *def->unk_0x6c >> 24;
+                if (slip > (car->player != NULL && def->type == 2 && ((car->flags & 0x8000) || (car->flags & 0x20)) ? 3.0f : limit) &&
+                    car->def->unk_0x50 > 0 && w->unk_0x3e && hit.surface->unk_0x00 != 1) {
+                    float s = wload * 0.025f;
+                    int tex = car->def->unk_0x14;
+                    u32 color = *car->def->unk_0x6c;
+                    u8 alpha = ((u8 *)&color)[3];
                     u8 a;
-                    if (s < D_00477258)
-                        s = D_00477258;
-                    else if (s > D_0047700C)
-                        s = D_0047700C;
-                    color = *def->unk_0x6c;
+                    if (s < 0.03f)
+                        s = 0.03f;
+                    else if (s > 1.0f)
+                        s = 1.0f;
                     if (hit.surface->unk_0x00 == 2) {
                         color = *hit.surface->unk_0x2c;
                         tex = hit.surface->unk_0x02;
                     }
-                    load += s * D_00477254;
+                    load += s * 0.23f;
                     a = (int)(s * 255.0f);
-                    if (a > alpha)
-                        a = alpha;
                     ((u8 *)&color)[3] = a;
-                    if (s > D_00477158) {
+                    if (a > alpha)
+                        ((u8 *)&color)[3] = alpha;
+                    if (s > 0.01f) {
                         ws->color = color;
                         ws->unk_0x14 = tex;
                     }
                 }
             }
         } else {
-            D_0048D97C = NULL;
-            ((u8 *)&ws->color)[3] = 0;
-            compress = w->radius + w->radius - dist;
             ws->slip = D_00692350;
         }
         ws->unk_0x0c = compress;
-        if (car->def->type != 1 || compress < D_00477038)
+        if (car->def->type != 1 || compress < 0.3f)
             ws->unk_0x08 = compress;
         def = car->def;
     }
@@ -572,44 +585,54 @@ void func_00416A40(Car_00416A40 *car)
                 car->speed = def->phys->unk_0x44;
             }
         }
-        if (pl != NULL && func_0043E9F0(pl)) {
+        if (car->player != NULL && func_0043E9F0(car->player)) {
+            float a;
             pl = car->player;
-            if (frontSlip > D_00477000)
-                func_00458250(pl->unk_0xc8, (int)270.0f);
-            else
-                func_00458250(pl->unk_0xc8, (int)90.0f);
-            if (frontSlip != D_00477000)
+            if (frontSlip > 0.0f) {
+                a = frontSlip * 0.033333335f * 180.0f;
+                if (180.0f <= a)
+                    a = 180.0f;
+                func_00458250(pl->unk_0xc8, (int)a, 270);
+            } else {
+                a = frontSlip * -0.033333335f * 180.0f;
+                if (180.0f <= a)
+                    a = 180.0f;
+                func_00458250(pl->unk_0xc8, (int)a, 90);
+            }
+            if (frontSlip == 0.0f) {
+                if (!(car->flags & 0x10000))
+                    func_00458280(pl->unk_0xc8);
+            } else {
                 func_004582A0(pl->unk_0xc8);
-            else if (!(car->flags & 0x10000))
-                func_00458280(pl->unk_0xc8);
+            }
         }
     }
     pl = car->player;
     if (pl != NULL && !pl->unk_0x12 && !pl->unk_0x13 && !pl->unk_0x14 &&
-        func_004532F0(car->speed) < D_0047700C && slipCount == car->def->numWheels) {
-        if (func_00453360(&car->unk_0x3e4, &car->mat.row1) < D_00477220) {
+        func_004532F0(car->speed) < 1.0f && slipCount == car->def->numWheels) {
+        if (func_00453360(&car->unk_0x3e4, &car->mat.row1) < 0.05f) {
             func_00454300(&car->mat.row0, car);
             func_00416080(car->unk_0x35c, &car->mat.row1.x, 0.5f);
         }
     }
     if (car->sound != -1) {
-        if (bestSurf == NULL) {
-            limit = 0.0f;
-            func_004093E0(car->sound, 0, &limit);
-        } else {
+        if (bestSurf != NULL) {
             sndVal = bestSurf->unk_0x14;
-            if (load > D_0047700C)
+            if (load > 1.0f)
                 load = 1.0f;
-            if (bestSurf == car->lastSurface) {
-                func_004093E0(car->sound, 0, &load);
-                func_004093E0(car->sound, 5, &car->mat.pos);
-                func_004093E0(car->sound, 6, car);
-            } else {
+            if (bestSurf != car->lastSurface) {
                 limit = 0.0f;
                 func_004093E0(car->sound, 0, &limit);
                 func_004093E0(car->sound, 8, &sndVal);
                 car->lastSurface = bestSurf;
+            } else {
+                func_004093E0(car->sound, 0, &load);
+                func_004093E0(car->sound, 5, &car->mat.pos);
+                func_004093E0(car->sound, 6, car);
             }
+        } else {
+            limit = 0.0f;
+            func_004093E0(car->sound, 0, &limit);
         }
     }
     if (car->contacts == car->def->numWheels) {

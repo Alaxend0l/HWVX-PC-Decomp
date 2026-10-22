@@ -50,6 +50,12 @@ extern int D_0065E2E4[];
 extern int D_0065E2F4[];
 extern char D_0065E304[];
 extern char D_0065E30C;
+struct Arrays_0065E2D4 {
+    int a[4];
+    int b[4];
+    int c[4];
+    char d[4];
+};
 extern int D_0065E310;
 extern int D_0065E314;
 extern int D_0065E318;

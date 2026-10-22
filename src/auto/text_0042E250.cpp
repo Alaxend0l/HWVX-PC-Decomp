@@ -48,3 +48,10 @@ struct Obj_0042EFA0 {
 extern Entry_005E7660 D_005E7660[18];
 
 void func_0042F090(Entry_005E7660 *, int);
+
+void func_0042F060(int idx)
+{
+    Entry_005E7660 *e = &D_005E7660[idx];
+    if (e != 0)
+        func_0042F090(e, 1);
+}

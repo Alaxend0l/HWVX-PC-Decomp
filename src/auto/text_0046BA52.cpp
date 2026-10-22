@@ -40,6 +40,12 @@ extern "C" void func_0046BD6F(void)
     func_0046E9BA(9);
 }
 
+extern "C" void func_0046C204(char *s, int dist)
+{
+    if (dist)
+        func_004719B0(s + dist, s, func_00471CF0(s) + 1);
+}
+
 extern "C" void func_0046BD78(void)
 {
 }

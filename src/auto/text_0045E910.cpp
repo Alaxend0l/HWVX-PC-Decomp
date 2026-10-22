@@ -47,7 +47,7 @@ struct Rec20_0045E910 {
 };
 
 struct Node_0045E910 {
-    void (*unk_0x0)(unsigned short);
+    void (*unk_0x0)(int);
     unsigned short unk_0x4;
     unsigned short unk_0x6;
 };

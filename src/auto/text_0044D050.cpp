@@ -169,17 +169,6 @@ int func_0044D890(void **out)
     return count;
 }
 
-int func_0044D920(char **out)
-{
-    int r = 0;
-
-    if (!(D_0052E664 & 0x201000)) {
-        *out = D_0052E5F0;
-        r = 1;
-    }
-    return r;
-}
-
 int func_0044D8C0(void **out)
 {
     int count = 0;

@@ -1,5 +1,10 @@
 /* 26 functions from 0x0046AD1F to 0x0046B1D8, found by Ghidra. */
 #include "common.h"
+#include <stdio.h>
+#include <stdarg.h>
+
+extern "C" int func_0046C971(FILE *stream, const char *format, va_list argptr);
+extern "C" int func_0046D17B(int ch, FILE *stream);
 extern "C" int D_0049D810;
 extern "C" void (__cdecl *D_0047D430)(int);
 extern "C" void func_0046E7A4(void);
@@ -59,6 +64,14 @@ extern "C" void func_0046AE08(int code, int quick, int retcaller)
     }
     D_0049D854 = 1;
     ExitProcess(code);
+}
+
+extern "C" void func_0046AD41(void)
+{
+}
+
+extern "C" void func_0046AEAB(void)
+{
 }
 
 extern "C" void func_0046AD44(int code)

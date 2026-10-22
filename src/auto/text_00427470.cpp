@@ -29,14 +29,18 @@ extern "C" void func_004276B0(void)
 {
     unsigned int i;
     unsigned int n;
+    unsigned int size;
+    void *p;
 
     D_0048D1AC = 0;
     D_0048D1B0 = 0;
     D_0047A934 = 0;
     for (i = 0; i < 11; i++) {
         if (i != 7 && (n = D_0047A908[i]) > 0) {
-            D_0065F460[i] = func_00454B80(n * 168, 0x76, D_0047A93C);
-            memset(D_0065F460[i], 0, n * 168);
+            size = n * 168;
+            p = func_00454B80(size, 0x76, D_0047A93C);
+            D_0065F460[i] = p;
+            memset(p, 0, size);
         } else {
             D_0065F460[i] = 0;
         }
@@ -47,10 +51,13 @@ extern "C" void func_004276B0(void)
 extern "C" void func_00427730(void)
 {
     int i;
+    void **p;
 
-    for (i = 0; i < 11; i++) {
+    i = 0;
+    for (p = D_0065F460; p < D_0065F48C; p++) {
         func_00428A70(i, 1);
-        func_00454C50(D_0065F460[i]);
+        func_00454C50(*p);
+        i++;
     }
 }
 

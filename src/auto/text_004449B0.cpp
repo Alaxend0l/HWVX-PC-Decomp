@@ -69,6 +69,22 @@ extern Entry_0053B0E0 D_0053B0E0[];
 extern "C" int strcmp(const char *, const char *);
 char func_004450F0(int, char *);
 
+struct Msg_00445340 {
+    int unk_0x00;
+    short unk_0x04;
+    unsigned short type;
+};
+
+int func_004289E0(char *, int, int);
+int func_00428C10(int, int, int);
+int func_004216C0(int, int);
+int func_0042E250(int, int, void (*)(Msg_00445340 *));
+void func_0042E130(int, void (*)(Msg_00445340 *));
+int func_00429EA0(void);
+void func_0042C600(Msg_00445340 *);
+void func_004453E0(Msg_00445340 *);
+void func_00445340(Msg_00445340 *);
+
 void func_004449B0(void)
 {
     Ctx_00429EC0 *ctx;
@@ -112,8 +128,10 @@ char func_004450F0(int id, char *name)
 {
     unsigned int i;
     for (i = 0; i < D_0048D7FC; i++) {
-        if (D_0053B0E0[i].id == id && strcmp(D_0053B0E0[i].name, name) == 0)
-            return 0;
+        if (D_0053B0E0[i].id == id) {
+            if (strcmp(D_0053B0E0[i].name, name) == 0)
+                return 0;
+        }
     }
     return 1;
 }

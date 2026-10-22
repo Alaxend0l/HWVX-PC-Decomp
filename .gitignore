@@ -1,0 +1,8 @@
+# made from your copy of the game, or by the build
+orig/
+build/
+build.ninja
+.ninja_*
+objdiff.json
+__pycache__/
+.decomp-wtf/

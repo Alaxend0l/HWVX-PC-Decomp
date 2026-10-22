@@ -1,0 +1,26 @@
+{
+  "created": "from scratch",
+  "platform": "pc",
+  "version": "hotwheels",
+  "compiler": "MSVC/6.0",
+  "game": {
+    "what": "your copy of the game's program (.exe)",
+    "path": "orig/hotwheels.exe",
+    "sha1": "91af8432d6903371f724c4c2924c4ba51cc9eb73"
+  },
+  "setup": [
+    [
+      "python",
+      "tools/configure.py",
+      "hotwheels",
+      "--msvc",
+      "/home/alaxendol/.local/share/decompnet/toolchains/msvc",
+      "--wibo",
+      "/home/alaxendol/.local/share/decompnet/toolchains/wibo/wibo"
+    ],
+    [
+      "ninja",
+      "prepare"
+    ]
+  ]
+}

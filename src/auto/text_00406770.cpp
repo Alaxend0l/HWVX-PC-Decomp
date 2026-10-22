@@ -51,9 +51,9 @@ struct Pair_004073A0 {
 };
 
 struct Mesh_004073A0 {
-    unsigned count;
+    int count;
     int *items;
-    unsigned pairCount;
+    int pairCount;
     Pair_004073A0 *pairs;
     int *buf;
     unsigned *info;
@@ -251,12 +251,13 @@ void func_004072F0(char *p)
     func_0044A910(p + 0x14);
 }
 
-void func_00407350(int **p, void *dst)
+void func_0045E160(int, char *, unsigned, int);
+void func_00407350(Obj_004073A0 *o, void *dst)
 {
-    int *m = *(int **)(*p + 5);
-    func_00454CF0(dst, (void *)m[4], m[0] << 5);
-    *(float *)&p[9] = 1.0f;
-    func_0045E120(*(int *)((char *)p[6] + 0x10), (int)p[8], dst, m[0]);
+    unsigned *info = o->mesh->info;
+    func_00454CF0(dst, (void *)info[4], info[0] << 5);
+    o->unk_0x24 = 1.0f;
+    func_0045E120(*(int *)(o->unk_0x18 + 0x10), o->unk_0x20, dst, info[0]);
 }
 
 void func_0044A9C0(int a, char *b);
@@ -279,18 +280,18 @@ void func_00407310(char *p)
     func_004072F0(p);
 }
 
-void func_004073A0(int **p)
+void func_004073A0(Obj_004073A0 *o)
 {
     unsigned i;
-    int *s = (int *)(*p)[5];
+    unsigned *info = o->mesh->info;
 
-    for (i = 0; i < (unsigned)(*p)[0]; i++)
-        func_0045E160(((int *)(*p)[1])[i], (int)p[4], s[0], 0);
-    for (i = 0; i < (unsigned)(*p)[2]; i++) {
-        Pair_004073A0 *e = &((Pair_004073A0 *)(*p)[3])[i];
-        func_0045E670(e->a, (char *)p[4] + e->b * 0x40);
+    for (i = 0; i < o->mesh->count; i++)
+        func_0045E160(o->mesh->items[i], o->unk_0x10, info[0], 0);
+    for (i = 0; i < o->mesh->pairCount; i++) {
+        Pair_004073A0 *e = &o->mesh->pairs[i];
+        func_0045E670(e->a, o->unk_0x10 + e->b * 0x40);
     }
-    func_00407EF0((char *)p, 0);
+    func_00407EF0((char *)o, 0);
 }
 
 void func_00407590(char *p, unsigned *list, int c)

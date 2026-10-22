@@ -84,6 +84,40 @@ extern "C" void func_00474686(char *manptr, unsigned int manlen, LDBL12_0047435D
     *U_EXP_12(ld) = expn;
 }
 
+extern "C" int D_0049DAF0;
+extern "C" long D_006D5788;
+extern "C" int D_006D5784;
+extern "C" void func_0046E959(int);
+extern "C" void func_0046E9BA(int);
+extern "C" int func_00475045(int);
+extern "C" int func_00474FD6(int c)
+{
+    int local_lock_flag;
+
+    if (D_0049DAF0 == 0) {
+        if (c >= 'a' && c <= 'z')
+            c = c - ('a' - 'A');
+        return c;
+    }
+
+    InterlockedIncrement(&D_006D5788);
+    if (D_006D5784) {
+        InterlockedDecrement(&D_006D5788);
+        func_0046E959(0x13);
+        local_lock_flag = 1;
+    } else
+        local_lock_flag = 0;
+
+    c = func_00475045(c);
+
+    if (local_lock_flag)
+        func_0046E9BA(0x13);
+    else
+        InterlockedDecrement(&D_006D5788);
+
+    return c;
+}
+
 extern "C" void func_0047462B(unsigned int *p)
 {
     unsigned int c0 = p[0] >> 31;

@@ -150,7 +150,6 @@ extern "C" void func_004027C0(Obj_00402210 *o)
 
 extern "C" void func_00402E10(Obj_00402210 *o)
 {
-    float f;
     if (o->unk_0x2c != NULL) {
         void *t = NULL;
         if (o->unk_0x498 < 0x20 && o->unk_0x414[o->unk_0x498] != NULL)
@@ -158,10 +157,8 @@ extern "C" void func_00402E10(Obj_00402210 *o)
         else if (o->unk_0x3ec != NULL)
             t = o->unk_0x3ec + 0x40;
         o->unk_0x3e8 = 0;
-        if (t != NULL) {
-            f = 1.0f;
-            o->unk_0x3e8 = func_0044D630(o->unk_0x2c + 0x40, t, &f, 1, 0);
-        }
+        if (t != NULL)
+            o->unk_0x3e8 = ((int (*)(char *, void *, const float &, char, char))func_0044D630)(o->unk_0x2c + 0x40, t, 1.0f, 1, 0);
     }
     o->unk_0x5fc = func_00454AF0(400, 400);
 }

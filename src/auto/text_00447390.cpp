@@ -50,7 +50,7 @@ extern int D_0053AA24;
 extern "C" void func_00454C50(void *p);
 int func_0042A680(int, int);
 char func_00427760(void);
-void func_004480E0(int);
+int func_004480E0(int);
 
 void func_00447910(int a, int b)
 {
@@ -100,5 +100,24 @@ int func_004480C0(void)
     int v = D_0048D970->unk_0xd4;
     D_0048D970->unk_0xd4 = -1;
     return v;
+}
+
+char func_004482C0(Body_004482C0 *b)
+{
+    b->unk_0x00[0] = b->unk_0x00[1] = b->unk_0x00[2] = 0.0f;
+    b->unk_0x60[0] = b->unk_0x60[1] = b->unk_0x60[2] = 0.0f;
+    b->unk_0x70 = 0;
+    b->unk_0x50[3] = 1.0f;
+    b->unk_0x50[0] = 0.0f;
+    b->unk_0x50[1] = 0.0f;
+    b->unk_0x50[2] = 0.0f;
+    b->unk_0x74 = 0;
+    b->unk_0x80 = 0;
+    b->mat = D_006922E0;
+    b->unk_0x94 = 0;
+    b->unk_0x82 = 0xff;
+    b->unk_0x83 = 0xff;
+    b->unk_0x84 = b->unk_0x88 = 0;
+    return 1;
 }
 

@@ -39,6 +39,15 @@ extern "C" void func_00409690(void)
     }
 }
 
+extern "C" void func_00409A40(void)
+{
+    unsigned int i;
+
+    D_0068DAC0 = 0;
+    for (i = 0; i < 100; i++)
+        func_004096C0(i);
+}
+
 extern "C" char *func_0040A490(void)
 {
     return D_00681500;

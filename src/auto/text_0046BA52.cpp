@@ -184,6 +184,17 @@ extern "C" void func_0046C204(char *s, int dist)
         func_004719B0(s + dist, s, func_00471CF0(s) + 1);
 }
 
+extern "C" char *func_0046C024(double *value, char *buf, int ndec)
+{
+    StrFlt_0046BA52 flt;
+    char digits[24];
+
+    func_004717AB(*value, &flt, digits);
+    func_00471734(buf + (flt.sign == '-'), flt.decpt + ndec, &flt);
+    func_0046C079(buf, ndec, &flt, 0);
+    return buf;
+}
+
 extern "C" void func_0046BD78(void)
 {
 }

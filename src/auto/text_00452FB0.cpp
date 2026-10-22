@@ -50,6 +50,16 @@ float func_004532F0(float x)
     return (float)fabs(x);
 }
 
+void func_004530C0(Vec4_004530C0 *dst, Vec4_004530C0 *src)
+{
+    *dst = *src;
+}
+
+void func_004530E0(Mat4_004530E0 *dst, Mat4_004530E0 *src)
+{
+    *dst = *src;
+}
+
 float func_004532E0(float x)
 {
     return (float)sqrt(x);

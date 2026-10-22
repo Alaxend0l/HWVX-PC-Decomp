@@ -35,3 +35,42 @@ extern int D_00692998;
 
 int __fastcall func_00459CB0(unsigned int, int);
 void func_00401090(Voice_0045A550 *);
+
+unsigned int func_0045AF20(unsigned short rate)
+{
+    if (rate == 0)
+        return 0xffffffff;
+    return 0xffffffff / (rate * 1000U);
+}
+
+void func_0045AF90(Voice_0045A550 *v)
+{
+    int step;
+    if (v->unk_0x16 == 4)
+        return;
+    v->unk_0x16 = 4;
+    v->unk_0x17 = 0;
+    step = func_0045AF20(v->sound->unk_0x1e);
+    if (step == -1) {
+        v->unk_0x1c = 0x10000;
+        step = 0;
+    }
+    v->unk_0x18 = step;
+    v->unk_0x14 -= 15;
+    func_00401090(v);
+}
+
+void func_0045AF50(Format_0045A550 *fmt)
+{
+    unsigned int n = fmt->unk_0x0b * fmt->unk_0x0a;
+    fmt->unk_0x14 = func_00459CB0(n * n / 3970, D_00692998);
+}
+
+void func_0045AF90(Voice_0045A550 *v);
+void func_0045AFE0(VoiceList_0045A550 *list)
+{
+    Voice_0045A550 *v;
+    for (v = list->head; v != NULL; v = v->next)
+        func_0045AF90(v);
+}
+

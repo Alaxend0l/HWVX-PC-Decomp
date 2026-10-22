@@ -51,6 +51,7 @@ struct Shadow_00467240 {
     Obj_00467240 *unk_0x0;
     int unk_0x4;
     unsigned short unk_0x8;
+    unsigned short unk_0xa;
     unsigned char unk_0xc;
 };
 
@@ -275,6 +276,73 @@ void func_00467210(Blk_00467210 *dst)
     D_006D3D60 = D_0049D7C8[5];
     D_006D3D64 = D_006C9AC4;
     *dst = *(Blk_00467210 *)&D_006D3D60;
+}
+
+void func_00467240(void)
+{
+    float light[4] = { -0.707f, -0.707f, 0.0f, 0.0f };
+    float dir[4];
+    unsigned int i;
+
+    if (!D_006C9B89 || D_0049D7C4->unk_0x16 == 0)
+        return;
+
+    func_00467E20(0xffff);
+    for (i = 0; i < D_0049D7C4->unk_0x16; i++) {
+        Shadow_00467240 *s = &D_0049D7C4->unk_0x101e0[i];
+        Obj_00467240 *obj = s->unk_0x0;
+        void *m = func_0045FCB0(s->unk_0x8);
+
+        func_00460820(m);
+        func_00453750(m, light, dir);
+        func_004675B0(obj->unk_0x8[s->unk_0xc].unk_0x1c, obj->unk_0x8[s->unk_0xc].unk_0x10, dir);
+
+        glDepthMask(GL_FALSE);
+        glDepthFunc(GL_LEQUAL);
+        glEnable(GL_STENCIL_TEST);
+        glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
+        glStencilFunc(GL_ALWAYS, 1, 0xffffffff);
+
+        func_00467150(1);
+        glStencilOp(GL_KEEP, GL_KEEP, GL_INCR);
+        func_00467650(obj->unk_0xc, obj->unk_0x8[s->unk_0xc].unk_0x1c, obj->unk_0x8[s->unk_0xc].unk_0x10,
+                      dir[0] * D_00477034, dir[1] * D_00477034, dir[2] * D_00477034);
+
+        func_00467150(2);
+        glStencilOp(GL_KEEP, GL_KEEP, GL_DECR);
+        func_00467650(obj->unk_0xc, obj->unk_0x8[s->unk_0xc].unk_0x1c, obj->unk_0x8[s->unk_0xc].unk_0x10,
+                      dir[0] * D_00477034, dir[1] * D_00477034, dir[2] * D_00477034);
+
+        func_00467150(1);
+    }
+
+    glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+    func_00460E60();
+    func_00460820(0);
+    func_00460DC0();
+    func_004671A0(0);
+    func_00467150(0);
+
+    glColor4ub(0, 0, 0, 0x40);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glStencilFunc(GL_NOTEQUAL, 0, 0xffffffff);
+    glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+    glBegin(GL_QUADS);
+    glVertex3f(0.0f, 0.0f, -1000.0f);
+    glVertex3f(D_006C9A0C[D_006C9A78].unk_0x00, 0.0f, -1000.0f);
+    glVertex3f(D_006C9A0C[D_006C9A78].unk_0x00, D_006C9A0C[D_006C9A78].unk_0x02, -1000.0f);
+    glVertex3f(0.0f, D_006C9A0C[D_006C9A78].unk_0x02, -1000.0f);
+    glEnd();
+    glDisable(GL_BLEND);
+    glDepthFunc(GL_LEQUAL);
+    glDepthMask(GL_TRUE);
+    glDisable(GL_STENCIL_TEST);
+    glShadeModel(GL_FLAT);
+    glBlendFunc(GL_SRC_ALPHA, GL_ZERO);
+    func_00467150(1);
+    func_004671A0(1);
+    func_00460F20();
 }
 
 void func_00467E10(GLuint tex)

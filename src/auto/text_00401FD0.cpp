@@ -46,7 +46,7 @@ struct Obj_00402210 {
     int unk_0x5fc;
 };
 
-extern "C" int func_0044D630(char *, void *, float *, int, int);
+extern "C" int func_0044D630(char *, void *, float *, char, char);
 extern "C" int func_00454AF0(int, int);
 
 extern "C" char func_0043FD40(Obj_00402210 *);
@@ -146,6 +146,24 @@ extern "C" void func_004027C0(Obj_00402210 *o)
             break;
         func_00402680(o, 0);
     }
+}
+
+extern "C" void func_00402E10(Obj_00402210 *o)
+{
+    float f;
+    if (o->unk_0x2c != NULL) {
+        void *t = NULL;
+        if (o->unk_0x498 < 0x20 && o->unk_0x414[o->unk_0x498] != NULL)
+            t = o->unk_0x414[o->unk_0x498];
+        else if (o->unk_0x3ec != NULL)
+            t = o->unk_0x3ec + 0x40;
+        o->unk_0x3e8 = 0;
+        if (t != NULL) {
+            f = 1.0f;
+            o->unk_0x3e8 = func_0044D630(o->unk_0x2c + 0x40, t, &f, 1, 0);
+        }
+    }
+    o->unk_0x5fc = func_00454AF0(400, 400);
 }
 
 extern "C" char func_004020C0(float a, float b, float c)

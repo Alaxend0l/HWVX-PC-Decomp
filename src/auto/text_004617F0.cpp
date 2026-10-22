@@ -103,24 +103,20 @@ char *func_00461D50(void)
     return (char *)&D_006D3E80[D_0049D7D4];
 }
 
-int func_00461FE0(int *out)
+int func_00461FE0(Vec4_004617F0 *out)
 {
     int n = 0;
     int i = 0;
-    char *p = D_006D4000;
+    Vec4_004617F0 *p = (Vec4_004617F0 *)D_006D4000;
     do {
-        if (D_006D3D4C & (unsigned char)(1 << i)) {
-            int *s = (int *)p;
-            out[0] = s[0];
-            out[1] = s[1];
-            out[2] = s[2];
-            out[3] = s[3];
+        if (D_006D3D4C & (1 << i)) {
+            *out = *p;
             n++;
-            out += 4;
+            out++;
         }
-        p += 0x2d0;
+        p = (Vec4_004617F0 *)((char *)p + 0x2d0);
         i++;
-    } while (p < D_006D4E10);
+    } while (p < (Vec4_004617F0 *)D_006D4E10);
     return n;
 }
 
@@ -128,13 +124,14 @@ float func_00462040(void *a)
 {
     float f;
     float g;
-    if (D_006D3D4C == 1)
-        return func_004535B0(a, D_006D4000);
-    f = func_004535B0(a, D_006D42D0);
-    g = func_004535B0(a, D_006D45A0);
-    if (f < g)
-        return f;
-    return g;
+    if (D_006D3D4C != 1) {
+        f = func_004535B0(a, D_006D42D0);
+        g = func_004535B0(a, D_006D45A0);
+        if (f < g)
+            return f;
+        return g;
+    }
+    return func_004535B0(a, D_006D4000);
 }
 
 int func_00461A10(void)

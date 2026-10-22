@@ -6,7 +6,9 @@ struct Vec4_00421700 {
 };
 
 struct Bounds_00421700 {
-    char unk_0x0[0x20];
+    char unk_0x0[0xc];
+    float unk_0xc;
+    char unk_0x10[0x10];
     float radius;
     char unk_0x24[0xc];
 };
@@ -126,3 +128,176 @@ char *func_0044D0F0(int, Effect_00421700 *, int);
 void func_0044A790(char *, char *);
 void func_00449CD0(Obj_00421700 *, char *, int);
 void func_00449DE0(Obj_00421700 *, int);
+
+char func_00421DD0(Obj_00421700 *obj, Desc_00421700 *desc)
+{
+    Model_00421700 *model;
+    Info_00421700 *info;
+
+    obj->flags = 0;
+    func_004482C0(obj, desc);
+    obj->unk_0x50 = desc->unk_0x30;
+    obj->unk_0x0 = desc->unk_0x10;
+    func_00453FB0(&obj->unk_0x50, &obj->unk_0x10);
+    obj->unk_0x40 = desc->unk_0x0;
+    obj->model = desc->model;
+    obj->unk_0xd0 = NULL;
+    obj->unk_0xcc = NULL;
+    obj->unk_0xd4 = 0;
+
+    if (obj->model->info->type == 3) {
+        Bounds_00421700 *b = obj->model->info->bounds;
+        *b = obj->model->shape->bounds;
+        b->radius = func_00421CB0(b, &D_00692350);
+        obj->model->info->type = 0;
+    }
+
+    obj->flags |= 4;
+    switch (obj->model->info->type) {
+    case 0: {
+        Box_00421700 *box;
+        int i;
+
+        obj->type = 1;
+        obj->flags |= 0x80;
+        obj->unk_0xd0 = func_0041B630();
+        *(int *)(obj->unk_0xd0 + 0xcc) = 0;
+        box = func_00422910(obj);
+        box->min.x = 99999.9f;
+        box->min.y = 99999.9f;
+        box->min.z = 99999.9f;
+        box->max.x = -99999.9f;
+        box->max.y = -99999.9f;
+        box->max.z = -99999.9f;
+        for (i = 0; i < 8; i++) {
+            Vec4_00421700 v = box->pts[i];
+            if (v.x < box->min.x)
+                box->min.x = v.x;
+            if (v.y < box->min.y)
+                box->min.y = v.y;
+            if (v.z < box->min.z)
+                box->min.z = v.z;
+            if (v.x > box->max.x)
+                box->max.x = v.x;
+            if (v.y > box->max.y)
+                box->max.y = v.y;
+            if (v.z > box->max.z)
+                box->max.z = v.z;
+        }
+        {
+            Bounds_00421700 *b = obj->model->info->bounds;
+            obj->radius = b->radius = func_00421CB0(b, &D_00692350);
+        }
+        break;
+    }
+    case 1:
+        obj->type = 4;
+        obj->unk_0xcc = func_0041B590(obj->model->info->unk_0x48);
+        obj->unk_0xcc[0x3cc] = 0;
+        obj->radius = 30.0f;
+        break;
+    case 4:
+        obj->flags |= 0x20002;
+        obj->type = 0;
+        break;
+    case 6:
+        obj->type = 5;
+        obj->unk_0xcc = func_0041B590(obj->model->info->unk_0x48);
+        obj->unk_0xcc[0x3cc] = 1;
+        obj->radius = 30.0f;
+        break;
+    case 7: {
+        List_00421700 *list;
+        unsigned int i;
+
+        obj->type = 6;
+        list = func_00448400(obj);
+        obj->radius = 0.0f;
+        for (i = 0; i < list->count; i++) {
+            float r = func_004534B0(&list->items[i]) + list->items[i].unk_0x10;
+            if (r > obj->radius)
+                obj->radius = r;
+        }
+        break;
+    }
+    default:
+        obj->flags = (obj->flags & ~4) | 0x60002;
+        obj->type = 0;
+        obj->radius = 0.0f;
+        break;
+    }
+
+    obj->flags |= 0x40000;
+    switch (desc->unk_0x50) {
+    case 0:
+        obj->flags = (obj->flags & ~4) | 0x40000008;
+        obj->unk_0xd4 = 0;
+        obj->unk_0x8c = D_0047A830;
+        break;
+    case 1:
+        obj->flags = (obj->flags & ~8) | 0x4000000;
+        obj->unk_0xd4 = desc->unk_0x5c;
+        obj->unk_0xdc = 0;
+        obj->unk_0xd8 = desc->unk_0x54;
+        obj->unk_0x8c = D_0047B088;
+        break;
+    case 2:
+        obj->flags = (obj->flags & 0xfffbfff3) | 0x120000;
+        obj->unk_0xd4 = 0;
+        obj->unk_0x8c = D_0047B040;
+        break;
+    case 3:
+        obj->flags = (obj->flags & 0xfffbfff3) | 0x20000;
+        obj->unk_0xd4 = 0;
+        obj->unk_0x8c = D_0047A3B0;
+        break;
+    }
+
+    model = obj->model;
+    info = model->info;
+    if (info->unk_0x1c < 0)
+        obj->flags |= 0x10000000;
+    else
+        obj->unk_0xc8 = info->unk_0x1c;
+    if (model->info->unk_0x11)
+        obj->unk_0x78 = model->info->unk_0x14;
+    else
+        obj->unk_0x78 = 1;
+
+    obj->unk_0xc4 = desc->unk_0x48;
+    if (desc->unk_0x48 == 0.0f && desc->model->unk_0x6)
+        obj->unk_0xc4 = desc->model->unk_0x8;
+    if (!desc->model->unk_0x5)
+        obj->flags |= 0x200;
+
+    switch (model->kind) {
+    case 0:
+        func_00449CD0(obj, model->unk_0x18, 0xff);
+        if (obj->model->shape->bounds.unk_0x0[0xc] , *(float *)((char *)obj->model->shape + 0x1c) > obj->radius)
+            obj->radius = *(float *)((char *)obj->model->shape + 0x1c);
+        break;
+    case 1: {
+        Effect_00421700 e;
+        char *r;
+
+        e.a = D_00692350;
+        e.b = D_00692350;
+        e.c = D_00692350;
+        e.shape = model->shape;
+        e.unk_0x34 = model->unk_0x18;
+        r = func_0044D0F0(0xf, &e, 0xff);
+        if (r != NULL) {
+            r[0x83] = 0;
+            func_0044A790(obj->unk_0x88, r);
+        }
+        break;
+    }
+    }
+
+    obj->unk_0x7c = 0;
+    if (!(obj->flags & 0x20002))
+        func_00449DE0(obj, 2);
+    if (obj->flags & 2)
+        obj->flags &= ~4;
+    return 1;
+}

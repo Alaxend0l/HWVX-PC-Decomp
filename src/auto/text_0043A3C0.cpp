@@ -42,3 +42,34 @@ void func_00443D20(void);
 void func_00427730(void);
 void func_004093C0(void);
 void func_00454D30(void);
+
+void func_0043A760(Obj_0043A3C0 *obj)
+{
+    if (obj->unk_0x94->unk_0x32 == 7) {
+        if (obj->unk_0xbc != NULL) {
+            obj->unk_0xbc = NULL;
+        } else {
+            obj->unk_0xbc = func_0044D950(obj->unk_0x40, obj->unk_0x30);
+            if (obj->unk_0xbc == obj)
+                obj->unk_0xbc = NULL;
+        }
+    }
+    obj->unk_0x94->unk_0x32 = 0;
+}
+
+char func_0043AC70(void)
+{
+    int id = func_004480C0();
+
+    if (id != -1 && func_00447FC0(id) != id)
+        return 0;
+    return D_0048D634();
+}
+
+void func_0043B020(Obj_0043A3C0 *obj)
+{
+    if (obj->unk_0xc0 != 0)
+        func_004073A0(obj->unk_0xb0);
+    else
+        func_00407420(obj->unk_0xb0, obj->unk_0x10, D_005D4440);
+}

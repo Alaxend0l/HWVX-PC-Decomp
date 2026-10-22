@@ -22,7 +22,7 @@ struct Obj_0041FAD0 {
     char unk_0x0c[0x40 - 0x0c];
     Vec4_0041FAD0 pos;
     char unk_0x50[0x74 - 0x50];
-    unsigned flags;
+    int flags;
     char unk_0x78[0xc0 - 0x78];
     char *unk_0xc0;
     char unk_0xc4[0xce - 0xc4];
@@ -43,6 +43,47 @@ extern "C" void func_004073A0(Mesh_0041FAD0 **);
 extern "C" void *func_0044A840(void *, int);
 extern "C" void func_00451C80(void *, char *, int);
 extern "C" void func_00438770(Obj_0041FAD0 *);
+
+extern "C" void func_0041FC50(Obj_0041FAD0 *o, float dt)
+{
+    Vec4_0041FAD0 t;
+    unsigned *count;
+    unsigned i;
+
+    func_004533F0(dt, &o->vel, &o->pos, &t);
+    o->pos = t;
+    count = o->mesh->unk_0x14;
+    for (i = 0; i < *count; i++) {
+        o->nodes[i].pos.x += dt * o->vel.x;
+        o->nodes[i].pos.y += dt * o->vel.y;
+        o->nodes[i].pos.z += dt * o->vel.z;
+    }
+    o->flags &= ~0x4000;
+}
+
+extern "C" void func_004202B0(Obj_0041FAD0 *o)
+{
+    if (o->unk_0x1bc > D_00477000)
+        func_004073A0(&o->mesh);
+    o->flags |= 0x4000;
+}
+
+extern "C" char func_004202E0(Obj_0041FAD0 *a, Obj_0041FAD0 *b)
+{
+    void *r;
+
+    if (*b->unk_0xc0 == 3) {
+        r = func_0044A840(&a->nodes + 1, 8);
+        if (r != 0) {
+            func_00451C80(r, b->unk_0xc0, b->unk_0xce);
+            func_00438770(b);
+            if (b->mesh != 0)
+                b->mesh->unk_0x18 = b->mesh->unk_0x14;
+            return 1;
+        }
+    }
+    return 0;
+}
 
 extern "C" int func_00420600(Obj_0041FAD0 *o)
 {

@@ -18,11 +18,43 @@ extern float D_00477010;
 extern float D_00477014;
 extern float D_00477018;
 
+struct Node_00402680 {
+    char unk_0x0[0x24];
+    float unk_0x24;
+};
+
+struct Obj_00402210 {
+    char unk_0x0[0x1c];
+    char unk_0x1c;
+    char unk_0x1d[0x2c - 0x1d];
+    char *unk_0x2c;
+    char unk_0x30[0xb8 - 0x30];
+    Task_00480820 unk_0xb8;
+    unsigned int unk_0xc8;
+    char unk_0xcc;
+    char unk_0xcd;
+    char unk_0xce[0x414 - 0xce];
+    Node_00402680 *unk_0x414[0x20];
+    int unk_0x494;
+    unsigned int unk_0x498;
+    int unk_0x49c;
+};
+
+extern "C" char func_0043FD40(Obj_00402210 *);
+extern "C" int func_0043B980(int, int);
+extern "C" void func_0043B8B0(int, Node_00402680 **, int);
+extern "C" void func_00402680(Obj_00402210 *, int);
+extern "C" float func_00454340(char *, Node_00402680 *, Node_00402680 *);
+extern "C" float func_004535B0(Node_00402680 *, char *);
+extern "C" unsigned int func_00401FD0(unsigned int *p);
+extern "C" void func_004021D0(Task_00480820 *t);
+
 extern "C" unsigned int func_00401FD0(unsigned int *p)
 {
     if (*p > D_00692370)
-        return *p -= D_00692370;
-    *p = 0;
+        *p -= D_00692370;
+    else
+        *p = 0;
     return *p;
 }
 
@@ -60,11 +92,13 @@ extern "C" char func_00402170(void)
             D_00480820 = t->unk_0x8;
             if (D_00480820 == NULL)
                 D_00480824 = NULL;
-            t->unk_0xc = 0;
-            if (t->unk_0x0 != 0)
+            if (t->unk_0x0 != 0) {
+                t->unk_0xc = 0;
                 t->unk_0x4(t->unk_0x0);
-            else
+            } else {
+                t->unk_0xc = 0;
                 t->unk_0x4();
+            }
             return 1;
         }
     }

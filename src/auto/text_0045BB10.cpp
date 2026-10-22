@@ -102,19 +102,20 @@ void func_0045C920(void)
 
 int func_0045C960(void)
 {
-    unsigned int i;
+    Entry24_0045C *a;
+    Entry18_0045C *b;
 
-    for (i = 0; i < 64; i++) {
-        D_0049AEFC[i].unk_0x0 = 0;
-        D_0049AEFC[i].unk_0x4 = 0;
-        D_0049AEFC[i].unk_0xc = 0;
+    for (a = D_0049AEFC; a < D_0049AEFC + 64; a++) {
+        a->unk_0x4 = 0;
+        a->unk_0x0 = 0;
+        a->unk_0xc = 0;
     }
-    for (i = 0; i < 254; i++) {
-        D_0049BBE8[i].unk_0x10 = 0;
-        D_0049BBE8[i].unk_0x4 = 0;
-        D_0049BBE8[i].unk_0xc = 0;
-        D_0049BBE8[i].unk_0x0 = 0;
-        D_0049BBE8[i].unk_0x8 = 0;
+    for (b = D_0049BBE8; b < D_0049BBE8 + 254; b++) {
+        b->unk_0x10 = 0;
+        b->unk_0x4 = 0;
+        b->unk_0xc = 0;
+        b->unk_0x0 = 0;
+        b->unk_0x8 = 0;
     }
     return 1;
 }

@@ -139,6 +139,19 @@ extern "C" int func_00448B70(char *p)
     return 0;
 }
 
+extern "C" void func_00448B90(char *p, int a)
+{
+    if (*(char **)(p + 0x8c) == D_0047A2E8) {
+        if (!func_0044A870(p + 0x324, a))
+            goto fallback;
+        return;
+    }
+    if (*(char **)(p + 0x8c) == D_0047A5E0 && func_0044A870(p + 0xe4, a))
+        return;
+fallback:
+    func_0044A870(p + 0x88, a);
+}
+
 extern "C" bool func_004490C0(int *p)
 {
     unsigned int i;

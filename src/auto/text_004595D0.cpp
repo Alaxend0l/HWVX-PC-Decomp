@@ -16,7 +16,7 @@ struct Voice_004595D0 {
         };
     };
     char unk_0x4[0x11];
-    char unk_0x15;
+    unsigned char unk_0x15;
     char unk_0x16[0x34 - 0x16];
     int unk_0x34;
     int unk_0x38;

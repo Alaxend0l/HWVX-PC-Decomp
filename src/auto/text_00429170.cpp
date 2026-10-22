@@ -28,6 +28,16 @@ struct Info_00429 {
 
 extern "C" Info_00429 *func_0042B040(int a);
 
+static inline void CopyGuid_00429(Guid_00429 *d, const Guid_00429 *s)
+{
+    *d = *s;
+}
+
+static inline void ZeroGuid_00429(Guid_00429 *d)
+{
+    memset(d, 0, sizeof(Guid_00429));
+}
+
 extern int D_0065E2A0[4];
 extern int D_0065E2B0[4];
 extern int D_0065E2C0;

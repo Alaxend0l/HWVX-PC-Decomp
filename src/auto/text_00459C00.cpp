@@ -54,6 +54,13 @@ char func_00459CC0(void)
     return 1;
 }
 
+char func_00459EF0(void)
+{
+    if (D_00499254)
+        func_0045A090();
+    return 1;
+}
+
 void func_00459C40(void)
 {
     HANDLE h;

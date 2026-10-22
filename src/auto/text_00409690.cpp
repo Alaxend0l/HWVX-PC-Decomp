@@ -239,6 +239,42 @@ extern "C" char func_0040A170(Node_0040A170 *p, int b)
     }
 }
 
+extern "C" void func_0040A1C0(void)
+{
+    int i;
+
+    for (i = 0; i < 512; i++)
+        D_00681AC0[i].unk_0x50 = 0;
+    D_00681AB8 = 1;
+}
+
+extern "C" void func_0040A240(void)
+{
+    int n = 0;
+    u16 last = 0xffff;
+    char *dst = 0;
+    unsigned int i;
+
+    for (i = 0; i < 512; i++) {
+        Entry_00681AC0 *e = &D_00681AC0[i];
+        if (e->unk_0x50 > 0) {
+            if (last != e->unk_0x5c) {
+                if (n != 0) {
+                    func_0045F0A0(n);
+                    n = 0;
+                }
+                dst = func_0045EE10(e->unk_0x5c, 7, 0);
+                last = e->unk_0x5c;
+            }
+            func_00454CF0(dst, e, 0x50);
+            dst += 0x50;
+            n++;
+        }
+    }
+    if (n != 0)
+        func_0045F0A0(n);
+}
+
 extern "C" char *func_0040A490(void)
 {
     return D_00681500;

@@ -36,7 +36,51 @@ extern "C" char D_00496DC8;
 extern "C" unsigned int D_0047B978;
 extern "C" Entry_004505A0 **D_00496DAC;
 
+extern "C" bool func_0044FFC0(List_0044FFC0 *list)
+{
+    for (int i = 0; i < list->count; i++) {
+        if (list->items[i]->obj_28 && (list->items[i]->obj_28->flags_74 & 2))
+            return true;
+    }
+    return false;
+}
+
+extern "C" bool func_004500E0(List_0044FFC0 *list)
+{
+    for (int i = 0; i < list->count; i++) {
+        if (list->items[i]->type_30 == 3)
+            return true;
+    }
+    return false;
+}
+
 extern "C" char func_00450220(void)
 {
     return 0;
 }
+
+extern "C" void func_004505A0(void)
+{
+    if (!D_00496DC8) {
+        for (unsigned int i = 0; i < D_0047B978; i++) {
+            if (D_00496DAC[i]->state_24 != 2
+                && func_0044F4D0(D_00496DAC[i]->unk_28, D_00496DAC[i]->unk_10, D_00496DAC[i]->unk_c)) {
+                int sum = 0;
+                unsigned int n = D_00496DAC[i]->unk_1c;
+                for (unsigned int j = 0; j < n; j++) {
+                    sum += func_00401140(&D_00496DAC[i]->unk_14[j * 0x18]);
+                    n = D_00496DAC[i]->unk_1c;
+                }
+                if (sum == 0)
+                    D_00496DAC[i]->state_24 = 2;
+            }
+        }
+    }
+}
+
+extern "C" int D_00496DE8;
+int func_00450A50(void)
+{
+    return D_00496DE8;
+}
+

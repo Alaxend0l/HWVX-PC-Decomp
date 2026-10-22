@@ -33,3 +33,22 @@ float func_004532F0(float);
 float func_00406AB0(char *car, int target);
 float func_00406A00(Driver_00406770 *d, int target);
 void func_00406950(Driver_00406770 *d, int target);
+
+extern "C" void func_0044A990(char *a);
+extern "C" void func_0044A910(char *a);
+extern float D_0047700C;
+extern float D_00477000;
+extern float D_00477064;
+extern float D_004770B8;
+extern float D_004770BC;
+extern float D_004770C0;
+extern float D_004770C4;
+extern float D_004770C8;
+extern float D_004770CC;
+extern float D_004770D0;
+extern float D_004770D4;
+void func_004072F0(char *p)
+{
+    func_0044A990(p + 0x14);
+    func_0044A910(p + 0x14);
+}

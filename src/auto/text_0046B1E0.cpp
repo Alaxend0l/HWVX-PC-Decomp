@@ -50,6 +50,7 @@ extern "C" char* func_0046B1E0(const char* str1, const char* str2)
     return 0;
 }
 
+#pragma optimize("s", on)
 extern "C" long func_0046B260(const char* nptr)
 {
     int c;
@@ -115,6 +116,7 @@ error_return:
     return (unsigned long)-1L;
 }
 
+#pragma optimize("s", on)
 extern "C" unsigned long WINAPI func_0046B36D(void* ptd)
 {
     if (!TlsSetValue(D_0047D4A0, ptd))
@@ -131,6 +133,10 @@ extern "C" unsigned long WINAPI func_0046B36D(void* ptd)
         func_0046ADF7(GetExceptionCode());
     }
     return 0L;
+}
+
+extern "C" void func_0046B3E1(void)
+{
 }
 
 extern "C" void func_0046B43D(void)

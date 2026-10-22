@@ -9,6 +9,8 @@ struct Funcs_0044D050 {
     void (*unk_0x08)(Obj_0044D050 *);
     void (*unk_0x0c)(Obj_0044D050 *);
     void (*unk_0x10)(Obj_0044D050 *);
+    void (*unk_0x14[11])(Obj_0044D050 *);
+    int (*unk_0x40)(Obj_0044D050 *);
 };
 
 struct Obj_0044D050 {
@@ -16,7 +18,8 @@ struct Obj_0044D050 {
     float unk_0x40[12];
     float unk_0x70;
     unsigned int unk_0x74;
-    char unk_0x78[0x82 - 0x78];
+    char unk_0x78[0x80 - 0x78];
+    short unk_0x80;
     char unk_0x82;
     char unk_0x83[0x8c - 0x83];
     Funcs_0044D050 *unk_0x8c;

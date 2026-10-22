@@ -59,6 +59,12 @@ extern float D_00489530;
 extern double D_00477140;
 extern void (*D_00692994)(int);
 
+extern char D_00489560;
+
+extern "C" void func_00459A70(int, int, int);
+extern "C" void func_00459AC0(int, int);
+extern "C" void func_00459A30(int, int);
+extern "C" void func_00459700(int);
 extern "C" void func_00459D40(int);
 extern "C" char func_00459B10(int);
 extern "C" void func_004096C0(unsigned int);

@@ -96,6 +96,9 @@ extern Entry18_0045C D_0049BBE8[254];
 
 void func_0045D630(Node_0045C *, int);
 void func_0045DC20(Node_0045C *, int);
+Node_0045C *func_0045D4E0(int, int);
+void func_0045D620(Node_0045C *);
+void func_0045C640(List_0045C *list);
 
 static inline void ReleaseNode_0045C(Node_0045C *n)
 {

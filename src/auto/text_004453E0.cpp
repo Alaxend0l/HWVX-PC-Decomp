@@ -81,9 +81,38 @@ float func_00445D40(void)
     return D_0053B1E0;
 }
 
+char *func_00445E50(void)
+{
+    char *s = D_0048D82C;
+    int i = 0;
+    unsigned int len;
+
+    if (s == 0)
+        return 0;
+    len = strlen(s);
+    if (D_0048D828 >= len)
+        return 0;
+    for (; D_0048D828 < len; D_0048D828++) {
+        if (s[D_0048D828] == ',') {
+            D_0048D808[i] = 0;
+            D_0048D828++;
+            return D_0048D808;
+        }
+        D_0048D808[i++] = s[D_0048D828];
+    }
+    D_0048D808[i] = 0;
+    return D_0048D808;
+}
+
 void func_00445EC0(char *s)
 {
     D_0048D82C = s;
+}
+
+void func_00446060(int a, int b)
+{
+    D_0048D938 = a;
+    D_0048D920 = b;
 }
 
 void func_00445C40(char *obj)

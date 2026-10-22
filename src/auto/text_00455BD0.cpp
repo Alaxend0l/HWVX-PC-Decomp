@@ -22,3 +22,8 @@ extern "C" void func_00455BE0(int *year, int *month, int *day, int *hour, int *m
     *minute = st.wMinute;
 }
 
+extern "C" void func_00455C40(int a)
+{
+    func_0046B2F6(a, 0, 0);
+}
+

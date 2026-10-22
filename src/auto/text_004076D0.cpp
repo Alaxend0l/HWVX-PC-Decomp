@@ -82,12 +82,22 @@ void func_004081C0(char *obj)
     func_00407BC0((int **)(obj + 0x18), 2);
 }
 
+void func_00408260(Obj_004076D0 *obj, int b, Vec4_004076D0 *color)
+{
+    if (!b)
+        return;
+    func_004076D0(obj, (List_004076D0 *)&(*(Info_004076D0 **)obj)->unk_0x2c, color);
+    func_00407BE0((int *)obj, b, color);
+}
+
 extern float D_00692378;
 extern float D_0047700C;
 void func_004077E0(int **, int, int);
 void func_00407350(int *, char *);
 void func_00408440(int, int, char *, int, int, int);
 void func_00407BE0(int *, int, Vec4_004076D0 *);
+void func_00407DA0(Obj_004076D0 *, Vec4_004076D0 *);
+void func_00408260(Obj_004076D0 *obj, int b, Vec4_004076D0 *color);
 void func_00407BC0(int **obj, int arg)
 {
     func_004077E0(obj, arg, (*obj)[6]);
@@ -95,12 +105,13 @@ void func_00407BC0(int **obj, int arg)
 
 void func_00408200(int a, int b, int *obj, int d)
 {
+    int *q;
     char buf[0x800];
 
-    if (obj[4]) {
-        int *q = *(int **)(*obj + 0x14);
-        func_00407350(obj, buf);
-        func_00408440(a, b, buf, *q, d, obj[4]);
-    }
+    if (obj[4] == 0)
+        return;
+    q = *(int **)(*obj + 0x14);
+    func_00407350(obj, buf);
+    func_00408440(a, b, buf, *q, d, obj[4]);
 }
 

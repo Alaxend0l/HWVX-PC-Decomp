@@ -12,6 +12,11 @@ extern "C" unsigned char func_00456FB0(unsigned char i)
     return 0;
 }
 
+extern "C" void func_00456FD0(void)
+{
+    D_00496FCD = 0;
+}
+
 extern "C" unsigned char func_00456F80(void)
 {
     return D_00496FCD;

@@ -45,15 +45,6 @@ void func_0045DC20(Voice_004595D0 *, int);
 void func_0045D620(Voice_004595D0 *);
 int func_0045DD10(Voice_004595D0 *);
 
-static inline Voice_004595D0 *GetVoice_004595D0(unsigned int id)
-{
-    Voice_004595D0 *v = &D_00692A00[id & 0xff];
-
-    if (v->id != id)
-        return 0;
-    return v;
-}
-
 int func_004595D0(Slot_004595D0 *src)
 {
     Slot_004595D0 *s;

@@ -8,7 +8,9 @@ typedef struct {
     int osfhnd;
     char osfile;
     char pipech;
-    char pad[0x24 - 6];
+    char pad[2];
+    int lockinitflag;
+    char lock[0x18];
 } ioinfo;
 
 typedef struct {

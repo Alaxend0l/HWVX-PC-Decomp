@@ -168,6 +168,10 @@ extern "C" void func_0046AF7E(void)
     func_0046E9BA(9);
 }
 
+extern "C" void func_0046AF87(void)
+{
+}
+
 extern "C" void *func_0046AF17(unsigned int);
 extern "C" int func_0046F0AD(unsigned int);
 extern "C" void func_0046AFDD(void)
@@ -176,6 +180,11 @@ extern "C" void func_0046AFDD(void)
 }
 
 extern "C" void func_0046B07D(void)
+{
+    func_0046E9BA(9);
+}
+
+extern "C" void func_0046B0D5(void)
 {
     func_0046E9BA(9);
 }

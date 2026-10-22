@@ -27,9 +27,31 @@ void func_0045DC20(Node_0045C *, int);
 
 void func_0045C640(List_0045C *list)
 {
-    list->head = list->head->next;
-    func_0045D630(list->unk_0x4, 3);
+    Node_0045C *old = list->unk_0x4;
+    Node_0045C *n = list->head->next;
+
+    list->head = n;
+    func_0045D630(old, 3);
     list->unk_0x4 = NULL;
+}
+
+void func_0045C670(Node_0045C *node)
+{
+    int idx = node->unk_0x2;
+    List_0045C *list;
+    Node_0045C *n;
+
+    if ((unsigned char)idx <= 0x20) {
+        list = &D_00499A68[idx & 0xff];
+        if (list->unk_0x4 == node) {
+            list->unk_0x4 = NULL;
+            list->head = node->next;
+            return;
+        }
+        for (n = list->head; n->next != node; n = n->next)
+            ;
+        n->next = node->next;
+    }
 }
 
 void func_0045C5E0(List_0045C *list)

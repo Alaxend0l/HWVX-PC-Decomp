@@ -33,6 +33,31 @@ void func_0044A790(Obj_0044D050 **, Obj_0044D050 *);
 void func_00449AD0(Obj_0044D050 *);
 int func_0045E270(char *, int);
 void func_0044D860(int, int);
+
+struct Ent560_0044D050 {
+    char unk_0x00[0x74];
+    unsigned int unk_0x74;
+    char unk_0x78[0x560 - 0x78];
+};
+
+struct EntF0_0044D050 {
+    char unk_0x00[0x74];
+    unsigned int unk_0x74;
+    char unk_0x78[0xf0 - 0x78];
+};
+
+struct Ent1D0_0044D050 {
+    char unk_0x00[0x74];
+    unsigned int unk_0x74;
+    char unk_0x78[0x1d0 - 0x78];
+};
+
+extern Ent560_0044D050 D_0051F720[8];
+extern Ent560_0044D050 D_00522220[];
+extern EntF0_0044D050 D_004F3C20[96];
+extern EntF0_0044D050 D_004F9620[];
+extern Ent1D0_0044D050 D_00511E20[80];
+extern Ent1D0_0044D050 D_0051AF20[];
 char func_0041ACE0(int, int, int, int);
 char func_0044D370(int, int, int, int);
 char func_004194B0(int, float *, float *, int);
@@ -122,8 +147,13 @@ char func_0044D5A0(int a, Obj_0044D050 *p, int c)
 
 char func_0044D5F0(int a, Obj_0044D050 *p, int c)
 {
-    if (!(p->unk_0x74 & 0x40000) && func_00419CA0(a, c))
-        return 1;
+    char r;
+
+    if (!(p->unk_0x74 & 0x40000)) {
+        r = func_00419CA0(a, c);
+        if (r)
+            return 1;
+    }
     return func_0044D140(a, p, c);
 }
 

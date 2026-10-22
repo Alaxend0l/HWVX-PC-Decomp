@@ -120,6 +120,12 @@ void func_00446060(int a, int b)
     D_0048D920 = b;
 }
 
+void func_004460A0(void)
+{
+    D_0048D93C = 1;
+    func_00443DA0(11);
+}
+
 void func_00445C40(char *obj)
 {
     *(float *)(obj + 0x24) = func_00445D30();

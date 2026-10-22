@@ -45,7 +45,7 @@ struct Elem_0043C520 {
     unsigned char b95;
     unsigned char b96;
     unsigned char b97;
-    int f98;
+    float f98;
     float f9c;
     float fa0;
     char unk_0xa4[0xb0 - 0xa4];

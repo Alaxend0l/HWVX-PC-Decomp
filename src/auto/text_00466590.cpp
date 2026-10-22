@@ -48,6 +48,43 @@ void func_004668B0(int x, int y, int w, int h)
     glViewport(x, y, w, h);
 }
 
+void func_004669A0(char *name, void *pixels, int w, int h)
+{
+    unsigned char hdr[6];
+    FILE *f = func_0046AAD8(name, D_0047C198);
+    func_0046A96E(D_0047D394, 1, 12, f);
+    hdr[0] = w;
+    hdr[1] = w >> 8;
+    hdr[2] = h;
+    hdr[3] = h >> 8;
+    hdr[4] = 24;
+    hdr[5] = 0;
+    func_0046A96E(hdr, 1, 6, f);
+    func_00466960((unsigned char *)pixels, w * h);
+    func_0046A96E(pixels, 1, w * h * 3, f);
+    func_0046A8F1(f);
+}
+
+void func_00466960(unsigned char *p, int n)
+{
+    int i;
+    for (i = 0; i < n * 3; i += 3) {
+        unsigned char t = p[i];
+        p[i] = p[i + 2];
+        p[i + 2] = t;
+    }
+}
+
+void func_00466C50(unsigned char on)
+{
+    if (on && D_006C9A7C) {
+        glEnable(GL_FOG);
+    } else {
+        glDisable(GL_FOG);
+    }
+    D_006C99E8 = on;
+}
+
 void func_00466FD0(int mode)
 {
     switch (mode) {

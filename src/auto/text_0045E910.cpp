@@ -44,3 +44,9 @@ struct State_0045E910 {
 extern State_0045E910 *D_0049D7C8;
 extern void *D_0049D7C4;
 extern char D_0047CC44[];
+
+void func_0045E970(void)
+{
+    func_00454C50(D_0049D7C8);
+    func_00454C50(D_0049D7C4);
+}

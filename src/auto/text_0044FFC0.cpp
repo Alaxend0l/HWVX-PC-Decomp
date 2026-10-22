@@ -95,3 +95,13 @@ int func_00450A50(void)
     return D_00496DE8;
 }
 
+extern "C" unsigned int D_0047B984;
+extern "C" Entry_004505A0 **D_00496DB0;
+extern "C" unsigned int D_0047B9A8;
+extern "C" Entry_004505A0 **D_00496DBC;
+extern "C" int D_00496DF4;
+extern "C" void func_00450C00(void)
+{
+    D_00496DF4 = 0;
+}
+

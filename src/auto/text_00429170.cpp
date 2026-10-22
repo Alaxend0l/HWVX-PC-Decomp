@@ -11,11 +11,13 @@ struct Guid_00429 {
     int unk_0x0[4];
 };
 
+#pragma pack(push, 2)
 struct Info_00429 {
     char unk_0x0[0x2];
     Guid_00429 unk_0x2;
     unsigned char unk_0x12[13];
 };
+#pragma pack(pop)
 
 extern "C" Info_00429 *func_0042B040(int a);
 
@@ -131,13 +133,7 @@ extern "C" void func_00429F10(int a)
         info->unk_0x12[12] = 1;
         return;
     }
-    {
-        Guid_00429 *g = &info->unk_0x2;
-        g->unk_0x0[0] = 0;
-        g->unk_0x0[1] = 0;
-        g->unk_0x0[2] = 0;
-        g->unk_0x0[3] = 0;
-    }
+    memset(&info->unk_0x2, 0, sizeof(Guid_00429));
 }
 
 extern "C" int func_00429EA0(void)

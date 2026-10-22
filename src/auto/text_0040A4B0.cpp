@@ -53,6 +53,13 @@ void func_0040A540(void)
     func_0040A4F0();
 }
 
+char func_0041ACE0(int, int, int, int);
+char func_0040A960(int, int, int, int);
+void func_0040A810(u8 n)
+{
+    D_00681AB4 = n;
+}
+
 Slot_0040A4B0 *func_0040A4C0(u32 i)
 {
     if (i < (*(u32 *)&D_00681AB0 & 0xff) && i < 4)

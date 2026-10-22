@@ -114,6 +114,11 @@ extern "C" bool func_0041E180(int a, int b, Vec4_0041DBE0 *out1, Vec4_0041DBE0 *
     return false;
 }
 
+extern "C" void func_0041E450(Vec4_0041DBE0 *p)
+{
+    memset(p, 0, 0x20);
+}
+
 extern "C" void func_0041E460(void)
 {
     D_0065FCE0 = 0;

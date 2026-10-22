@@ -90,6 +90,11 @@ extern "C" void func_00409DA0(int n)
         D_0068DAC4 = n - 1;
 }
 
+extern "C" void func_00409DB0(int index)
+{
+    D_0048955C[index].unk_0x49 = 1;
+}
+
 extern "C" void func_00409F50(void)
 {
     if (D_00489554) {

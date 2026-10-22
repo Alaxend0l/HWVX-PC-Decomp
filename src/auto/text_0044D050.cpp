@@ -32,7 +32,7 @@ Obj_0044D050 *func_0044A810(int *);
 void func_0044A790(Obj_0044D050 **, Obj_0044D050 *);
 void func_00449AD0(Obj_0044D050 *);
 int func_0045E270(char *, int);
-void func_0044D860(int, int);
+int func_0044D860(void **, int);
 
 struct Ent560_0044D050 {
     char unk_0x00[0x74];

@@ -152,21 +152,24 @@ extern "C" char *func_0046BF62(char *buf, int ndec, int caps, StrFlt_0046BA52 *f
     p = func_004718C0(p + ndec + ((char)g_fmt == 0), D_004789B0);
     if (caps)
         *p = 'E';
+    p++;
     if (*flt->mantissa != '0') {
         exp = flt->decpt - 1;
         if (exp < 0) {
             exp = -exp;
-            *(p + 1) = '-';
+            *p = '-';
         }
+        p++;
         if (exp >= 100) {
-            *(p + 2) += (char)(exp / 100);
+            *p += (char)(exp / 100);
             exp %= 100;
         }
+        p++;
         if (exp >= 10) {
-            *(p + 3) += (char)(exp / 10);
+            *p += (char)(exp / 10);
             exp %= 10;
         }
-        *(p + 4) += (char)exp;
+        *(p + 1) += (char)exp;
     }
     return buf;
 }

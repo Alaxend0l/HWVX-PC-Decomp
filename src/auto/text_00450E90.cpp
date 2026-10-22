@@ -27,3 +27,12 @@ extern "C" void func_004482C0(Obj_00450E90 *p, int a);
 extern "C" void func_00448330(Obj_00450E90 *p);
 extern "C" void func_00407310(Slot_00450E90 *p);
 extern "C" void func_00451C20(Obj_00450E90 *p, unsigned char idx);
+
+extern "C" void func_00451C00(Obj_00450E90 *p)
+{
+    unsigned int i;
+    if (p != 0) {
+        for (i = 0; i < 12; i++)
+            func_00451C20(p, i);
+    }
+}

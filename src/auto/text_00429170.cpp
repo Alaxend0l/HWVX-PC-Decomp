@@ -125,12 +125,11 @@ extern "C" void func_00429F10(int a)
 
     if (dev != NULL && *(int *)(dev + 0x3c) != 0) {
         int *g = (int *)((int *)**(int **)*(int *)(dev + 0x40))[1];
-        int *d = (int *)&info->unk_0x2;
-        int t;
-        t = g[0]; d[0] = t;
-        t = g[1]; d[1] = t;
-        t = g[2]; d[2] = t;
-        t = g[3]; d[3] = t;
+        int *d = info->unk_0x2.unk_0x0;
+        d[0] = g[0];
+        d[1] = g[1];
+        d[2] = g[2];
+        d[3] = g[3];
         info->unk_0x12[0] = 10;
         info->unk_0x12[1] = 11;
         info->unk_0x12[2] = 9;

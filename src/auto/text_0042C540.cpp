@@ -7,10 +7,10 @@ struct Pair_0042C540 {
     int b;
 };
 
-static inline void SetPair_0042C540(Pair_0042C540 *p, int v)
+static inline void SetPair_0042C540(int *p, int v)
 {
-    p->a = v;
-    p->b = v;
+    p[0] = v;
+    p[1] = v;
 }
 
 struct Slot_0042C540 {

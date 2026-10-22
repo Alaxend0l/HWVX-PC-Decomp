@@ -22,6 +22,7 @@ struct Mat4_004530E0 {
 extern float D_00477000;
 extern float D_00477014;
 extern float D_004770AC;
+extern float D_00477040;
 
 int func_00452FB0(const char *expr, const char *file, int line, const char *msg)
 {

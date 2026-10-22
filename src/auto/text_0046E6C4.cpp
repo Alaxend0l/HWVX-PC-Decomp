@@ -69,6 +69,30 @@ extern "C" int func_0046F0AD(unsigned int size)
     return 0;
 }
 
+#pragma optimize("y", on)
+extern "C" int func_0046F0C8(int threshold)
+{
+    if ((D_006D59BC = (Header_0046F0C8 *)HeapAlloc(D_006D59C4, 0, 16 * sizeof(Header_0046F0C8))) == NULL)
+        return 0;
+    D_006D59C0 = threshold;
+    D_006D59B0 = D_006D59BC;
+    D_006D59B4 = NULL;
+    D_006D59B8 = 0;
+    D_006D59A8 = 16;
+    return 1;
+}
+extern "C" Header_0046F0C8 *func_0046F110(void *pv)
+{
+    Header_0046F0C8 *p = D_006D59BC;
+
+    while (p < D_006D59BC + D_006D59B8) {
+        if ((unsigned int)((char *)pv - p->unk_0xc) < 0x100000)
+            return p;
+        p++;
+    }
+    return NULL;
+}
+
 extern "C" int func_0046F034(int newctrl, int mask)
 {
     return newctrl & mask;

@@ -36,6 +36,8 @@ extern "C" int (__stdcall *_imp__SetStdHandle)(unsigned long, void *);
 #define SetStdHandle (*_imp__SetStdHandle)
 extern "C" void (__stdcall *_imp__InitializeCriticalSection)(void *);
 extern "C" void (__stdcall *_imp__EnterCriticalSection)(void *);
+extern "C" void (__stdcall *_imp__LeaveCriticalSection)(void *);
+#define LeaveCriticalSection (*_imp__LeaveCriticalSection)
 #define InitializeCriticalSection (*_imp__InitializeCriticalSection)
 #define EnterCriticalSection (*_imp__EnterCriticalSection)
 extern "C" void func_0046E959(int);

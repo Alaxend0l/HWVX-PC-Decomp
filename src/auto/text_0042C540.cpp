@@ -49,6 +49,11 @@ struct Car_0042C540 {
 
 extern Slot_0042C540 D_0064D080[4];
 extern Pool_0042C540 *D_0048D5DC;
+struct SlotPtr_0042C540 {
+    char *ptr;
+    char unk_0x4[0x34];
+};
+extern SlotPtr_0042C540 D_0064D0A4[4];
 extern char D_0047ACC0[];
 
 void func_0043FF50(void);
@@ -67,7 +72,7 @@ void func_0042C540(void)
         s->unk_0x4 = -1;
         s->unk_0x8 = -1;
         s->unk_0x14 = -1;
-        s->unk_0x2c = s->unk_0x30 = -1;
+        SetPair_0042C540(&s->unk_0x2c, -1);
     }
     func_0043FF50();
 }
@@ -77,12 +82,14 @@ void func_0042C580(Car_0042C540 *car)
     int i;
     char *p;
 
-    for (i = 0; i < 4; i++) {
+    i = 0;
+    do {
         if (D_0064D080[i].id == car->id && D_0064D080[i].unk_0x24 != NULL)
-            break;
-    }
-    if (i == 4)
-        return;
+            goto found;
+        i++;
+    } while (i < 4);
+    return;
+found:
     p = *(char **)(D_0064D080[i].unk_0x24 + 0x398);
     car->color[0] = (*(char **)(p + 0x84))[0x34];
     car->color[1] = (*(char **)(p + 0x84))[0x35];
@@ -92,10 +99,11 @@ void func_0042C580(Car_0042C540 *car)
 
 char func_0042CF70(void)
 {
+    Pool_0042C540 *pool;
     unsigned int i;
 
-    D_0048D5DC = (Pool_0042C540 *)func_00454B80(sizeof(Pool_0042C540), 0x42, D_0047ACC0);
-    if (D_0048D5DC == NULL)
+    D_0048D5DC = pool = (Pool_0042C540 *)func_00454B80(sizeof(Pool_0042C540), 0x42, D_0047ACC0);
+    if (pool == NULL)
         return 0;
     D_0048D5DC->count = 0x800;
     D_0048D5DC->used = 0;

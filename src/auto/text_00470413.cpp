@@ -1,5 +1,16 @@
 /* 17 functions from 0x00470413 to 0x00470CA7, found by Ghidra. */
 #include "common.h"
+typedef struct {
+    int osfhnd;
+    char osfile;
+    char pipech;
+    char pad[0x24 - 6];
+} ioinfo;
+
+extern "C" unsigned int D_006D5AE0;
+extern "C" ioinfo *D_006D59E0[];
+extern "C" void func_00472339(int);
+extern "C" void func_00472398(int);
 
 extern "C" char *func_0046C653(void);
 extern "C" void func_0046E9BA(int);
@@ -41,6 +52,56 @@ extern "C" void func_00470623(void)
     func_0046E9BA(9);
 }
 
+extern "C" void func_0047077C(void)
+{
+}
+
+extern "C" void func_00470771(void)
+{
+    func_0046E9BA(9);
+}
+
+extern "C" int D_006D59C8;
+extern "C" void *D_006D59C4;
+extern "C" void func_0046E959(int);
+extern "C" void *func_0046F110(void *);
+extern "C" unsigned char *func_0046FE6B(void *, void **, void **);
+extern "C" __declspec(dllimport) unsigned long __stdcall HeapSize(void *, unsigned long, const void *);
+#pragma optimize("s", on)
+extern "C" unsigned int func_004707C7(void *pblock)
+{
+    void *pHeader;
+    unsigned int retval;
+
+    if (D_006D59C8 == 3) {
+        func_0046E959(9);
+        __try {
+            if ((pHeader = func_0046F110(pblock)) != NULL)
+                retval = ((int *)pblock)[-1] - 9;
+        }
+        __finally {
+            func_0046E9BA(9);
+        }
+        if (pHeader != NULL)
+            return retval;
+    } else if (D_006D59C8 == 2) {
+        void *pRegion;
+        void *pPage;
+        unsigned char *pMap;
+
+        func_0046E959(9);
+        __try {
+            if ((pMap = func_0046FE6B(pblock, &pRegion, &pPage)) != NULL)
+                retval = (unsigned int)*pMap << 4;
+        }
+        __finally {
+            func_0046E9BA(9);
+        }
+        if (pMap != NULL)
+            return retval;
+    }
+    return HeapSize(D_006D59C4, 0, pblock);
+}
 extern "C" void func_0047062C(void)
 {
 }

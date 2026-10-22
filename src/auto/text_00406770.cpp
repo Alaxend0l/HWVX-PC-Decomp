@@ -50,6 +50,26 @@ struct Pair_004073A0 {
     unsigned short b;
 };
 
+struct Mesh_004073A0 {
+    unsigned count;
+    int *items;
+    unsigned pairCount;
+    Pair_004073A0 *pairs;
+    int *buf;
+    unsigned *info;
+};
+
+struct Obj_004073A0 {
+    Mesh_004073A0 *mesh;
+    char pad_0x4[0xc];
+    char *unk_0x10;
+    char pad_0x14[4];
+    char *unk_0x18;
+    char pad_0x1c[4];
+    int unk_0x20;
+    float unk_0x24;
+};
+
 void func_00454CF0(void *, void *, int);
 void func_0045E120(int, int, void *, int);
 extern "C" void func_0044A990(char *a);
@@ -231,6 +251,14 @@ void func_004072F0(char *p)
     func_0044A910(p + 0x14);
 }
 
+void func_00407350(int **p, void *dst)
+{
+    int *m = *(int **)(*p + 5);
+    func_00454CF0(dst, (void *)m[4], m[0] << 5);
+    *(float *)&p[9] = 1.0f;
+    func_0045E120(*(int *)((char *)p[6] + 0x10), (int)p[8], dst, m[0]);
+}
+
 void func_0044A9C0(int a, char *b);
 void func_0043AE90(int buf);
 void func_00454CF0(void *, void *, int);
@@ -254,18 +282,13 @@ void func_00407310(char *p)
 void func_004073A0(int **p)
 {
     unsigned i;
-    int *m = *p;
-    int *s = (int *)m[5];
+    int *s = (int *)(*p)[5];
 
-    for (i = 0; i < (unsigned)m[0]; i++) {
-        func_0045E160(((int *)m[1])[i], (int)p[4], s[0], 0);
-        m = *p;
-    }
-    m = *p;
-    for (i = 0; i < (unsigned)m[2]; i++) {
-        int *e = (int *)(m[3] + i * 8);
-        func_0045E670(e[0], (char *)p[4] + *(unsigned short *)(e + 1) * 0x40);
-        m = *p;
+    for (i = 0; i < (unsigned)(*p)[0]; i++)
+        func_0045E160(((int *)(*p)[1])[i], (int)p[4], s[0], 0);
+    for (i = 0; i < (unsigned)(*p)[2]; i++) {
+        Pair_004073A0 *e = &((Pair_004073A0 *)(*p)[3])[i];
+        func_0045E670(e->a, (char *)p[4] + e->b * 0x40);
     }
     func_00407EF0((char *)p, 0);
 }
@@ -273,10 +296,10 @@ void func_004073A0(int **p)
 void func_00407590(char *p, unsigned *list, int c)
 {
     unsigned i;
+    float q[4];
 
     func_00407280(p, c);
     for (i = 0; i < list[0]; i++) {
-        float q[4];
         char *item = (char *)list[1] + i * 0x20;
         q[0] = 0.0f;
         q[1] = 0.0f;

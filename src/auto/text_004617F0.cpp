@@ -73,8 +73,31 @@ extern char D_006D4E10[];
 extern char D_006D42D0[];
 extern char D_006D45A0[];
 extern char D_0047CC70[];
-extern int D_006D3D48;
-extern void *D_006D3D44;
+struct Name_006D3D44 {
+    char s[0x20];
+};
+
+struct Entry_006D3D44 {
+    Name_006D3D44 name;
+    char unk_0x20[4];
+    int unk_0x24;
+    int unk_0x28;
+    float unk_0x2c;
+    short unk_0x30;
+    short unk_0x32;
+    short unk_0x34;
+    short unk_0x36;
+    short unk_0x38;
+    short unk_0x3a;
+    short unk_0x3c;
+    short unk_0x3e;
+};
+
+extern unsigned int D_006D3D48;
+extern Entry_006D3D44 *D_006D3D44;
+extern "C" void func_00454C50(void *p);
+void func_00467E10(unsigned int);
+void func_00462EE0(void);
 void func_00461B50(void)
 {
     D_006D4D18 = 0;

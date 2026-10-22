@@ -135,6 +135,30 @@ char *func_0043ADE0(unsigned int size, int tag)
     return NULL;
 }
 
+void func_0043AE90(char *buf)
+{
+    unsigned int i;
+
+    for (i = 0; i < 0x80; i++) {
+        if (D_0048D638->large[i].buf == buf) {
+            D_0048D638->large[i].used = 0;
+            return;
+        }
+    }
+    for (i = 0; i < 0x80; i++) {
+        if (D_0048D638->medium[i].buf == buf) {
+            D_0048D638->medium[i].used = 0;
+            return;
+        }
+    }
+    for (i = 0; i < 0x60; i++) {
+        if (D_0048D638->small[i].buf == buf) {
+            D_0048D638->small[i].used = 0;
+            return;
+        }
+    }
+}
+
 char func_0043AC70(void)
 {
     int id = func_004480C0();

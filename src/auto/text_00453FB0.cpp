@@ -16,6 +16,10 @@ struct Vec3_00453FB0 {
     float x, y, z;
 };
 
+struct Vec4_00453FB0 {
+    float x, y, z, w;
+};
+
 static inline float Length3_00453FB0(float x, float y, float z)
 {
     return func_004532E0(x * x + y * y + z * z);
@@ -31,12 +35,14 @@ float func_00454800(float *plane, float *v)
 
 void func_00454960(float *q)
 {
+    struct {
+        float x, y, z, w;
+    } axis;
     float angle;
-    float axis[4];
 
     angle = func_00454AC0(0.0f, 6.2831855f);
-    func_00454A30(axis);
-    func_00453D20(axis, angle, q);
+    func_00454A30(&axis.x);
+    func_00453D20(&axis.x, angle, q);
 }
 
 void func_004546B0(float *p)

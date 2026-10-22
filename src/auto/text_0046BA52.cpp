@@ -11,7 +11,7 @@ struct StrFlt_0046BA52 {
 extern "C" StrFlt_0046BA52 *func_004717AB(double value, StrFlt_0046BA52 *flt, char *buf);
 extern "C" int func_00471734(char *buf, int digits, StrFlt_0046BA52 *flt);
 extern "C" void func_0046C079(char *buf, int ndec, StrFlt_0046BA52 *flt, int g_fmt);
-extern "C" void func_0046BF62(char *buf, int ndec, int caps, StrFlt_0046BA52 *flt, int g_fmt);
+extern "C" char *func_0046BF62(char *buf, int ndec, int caps, StrFlt_0046BA52 *flt, int g_fmt);
 extern "C" void func_0046E9BA(int lock);
 
 extern "C" void func_0046BCE6(void)
@@ -43,12 +43,13 @@ extern "C" void func_0046BD6F(void)
 }
 
 #pragma optimize("y", off)
-#pragma optimize("s", on)
+#pragma optimize("sp", on)
+#pragma optimize("g", off)
 extern "C" int func_0046BD9C(void)
 {
-    volatile double divisor = 3145727.0;
-    volatile double dividend = 4195835.0;
-    volatile double result;
+    double divisor = 3145727.0;
+    double dividend = 4195835.0;
+    double result;
 
     result = dividend - (dividend / divisor) * divisor;
     if (result > 1.0)
@@ -56,7 +57,6 @@ extern "C" int func_0046BD9C(void)
     return 0;
 }
 #pragma optimize("", on)
-#pragma optimize("gy", on)
 extern "C" int func_0046BDDA(void)
 {
     void *kernel;

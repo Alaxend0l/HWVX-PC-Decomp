@@ -20,7 +20,26 @@ struct Dir_00441880 {
     float x, y, z;
 };
 
-extern void *D_0053B244;
+struct Item_0053B244 {
+    char unk_0x00[0x5c];
+    int id;
+    char unk_0x60[0x64 - 0x60];
+    int refs;
+};
+
+struct Pair_0053B244 {
+    void *key;
+    Item_0053B244 *item;
+};
+
+struct Table_0053B244 {
+    Item_0053B244 *items[0x700];
+    Pair_0053B244 pairs[0x80];
+    unsigned int count;
+    unsigned int npairs;
+};
+
+extern Table_0053B244 *D_0053B244;
 extern const char D_0047B1BC[];
 
 extern "C" void func_00441880(Obj_00441880 *, Dir_00441880 *);

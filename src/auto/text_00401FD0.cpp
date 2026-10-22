@@ -1,5 +1,6 @@
 /* 15 functions from 0x00401FD0 to 0x00402FB0, found by Ghidra. */
 #include "common.h"
+#include <string.h>
 
 struct Task_00480820 {
     int unk_0x0;
@@ -73,9 +74,39 @@ extern "C" void func_004021D0(Task_00480820 *t)
     }
 }
 
+extern "C" char func_00402210(Obj_00402210 *o)
+{
+    if (!func_0043FD40(o))
+        return 0;
+    o->unk_0x1c = 0;
+    if (o->unk_0xcd && o->unk_0x2c == NULL)
+        o->unk_0xcc = 1;
+    if (o->unk_0xc8 != 0 && func_00401FD0(&o->unk_0xc8) == 0)
+        func_004021D0(&o->unk_0xb8);
+    if (!o->unk_0xcc)
+        o->unk_0xcd;
+    return 1;
+}
+
 extern "C" void func_00402280(int p)
 {
     *(int *)(p + 0xc8) = 500;
+}
+
+extern "C" void func_004027C0(Obj_00402210 *o)
+{
+    char *v = o->unk_0x2c;
+    while (o->unk_0x498 < 0x20) {
+        Node_00402680 *n = o->unk_0x414[o->unk_0x498];
+        float r;
+        if (n == NULL)
+            return;
+        float d = func_004535B0(n, v + 0x40);
+        r = n->unk_0x24;
+        if (!(d < r * r))
+            return;
+        func_00402680(o, 0);
+    }
 }
 
 extern "C" char func_004020C0(float a, float b, float c)

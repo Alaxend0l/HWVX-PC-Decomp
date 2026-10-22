@@ -30,6 +30,8 @@ struct Voice_0045B {
 extern Chan_0045B D_00499A68[32];
 extern char D_0049A868[];
 extern unsigned int D_006929AC;
+extern unsigned int D_00692990;
+void func_0045D630(Node_0045B *, int);
 extern int D_0049A898;
 extern int D_0049A884;
 extern int D_006929C0[8];

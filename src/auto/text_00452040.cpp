@@ -124,6 +124,13 @@ extern "C" int func_00452550(unsigned int i)
     return 0;
 }
 
+extern "C" int func_00452570(unsigned int i)
+{
+    if (i < (unsigned int)D_0049DBA0->unk_0x68)
+        return D_0049DBA0->unk_0x6c + i * 0x30;
+    return 0;
+}
+
 extern "C" int func_00452590(void)
 {
     return D_0049DBA0->unk_0x78;

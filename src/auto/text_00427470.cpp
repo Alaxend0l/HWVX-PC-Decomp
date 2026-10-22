@@ -63,6 +63,86 @@ extern "C" int func_00427770(void)
     return 11;
 }
 
+extern "C" void func_00427780(void)
+{
+    unsigned int i;
+    Obj_00427470 *last;
+
+    while (func_00427760())
+        ;
+    for (i = 0; i < D_0048D1AC; i++) {
+        if (D_0065F420[i] != 0 && D_0065F420[i]->unk_0x34)
+            func_00421650(D_0065F420[i]);
+    }
+    last = D_0048D1A8;
+    if (last && last->unk_0x34)
+        func_00421650(last);
+    D_0048D1AC = 0;
+    D_0048D1B0 = 0;
+    func_00428BA0();
+    func_00428BA0();
+    func_00427B50(0, 0);
+    D_0047A934 = 0;
+    if (D_0047A938 != -1) {
+        func_004585A0(D_0047A938);
+        D_0047A938 = -1;
+    }
+}
+
+extern "C" void func_00427840(void)
+{
+    int i;
+    int j;
+    int k;
+    Obj_00427470 *n;
+
+    if (D_0049DBA0 != 0) {
+        for (i = 0; (unsigned)i < D_0049DBA0->count; i++) {
+            if (D_0049DBA0->nodes[i].unk_0x1C == 0) {
+                D_0048D1A8 = &D_0049DBA0->nodes[i];
+                continue;
+            }
+            n = &D_0049DBA0->nodes[i];
+            for (j = 0; (unsigned)j < n->unk_0x20; j++) {
+                for (k = 0; (unsigned)k < D_0049DBA0->count; k++) {
+                    if (k != i && D_0049DBA0->nodes[k].unk_0x0 == n->unk_0x24[j]) {
+                        n->unk_0x24[j] = k;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+}
+
+extern "C" void func_00428360(Obj_00427470 **list, unsigned int count, bool flag)
+{
+    unsigned int i;
+
+    if (func_00427760() || D_0048D1B4 != 0)
+        return;
+    for (i = 0; i < count; i++) {
+        if (list[i]->unk_0x10 != 0 && list[i]->unk_0x34 == false) {
+            func_00421210(D_0049DBB0, list[i]);
+            list[i]->unk_0x34 = 1;
+        } else if (list[i]->unk_0xC == 0) {
+            list[i]->unk_0x34 = 1;
+        } else if (list[i]->unk_0x34 == false) {
+            D_0065F4A0[D_0048D1B0] = list[i];
+            D_0048D1B0++;
+        }
+    }
+    if (D_0048D1B0 != 0) {
+        if (flag) {
+            D_0048D1A1 = 1;
+            D_0048D1A0 = 1;
+            D_0065F380 = func_00455C40(func_00428430, 99);
+            return;
+        }
+        func_00428480(1);
+    }
+}
+
 extern "C" void func_004276B0(void)
 {
     unsigned int i;

@@ -54,10 +54,8 @@ extern "C" char **func_00475C8D(char **oldenv)
     if (oldenv == NULL)
         return NULL;
 
-    while (*oldenvptr) {
-        oldenvptr++;
+    while (*oldenvptr++)
         cvars++;
-    }
 
     if (!(newenv = newenvptr = (char **)func_0046AED9((cvars + 1) * sizeof(char *))))
         func_0046AD1F(9);

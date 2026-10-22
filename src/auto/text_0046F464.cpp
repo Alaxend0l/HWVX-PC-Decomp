@@ -140,6 +140,26 @@ extern "C" void func_0046FDA9(int n)
     } while (r != D_0047DA5C && n > 0);
 }
 
+extern "C" unsigned char *func_0046FE6B(char *p, Region_0046F464 **pr, Page_0046F464 **pp)
+{
+    Region_0046F464 *r = &D_0047DA58;
+    Page_0046F464 *pg;
+
+    while (p <= r->unk_0x10 || p >= r->unk_0x14) {
+        r = r->unk_0x0;
+        if (r == &D_0047DA58)
+            return NULL;
+    }
+    if ((unsigned int)p & 0xf)
+        return NULL;
+    if (((unsigned int)p & 0xfff) < 0x100)
+        return NULL;
+    *pr = r;
+    pg = (Page_0046F464 *)((unsigned int)p & ~0xfff);
+    *pp = pg;
+    return (unsigned char *)pg + 8 + ((p - (char *)pg - 0x100) >> 4);
+}
+
 extern "C" void func_0046FEC2(Region_0046F464 *r, char *page, unsigned char *hdr)
 {
     Entry_0046F464 *e = &r->unk_0x18[(page - r->unk_0x10) >> 12];

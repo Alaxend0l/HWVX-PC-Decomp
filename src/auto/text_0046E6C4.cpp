@@ -83,9 +83,10 @@ extern "C" int func_0046F0C8(int threshold)
 }
 extern "C" Header_0046F0C8 *func_0046F110(void *pv)
 {
+    Header_0046F0C8 *last = D_006D59BC + D_006D59B8;
     Header_0046F0C8 *p = D_006D59BC;
 
-    while (p < D_006D59BC + D_006D59B8) {
+    while (p < last) {
         if ((unsigned int)((char *)pv - p->unk_0xc) < 0x100000)
             return p;
         p++;

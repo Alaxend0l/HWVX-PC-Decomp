@@ -12,6 +12,10 @@ extern "C" void (__stdcall *_imp__glDepthMask)(GLboolean);
 extern "C" void (__stdcall *_imp__glCullFace)(GLenum);
 extern "C" void (__stdcall *_imp__glFogi)(GLenum, GLint);
 extern "C" void (__stdcall *_imp__glDeleteTextures)(GLsizei, const GLuint *);
+extern "C" void (__stdcall *_imp__glBindTexture)(GLenum, GLuint);
+extern "C" void (__stdcall *_imp__glTexParameteri)(GLenum, GLenum, GLint);
+#define glBindTexture (*_imp__glBindTexture)
+#define glTexParameteri (*_imp__glTexParameteri)
 #define glBlendFunc (*_imp__glBlendFunc)
 #define glTexEnvf (*_imp__glTexEnvf)
 #define glEnable (*_imp__glEnable)
@@ -88,6 +92,33 @@ void func_004675B0(Elem_004675B0 *elems, unsigned int count, void *v)
         else
             elems[i].unk_0x1c = 0;
     }
+}
+
+void func_00467810(int mode)
+{
+    int filter;
+
+    switch (mode) {
+    case 0:
+        filter = GL_NEAREST;
+        break;
+    case 1:
+        filter = GL_LINEAR_MIPMAP_NEAREST;
+        break;
+    case 3:
+        filter = GL_NEAREST_MIPMAP_NEAREST;
+        break;
+    case 4:
+        filter = GL_NEAREST_MIPMAP_LINEAR;
+        break;
+    case 2:
+        filter = GL_LINEAR_MIPMAP_LINEAR;
+        break;
+    default:
+        filter = mode;
+        break;
+    }
+    D_006C9A6C = filter;
 }
 
 void func_00467150(int mode)

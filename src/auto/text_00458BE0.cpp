@@ -81,3 +81,8 @@ extern "C" unsigned char func_004590E0(int index, unsigned char bit)
     return (D_006924C8[index].flags >> bit) & 1;
 }
 
+extern "C" void func_004591B0(int index, char value)
+{
+    D_006924C3[index * 0x30] = value;
+}
+

@@ -70,17 +70,6 @@ extern Rec50_0065FD00<int> D_0065FD48[64];
 extern Rec50_0065FD00<char> D_0065FD4C[64];
 extern float D_00477108;
 
-struct Rec_0065FD00 {
-    Obj_0041E470 *obj;
-    Vec4_0041DBE0 pos;
-    char unk_0x14[0x2c];
-    char unk_0x40;
-    int unk_0x44;
-    int unk_0x48;
-    char unk_0x4c;
-};
-extern Rec_0065FD00 D_0065FD00_rec[64];
-
 int func_00438AF0(void *, int, Vec4_0041DBE0 *);
 
 extern "C" void func_0041E120(void)

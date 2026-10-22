@@ -57,9 +57,12 @@ void func_00453240(float angle, float *s, float *c)
     *c = (float)cos(angle);
 }
 
-void func_004532A0(float angle, float *s, float *c)
+void func_004532A0(float deg, float *s, float *c)
 {
-    func_00453240(angle * D_00477040, s, c);
+    float rad;
+    rad = deg * 57.29578f;
+    func_00453240(rad, s, c);
+    return;
 }
 
 float func_004532D0(float y, float x)

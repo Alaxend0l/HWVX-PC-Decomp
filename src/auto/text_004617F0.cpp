@@ -2,6 +2,25 @@
 #include "common.h"
 #include <string.h>
 
+extern int D_006D4D04;
+extern int D_0049D7D4;
+extern float D_006D4D08;
+extern int D_006D4D10;
+extern unsigned char D_006D4D16;
+extern unsigned char D_006D4D17;
+extern unsigned char D_006D4D18;
+extern unsigned char D_006D4D19;
+extern unsigned char D_006D4D1A;
+extern unsigned char D_006D4D1C;
+extern int D_006D4D20;
+
+struct Slot_006D3E80 {
+    char unk_0x0[0x2d0];
+};
+
+extern Slot_006D3E80 D_006D3E80[];
+extern Slot_006D3E80 *D_006D3E60;
+
 void func_00401090(void);
 void func_00453100(void);
 void func_00461B50(void);

@@ -22,7 +22,9 @@ struct Vec4_00453FB0 {
 
 static inline void CopyVec3_00453FB0(float *dst, const float *src)
 {
-    *(Vec3_00453FB0 *)dst = *(const Vec3_00453FB0 *)src;
+    dst[0] = src[0];
+    dst[1] = src[1];
+    dst[2] = src[2];
 }
 
 static inline float Length3_00453FB0(float x, float y, float z)

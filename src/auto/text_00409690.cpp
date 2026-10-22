@@ -52,6 +52,24 @@ struct Node_0040A170 {
     char unk_0x14[0xc];
 };
 
+struct Entry_00681AC0 {
+    char unk_0x00[0x0c];
+    unsigned int unk_0x0c;
+    char unk_0x10[0x40];
+    int unk_0x50;
+    char unk_0x54[8];
+    u16 unk_0x5c;
+    u16 unk_0x5e;
+};
+
+extern Entry_00681AC0 D_00681AC0[512];
+extern int D_00681AB8;
+extern "C" int D_00692370;
+
+extern "C" void func_0045F0A0(int);
+extern "C" char *func_0045EE10(int, int, int);
+extern "C" void func_00454CF0(void *, void *, int);
+
 extern int D_0068DAC4;
 extern Entry_0048955C *D_0048955C;
 extern char D_00489554;
@@ -162,6 +180,25 @@ extern "C" void func_00409E90(int a, int type, int b)
     case 4:
         func_00459A70(a, b, -0x7fff);
         break;
+    }
+}
+
+extern "C" void func_00409EE0(int on)
+{
+    unsigned int i;
+
+    D_00489560 = (char)on;
+    if (on) {
+        func_00459700(2);
+        D_00692994(2);
+    } else {
+        func_00459700(1);
+        D_00692994(1);
+    }
+    func_00459700(1);
+    for (i = 0; i < 100 * sizeof(Entry_0048955C); i += sizeof(Entry_0048955C)) {
+        char *p = (char *)D_0048955C;
+        p[i + 0x48] = (char)on;
     }
 }
 

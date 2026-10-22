@@ -84,6 +84,12 @@ extern "C" void func_00409D10(int index, int type, void *data)
     }
 }
 
+extern "C" void func_00409DA0(int n)
+{
+    if (n)
+        D_0068DAC4 = n - 1;
+}
+
 extern "C" void func_00409F50(void)
 {
     if (D_00489554) {

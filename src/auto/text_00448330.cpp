@@ -15,6 +15,30 @@ extern "C" void func_0043ED30(char *a);
 extern "C" char *func_004483A0(char *p);
 extern "C" void func_004543B0(float *a, int b, float *c, float *d);
 
+static inline void Max4_00448(float *d, const float *s)
+{
+    if (d[0] < s[0])
+        d[0] = s[0];
+    if (d[1] < s[1])
+        d[1] = s[1];
+    if (d[2] < s[2])
+        d[2] = s[2];
+    if (d[3] < s[3])
+        d[3] = s[3];
+}
+
+static inline void Min4_00448(float *d, const float *s)
+{
+    if (d[0] > s[0])
+        d[0] = s[0];
+    if (d[1] > s[1])
+        d[1] = s[1];
+    if (d[2] > s[2])
+        d[2] = s[2];
+    if (d[3] > s[3])
+        d[3] = s[3];
+}
+
 extern float D_0047700C;
 extern "C" void func_00448330(char *p)
 {
@@ -65,16 +89,16 @@ extern "C" int func_00448400(char *p)
 
 extern "C" void func_004484A0(float *a, float *b, float *c)
 {
-    if (c[0] < a[0])
-        c[0] = a[0];
+    if (*c < *a)
+        *c = *a;
     if (c[1] < a[1])
         c[1] = a[1];
     if (c[2] < a[2])
         c[2] = a[2];
     if (c[3] < a[3])
         c[3] = a[3];
-    if (c[0] > b[0])
-        c[0] = b[0];
+    if (*c > *b)
+        *c = *b;
     if (c[1] > b[1])
         c[1] = b[1];
     if (c[2] > b[2])
@@ -87,6 +111,7 @@ extern "C" void func_00448430(float *a, float *b, float t)
 {
     float d[4];
     float v[4];
+    float r;
 
     d[0] = a[0] - b[0];
     d[1] = a[1] - b[1];
@@ -94,8 +119,8 @@ extern "C" void func_00448430(float *a, float *b, float t)
     v[0] = d[0] * t + a[0x10];
     v[1] = d[1] * t + a[0x11];
     v[2] = d[2] * t + a[0x12];
-    t = a[0x1c] + b[0x1c];
-    func_004543B0(b + 0x10, t, a + 0x10, v);
+    r = a[0x1c] + b[0x1c];
+    func_004543B0(b + 0x10, *(int *)&r, a + 0x10, v);
 }
 
 float func_00448B60(void)
@@ -115,8 +140,8 @@ extern "C" int func_00448B70(char *p)
 extern "C" bool func_004490C0(int *p)
 {
     unsigned int i;
-    int mode = p[0];
     unsigned int n = p[1];
+    int mode = p[0];
 
     for (i = 0; i < n; i++) {
         int *e = (int *)p[i + 2];

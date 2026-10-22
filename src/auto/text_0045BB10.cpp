@@ -205,21 +205,3 @@ int func_0045C960(void)
     return 1;
 }
 
-void func_0045C5E0(List_0045C *list)
-{
-    Node_0045C *n;
-
-    for (n = list->head; n != NULL; n = n->next)
-        func_0045DC20(n, list->unk_0x1a);
-}
-
-void func_0045C610(List_0045C *list)
-{
-    Node_0045C *n;
-
-    for (n = list->head; n != NULL; n = n->next) {
-        n->unk_0x40 = list->unk_0x2c;
-        func_0045DC20(n, list->unk_0x1a);
-    }
-}
-

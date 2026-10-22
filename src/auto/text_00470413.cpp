@@ -10,18 +10,14 @@ extern "C" int *func_00470486(void);
 extern "C" unsigned long *func_0047048F(void);
 extern "C" void func_00470413(unsigned long oserr)
 {
-    unsigned long *p;
-    int i = 0;
+    int i;
     *func_0047048F() = oserr;
-    p = D_0047FC98;
-    do {
-        if (oserr == *p) {
+    for (i = 0; i < 45; i++) {
+        if (oserr == D_0047FC98[i * 2]) {
             *func_00470486() = D_0047FC9C[i * 2];
             return;
         }
-        p += 2;
-        i++;
-    } while (p < D_0047FE00);
+    }
     if (oserr >= 0x13 && oserr <= 0x24)
         *func_00470486() = 0xd;
     else if (oserr >= 0xbc && oserr <= 0xca)

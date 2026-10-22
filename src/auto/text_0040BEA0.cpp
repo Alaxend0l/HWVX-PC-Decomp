@@ -66,6 +66,49 @@ void func_00440330(void);
 void func_0043EB20(int);
 void func_0040CA20(void);
 
+void func_0040C4B0(Obj_0040BEA0 *obj)
+{
+    Model_0040BEA0 *m;
+    if (obj->unk_0x168 != 0 && obj->unk_0x0 != 0 && (m = obj->unk_0x0->unk_0x2c) != 0) {
+        float s = D_0049DBA0->unk_0x9c->unk_0x3c;
+        obj->unk_0x168->unk_0x40[0] = obj->unk_0x054.x + s * m->unk_0x00[0];
+        obj->unk_0x168->unk_0x40[1] = obj->unk_0x054.y + s * obj->unk_0x0->unk_0x2c->unk_0x00[1];
+        obj->unk_0x168->unk_0x40[2] = obj->unk_0x054.z + s * obj->unk_0x0->unk_0x2c->unk_0x00[2];
+    }
+}
+
+void func_0040C2A0(Obj_0040BEA0 *obj, int arg)
+{
+    char mtx[16];
+    Vec4_0040BEA0 dir;
+    float dist;
+    Vec4_0040BEA0 *pos;
+    Vec4_0040BEA0 *hit;
+
+    obj->unk_0x0->unk_0x2c->unk_0x8c->unk_0x3c(obj->unk_0x0->unk_0x2c, mtx);
+    pos = &obj->unk_0x054;
+    func_00453330(mtx, pos, &dir);
+    dist = 1.0f;
+    if (func_0044D550(pos, &dir, &dist, 0)) {
+        hit = func_0043BD20(func_0043B500(mtx, -1));
+        if (hit != 0)
+            *pos = *hit;
+    }
+    func_0040C0A0(obj, arg, pos, mtx, obj->unk_0x0->unk_0x2c->unk_0x70, 0);
+}
+
+void func_0040CA20(void)
+{
+    unsigned int i = 0;
+    if (D_00681AB0 > 0) {
+        do {
+            if (D_00681500[i].unk_0x000 != 0)
+                *(int *)(D_00681500[i].unk_0x000 + 0x6c) |= 0x10;
+            i++;
+        } while (i < (*(u32 *)&D_00681AB0 & 0xff));
+    }
+}
+
 void func_0040CA50(int *p, int v)
 {
     *p = v;

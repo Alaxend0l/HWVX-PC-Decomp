@@ -38,13 +38,13 @@ struct Obj_00452040 {
 struct Desc_00452660 {
     Vec4_00452040 unk_0x00;
     char unk_0x10[0x10];
-    int unk_0x20;
-    int unk_0x24;
-    int unk_0x28;
-    int unk_0x2c;
+    float unk_0x20;
+    float unk_0x24;
+    float unk_0x28;
+    float unk_0x2c;
     int unk_0x30;
-    int unk_0x34;
-    int unk_0x38;
+    float unk_0x34;
+    float unk_0x38;
 };
 
 struct Track_00452040 {
@@ -119,6 +119,25 @@ extern "C" Track_00452040 *func_004525A0(void)
     if (D_0049DBA0)
         return D_0049DBA0->unk_0x9c;
     return 0;
+}
+
+extern "C" void func_004525C0(void)
+{
+    Sub_00452040 *s = D_0049DBA0->unk_0x00;
+    unsigned int i;
+
+    if (s->unk_0x58 == 0) {
+        for (i = 0; i < s->unk_0x48; i++) {
+            s->unk_0x4c[i].unk_0x18 = 0;
+            s = D_0049DBA0->unk_0x00;
+        }
+    } else if (s->unk_0x58 == 1) {
+        for (i = 0; i < s->unk_0x50; i++) {
+            s->unk_0x54[i].unk_0x20 = 0;
+            s = D_0049DBA0->unk_0x00;
+        }
+    }
+    D_0049DBA4 = 1;
 }
 
 extern "C" void func_004520B0(void)
@@ -201,6 +220,27 @@ extern "C" void func_00452650(void)
 {
     if (++*(unsigned int *)&D_0049DBA4 == 0)
         func_004525C0();
+}
+
+extern "C" void func_00452660(void)
+{
+    unsigned int i;
+    Desc_00452660 d;
+
+    for (i = 0; i < D_0049DBA0->unk_0x30; i++) {
+        Obj_00452040 *o = &D_0049DBA0->unk_0x34[i];
+        if (o->unk_0x48) {
+            d.unk_0x30 = o->unk_0x48;
+            d.unk_0x00 = o->unk_0x30;
+            d.unk_0x38 = 0;
+            d.unk_0x28 = 0;
+            d.unk_0x24 = 0;
+            d.unk_0x20 = 0;
+            func_004540C0(o, d.unk_0x10);
+            d.unk_0x34 = 0;
+            o->unk_0x60 = func_0044D0B0(2, &d);
+        }
+    }
 }
 
 extern "C" int func_00452F50(void)

@@ -93,6 +93,16 @@ void func_00461B30(void)
     memset(D_006D4D40, 0, sizeof(D_006D4D40));
 }
 
+void func_00461BA0(int flags)
+{
+    D_006D4D04 |= flags;
+}
+
+void func_00461BC0(int flags)
+{
+    D_006D4D04 &= ~flags;
+}
+
 extern float D_006D4D08;
 extern int D_006D4D10;
 extern unsigned char D_006D4D16;

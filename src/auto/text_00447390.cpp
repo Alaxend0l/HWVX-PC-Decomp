@@ -16,10 +16,9 @@ struct Msg_00447C60 {
 
 extern int D_0048D95C;
 extern int D_0048D960;
-extern char D_0048D964;
+extern volatile char D_0048D964;
 extern State_0048D970 *D_0048D970;
 extern int D_0053AA24;
-extern volatile char D_0048D964_v;
 
 extern "C" void func_00454C50(void *p);
 int func_0042A680(int, int);

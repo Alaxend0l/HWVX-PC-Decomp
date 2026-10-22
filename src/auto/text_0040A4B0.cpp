@@ -23,6 +23,8 @@ extern int D_006814E0;
 extern int D_006814E4;
 
 void func_00409DA0(int);
+char func_0041ACE0(int, int, int, int);
+char func_0040A960(int, int, int, int);
 void func_0040A4F0(void);
 
 int func_0040A4B0(void)

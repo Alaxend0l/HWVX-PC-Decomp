@@ -196,3 +196,8 @@ extern "C" void func_00452650(void)
         func_004525C0();
 }
 
+extern "C" int func_00452F50(void)
+{
+    return D_0047BDEC < 0;
+}
+

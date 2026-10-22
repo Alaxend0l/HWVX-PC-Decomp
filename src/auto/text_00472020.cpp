@@ -47,6 +47,21 @@ extern "C" unsigned __int64 __stdcall func_00472020(unsigned __int64 a, unsigned
     return a % b;
 }
 
+extern "C" void func_00472339(int fh)
+{
+    ioinfo *pio = &D_006D59E0[fh >> 5][fh & 0x1f];
+
+    if (pio->lockinitflag == 0) {
+        func_0046E959(0x11);
+        if (pio->lockinitflag == 0) {
+            InitializeCriticalSection(&pio->lock);
+            pio->lockinitflag++;
+        }
+        func_0046E9BA(0x11);
+    }
+    EnterCriticalSection(&D_006D59E0[fh >> 5][fh & 0x1f].lock);
+}
+
 extern "C" int func_004722F7(int fh)
 {
     if ((unsigned)fh < D_006D5AE0 && (D_006D59E0[fh >> 5][fh & 0x1f].osfile & 1))

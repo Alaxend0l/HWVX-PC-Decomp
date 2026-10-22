@@ -8,3 +8,30 @@ extern int D_006C99F8;
 extern int D_006C9A70;
 extern int D_006C9A74;
 
+void func_00467000(int mode)
+{
+    switch (mode) {
+    case 1:
+        D_006C9A68 = GL_ONE;
+        D_006C99F8 = GL_ZERO;
+        break;
+    case 2:
+        D_006C9A68 = GL_ONE;
+        D_006C99F8 = GL_ONE;
+        break;
+    case 3:
+    case 8:
+    case 10:
+        D_006C9A68 = GL_ZERO;
+        D_006C99F8 = GL_ONE_MINUS_SRC_COLOR;
+        break;
+    case 5:
+    case 6:
+    case 7:
+        D_006C9A68 = GL_SRC_ALPHA;
+        D_006C99F8 = GL_ONE_MINUS_SRC_ALPHA;
+        break;
+    }
+    D_006C9A70 = mode;
+    glBlendFunc(D_006C9A68, D_006C99F8);
+}

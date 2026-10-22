@@ -182,6 +182,37 @@ void func_0043AE90(char *buf)
     }
 }
 
+void func_004482C0(Ent_0043A3C0 *, Desc_0043A3C0 *);
+void func_00453FB0(Vec4_0043A3C0 *, char *);
+void func_004071A0(int *, int);
+void func_00408200(Vec4_0043A3C0 *, Vec4_0043A3C0 *, int *, float);
+void func_00407590(int *, int, int);
+extern "C" void func_00407310(int *);
+extern "C" void func_00448330(Ent_0043A3C0 *);
+void func_004082C0(int *, char *, Ent_0043A3C0 *);
+char func_0043AF10(Ent_0043A3C0 *ent, Desc_0043A3C0 *desc)
+{
+    int *p = &ent->unk_0xb0;
+
+    func_004482C0(ent, desc);
+    ent->unk_0x40 = desc->unk_0x10;
+    ent->unk_0x50 = desc->unk_0x20;
+    func_00453FB0(&ent->unk_0x50, ent->unk_0x10);
+    *p = desc->unk_0x30;
+    ent->unk_0xd4 = 0;
+    func_004071A0(p, 0);
+    func_00408200(&ent->unk_0x50, &ent->unk_0x40, p, 1.0f);
+    if (desc->unk_0x34 != 0)
+        func_00407590(p, desc->unk_0x34, 0xff);
+    return 1;
+}
+
+void func_0043AFC0(Ent_0043A3C0 *ent)
+{
+    func_00407310(&ent->unk_0xb0);
+    func_00448330(ent);
+}
+
 char func_0043AC70(void)
 {
     int id = func_004480C0();

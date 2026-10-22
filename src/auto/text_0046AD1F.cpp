@@ -204,7 +204,7 @@ extern "C" void func_0046B013(void *pBlock)
         if (pHeader)
             return;
     }
-    HeapFree(D_006D59C4, 0, pBlock);
+    HeapFree(D_006D59C4, 0, (void *)pBlock);
 }
 
 extern "C" void *func_0046AEEB(unsigned int, int);

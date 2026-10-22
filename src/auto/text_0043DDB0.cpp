@@ -54,6 +54,12 @@ void func_0043E9A0(int v)
     }
 }
 
+void func_0043EBF0(char *p)
+{
+    if (*(int *)(p + 0x68) != -1)
+        func_0042DE60(*(int *)(p + 0x68));
+}
+
 bool func_0043ECA0(Obj_0043ECA0 *o)
 {
     return ((char (*)(Obj_0043ECA0 *))((void **)o)[8])(o) != 0;

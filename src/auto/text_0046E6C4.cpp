@@ -90,7 +90,7 @@ extern "C" void func_0046E959(int n)
 
 extern "C" void func_0046E9BA(int n)
 {
-    LeaveCriticalSection(D_0047D880[n]);
+    (*_imp__LeaveCriticalSection)(D_0047D880[n]);
 }
 
 #pragma optimize("y", on)

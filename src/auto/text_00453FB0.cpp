@@ -6,6 +6,16 @@ float func_00453360(float *, float *);
 float func_004534B0(float *);
 void func_00453330(float *, float *, float *);
 float func_00454800(float *, float *);
+float func_004532E0(float);
+void func_004546B0(float *);
+
+struct Vec3_00453FB0 {
+    float x, y, z;
+};
+
+extern float D_0047700C;
+extern float D_00477000;
+extern float D_00477008;
 void *func_00454B60(void)
 {
     return func_0046AED9(0x54);
@@ -99,5 +109,13 @@ void func_00454610(float *m, float *s)
     m[13] *= s[3];
     m[14] *= s[3];
     m[15] *= s[3];
+}
+
+void func_00454780(float *out, float *n, float *pt)
+{
+    out[0] = n[0];
+    out[1] = n[1];
+    out[2] = n[2];
+    out[3] = (pt[1] * n[1] + pt[2] * n[2] + n[0] * pt[0]) * D_00477008;
 }
 

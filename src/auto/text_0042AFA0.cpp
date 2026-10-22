@@ -87,3 +87,19 @@ char *func_0042B140(void)
 {
     return &D_0064D164;
 }
+
+void func_0042BD80(unsigned int *p)
+{
+    unsigned int i;
+
+    for (i = 0; i < 10; i++, p++) {
+        if (*p < 26)
+            D_0048D4A4[i] = *p + 'A';
+        else if (*p < 36)
+            D_0048D4A4[i] = *p + 0x16;
+        else
+            D_0048D4A4[i] = ' ';
+    }
+    D_0048D4AE = 0;
+}
+

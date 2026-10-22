@@ -88,6 +88,11 @@ void func_00461B30(void)
     memset(D_006D4D40, 0, sizeof(D_006D4D40));
 }
 
+int func_00461D40(void)
+{
+    return D_0049D7D4;
+}
+
 void func_004620A0(void)
 {
     func_00401090();

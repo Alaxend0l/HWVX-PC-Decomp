@@ -101,6 +101,15 @@ void func_0043C6C0(Body_0043C6C0 *b)
     }
 }
 
+void func_0043CEB0(Part_0043C4F0 *p)
+{
+    int i;
+    for (i = 0; i < 0x280; i++, p++) {
+        if (!(p->flags & 8))
+            func_0043CF50(p);
+    }
+}
+
 void func_0043C5A0(void)
 {
     Group_0043C4F0 *g;

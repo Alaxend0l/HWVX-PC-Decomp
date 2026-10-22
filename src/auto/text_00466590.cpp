@@ -37,6 +37,17 @@ extern "C" FILE *func_0046AAD8(const char *filename, const char *mode);
 extern "C" size_t func_0046A96E(void *buffer, size_t size, size_t count, FILE *stream);
 extern "C" int func_0046A8F1(FILE *stream);
 void func_00466960(unsigned char *p, int n);
+void func_00466C50(unsigned char on);
+void func_00467000(int a);
+void func_004670B0(int a);
+void func_00467130(int a);
+void func_00467150(int a);
+void func_00465CF0(void);
+extern int D_006C99EC;
+extern int D_006C9AC4;
+extern char D_006D4D1B;
+extern int D_006C9ABC;
+extern int D_006C9A70;
 
 void func_00466590(void)
 {
@@ -53,9 +64,9 @@ void func_004669A0(char *name, void *pixels, int w, int h)
     unsigned char hdr[6];
     FILE *f = func_0046AAD8(name, D_0047C198);
     func_0046A96E(D_0047D394, 1, 12, f);
+    hdr[2] = h;
     hdr[0] = w;
     hdr[1] = w >> 8;
-    hdr[2] = h;
     hdr[3] = h >> 8;
     hdr[4] = 24;
     hdr[5] = 0;

@@ -13,6 +13,23 @@ extern unsigned char D_006D4D19;
 extern unsigned char D_006D4D1A;
 extern unsigned char D_006D4D1C;
 extern int D_006D4D20;
+extern int D_006D4D00;
+extern int D_006D4CFC;
+extern int D_006D4CF8;
+
+struct Vec4_004617F0 {
+    float x, y, z, w;
+};
+
+struct Light_006D4CA0 {
+    Vec4_004617F0 unk_0x0;
+    float unk_0x10;
+    int unk_0x14;
+};
+
+extern Light_006D4CA0 D_006D4CA0[3];
+extern Vec4_004617F0 D_006D4CE8;
+void func_00453470(void *);
 
 struct Slot_006D3E80 {
     char unk_0x0[0x2d0];

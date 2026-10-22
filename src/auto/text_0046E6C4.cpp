@@ -19,6 +19,22 @@ extern "C" int *func_00470486(void);
 extern "C" void func_0046E9BA(int n);
 extern "C" double func_0046EED3(double x, int exp);
 
+struct Header_0046F0C8 {
+    int unk_0x0;
+    int unk_0x4;
+    int unk_0x8;
+    char *unk_0xc;
+    void *unk_0x10;
+};
+
+extern "C" HANDLE D_006D59C4;
+extern "C" Header_0046F0C8 *D_006D59BC;
+extern "C" Header_0046F0C8 *D_006D59B0;
+extern "C" Header_0046F0C8 *D_006D59B4;
+extern "C" int D_006D59B8;
+extern "C" int D_006D59A8;
+extern "C" unsigned int D_006D59C0;
+
 #pragma optimize("s", on)
 extern "C" void func_0046E616(int a, int b);
 extern int (*D_0049D9EC)(unsigned int);

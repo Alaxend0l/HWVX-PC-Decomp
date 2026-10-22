@@ -1,5 +1,6 @@
 /* 19 functions from 0x0042AFA0 to 0x0042BF60, found by Ghidra. */
 #include "common.h"
+#include <string.h>
 
 unsigned char func_00440130(void);
 int func_00429EA0(void);
@@ -52,17 +53,15 @@ void func_0042B150(void)
 void func_0042B1C0(int *a, int *b)
 {
     switch (func_00429EA0()) {
+    case 1:
+        *a = D_0064DDAC;
+        *b = D_0064DDB0;
+        func_00429FA0(0xcb, 1, D_0064FA14);
+        break;
     case 0:
         *a = 0;
         *b = 0;
         break;
-    case 1: {
-        int x = D_0064DDAC;
-        *a = x;
-        *b = D_0064DDB0;
-        func_00429FA0(0xcb, 1, D_0064FA14);
-        break;
-    }
     }
 }
 
@@ -71,7 +70,7 @@ void func_0042B210(void)
     switch (func_00429EA0()) {
     case 1:
         if (D_0064DDB4 && func_00440130() == 1)
-            *(D_0064DDB8_t *)(func_004401B0(0) + 0x70) = D_0064DDB8;
+            func_004401B0(0)->data = D_0064DDB8;
         break;
     }
 }

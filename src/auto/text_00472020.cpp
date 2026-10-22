@@ -88,6 +88,31 @@ extern "C" void func_00472398(int fh)
     LeaveCriticalSection(&D_006D59E0[fh >> 5][fh & 0x1f].lock);
 }
 
+extern "C" int func_004723BA(int fh)
+{
+    int retval;
+
+    if ((unsigned)fh < D_006D5AE0 && (D_006D59E0[fh >> 5][fh & 0x1f].osfile & 1)) {
+        func_00472339(fh);
+        if (D_006D59E0[fh >> 5][fh & 0x1f].osfile & 1) {
+            if (!FlushFileBuffers((void *)func_004722F7(fh)))
+                retval = GetLastError();
+            else
+                retval = 0;
+            if (retval == 0)
+                goto good;
+            *func_0047048F() = retval;
+        }
+        *func_00470486() = 9;
+        retval = -1;
+good:
+        func_00472398(fh);
+        return retval;
+    }
+    *func_00470486() = 9;
+    return -1;
+}
+
 extern "C" int func_004721FC(int fh, long value)
 {
     if ((unsigned)fh < D_006D5AE0 && D_006D59E0[fh >> 5][fh & 0x1f].osfhnd == -1) {

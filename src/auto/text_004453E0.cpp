@@ -5,6 +5,8 @@ extern float D_0053B158;
 extern float D_0053B1E0;
 extern float D_0053B1F8;
 extern float D_0053B160;
+extern float D_0053B1F4;
+extern float D_0053B1FC;
 extern char D_0047B3D0[];
 float func_00445D30(void);
 float func_00445D40(void);

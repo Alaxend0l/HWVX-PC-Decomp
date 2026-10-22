@@ -13,7 +13,7 @@ extern "C" void func_0044A990(char *a);
 extern "C" void func_0044A910(char *a);
 extern "C" void func_0043ED30(char *a);
 extern "C" char *func_004483A0(char *p);
-extern "C" void func_004543B0(float *a, float b, float *c, float *d);
+extern "C" void func_004543B0(float *a, int b, float *c, float *d);
 
 extern float D_0047700C;
 extern "C" void func_00448330(char *p)

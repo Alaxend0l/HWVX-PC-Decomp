@@ -84,6 +84,14 @@ extern "C" void func_00409D10(int index, int type, void *data)
     }
 }
 
+extern "C" void func_00409F50(void)
+{
+    if (D_00489554) {
+        D_00692994(1);
+        func_00459D40((int)(D_00489530 * D_00477140));
+    }
+}
+
 extern "C" char *func_0040A490(void)
 {
     return D_00681500;

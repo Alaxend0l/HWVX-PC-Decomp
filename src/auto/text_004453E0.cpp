@@ -19,6 +19,8 @@ extern unsigned int D_0048D828;
 extern char D_0048D808[];
 extern int D_0048D938;
 extern int D_0048D920;
+extern char D_0048D93C;
+void func_00443DA0(int a);
 float func_00445D30(void);
 float func_00445D40(void);
 void func_00445D80(void);
@@ -86,19 +88,22 @@ char *func_00445E50(void)
     char *s = D_0048D82C;
     int i = 0;
     unsigned int len;
+    char c;
 
     if (s == 0)
         return 0;
     len = strlen(s);
     if (D_0048D828 >= len)
         return 0;
-    for (; D_0048D828 < len; D_0048D828++) {
-        if (s[D_0048D828] == ',') {
-            D_0048D808[i] = 0;
+    while (D_0048D828 < len) {
+        c = s[D_0048D828];
+        if (c == ',') {
             D_0048D828++;
+            D_0048D808[i] = 0;
             return D_0048D808;
         }
-        D_0048D808[i++] = s[D_0048D828];
+        D_0048D808[i++] = c;
+        D_0048D828++;
     }
     D_0048D808[i] = 0;
     return D_0048D808;

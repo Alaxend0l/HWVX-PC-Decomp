@@ -10,6 +10,14 @@ struct Pad_00692500 {
 };
 
 extern "C" Pad_00692500 D_00692500[4];
+
+struct Slot_00692518 {
+    char unk_0x0;
+    char unk_0x1[0x1c - 0x1];
+};
+
+extern "C" Slot_00692518 D_00692518[4];
+extern "C" Slot_00692518 D_00692588[];
 extern "C" char D_00693E00;
 extern "C" char D_00496FD8[];
 extern "C" char D_00692380[];
@@ -88,7 +96,7 @@ extern "C" int func_00459360(unsigned int n, const unsigned char *p)
 
 extern "C" int func_00459390(void)
 {
-    int i;
+    unsigned int i;
     for (i = 0; i < 4; i++) {
         if (D_00692500[i].unk_0x18 == -1)
             break;

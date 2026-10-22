@@ -219,6 +219,16 @@ extern "C" void func_0046C120(double *value, char *buf, int ndec, int caps)
     }
 }
 
+extern "C" void func_0046C1B3(double *value, char *buf, int format, int ndec, int caps)
+{
+    if (format == 'e' || format == 'E')
+        func_0046BF01(value, buf, ndec, caps);
+    else if (format == 'f')
+        func_0046C024(value, buf, ndec);
+    else
+        func_0046C120(value, buf, ndec, caps);
+}
+
 extern "C" char *func_0046BF01(double *value, char *buf, int ndec, int caps)
 {
     StrFlt_0046BA52 flt;

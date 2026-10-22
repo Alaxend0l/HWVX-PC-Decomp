@@ -1,5 +1,6 @@
 /* 30 functions from 0x004617F0 to 0x00462460, found by Ghidra. */
 #include "common.h"
+#include <string.h>
 
 void func_00401090(void);
 void func_00453100(void);

@@ -3,6 +3,24 @@
 #include <windows.h>
 #include <GL/gl.h>
 
+/* opengl32 import slots are named without @N (__imp__glEnable): call them through the slots */
+extern "C" void (__stdcall *_imp__glBlendFunc)(GLenum, GLenum);
+extern "C" void (__stdcall *_imp__glTexEnvf)(GLenum, GLenum, GLfloat);
+extern "C" void (__stdcall *_imp__glEnable)(GLenum);
+extern "C" void (__stdcall *_imp__glDisable)(GLenum);
+extern "C" void (__stdcall *_imp__glDepthMask)(GLboolean);
+extern "C" void (__stdcall *_imp__glCullFace)(GLenum);
+extern "C" void (__stdcall *_imp__glFogi)(GLenum, GLint);
+extern "C" void (__stdcall *_imp__glDeleteTextures)(GLsizei, const GLuint *);
+#define glBlendFunc (*_imp__glBlendFunc)
+#define glTexEnvf (*_imp__glTexEnvf)
+#define glEnable (*_imp__glEnable)
+#define glDisable (*_imp__glDisable)
+#define glDepthMask (*_imp__glDepthMask)
+#define glCullFace (*_imp__glCullFace)
+#define glFogi (*_imp__glFogi)
+#define glDeleteTextures (*_imp__glDeleteTextures)
+
 extern int D_006C9A68;
 extern int D_006C99F8;
 extern int D_006C9A70;
@@ -56,12 +74,16 @@ void func_00467150(int mode)
     D_006C99F0 = mode;
 }
 
+extern "C" void (__stdcall *_imp__glEnable)(GLenum);
+extern "C" void (__stdcall *_imp__glDisable)(GLenum);
+extern "C" void (__stdcall *_imp__glFogi)(GLenum, GLint);
 void func_004671A0(int on)
 {
+    GLenum cap = GL_DEPTH_TEST;
     if (on == 1)
-        glEnable(GL_DEPTH_TEST);
+        (*_imp__glEnable)(cap);
     else
-        glDisable(GL_DEPTH_TEST);
+        (*_imp__glDisable)(cap);
 }
 
 void func_004670B0(int mode)
@@ -98,11 +120,11 @@ void func_004671C0(GLboolean flag)
 
 void func_004671D0(int on)
 {
-    glFogi(GL_FOG_MODE, GL_LINEAR);
+    (*_imp__glFogi)(GL_FOG_MODE, GL_LINEAR);
     if (on == 1)
-        glEnable(GL_FOG);
+        (*_imp__glEnable)(GL_FOG);
     else
-        glDisable(GL_FOG);
+        (*_imp__glDisable)(GL_FOG);
     D_006C99E8 = on;
 }
 

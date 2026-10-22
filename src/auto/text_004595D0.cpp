@@ -51,6 +51,8 @@ void func_0045D630(Voice_004595D0 *, int);
 void func_0045DC20(Voice_004595D0 *, int);
 void func_0045D620(Voice_004595D0 *);
 int func_0045DD10(Voice_004595D0 *);
+void func_004594E0(unsigned int);
+char func_00459B10(char);
 
 int func_004595D0(Slot_004595D0 *src)
 {

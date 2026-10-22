@@ -68,13 +68,12 @@ extern "C" char **func_00475C8D(char **oldenv)
 
 extern "C" int func_00475C35(const char *option, unsigned int length)
 {
-    char **env = D_0049D834;
+    char **env;
 
-    while (*env) {
+    for (env = D_0049D834; *env != NULL; env++) {
         if (func_004755A7(option, *env, length) == 0
             && (*(*env + length) == '=' || *(*env + length) == '\0'))
             return env - D_0049D834;
-        env++;
     }
     return -(env - D_0049D834);
 }

@@ -32,6 +32,11 @@ void func_00445CB0(void)
     func_00440470(D_0047B3D0);
 }
 
+float func_00445D40(void)
+{
+    return D_0053B1E0;
+}
+
 void func_00445C40(char *obj)
 {
     *(float *)(obj + 0x24) = func_00445D30();

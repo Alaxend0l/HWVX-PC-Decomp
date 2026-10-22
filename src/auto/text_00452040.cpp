@@ -1,5 +1,37 @@
 /* 22 functions from 0x00452040 to 0x00452FB0, found by Ghidra. */
 #include "common.h"
+#include <windows.h>
+#include <stdarg.h>
+
+struct Handler_00452710;
+
+struct HandlerOps_00452710 {
+    void (*unk_0x00)(Handler_00452710 *);
+    void (*unk_0x04)(Handler_00452710 *);
+};
+
+struct Handler_00452710 {
+    char unk_0x00[0x8c];
+    HandlerOps_00452710 *unk_0x8c;
+};
+
+struct Slot_00452710 {
+    char unk_0x00[0x14];
+    int unk_0x14;
+    int unk_0x18;
+    char unk_0x1c[0x24 - 0x1c];
+    Handler_00452710 *unk_0x24;
+    int unk_0x28;
+};
+
+struct Msg_00452710 {
+    int unk_0x00;
+    unsigned int unk_0x04;
+    Slot_00452710 *unk_0x08[1];
+};
+
+extern "C" int func_0046AD68(char *, const char *, va_list);
+extern int D_0047BDF4;
 struct ElemA_00452040 {
     char unk_0x00[0x18];
     int unk_0x18;
@@ -125,11 +157,15 @@ extern "C" void func_004525C0(void)
 {
     Sub_00452040 *s = D_0049DBA0->unk_0x00;
     unsigned int i;
+    unsigned int n;
 
     if (s->unk_0x58 == 0) {
-        for (i = 0; i < s->unk_0x48; i++) {
+        for (i = 0; i < s->unk_0x48; i = i + 1) {
             s->unk_0x4c[i].unk_0x18 = 0;
             s = D_0049DBA0->unk_0x00;
+            n = s->unk_0x48;
+            if (i + 1 >= n)
+                break;
         }
     } else if (s->unk_0x58 == 1) {
         for (i = 0; i < s->unk_0x50; i++) {
@@ -232,12 +268,12 @@ extern "C" void func_00452660(void)
         if (o->unk_0x48) {
             d.unk_0x30 = o->unk_0x48;
             d.unk_0x00 = o->unk_0x30;
-            d.unk_0x38 = 0;
-            d.unk_0x28 = 0;
-            d.unk_0x24 = 0;
-            d.unk_0x20 = 0;
+            d.unk_0x38 = 0.0f;
+            d.unk_0x28 = 0.0f;
+            d.unk_0x24 = 0.0f;
+            d.unk_0x20 = 0.0f;
             func_004540C0(o, d.unk_0x10);
-            d.unk_0x34 = 0;
+            d.unk_0x34 = 0.0f;
             o->unk_0x60 = func_0044D0B0(2, &d);
         }
     }

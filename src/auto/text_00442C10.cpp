@@ -42,7 +42,7 @@ struct Res_00443 {
 extern char D_0047A778[];
 void *func_004287E0(char *, int, int, int);
 Res_00443 *func_00428C10(void *, int, int);
-void func_00462E30(unsigned short);
+void func_00462E30(int);
 void func_00421320(Res_00443 *);
 
 extern Rect_00443 D_00692350;
@@ -124,8 +124,53 @@ Ent_00443 *func_004437E0(Ent_00443 *owner, Rect_00443 *rect)
     return e;
 }
 
+void func_00443880(void)
+{
+    Ent_00443 *list[128];
+    unsigned int n;
+
+    n = func_0044D8F0(list, 0x80);
+    while (n > 0) {
+        n--;
+        if (list[n]->unk_0x74 & 0x40000000) {
+            list[n]->unk_0x74 &= ~0x40000000;
+            list[n]->unk_0xc8 = NULL;
+            func_00443560(list[n]);
+        }
+    }
+}
+
+int func_004438E0(void)
+{
+    Ent_00443 *list[128];
+    unsigned int n;
+    int count = 0;
+
+    n = func_0044D8F0(list, 0x80);
+    while (n > 0) {
+        n--;
+        if (list[n]->unk_0x74 & 0x40000000)
+            count++;
+    }
+    return count;
+}
+
 void func_00443940(Ent_00443 *e)
 {
     if (e != (Ent_00443 *)-1 && e != NULL)
         func_00443560(e);
 }
+
+void func_00443960(void)
+{
+    Res_00443 *res;
+    unsigned int i;
+
+    res = func_00428C10(func_004287E0(D_0047A778, 3, 0, 0), 3, 1);
+    if (res != NULL) {
+        for (i = 0; i < res->unk_0x2c; i++)
+            func_00462E30(res->unk_0x30[i]);
+        func_00421320(res);
+    }
+}
+

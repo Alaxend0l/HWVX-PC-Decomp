@@ -43,3 +43,8 @@ extern "C" void func_004073A0(Mesh_0041FAD0 **);
 extern "C" void *func_0044A840(void *, int);
 extern "C" void func_00451C80(void *, char *, int);
 extern "C" void func_00438770(Obj_0041FAD0 *);
+
+extern "C" int func_00420600(Obj_0041FAD0 *o)
+{
+    return o->unk_0x08;
+}

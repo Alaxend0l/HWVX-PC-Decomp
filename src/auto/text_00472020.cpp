@@ -73,6 +73,11 @@ extern "C" int func_004722F7(int fh)
     return -1;
 }
 
+extern "C" void func_00472398(int fh)
+{
+    LeaveCriticalSection(&D_006D59E0[fh >> 5][fh & 0x1f].lock);
+}
+
 extern "C" int func_004721FC(int fh, long value)
 {
     if ((unsigned)fh < D_006D5AE0 && D_006D59E0[fh >> 5][fh & 0x1f].osfhnd == -1) {

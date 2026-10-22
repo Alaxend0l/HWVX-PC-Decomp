@@ -23,6 +23,12 @@ struct DeviceSlot {
     char pad13E[6];
 };
 
+struct Unk00458220 {
+    char a;
+    char b;
+    short c;
+};
+
 extern "C" DeviceSlot D_00496E40[];
 extern "C" int D_00496FD0;
 extern "C" void func_00458000(int, int, int, void *);

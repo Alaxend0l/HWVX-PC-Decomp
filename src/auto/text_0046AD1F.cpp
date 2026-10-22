@@ -42,6 +42,15 @@ extern "C" void func_0046AD1F(int code)
     D_0047D430(255);
 }
 
+extern "C" void func_0046AEBF(_PVFV *pfbegin, _PVFV *pfend)
+{
+    while (pfbegin < pfend) {
+        if (*pfbegin != NULL)
+            (**pfbegin)();
+        ++pfbegin;
+    }
+}
+
 extern "C" void func_0046AE08(int code, int quick, int retcaller)
 {
     func_0046AEAD();

@@ -23,7 +23,13 @@ struct Name_0047C470 {
     int unk_0x4;
 };
 
+struct Value_0047C474 {
+    int unk_0x0;
+    const char *unk_0x4;
+};
+
 extern "C" Name_0047C470 D_0047C470[];
+extern "C" Value_0047C474 D_0047C474[];
 extern "C" unsigned int D_0047C528;
 extern "C" int D_00693E04;
 

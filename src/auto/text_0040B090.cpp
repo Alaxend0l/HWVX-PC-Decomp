@@ -5,6 +5,20 @@ struct Vec4_0040B090 {
     float x, y, z, w;
 };
 
+struct Obj_0040B090 {
+    char *unk_0x00;
+    char unk_0x04[0x30];
+    Vec4_0040B090 unk_0x34;
+    char unk_0x44[0x10];
+    Vec4_0040B090 unk_0x54;
+    char unk_0x64[0x10];
+    Vec4_0040B090 unk_0x74;
+    Vec4_0040B090 unk_0x84;
+    Vec4_0040B090 unk_0x94;
+    char unk_0xa4[8];
+    float unk_0xac;
+};
+
 extern float D_00692378;
 
 void func_004532A0(float, float *, float *);
@@ -14,20 +28,13 @@ void func_00453470(void *);
 void func_00460B30(void *);
 void func_0040BD20(char *, char *, void *, void *);
 
-void func_0040BC80(char *p, void *a, float *q, void *m)
+void func_0040BC80(char *p, void *a, Vec4_0040B090 *q, void *m)
 {
-    float r[4];
-    *(float *)(p + 0x54) = q[0];
-    *(float *)(p + 0x58) = q[1];
-    *(float *)(p + 0x5c) = q[2];
-    *(float *)(p + 0x60) = q[3];
-    r[0] = 0.0f;
-    r[1] = 1.0f;
-    r[2] = 0.0f;
-    r[3] = 0.0f;
+    *(Vec4_0040B090 *)(p + 0x54) = *q;
+    Vec4_0040B090 r = { 0.0f, 1.0f, 0.0f, 0.0f };
     func_00453330(m, p + 0x54, p + 0x74);
     func_00453470(p + 0x74);
-    func_00453380(r, p + 0x74, p + 0x94);
+    func_00453380(&r, p + 0x74, p + 0x94);
     func_00453380(p + 0x74, p + 0x94, p + 0x84);
     func_00453470(p + 0x94);
     func_00453470(p + 0x84);
@@ -37,16 +44,16 @@ void func_0040BC80(char *p, void *a, float *q, void *m)
 void func_0040BE10(char *p, char *e)
 {
     float s, c;
-    float m[4];
+    Vec4_0040B090 m;
+    Vec4_0040B090 *v;
     char *obj;
-    float a = D_00692378 * *(float *)(e + 0x1c) + *(float *)(p + 0xac);
-    *(float *)(p + 0xac) = a;
-    func_004532A0(a, &c, &s);
+    func_004532A0(*(float *)(p + 0xac) += D_00692378 * *(float *)(e + 0x1c), &c, &s);
     obj = *(char **)(*(char **)p + 0x2c);
     if (obj != 0) {
-        (*(void (**)(char *, float *))(*(char **)(obj + 0x8c) + 0x3c))(obj, m);
-        func_0040BD20(p, e, m, m);
-        return;
+        (*(void (**)(char *, Vec4_0040B090 *))(*(char **)(obj + 0x8c) + 0x3c))(obj, &m);
+        v = &m;
+    } else {
+        v = (Vec4_0040B090 *)(p + 0x34);
     }
-    func_0040BD20(p, e, p + 0x34, p + 0x34);
+    func_0040BD20(p, e, v, v);
 }

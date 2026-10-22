@@ -140,6 +140,17 @@ extern "C" int func_0047271C(int c)
     return func_0047272D(c, 0, 4);
 }
 
+extern "C" int D_006D6B08;
+extern "C" int func_0047275E(int);
+extern "C" void (__stdcall *_imp__LeaveCriticalSection)(void *);
+extern "C" void func_00472B36(void)
+{
+    if (D_006D6B08 == 0) {
+        func_0047275E(-3);
+        D_006D6B08 = 1;
+    }
+}
+
 extern "C" int func_00472B52(int a, int b, int c)
 {
     return func_00472B69(a, b, c, 0);

@@ -47,6 +47,14 @@ extern "C" int func_00429EC0(void)
     return D_0048D4C4;
 }
 
+extern "C" void func_00429E60(void)
+{
+    D_0065E2C0 = 1;
+    D_0065E2C4 = 1;
+    D_0065E2C8 = 1;
+    D_0065E2CC = 1;
+}
+
 extern "C" void func_00429DD0(void)
 {
     int i;

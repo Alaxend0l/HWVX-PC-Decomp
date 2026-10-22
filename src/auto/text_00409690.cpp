@@ -166,6 +166,21 @@ extern "C" void func_00409F50(void)
     }
 }
 
+extern "C" char func_0040A170(Node_0040A170 *p, int b)
+{
+    for (;;) {
+        if (func_00454800(p, b) > D_00477000) {
+            if (!(p->flags & 1))
+                return 0;
+            p++;
+        } else {
+            if (!(p->flags & 2))
+                return 1;
+            p += p->skip;
+        }
+    }
+}
+
 extern "C" char *func_0040A490(void)
 {
     return D_00681500;

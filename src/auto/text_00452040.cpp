@@ -110,8 +110,21 @@ extern "C" int func_00452510(unsigned int i)
     return 0;
 }
 
+extern "C" int func_00452530(unsigned int i)
+{
+    if (i < (unsigned int)D_0049DBA0->unk_0x28)
+        return D_0049DBA0->unk_0x2c + i * 0x40;
+    return 0;
+}
+
 extern "C" int func_00452590(void)
 {
     return D_0049DBA0->unk_0x78;
+}
+
+extern "C" void func_00452650(void)
+{
+    if (++D_0049DBA4 == 0)
+        func_004525C0();
 }
 

@@ -4,7 +4,34 @@
 struct State_0048D970 {
     char unk_0x00[0xd0];
     int unk_0xd0;
+    int unk_0xd4;
 };
+
+struct Mat_006922E0 {
+    float m[16];
+};
+
+struct Body_004482C0 {
+    float unk_0x00[3];
+    char unk_0x0c[4];
+    Mat_006922E0 mat;
+    float unk_0x50[4];
+    float unk_0x60[3];
+    char unk_0x6c[4];
+    int unk_0x70;
+    int unk_0x74;
+    char unk_0x78[8];
+    short unk_0x80;
+    char unk_0x82;
+    char unk_0x83;
+    int unk_0x84;
+    int unk_0x88;
+    char unk_0x8c[8];
+    int unk_0x94;
+};
+
+extern Mat_006922E0 D_006922E0;
+int func_00458420(int);
 
 struct Msg_00447C60 {
     int unk_0x00;
@@ -35,22 +62,23 @@ void func_00447C60(Msg_00447C60 *msg)
 {
     switch (msg->type) {
     case 5:
-        if (func_0042A680(0x198, 0))
+        if (func_0042A680(0x198, 0) != 0)
             func_004480E0(0xb);
-        break;
+        return;
     case 0xf:
         if (func_00427760())
             msg->unk_0x20 = 0xb;
-        break;
+        return;
     case 9:
         func_004480E0(2);
-        break;
+        return;
     case 0x11:
         D_0048D960 = msg->unk_0x24;
         D_0048D964 = 1;
     case 6:
         msg->unk_0x20 = 4;
-        break;
+    default:
+        return;
     }
 }
 

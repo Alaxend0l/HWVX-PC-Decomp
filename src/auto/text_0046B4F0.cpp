@@ -115,5 +115,15 @@ extern "C" int func_0046B81F(const char *path)
     return 0;
 }
 
+extern "C" size_t func_0046B849(const void *buffer, size_t size, size_t count, FILE *stream)
+{
+    size_t retval;
+
+    func_0046C816(stream);
+    retval = func_0046B878(buffer, size, count, stream);
+    func_0046C868(stream);
+    return retval;
+}
+
 #pragma optimize("y", on)
 

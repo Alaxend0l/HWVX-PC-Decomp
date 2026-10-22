@@ -146,6 +146,20 @@ void func_00408A70(Obj_00408690 *o)
     }
 }
 
+void func_00408AF0(Obj_00408690 *o)
+{
+    int *info = (int *)o->unk_0xb4;
+    int h = info[2];
+
+    if (info[7] != 0) {
+        func_00461D10(o->unk_0x154);
+        func_00461BA0(0x10);
+    }
+    o->unk_0xdc = 1.0f;
+    func_0045E730(h, o->unk_0x50, &o->unk_0xd0, &o->unk_0x40);
+    func_00461BC0(0x10);
+}
+
 char func_00408CF0(Obj_00408690 *o, unsigned int lo, unsigned int hi)
 {
     unsigned int v = (unsigned int)o->unk_0xb4;
@@ -153,6 +167,29 @@ char func_00408CF0(Obj_00408690 *o, unsigned int lo, unsigned int hi)
     if (v < lo || v >= hi)
         return 0;
     return 1;
+}
+
+char func_00408D10(Obj_00408690 *o, Spawn_00408D10 *s)
+{
+    func_004482C0(o, 0);
+    *(Vec4i_00408690 *)&o->unk_0x40 = s->unk_0x04;
+    o->unk_0xb0 = s->unk_0x00;
+    o->unk_0xb4 = 0;
+    o->unk_0xb8 = 1.0f;
+    if (o->unk_0xb0[3] == 0)
+        o->unk_0x74 |= 0x200;
+    return 1;
+}
+
+void func_004091B0(void)
+{
+    func_00452F70(D_0047A2CC);
+    if (!func_00459410())
+        func_0046A822(D_0047A2A4);
+    func_00452F70(D_0047A28C);
+    D_00489554 = 0;
+    D_0048955C = func_00454B80(0x1db0, 0x80, D_0047A26C);
+    D_00489564 = func_00454B80(0x500, 0x81, D_0047A26C);
 }
 
 void func_004093C0(void)

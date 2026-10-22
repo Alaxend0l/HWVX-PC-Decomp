@@ -133,6 +133,8 @@ char func_004450F0(int id, char *name)
     return 1;
 }
 
+extern Entry_0053B0E0 D_0053B0E4[];
+extern Entry_0053B0E0 D_0053B0E8[];
 char func_00445180(int id, char *name)
 {
     int p;
@@ -147,8 +149,13 @@ char func_00445180(int id, char *name)
     D_0053B0E0[D_0048D7FC].name = name;
     D_0053B0E0[D_0048D7FC].id = id;
     D_0053B0E0[D_0048D7FC].unk_0x08 = func_0042E250(p, 0, func_00445340);
-    ++D_0048D7FC;
+    D_0048D7FC = D_0048D7FC + 1;
     return 1;
+}
+
+void func_00445200(Key_00445160 *k)
+{
+    func_00445180(k->id, k->name);
 }
 
 void func_004452E0(int h)
@@ -158,8 +165,7 @@ void func_004452E0(int h)
 
     for (i = 0; i < n; i++) {
         if (D_0053B0E0[i].unk_0x08 == h) {
-            n--;
-            for (; i < n; i++)
+            for (--n; i < n; i++)
                 D_0053B0E0[i] = D_0053B0E0[i + 1];
             D_0048D7FC = n;
         }

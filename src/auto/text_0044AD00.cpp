@@ -72,6 +72,18 @@ void func_0044B910(void)
     func_0044B390();
 }
 
+void func_0044B940(void)
+{
+    Obj_0053A9D0 *p;
+
+    D_00529FAC->unk_0x08(D_00529F20);
+    for (p = D_0053A9D0; p != 0; p = p->unk_0xa4) {
+        if (p->unk_0x8c == &D_0047B228 && (p->unk_0x74 & 0x100000))
+            p->unk_0x8c->unk_0x0c(p);
+    }
+    func_0044A910(&D_0053A9D0);
+}
+
 void func_0044B310(int a, List_0044B310 *list, int c)
 {
     unsigned int i;

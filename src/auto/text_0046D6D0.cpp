@@ -66,6 +66,38 @@ extern "C" unsigned char *func_0046DDB5(void)
     return p;
 }
 
+extern "C" void func_0046DE0D(void)
+{
+    char *p;
+    char **env;
+    int numstrings;
+    int cchars;
+
+    if (D_006D6B08 == 0)
+        func_00472B36();
+    numstrings = 0;
+    for (p = D_0049D808; *p != '\0'; p += func_00471CF0(p) + 1) {
+        if (*p != '=')
+            numstrings++;
+    }
+    D_0049D834 = env = (char **)func_0046AED9((numstrings + 1) * sizeof(char *));
+    if (env == NULL)
+        func_0046AD1F(9);
+    for (p = D_0049D808; *p != '\0'; p += cchars) {
+        cchars = func_00471CF0(p) + 1;
+        if (*p != '=') {
+            if ((*env = (char *)func_0046AED9(cchars)) == NULL)
+                func_0046AD1F(9);
+            func_004718C0(*env, p);
+            env++;
+        }
+    }
+    func_0046B013(D_0049D808);
+    D_0049D808 = NULL;
+    *env = NULL;
+    D_006D6B04 = 1;
+}
+
 extern "C" void func_0046E401(unsigned char *ver)
 {
     unsigned char *base;

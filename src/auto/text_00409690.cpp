@@ -103,6 +103,25 @@ extern "C" void func_00409DB0(int index)
     D_0048955C[index].unk_0x49 = 1;
 }
 
+extern "C" void func_00409DD0(int index)
+{
+    if (D_0048955C[index].unk_0x2c > 0)
+        func_00459950(D_0048955C[index].unk_0x2c);
+    D_0048955C[index].unk_0x2c = -1;
+    D_0048955C[index].unk_0x24 = 0;
+    D_0048955C[index].unk_0x30 = 0;
+}
+
+extern "C" int func_00409E20(int index)
+{
+    return D_0048955C[index].unk_0x2c != -1;
+}
+
+extern "C" char func_00409E40(int index)
+{
+    return (char)D_0048955C[index].unk_0x30;
+}
+
 extern "C" void func_00409F50(void)
 {
     if (D_00489554) {

@@ -69,8 +69,15 @@ extern "C" int D_00496DD0;
 extern "C" unsigned int D_00496DCC;
 extern "C" Slot_0049DCC0 D_0049DCC0[];
 extern "C" void *D_0049DBC0[];
-extern "C" int D_0069236C;
-extern "C" void func_004268B0(int, char *, int);
+/* each slot's active flag (offset 0x30) has its own symbol */
+struct SlotActive_0049DCF0 {
+    char v;
+    char pad[0x33];
+};
+
+extern "C" SlotActive_0049DCF0 D_0049DCF0[];
+extern "C" float D_0069236C;
+extern "C" void func_004268B0(int, char *, float);
 extern "C" void func_00401090(void);
 extern "C" void func_004508C0(void *p);
 

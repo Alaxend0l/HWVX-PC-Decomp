@@ -15,6 +15,10 @@ extern "C" char D_0047D11C[];
 extern "C" int D_006C99FC;
 extern "C" DisplayMode D_006C9A00[];
 extern "C" int D_006C9A78;
+extern "C" int D_0049D7E0;
+
+extern "C" char *func_00461D50(void);
+extern "C" void func_00460B30(int);
 
 extern "C" char *func_0046B970(const char *str, int ch);
 extern "C" char *func_0046B1E0(const char *str1, const char *str2);

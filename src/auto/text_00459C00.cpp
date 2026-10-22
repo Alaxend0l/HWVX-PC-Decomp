@@ -39,7 +39,8 @@ struct Voice_00459C00 {
 
 struct Chan_00499260 {
     Voice_00459C00 *head;
-    char unk_0x04[0x14 - 0x04];
+    char flags;
+    char unk_0x05[0x14 - 0x05];
     int unk_0x14;
     int unk_0x18;
     unsigned char unk_0x1c;
@@ -124,8 +125,13 @@ void func_00459D70(int a)
 
 char func_00459EC0(void)
 {
-    memset(D_00499230, 0, sizeof(D_00499230));
-    memset(D_00499260, 0, sizeof(D_00499260));
+    int *p;
+    int n;
+
+    for (p = D_00499230, n = 9; n != 0; n--)
+        *p++ = 0;
+    for (p = (int *)D_00499260, n = 0x80; n != 0; n--)
+        *p++ = 0;
     D_00499254 = 0;
     return 1;
 }

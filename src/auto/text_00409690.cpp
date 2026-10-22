@@ -44,6 +44,14 @@ struct Entry_0048955C {
     char unk_0x4a[2];
 };
 
+struct Node_0040A170 {
+    char unk_0x00[0x10];
+    unsigned char flags;
+    char unk_0x11;
+    unsigned short skip;
+    char unk_0x14[0xc];
+};
+
 extern int D_0068DAC4;
 extern Entry_0048955C *D_0048955C;
 extern char D_00489554;

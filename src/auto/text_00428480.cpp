@@ -157,7 +157,7 @@ void func_00428BA0(void)
 void func_00428D70(int i)
 {
     if (i >= 0)
-        D_0065EC00[i].owner = NULL;
+        D_0065EC5C[i].unk0 = 0;
 }
 
 int *func_00428C10(unsigned int idx, int type, char flag)
@@ -217,11 +217,70 @@ void func_00428CC0(void)
     } while (p < D_0065F3DC);
 }
 
+int func_00428CE0(Src_00428480 *src, Vec4_00428480 *pos, int a, int b)
+{
+    int i;
+    Unk_0065EC5C *p;
+
+    for (i = 0, p = D_0065EC5C; p < D_0065F3DC; p++, i++) {
+        if (p->unk0 == 0) {
+            D_0065EC00[i].owner = src;
+            memcpy(&D_0065EC00[i].unk_0x00, pos, sizeof(Vec4_00428480));
+            D_0065EC00[i].unk_0x60 = a;
+            D_0065EC00[i].unk_0x68 = src->unk_0xc;
+            D_0065EC00[i].unk_0x3c = 1;
+            D_0065EC00[i].unk_0x58 = 1;
+            D_0065EC00[i].unk_0x74 = b;
+            return i;
+        }
+    }
+    return -1;
+}
+
 void func_00428F00(void)
 {
     int i;
 
     for (i = 0; i < 24; i++)
         D_0065E360[i].unk0 = 0;
+}
+
+void func_00428F20(Src_00428480 *src, Vec4_00428480 *pos)
+{
+    int i;
+
+    for (i = 0; i < 24; i++) {
+        if (D_0065E360[i].owner == NULL) {
+            D_0065E360[i].owner = src;
+            D_0065E360[i].unk_0x1c = 1;
+            D_0065E360[i].unk_0x30 = 1;
+            D_0065E360[i].unk_0x40 = *pos;
+            D_0065E360[i].unk_0x54 = src->unk_0x14;
+            D_0065E360[i].unk_0x58 = src->unk_0x18;
+            D_0065E360[i].unk_0x50 = src->unk_0x10;
+            return;
+        }
+    }
+}
+
+void func_00428FA0(void)
+{
+    int i;
+    Slot_0065E360 *s;
+
+    for (i = 0; i < 24; i++) {
+        s = &D_0065E360[i];
+        if (s->owner != NULL) {
+            func_00426E30(s->owner->unk_0x2c, s->unk_0x04, D_0069236C);
+            if (s->unk_0x54 > 0)
+                s->unk_0x54 -= D_00692370;
+            if (s->unk_0x58 > 0 && (s->unk_0x58 -= D_00692370) >= 0)
+                func_004266F0(s->owner->unk_0x28, &s->unk_0x1c + 4, D_0069236C);
+            if (s->unk_0x50 > 0 && (s->unk_0x50 -= D_00692370) >= 0)
+                func_004266F0(s->owner->unk_0x24, &s->unk_0x1c + 4, D_0069236C);
+        }
+        if (s->unk_0x54 <= 0 && s->unk_0x58 <= 0 && s->unk_0x50 <= 0)
+            s->owner = NULL;
+    }
 }
 
